@@ -1,4 +1,4 @@
-package com.duy.natural.calc.calculator.calcbutton.button;
+package com.duy.natural.calc.calculator.calcbutton;
 
 public enum Category {
     NONE,

@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 
 import com.duy.common.utils.DLog;
 import com.duy.natural.calc.calculator.CalculatorContract;
-import com.duy.natural.calc.calculator.calcbutton.button.CalcButtonManager;
-import com.duy.natural.calc.calculator.calcbutton.button.Category;
+import com.duy.natural.calc.calculator.calcbutton.CalcButtonManager;
+import com.duy.natural.calc.calculator.calcbutton.Category;
 import com.nstudio.calc.casio.R;
 
 /**

@@ -1,6 +1,6 @@
 package com.duy.natural.calc.calculator;
 
-import com.duy.natural.calc.calculator.calcbutton.button.Category;
+import com.duy.natural.calc.calculator.calcbutton.Category;
 
 /**
  * Created by Duy on 1/13/2018.

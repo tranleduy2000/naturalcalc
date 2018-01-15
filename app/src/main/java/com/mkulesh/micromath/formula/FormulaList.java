@@ -46,7 +46,7 @@ import com.mkulesh.micromath.editstate.UndoState;
 import com.mkulesh.micromath.editstate.clipboard.FormulaClipboardData;
 import com.mkulesh.micromath.editstate.clipboard.FormulaClipboardData.StoredTerm;
 import com.mkulesh.micromath.fman.FileUtils;
-import com.duy.natural.calc.calculator.calcbutton.button.Category;
+import com.duy.natural.calc.calculator.calcbutton.Category;
 import com.mkulesh.micromath.formula.io.FormulaWritter;
 import com.mkulesh.micromath.formula.io.XmlLoaderTask;
 import com.mkulesh.micromath.formula.type.ActionType;

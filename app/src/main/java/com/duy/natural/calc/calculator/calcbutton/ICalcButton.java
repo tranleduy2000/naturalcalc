@@ -1,4 +1,4 @@
-package com.duy.natural.calc.calculator.calcbutton.button;
+package com.duy.natural.calc.calculator.calcbutton;
 
 /**
  * Created by Duy on 1/14/2018.

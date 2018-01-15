@@ -27,8 +27,8 @@ import android.widget.LinearLayout;
 
 import com.duy.common.utils.DLog;
 import com.mkulesh.micromath.formula.IArgumentHolder;
-import com.duy.natural.calc.calculator.calcbutton.button.Category;
-import com.duy.natural.calc.calculator.calcbutton.button.ICalcButton;
+import com.duy.natural.calc.calculator.calcbutton.Category;
+import com.duy.natural.calc.calculator.calcbutton.ICalcButton;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.formula.type.LoopType;

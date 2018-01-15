@@ -9,7 +9,7 @@ import com.nstudio.calc.casio.R;
 
 import java.util.Locale;
 
-import static com.duy.natural.calc.calculator.calcbutton.button.CalcButtonManager.NO_BUTTON;
+import static com.duy.natural.calc.calculator.calcbutton.CalcButtonManager.NO_BUTTON;
 
 /**
  * Created by Duy on 1/14/2018.

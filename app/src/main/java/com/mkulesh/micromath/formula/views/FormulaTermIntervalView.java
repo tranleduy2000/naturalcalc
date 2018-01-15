@@ -24,8 +24,8 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.duy.natural.calc.calculator.calcbutton.button.CalcButtonManager;
-import com.duy.natural.calc.calculator.calcbutton.button.Category;
+import com.duy.natural.calc.calculator.calcbutton.CalcButtonManager;
+import com.duy.natural.calc.calculator.calcbutton.Category;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.formula.type.IntervalType;

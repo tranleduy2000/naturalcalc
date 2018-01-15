@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package com.duy.natural.calc.calculator.calcbutton.button;
+package com.duy.natural.calc.calculator.calcbutton;
 
 import android.content.Context;
 import android.view.View;

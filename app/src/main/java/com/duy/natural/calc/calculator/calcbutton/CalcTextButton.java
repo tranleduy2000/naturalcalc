@@ -1,59 +1,59 @@
-/*******************************************************************************
- * microMathematics Plus - Extended visual calculator
- * *****************************************************************************
- * Copyright (C) 2014-2017 Mikhail Kulesh
+/*
+ * Copyright (c) 2018 by Tran Le Duy
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- ******************************************************************************/
-package com.duy.natural.calc.calculator.calcbutton.button;
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.duy.natural.calc.calculator.calcbutton;
 
 import android.content.Context;
 import android.os.Vibrator;
-import android.support.v7.widget.AppCompatImageView;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
+import com.duy.common.utils.DLog;
 import com.duy.natural.calc.calculator.settings.CalculatorSetting;
-import com.mkulesh.micromath.utils.ViewUtils;
-import com.nstudio.calc.casio.R;
 
 import java.util.Arrays;
 
-public class CalcImageButton extends AppCompatImageView implements ICalcButton {
+public class CalcTextButton extends AppCompatTextView implements ICalcButton {
+    private static final String TAG = "CalcTextButton";
     private final boolean[] enabled = new boolean[Category.values().length];
     private String code = null;
     private String shortCut = null;
     private Category[] categories = null;
     private CalculatorSetting mSetting;
 
-    public CalcImageButton(Context context, AttributeSet attrs) {
+    public CalcTextButton(Context context, AttributeSet attrs) {
         super(context, attrs);
-        enableAll();
         setup(context);
+        enableAll();
     }
 
-    public CalcImageButton(Context context) {
+    public CalcTextButton(Context context) {
         super(context);
-        enableAll();
         setup(context);
-
+        enableAll();
     }
 
-    public CalcImageButton(Context context, int shortCutId, int descriptionId, String code) {
+    public CalcTextButton(Context context, int shortCutId, int descriptionId, String code) {
         super(context);
         setup(context);
         initWithParameter(shortCutId, descriptionId, code);
+    }
+
+    private void setup(Context context) {
+        mSetting = new CalculatorSetting(context);
     }
 
     public void initWithParameter(int shortCutId, int descriptionId, String code) {
@@ -72,12 +72,6 @@ public class CalcImageButton extends AppCompatImageView implements ICalcButton {
         }
         this.code = code;
         enableAll();
-        ViewUtils.setImageButtonColorAttr(getContext(), this,
-                isEnabled() ? R.attr.colorMicroMathIcon : R.attr.colorPrimaryDark);
-    }
-
-    private void setup(Context context) {
-        mSetting = new CalculatorSetting(context);
     }
 
     public String getCategoryCode() {
@@ -88,6 +82,7 @@ public class CalcImageButton extends AppCompatImageView implements ICalcButton {
         return shortCut;
     }
 
+    @Override
     public Category[] getCategories() {
         return categories;
     }
@@ -100,7 +95,10 @@ public class CalcImageButton extends AppCompatImageView implements ICalcButton {
         Arrays.fill(enabled, true);
     }
 
+    @Override
     public void setEnabled(Category t, boolean value) {
+        if (DLog.DEBUG)
+            DLog.d(TAG, "setEnabled() " + code + " called with: t = [" + t + "], value = [" + value + "]");
         enabled[t.ordinal()] = value;
         super.setEnabled(true);
         for (boolean en : enabled) {
@@ -126,5 +124,4 @@ public class CalcImageButton extends AppCompatImageView implements ICalcButton {
             v.vibrate(mSetting.getVibrateStrength());
         }
     }
-
 }
