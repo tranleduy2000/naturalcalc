@@ -203,11 +203,6 @@ abstract public class BaseFragment extends Fragment implements OnClickListener {
         // update menu items
         for (int i = 0; i < mainMenu.size(); i++) {
             MenuItem m = mainMenu.getItem(i);
-
-            if (m.getItemId() == R.id.action_exit) {
-                continue;
-            }
-
             m.setEnabled(!inOperation);
 
             // update undo button

@@ -26,8 +26,9 @@ import android.widget.Toast;
 
 import com.duy.common.purchase.InAppPurchaseActivity;
 import com.duy.natural.calc.calculator.display.DisplayFragment;
-import com.mkulesh.micromath.BaseFragment;
 import com.duy.natural.calc.calculator.keyboard.KeyboardFragment;
+import com.duy.natural.calc.calculator.settings.SettingActivity;
+import com.mkulesh.micromath.BaseFragment;
 import com.mkulesh.micromath.editstate.clipboard.FormulaClipboardData;
 import com.mkulesh.micromath.fman.AdapterDocuments;
 import com.mkulesh.micromath.utils.AppLocale;
@@ -98,7 +99,7 @@ public class CalculatorActivity extends InAppPurchaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main_actions, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -112,35 +113,43 @@ public class CalculatorActivity extends InAppPurchaseActivity {
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         mStoragePermissionAction = ViewUtils.INVALID_INDEX;
 
-        BaseFragment baseFragment = getVisibleFragment();
-        if (baseFragment == null) {
-            return true;
-        }
         switch (menuItem.getItemId()) {
             case R.id.action_undo:
             case R.id.action_new:
             case R.id.action_discard:
-            case R.id.action_new_document:
+            case R.id.action_new_document: {
+                BaseFragment baseFragment = getVisibleFragment();
+                if (baseFragment == null) {
+                    return true;
+                }
                 baseFragment.performAction(menuItem.getItemId());
                 return true;
+            }
             case R.id.action_open:
             case R.id.action_save:
             case R.id.action_save_as:
-            case R.id.action_export:
+            case R.id.action_export: {
                 if (checkStoragePermission(menuItem.getItemId())) {
+                    BaseFragment baseFragment = getVisibleFragment();
+                    if (baseFragment == null) {
+                        return true;
+                    }
                     baseFragment.performAction(menuItem.getItemId());
                 }
                 return true;
-            case R.id.action_exit:
-            case android.R.id.home:
-                finish();
-                return true;
+            }
             case R.id.action_remove_ads:
                 showDialogUpgrade();
                 return true;
+            case R.id.action_setting:
+                openSetting();
             default:
                 return super.onOptionsItemSelected(menuItem);
         }
+    }
+
+    private void openSetting() {
+        startActivity(new Intent(this, SettingActivity.class));
     }
 
     public void restartActivity() {
@@ -257,7 +266,6 @@ public class CalculatorActivity extends InAppPurchaseActivity {
     /**
      * Storage permission handling
      */
-    @SuppressLint("NewApi")
     public boolean checkStoragePermission(int action) {
         if (CompatUtils.isMarshMallowOrLater()) {
             final boolean granted = checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
