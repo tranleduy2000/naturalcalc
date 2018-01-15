@@ -14,7 +14,7 @@ import com.nstudio.calc.casio.R;
 public enum ActionType implements ButtonDescriptor {
     DELETE(R.string.action_delete, R.id.btn_delete),
     CLEAR(R.string.action_clear_all, R.id.btn_clear),
-    CALCULATE(R.string.action_calculate, R.id.btn_equal),
+    CALCULATE(R.string.action_calculate, R.id.btn_calculate),
     MOVE_LEFT(R.string.action_move_left, R.id.btn_arrow_left),
     MOVE_RIGHT(R.string.action_move_right, R.id.btn_arrow_right);
 

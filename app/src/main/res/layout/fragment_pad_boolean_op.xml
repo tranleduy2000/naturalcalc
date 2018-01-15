@@ -27,40 +27,34 @@
         android:orientation="horizontal">
 
         <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
-            android:id="@+id/btn_sum"
+            android:id="@+id/btn_calculate"
             style="@style/CalcButtonStyle"
-            android:src="@drawable/ic_loop_summation" />
+            android:src="@drawable/ic_comparator_equal" />
 
         <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
-            android:id="@+id/btn_derivative"
+            android:id="@+id/btn_not_equal"
             style="@style/CalcButtonStyle"
-            android:src="@drawable/ic_loop_derivative"
-            android:text="sin" />
+            android:src="@drawable/ic_comparator_not_equal" />
 
         <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
-            android:id="@+id/btn_integral"
+            android:id="@+id/btn_less"
             style="@style/CalcButtonStyle"
-            android:src="@drawable/ic_loop_integral"
-            android:text="cos" />
+            android:src="@drawable/ic_comparator_less" />
 
         <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
-            android:id="@+id/btn_product"
+            android:id="@+id/btn_less_equal"
             style="@style/CalcButtonStyle"
-            android:src="@drawable/ic_loop_product"
-            android:text="tan" />
+            android:src="@drawable/ic_comparator_less_eq" />
 
-        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
-            android:id="@+id/btn_var_x"
+        <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
+            android:id="@+id/btn_greater"
             style="@style/CalcButtonStyle"
-            android:text="x"
-            android:textStyle="italic|bold" />
+            android:src="@drawable/ic_comparator_greater" />
 
-        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
-            android:id="@+id/btn_var_y"
+        <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
+            android:id="@+id/btn_greater_equal"
             style="@style/CalcButtonStyle"
-            android:src="@drawable/ic_loop_product"
-            android:text="y"
-            android:textStyle="italic|bold" />
+            android:src="@drawable/ic_comparator_greater_eq" />
 
     </LinearLayout>
 
@@ -69,30 +63,27 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
-            android:id="@+id/btn_parentheses"
-            style="@style/CalcButtonStyle"
-            android:src="@drawable/ic_function_identity" />
-
-        <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
-            android:id="@+id/btn_power"
-            style="@style/CalcButtonStyle"
-            android:src="@drawable/ic_function_power" />
+        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
+            android:id="@+id/btn_and"
+            style="@style/CalcButtonStyle.Operator"
+            android:text="and" />
 
         <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
+            android:id="@+id/btn_or"
+            style="@style/CalcButtonStyle.Operator"
+            android:text="or" />
+
+        <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
             android:id="@+id/btn_seven"
-            style="@style/CalcButtonStyle"
-            android:text="7" />
+            style="@style/CalcButtonStyle" />
 
-        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
+        <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
             android:id="@+id/btn_eight"
-            style="@style/CalcButtonStyle"
-            android:text="8" />
+            style="@style/CalcButtonStyle" />
 
-        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
+        <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
             android:id="@+id/btn_nine"
-            style="@style/CalcButtonStyle"
-            android:text="9" />
+            style="@style/CalcButtonStyle" />
 
 
         <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
@@ -206,11 +197,6 @@
             android:id="@+id/btn_decimal"
             style="@style/CalcButtonStyle"
             android:text="." />
-
-        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
-            android:id="@+id/btn_calculate"
-            style="@style/CalcButtonStyle"
-            android:text="=" />
 
         <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
             android:id="@+id/btn_plus"

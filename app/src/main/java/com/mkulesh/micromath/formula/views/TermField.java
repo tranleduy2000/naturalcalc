@@ -43,7 +43,6 @@ import com.mkulesh.micromath.formula.type.BaseType;
 import com.mkulesh.micromath.formula.type.BasicSymbolType;
 import com.mkulesh.micromath.formula.type.ButtonDescriptor;
 import com.mkulesh.micromath.formula.type.ComparatorType;
-import com.mkulesh.micromath.formula.type.TermType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.IdGenerator;
@@ -968,5 +967,13 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
         COLOR,
         LAYOUT_BORDER,
         PARENT_LAYOUT
+    }
+
+    public static enum TermType {
+        OPERATOR,
+        COMPARATOR,
+        FUNCTION,
+        INTERVAL,
+        LOOP
     }
 }

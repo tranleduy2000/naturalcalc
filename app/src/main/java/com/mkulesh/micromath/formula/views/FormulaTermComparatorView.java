@@ -30,7 +30,6 @@ import com.duy.natural.calc.calculator.calcbutton.ICalcButton;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.formula.type.ComparatorType;
-import com.mkulesh.micromath.formula.type.TermType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.widgets.CalcEditText;
 import com.mkulesh.micromath.widgets.CalcTextView;
@@ -130,8 +129,8 @@ public class FormulaTermComparatorView extends FormulaTermView {
 
 
     @Override
-    public TermType getTermType() {
-        return TermType.COMPARATOR;
+    public TermField.TermType getTermType() {
+        return TermField.TermType.COMPARATOR;
     }
 
     @Override

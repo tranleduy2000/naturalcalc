@@ -32,7 +32,6 @@ import com.duy.natural.calc.calculator.calcbutton.ICalcButton;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.formula.type.LoopType;
-import com.mkulesh.micromath.formula.type.TermType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CalcEditText;
@@ -133,8 +132,8 @@ public class FormulaTermLoopView extends FormulaTermView implements IArgumentHol
     }
 
     @Override
-    public TermType getTermType() {
-        return TermType.LOOP;
+    public TermField.TermType getTermType() {
+        return TermField.TermType.LOOP;
     }
 
     @Override

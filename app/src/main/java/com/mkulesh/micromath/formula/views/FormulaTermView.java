@@ -31,7 +31,6 @@ import com.mkulesh.micromath.formula.type.FunctionType;
 import com.mkulesh.micromath.formula.type.IntervalType;
 import com.mkulesh.micromath.formula.type.LoopType;
 import com.mkulesh.micromath.formula.type.OperatorType;
-import com.mkulesh.micromath.formula.type.TermType;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CalcEditText;
@@ -58,24 +57,24 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
         this.mFormulaRoot = null;
     }
 
-    public static TermType getTermType(Context context, CalcEditText editText, String text, boolean ensureManualTrigger) {
+    public static TermField.TermType getTermType(Context context, CalcEditText editText, String text, boolean ensureManualTrigger) {
         if (FormulaTermOperatorView.getOperatorType(context, text) != null) {
-            return TermType.OPERATOR;
+            return TermField.TermType.OPERATOR;
         }
         if (editText.isComparatorEnabled() && FormulaTermComparatorView.getComparatorType(context, text) != null) {
-            return TermType.COMPARATOR;
+            return TermField.TermType.COMPARATOR;
         }
 
         // TermFunction has manual trigger (like "(" or "["): is has to be checked
         final boolean enableFunction = !ensureManualTrigger || FormulaTermFunctionView.containsFunctionTrigger(context, text);
         if (enableFunction && FormulaTermFunctionView.getFunctionType(context, text) != null) {
-            return TermType.FUNCTION;
+            return TermField.TermType.FUNCTION;
         }
         if (editText.isIntervalEnabled() && FormulaTermIntervalView.getIntervalType(context, text) != null) {
-            return TermType.INTERVAL;
+            return TermField.TermType.INTERVAL;
         }
         if (FormulaTermLoopView.getLoopType(context, text) != null) {
-            return TermType.LOOP;
+            return TermField.TermType.LOOP;
         }
         return null;
     }
@@ -112,7 +111,7 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
         return null;
     }
 
-    public static FormulaTermView createTermView(TermType type, TermField termField, LinearLayout layout, String text,
+    public static FormulaTermView createTermView(TermField.TermType type, TermField termField, LinearLayout layout, String text,
                                                  int textIndex) throws Exception {
         if (DLog.DEBUG)
             DLog.d(TAG, "createTermView() called with: type = [" + type + "], termField = [" + termField
@@ -205,7 +204,7 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
     /**
      * Procedure returns the type of this term formula
      */
-    public abstract TermType getTermType();
+    public abstract TermField.TermType getTermType();
 
     /**
      * Procedure returns code of this term. The code must be unique for a given term type

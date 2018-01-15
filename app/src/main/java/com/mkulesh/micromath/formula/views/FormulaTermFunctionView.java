@@ -35,7 +35,6 @@ import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.formula.type.FunctionTrigger;
 import com.mkulesh.micromath.formula.type.FunctionType;
-import com.mkulesh.micromath.formula.type.TermType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
@@ -448,8 +447,8 @@ public class FormulaTermFunctionView extends FormulaTermView {
 
 
     @Override
-    public TermType getTermType() {
-        return TermType.FUNCTION;
+    public TermField.TermType getTermType() {
+        return TermField.TermType.FUNCTION;
     }
 
     @Override

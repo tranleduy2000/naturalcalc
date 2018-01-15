@@ -29,7 +29,6 @@ import com.duy.natural.calc.calculator.calcbutton.Category;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.formula.type.IntervalType;
-import com.mkulesh.micromath.formula.type.TermType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.widgets.CalcEditText;
 import com.mkulesh.micromath.widgets.CalcTextView;
@@ -135,8 +134,8 @@ public class FormulaTermIntervalView extends FormulaTermView {
     }
 
     @Override
-    public TermType getTermType() {
-        return TermType.INTERVAL;
+    public TermField.TermType getTermType() {
+        return TermField.TermType.INTERVAL;
     }
 
     @Override
