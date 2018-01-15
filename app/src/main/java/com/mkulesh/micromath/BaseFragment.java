@@ -57,7 +57,6 @@ abstract public class BaseFragment extends Fragment implements OnClickListener {
     public static final String OPENED_FILE_EMPTY = "";
     public static final String FILE_READING_OPERATION = "file_reading_operation";
 
-
     public final static int INVALID_ACTION_ID = -1;
 
     protected View rootView = null;

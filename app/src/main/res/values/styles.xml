@@ -161,7 +161,7 @@
     </style>
 
     <style name="CalcButtonStyle" parent="Base.Widget.AppCompat.Button">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
         <item name="android:background">?android:selectableItemBackgroundBorderless</item>
@@ -169,6 +169,7 @@
         <item name="android:focusable">true</item>
         <item name="android:tint">@color/white</item>
         <item name="android:gravity">center</item>
+        <item name="android:typeface">sans</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
         <item name="android:scaleType">centerInside</item>
     </style>
@@ -179,5 +180,9 @@
 
     <style name="CalcButtonStyle.Operator">
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CalcButtonStyle.Constant">
+        <item name="android:textStyle">bold|italic</item>
     </style>
 </resources>

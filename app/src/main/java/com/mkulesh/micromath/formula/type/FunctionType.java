@@ -59,7 +59,8 @@ public enum FunctionType implements ButtonDescriptor {
     IM(1, R.string.math_function_im, null, R.id.btn_im),
     /*todo Supported all function symja library*/
     /*Function link*/
-    FUNCTION_LINK(-1, NO_BUTTON, "content:com.mkulesh.micromath.link");
+    FUNCTION_LINK(-1, NO_BUTTON, "content:com.mkulesh.micromath.link"),
+    ARG(1, NO_BUTTON, null, NO_BUTTON);
 
     private final int argNumber;
     private final int descriptionId;

@@ -22,6 +22,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.os.Vibrator;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -90,6 +91,7 @@ public class CalcImageButton extends AppCompatImageView implements ICalcButton {
         mSetting = new CalculatorSetting(context);
     }
 
+    @Nullable
     public String getCategoryCode() {
         return code;
     }

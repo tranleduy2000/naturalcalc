@@ -73,17 +73,58 @@
             style="@style/CalcButtonStyle.Operator"
             android:text="or" />
 
-        <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
-            android:id="@+id/btn_seven"
-            style="@style/CalcButtonStyle" />
+        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
+            android:id="@+id/btn_var_a"
+            style="@style/CalcButtonStyle.Constant"
+            android:tag="@string/type_variable"
+            android:text="A" />
 
-        <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
-            android:id="@+id/btn_eight"
-            style="@style/CalcButtonStyle" />
+        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
+            android:id="@+id/btn_var_b"
+            style="@style/CalcButtonStyle.Constant"
+            android:tag="@string/type_variable"
+            android:text="B" />
 
-        <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
-            android:id="@+id/btn_nine"
-            style="@style/CalcButtonStyle" />
+        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
+            android:id="@+id/btn_var_c"
+            style="@style/CalcButtonStyle.Constant"
+            android:tag="@string/type_variable"
+            android:text="C" />
+
+        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
+            android:id="@+id/btn_var_d"
+            style="@style/CalcButtonStyle.Constant"
+            android:tag="@string/type_variable"
+            android:text="D" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="6">
+
+        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
+            android:id="@+id/btn_const_pi"
+            style="@style/CalcButtonStyle.Constant"
+            android:tag="@string/type_constant"
+            android:text="Pi" />
+
+        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
+            android:id="@+id/btn_const_i"
+            style="@style/CalcButtonStyle.Constant"
+            android:tag="@string/type_constant"
+            android:text="i"
+            android:textStyle="bold|italic" />
+
+        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
+            android:id="@+id/btn_const_e"
+            style="@style/CalcButtonStyle.Constant"
+            android:tag="@string/type_constant"
+            android:text="e"
+            android:textStyle="bold|italic" />
 
 
     </LinearLayout>

@@ -45,7 +45,7 @@ public class PagerSectionAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return OperatorFragment.newInstance(listener);
+                return LeftKeyboardFragment.newInstance(listener);
             case 1:
                 return BasicPadFragment.newInstance(listener);
             case 2:

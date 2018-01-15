@@ -18,6 +18,11 @@
     <string name="formula_index_key" translatable="false">index</string>
     <string name="function_main_layout" translatable="false">functionMainLayout</string>
 
+    <!--button type-->
+    <string name="type_function" translatable="false">type_function</string>
+    <string name="type_constant" translatable="false">type_constant</string>
+    <string name="type_variable" translatable="false">type_variable</string>
+
     <!-- Formula elements used in graphical representation and by input -->
     <string name="formula_assign_definition" translatable="false">:=</string>
     <string name="formula_result_definition" translatable="false">=</string>

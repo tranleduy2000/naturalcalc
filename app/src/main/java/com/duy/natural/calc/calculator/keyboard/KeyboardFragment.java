@@ -40,10 +40,8 @@ public class KeyboardFragment extends Fragment implements CalculatorContract.IKe
     }
 
     @Override
-    public void onButtonPressed(String code) {
-        if (code != null) {
-            mPresenter.getDisplayView().onButtonPressed(code);
-        }
+    public void onButtonPressed(@NonNull String code) {
+        mPresenter.getDisplayView().onButtonPressed(code);
     }
 
     @Override
@@ -98,7 +96,7 @@ public class KeyboardFragment extends Fragment implements CalculatorContract.IKe
     }
 
     @Override
-    public void onButtonPressed(@Nullable View view, String code) {
+    public void onButtonPressed(@Nullable View view, @NonNull String code) {
         onButtonPressed(code);
     }
 }

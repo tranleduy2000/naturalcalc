@@ -17,13 +17,16 @@ package com.duy.natural.calc.calculator.calcbutton;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.os.Vibrator;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 import com.duy.common.utils.DLog;
 import com.duy.natural.calc.calculator.settings.CalculatorSetting;
+import com.nstudio.calc.casio.R;
 
 import java.util.Arrays;
 
@@ -37,30 +40,43 @@ public class CalcTextButton extends AppCompatTextView implements ICalcButton {
 
     public CalcTextButton(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setup(context);
+        setup(context, attrs);
         enableAll();
     }
 
     public CalcTextButton(Context context) {
         super(context);
-        setup(context);
+        setup(context, null);
         enableAll();
     }
 
     public CalcTextButton(Context context, int shortCutId, int descriptionId, String code) {
         super(context);
-        setup(context);
+        setup(context, null);
         initWithParameter(shortCutId, descriptionId, code);
     }
 
-    private void setup(Context context) {
+    private void setup(Context context, AttributeSet attrs) {
         mSetting = new CalculatorSetting(context);
+        if (attrs != null) {
+            TypedArray ta = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CalcTextButton, -1, -1);
+            code = ta.getString(R.styleable.CalcTextButton_code);
+            shortCut = ta.getString(R.styleable.CalcTextButton_shortCutId);
+
+            String description = ta.getString(R.styleable.CalcTextButton_descriptionId);
+            description += " ('";
+            description += shortCut;
+            description += "')";
+            setContentDescription(description);
+            setLongClickable(true);
+        }
     }
 
     public void initWithParameter(int shortCutId, int descriptionId, String code) {
         if (shortCutId != CalcButtonManager.NO_BUTTON) {
             shortCut = getContext().getResources().getString(shortCutId);
         }
+
         if (descriptionId != CalcButtonManager.NO_BUTTON) {
             String description = getContext().getResources().getString(descriptionId);
             if (shortCut != null) {
@@ -80,6 +96,7 @@ public class CalcTextButton extends AppCompatTextView implements ICalcButton {
         setTextColor(color);
     }
 
+    @Nullable
     public String getCategoryCode() {
         return code;
     }
@@ -134,6 +151,15 @@ public class CalcTextButton extends AppCompatTextView implements ICalcButton {
         if (mSetting.isUseVibrate()) {
             Vibrator v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
             v.vibrate(mSetting.getVibrateStrength());
+        }
+    }
+
+    public String getType() {
+        Object tag = getTag();
+        if (tag != null)
+            return tag.toString();
+        else {
+            return "";
         }
     }
 }

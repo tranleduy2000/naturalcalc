@@ -50,16 +50,42 @@ public enum BasicSymbolType implements ButtonDescriptor {
         public String toString() {
             return "x";
         }
-    }, VAR_Y(R.string.math_constant_y, R.id.btn_var_y) {
+    },
+    VAR_Y(R.string.math_constant_y, R.id.btn_var_y) {
         @Override
         public String toString() {
             return "y";
+        }
+    },
+    VAR_A(R.string.math_constant_a, R.id.btn_var_a) {
+        @Override
+        public String toString() {
+            return "a";
+        }
+    },
+    VAR_B(R.string.math_constant_b, R.id.btn_var_b) {
+        @Override
+        public String toString() {
+            return "b";
+        }
+    },
+    VAR_C(R.string.math_constant_c, R.id.btn_var_c) {
+        @Override
+        public String toString() {
+            return "c";
+        }
+    },
+    VAR_D(R.string.math_constant_d, R.id.btn_var_d) {
+        @Override
+        public String toString() {
+            return "d";
         }
     };
 
     private static final String NUMBER = "1234567890.";
     private final int viewId;
     private int descriptionId;
+
 
     BasicSymbolType(@StringRes int descriptionId, @IdRes int viewId) {
         this.descriptionId = descriptionId;

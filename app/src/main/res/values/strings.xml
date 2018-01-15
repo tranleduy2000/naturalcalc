@@ -200,5 +200,9 @@
     <!--Activity title-->
     <string name="title_activity_settings">Settings</string>
     <string name="math_function_sign" />
+    <string name="math_constant_c" />
+    <string name="math_constant_b" />
+    <string name="math_constant_a" />
+    <string name="math_constant_d" />
 
 </resources>

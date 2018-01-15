@@ -265,7 +265,10 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
     public void onClick(View view) {
         if (view instanceof ICalcButton && mListener != null) {
             final ICalcButton calcButton = (ICalcButton) view;
-            mListener.onButtonPressed(view, calcButton.getCategoryCode());
+            String categoryCode = calcButton.getCategoryCode();
+            if (categoryCode != null) {
+                mListener.onButtonPressed(view, categoryCode);
+            }
         }
     }
 

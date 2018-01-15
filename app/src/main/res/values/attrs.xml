@@ -89,9 +89,8 @@
         <attr name="bar_orientation_horizontal" format="boolean" />
     </declare-styleable>
 
-    <declare-styleable name="CalcImageButton">
+    <declare-styleable name="CalcTextButton">
         <attr name="shortCutId" format="reference" />
-        <attr name="imageId" format="reference" />
         <attr name="descriptionId" format="reference" />
         <attr name="code" format="string" />
     </declare-styleable>

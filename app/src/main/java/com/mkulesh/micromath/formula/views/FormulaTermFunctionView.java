@@ -41,9 +41,6 @@ import com.mkulesh.micromath.widgets.CalcTextView;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
 import com.nstudio.calc.casio.R;
 
-import org.apache.commons.math3.util.CombinatoricsUtils;
-import org.apache.commons.math3.util.FastMath;
-
 import java.util.ArrayList;
 
 public class FormulaTermFunctionView extends FormulaTermView {
@@ -51,8 +48,6 @@ public class FormulaTermFunctionView extends FormulaTermView {
 
     private FunctionType mFunctionType = null;
     private String mFunctionLinkName = "unknown";
-
-    private CalculatedValue[] argsVal = null;
 
     private CalcTextView mFunctionTerm = null;
     private EquationView mLinkedFunction = null;
@@ -92,10 +87,10 @@ public class FormulaTermFunctionView extends FormulaTermView {
             if (type.isLink() && allText.contains(type.getLinkObject())) {
                 return type;
             }
-            if (allText.equals(type.getLowerCaseName())) {
+            if (allText.equalsIgnoreCase(type.getLowerCaseName())) {
                 return type;
             }
-            if (funcName != null && funcName.equals(type.getLowerCaseName())) {
+            if (funcName != null && funcName.equalsIgnoreCase(type.getLowerCaseName())) {
                 return type;
             }
         }
@@ -126,7 +121,7 @@ public class FormulaTermFunctionView extends FormulaTermView {
     }
 
     @NonNull
-    public static String getFunctionString(Context context, FunctionType type) {
+    public static String getFunctionString(FunctionType type) {
         return type.isLink() ? type.getLinkObject() : type.getLowerCaseName();
     }
 
@@ -255,112 +250,7 @@ public class FormulaTermFunctionView extends FormulaTermView {
     }
 
     @Override
-    public CalculatedValue.ValueType getValue(CalculateTask thread, CalculatedValue outValue) throws
-            CancelException {
-        if (mFunctionType != null && mTerms.size() > 0) {
-            ensureArgValSize();
-            for (int i = 0; i < mTerms.size(); i++) {
-                mTerms.get(i).getValue(thread, argsVal[i]);
-            }
-            final CalculatedValue a0 = argsVal[0];
-            switch (mFunctionType) {
-                case IDENTITY:
-                    return outValue.assign(a0);
-                case POWER:
-                    return outValue.pow(a0, argsVal[1]);
-                case SIN:
-                    return outValue.sin(a0);
-                case ASIN:
-                    return outValue.asin(a0);
-                case SINH:
-                    return outValue.sinh(a0);
-                case COS:
-                    return outValue.cos(a0);
-                case ACOS:
-                    return outValue.acos(a0);
-                case COSH:
-                    return outValue.cosh(a0);
-                case TAN:
-                    return outValue.tan(a0);
-                case ATAN:
-                    return outValue.atan(a0);
-                case ATAN2: {
-                    final CalculatedValue a1 = argsVal[1];
-                    if (a0.isComplex() || a1.isComplex()) {
-                        return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
-                    }
-                    return outValue.setValue(FastMath.atan2(a0.getReal(), a1.getReal()));
-                }
-                case TANH:
-                    return outValue.tanh(a0);
-                case EXP:
-                    return outValue.exp(a0);
-                case LOG:
-                    return outValue.log(a0);
-                case LOG10:
-                    return outValue.log10(a0);
-                case SQRT:
-                case SQRT_LAYOUT:
-                    return outValue.sqrt(a0);
-                case SURD_LAYOUT:
-                    return outValue.nthRoot(argsVal[1], a0.getInteger());
-                case ABS:
-                case ABS_LAYOUT:
-                    return outValue.abs(a0);
-                case CONJUGATE_LAYOUT:
-                    return outValue.conj(a0);
-                case RE:
-                    return outValue.setValue(a0.getReal());
-                case IM:
-                    return outValue.setValue(a0.isComplex() ? a0.getImaginary() : 0.0);
-                case CEILING:
-                    return outValue.ceil(a0);
-                case FLOOR:
-                    return outValue.floor(a0);
-                case RND:
-                    return outValue.random(a0);
-                case MAX:
-                case MIN: {
-                    final CalculatedValue a1 = argsVal[1];
-                    if (a0.isComplex() || a1.isComplex()) {
-                        return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
-                    }
-                    final double res = (mFunctionType == FunctionType.MAX) ? FastMath.max(a0.getReal(), a1.getReal())
-                            : FastMath.min(a0.getReal(), a1.getReal());
-                    return outValue.setValue(res);
-                }
-                case HYPOT:
-                    return outValue.hypot(a0, argsVal[1]);
-                case IF:
-                    if (a0.isComplex()) {
-                        return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
-                    }
-                    return outValue.assign((a0.getReal() > 0) ? argsVal[1] : argsVal[2]);
-
-                case SIGN:
-                    if (a0.isComplex()) {
-                        return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
-                    }
-                    return outValue.setValue(FastMath.signum(a0.getReal()));
-
-                case FACTORIAL:
-                    if (a0.isComplex()) {
-                        return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
-                    }
-                    try {
-                        return outValue.setValue(CombinatoricsUtils.factorialDouble((int) a0.getReal()));
-                    } catch (Exception e) {
-                        return outValue.invalidate(CalculatedValue.ErrorType.NOT_A_NUMBER);
-                    }
-
-                case FUNCTION_LINK:
-                case FUNCTION_INDEX:
-                    if (mLinkedFunction != null && mLinkedFunction.setArgumentValues(argsVal)) {
-                        return mLinkedFunction.getValue(thread, outValue);
-                    }
-                    break;
-            }
-        }
+    public CalculatedValue.ValueType getValue(CalculateTask thread, CalculatedValue outValue) throws CancelException {
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
     }
 
@@ -370,7 +260,6 @@ public class FormulaTermFunctionView extends FormulaTermView {
         switch (mFunctionType) {
             case IDENTITY:
                 return "(" + ")";
-
             case POWER:
             case MAX:
             case MIN:
@@ -378,9 +267,14 @@ public class FormulaTermFunctionView extends FormulaTermView {
             case ATAN2: {
                 String left = mTerms.get(0).toExpressionString();
                 String right = mTerms.get(1).toExpressionString();
-                return mFunctionType.name() + "(" + left + "," + right + ")";
+                return mFunctionType.getLowerCaseName() + "(" + left + "," + right + ")";
             }
-
+            case ASINH:
+            case ATANH:
+            case COT:
+            case ACOT:
+            case COTH:
+            case ACOTH:
             case SIN:
             case ASIN:
             case SINH:
@@ -399,7 +293,7 @@ public class FormulaTermFunctionView extends FormulaTermView {
             case FLOOR:
             case SIGN:
             case FACTORIAL:
-                return mFunctionType.name() + "(" + mTerms.get(0).toExpressionString() + ")";
+                return mFunctionType.getLowerCaseName() + "(" + mTerms.get(0).toExpressionString() + ")";
 
             case SQRT:
             case SQRT_LAYOUT:
@@ -417,10 +311,20 @@ public class FormulaTermFunctionView extends FormulaTermView {
             case FUNCTION_LINK:
             case FUNCTION_INDEX:
                 return mLinkedFunction.toExpressionString();
-        }
-        return null;
-    }
 
+            default: {
+                StringBuilder args = new StringBuilder();
+                for (int i = 0; i < mTerms.size(); i++) {
+                    TermField term = mTerms.get(i);
+                    args.append(term.toExpressionString());
+                    if (i != mTerms.size() - 1) {
+                        args.append(",");
+                    }
+                }
+                return mFunctionType.toString() + "(" + args.toString() + ")";
+            }
+        }
+    }
 
     @Override
     public TermField.TermType getTermType() {
@@ -429,7 +333,7 @@ public class FormulaTermFunctionView extends FormulaTermView {
 
     @Override
     public String getTermCode() {
-        String t = getFunctionString(getContext(), getFunctionType());
+        String t = getFunctionString(getFunctionType());
         if (mFunctionType.isLink()) {
             t += "." + mFunctionLinkName;
             if (mTerms.size() > 1) {
@@ -586,6 +490,26 @@ public class FormulaTermFunctionView extends FormulaTermView {
         return super.getArgumentTerm();
     }
 
+    /**
+     * @return function name
+     */
+    private String getFunctionLabel() {
+        switch (mFunctionType) {
+            case FUNCTION_LINK:
+            case FUNCTION_INDEX:
+                return mFunctionLinkName;
+            case IDENTITY:
+            case POWER:
+            case SQRT_LAYOUT:
+            case SURD_LAYOUT:
+            case FACTORIAL:
+            case ABS_LAYOUT:
+            case CONJUGATE_LAYOUT:
+                return "";
+            default:
+                return mFunctionType.getLowerCaseName();
+        }
+    }
 
     @Override
     public void onDelete(CalcEditText owner) {
@@ -623,7 +547,7 @@ public class FormulaTermFunctionView extends FormulaTermView {
             }
 
             TermField prevTerm = deleteArgument(ownerTerm,
-                    getContext().getResources().getString(R.string.formula_term_separator),true);
+                    getContext().getResources().getString(R.string.formula_term_separator), true);
 
             getFormulaRoot().getFormulaList().onManualInput();
             if (prevTerm != null) {
@@ -783,34 +707,6 @@ public class FormulaTermFunctionView extends FormulaTermView {
                     break;
             }
             parentField.setError(errorMsg, TermField.ErrorNotification.PARENT_LAYOUT, mFunctionMainLayout);
-        }
-    }
-
-    private void ensureArgValSize() {
-        final int termsSize = mTerms.size();
-        if (argsVal == null || argsVal.length != termsSize) {
-            argsVal = new CalculatedValue[termsSize];
-            for (int i = 0; i < termsSize; i++) {
-                argsVal[i] = new CalculatedValue();
-            }
-        }
-    }
-
-    private String getFunctionLabel() {
-        switch (mFunctionType) {
-            case FUNCTION_LINK:
-            case FUNCTION_INDEX:
-                return mFunctionLinkName;
-            case IDENTITY:
-            case POWER:
-            case SQRT_LAYOUT:
-            case SURD_LAYOUT:
-            case FACTORIAL:
-            case ABS_LAYOUT:
-            case CONJUGATE_LAYOUT:
-                return "";
-            default:
-                return mFunctionType.getLowerCaseName();
         }
     }
 

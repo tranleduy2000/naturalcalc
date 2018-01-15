@@ -14,9 +14,9 @@ import com.nstudio.calc.casio.R;
  * Created by Duy on 1/14/2018.
  */
 
-public class OperatorFragment extends BaseKeyboardFragment {
-    public static OperatorFragment newInstance(OnCalcButtonClickListener listener) {
-        OperatorFragment fragment = new OperatorFragment();
+public class LeftKeyboardFragment extends BaseKeyboardFragment {
+    public static LeftKeyboardFragment newInstance(OnCalcButtonClickListener listener) {
+        LeftKeyboardFragment fragment = new LeftKeyboardFragment();
         fragment.setListener(listener);
         return fragment;
     }
@@ -24,7 +24,7 @@ public class OperatorFragment extends BaseKeyboardFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_pad_boolean_op, container, false);
+        return inflater.inflate(R.layout.fragment_keyboard_left, container, false);
     }
 
 }
