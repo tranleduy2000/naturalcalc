@@ -48,6 +48,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.duy.natural.calc.calculator.settings.SettingActivity" />
 
     </application>
 

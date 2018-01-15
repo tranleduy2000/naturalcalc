@@ -237,5 +237,7 @@
     <string name="action_move_left">Move cursor to the left</string>
     <string name="action_move_right">Move cursor to the right</string>
     <string name="action_remove_ads">Remove ads</string>
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="pref_title_vibrate_strength">Vibrate strength</string>
 
 </resources>
