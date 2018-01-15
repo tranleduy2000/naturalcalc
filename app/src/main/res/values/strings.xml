@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- General settings -->
     <string name="app_name">Casio Calculator</string>
-    <string name="app_short_name">Casio Calc</string>
-    <string name="app_description">Extended visual calculator: live editing and computations of formulas</string>
-
-    <!-- Drawer -->
-    <string-array name="activity_titles">
-        <item>Worksheet</item>
-        <item>How To Use</item>
-        <item>Example</item>
-        <item>Example</item>
-        <item>Example</item>
-        <item>Example</item>
-        <item>About</item>
-        <item>Documentation</item>
-    </string-array>
     <string name="activity_welcome">asset:/doc_en/welcome.xml</string>
 
     <!-- Permissions -->
@@ -24,33 +8,12 @@
     <string name="allow_storage_access_description">This app needs you to grant permission to access the worksheet files on this device</string>
     <string name="allow_storage_access_grant">Grant permission</string>
 
-
     <!-- Context menu -->
     <string name="context_expand">Expand selection</string>
     <string name="context_copy">Copy</string>
     <string name="context_cut">Cut</string>
     <string name="context_paste">Paste</string>
 
-
-    <string name="pref_default_theme_code" translatable="false">indigo-orange</string>
-    <string-array name="pref_theme_codes" translatable="false">
-        <item>indigo-orange</item>
-        <item>teal-deep-orange</item>
-        <item>gray-indigo</item>
-        <item>dark-cyan</item>
-    </string-array>
-    <array name="main_themes" translatable="false">
-        <item>@style/MainThemeIndigoOrange</item>
-        <item>@style/MainThemeTealDeepOrange</item>
-        <item>@style/MainThemeGrayIndigo</item>
-        <item>@style/MainThemeDarkCyan</item>
-    </array>
-    <array name="settings_themes" translatable="false">
-        <item>@style/SettingsThemeIndigoOrange</item>
-        <item>@style/SettingsThemeTealDeepOrange</item>
-        <item>@style/SettingsThemeGrayIndigo</item>
-        <item>@style/SettingsThemeDarkCyan</item>
-    </array>
 
     <!-- Dialogs -->
     <string name="dialog_navigation_accept">OK</string>
@@ -233,5 +196,8 @@
     <!--Preferences-->
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="pref_title_vibrate_strength">Vibrate strength</string>
+
+    <!--Activity title-->
+    <string name="title_activity_settings">Settings</string>
 
 </resources>

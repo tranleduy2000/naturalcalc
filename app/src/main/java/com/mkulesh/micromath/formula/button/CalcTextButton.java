@@ -16,10 +16,13 @@
 package com.mkulesh.micromath.formula.button;
 
 import android.content.Context;
+import android.os.Vibrator;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 
 import com.duy.common.utils.DLog;
+import com.duy.natural.calc.calculator.settings.CalculatorSetting;
 
 import java.util.Arrays;
 
@@ -29,21 +32,28 @@ public class CalcTextButton extends AppCompatTextView implements ICalcButton {
     private String code = null;
     private String shortCut = null;
     private Category[] categories = null;
+    private CalculatorSetting mSetting;
 
     public CalcTextButton(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setup(context);
         enableAll();
     }
 
     public CalcTextButton(Context context) {
         super(context);
+        setup(context);
         enableAll();
     }
 
-
     public CalcTextButton(Context context, int shortCutId, int descriptionId, String code) {
         super(context);
+        setup(context);
         initWithParameter(shortCutId, descriptionId, code);
+    }
+
+    private void setup(Context context) {
+        mSetting = new CalculatorSetting(context);
     }
 
     public void initWithParameter(int shortCutId, int descriptionId, String code) {
@@ -85,6 +95,7 @@ public class CalcTextButton extends AppCompatTextView implements ICalcButton {
         Arrays.fill(enabled, true);
     }
 
+    @Override
     public void setEnabled(Category t, boolean value) {
         if (DLog.DEBUG)
             DLog.d(TAG, "setEnabled() " + code + " called with: t = [" + t + "], value = [" + value + "]");
@@ -98,5 +109,19 @@ public class CalcTextButton extends AppCompatTextView implements ICalcButton {
         }
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            vibrate();
+        }
+        return super.onTouchEvent(event);
+    }
 
+    private void vibrate() {
+        if (mSetting.isUseVibrate()) {
+            Vibrator v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+            // Vibrate for 500 milliseconds
+            v.vibrate(mSetting.getVibrateStrength());
+        }
+    }
 }

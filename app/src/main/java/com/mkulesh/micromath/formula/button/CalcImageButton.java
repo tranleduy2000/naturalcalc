@@ -19,11 +19,12 @@
 package com.mkulesh.micromath.formula.button;
 
 import android.content.Context;
+import android.os.Vibrator;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
-import android.util.TypedValue;
-import android.view.ViewGroup;
+import android.view.MotionEvent;
 
+import com.duy.natural.calc.calculator.settings.CalculatorSetting;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.nstudio.calc.casio.R;
 
@@ -34,6 +35,7 @@ public class CalcImageButton extends AppCompatImageView implements ICalcButton {
     private String code = null;
     private String shortCut = null;
     private Category[] categories = null;
+    private CalculatorSetting mSetting;
 
     public CalcImageButton(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -75,12 +77,7 @@ public class CalcImageButton extends AppCompatImageView implements ICalcButton {
     }
 
     private void setup(Context context) {
-        final int buttonSize = context.getResources().getDimensionPixelSize(R.dimen.activity_toolbar_height);
-        setLayoutParams(new ViewGroup.LayoutParams(buttonSize, buttonSize));
-
-        TypedValue outValue = new TypedValue();
-        context.getTheme().resolveAttribute(R.attr.selectableItemBackground, outValue, true);
-        setBackgroundResource(outValue.resourceId);
+        mSetting = new CalculatorSetting(context);
     }
 
     public String getCategoryCode() {
@@ -114,5 +111,20 @@ public class CalcImageButton extends AppCompatImageView implements ICalcButton {
         }
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            vibrate();
+        }
+        return super.onTouchEvent(event);
+    }
+
+    private void vibrate() {
+        if (mSetting.isUseVibrate()) {
+            Vibrator v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+            // Vibrate for 500 milliseconds
+            v.vibrate(mSetting.getVibrateStrength());
+        }
+    }
 
 }
