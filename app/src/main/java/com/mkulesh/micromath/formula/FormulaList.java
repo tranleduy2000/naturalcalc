@@ -31,10 +31,12 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import com.duy.common.utils.DLog;
-import com.mkulesh.micromath.BaseFragment;
 import com.duy.natural.calc.calculator.CalculatorActivity;
 import com.duy.natural.calc.calculator.CalculatorContract;
 import com.duy.natural.calc.calculator.dialogs.LaTeXDialogFragment2;
+import com.duy.natural.calc.calculator.evaluator.CalculateTask;
+import com.duy.natural.calc.calculator.evaluator.result.CalculatedResult;
+import com.mkulesh.micromath.BaseFragment;
 import com.mkulesh.micromath.editstate.Coordinate;
 import com.mkulesh.micromath.editstate.DeleteState;
 import com.mkulesh.micromath.editstate.FormulaState;
@@ -45,7 +47,6 @@ import com.mkulesh.micromath.editstate.clipboard.FormulaClipboardData;
 import com.mkulesh.micromath.editstate.clipboard.FormulaClipboardData.StoredTerm;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.button.Category;
-import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.mkulesh.micromath.formula.io.FormulaWritter;
 import com.mkulesh.micromath.formula.io.XmlLoaderTask;
 import com.mkulesh.micromath.formula.type.ActionType;
@@ -57,7 +58,6 @@ import com.mkulesh.micromath.formula.views.EquationView;
 import com.mkulesh.micromath.formula.views.FormulaResultView;
 import com.mkulesh.micromath.formula.views.FormulaView;
 import com.mkulesh.micromath.formula.views.TermField;
-import com.duy.natural.calc.calculator.evaluator.result.CalculatedResult;
 import com.mkulesh.micromath.properties.DocumentProperties;
 import com.mkulesh.micromath.properties.OnDocumentPropertiesChangeListener;
 import com.mkulesh.micromath.utils.ClipboardManager;
@@ -375,7 +375,7 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
                     TermField termField = view.findTermWithId(nextFocusLeftId);
                     if (termField != null) {
                         clearFocus();
-                        termField.requestFocus();
+                        termField.setEditableFocus(FormulaView.FocusType.FOCUS_RIGHT);
                     }
                 }
                 break;
@@ -385,7 +385,7 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
                     TermField termField = view.findTermWithId(nextFocusRightId);
                     if (termField != null) {
                         clearFocus();
-                        termField.requestFocus();
+                        termField.setEditableFocus(FormulaView.FocusType.FOCUS_LEFT);
                     }
                 }
                 break;

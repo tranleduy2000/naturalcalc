@@ -41,8 +41,8 @@ import com.mkulesh.micromath.utils.IdGenerator;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.utils.XmlUtils;
 import com.mkulesh.micromath.widgets.CalcEditText;
-import com.mkulesh.micromath.widgets.ContextMenuHandler;
 import com.mkulesh.micromath.widgets.CalcTextView;
+import com.mkulesh.micromath.widgets.ContextMenuHandler;
 import com.mkulesh.micromath.widgets.FormulaLayout;
 import com.mkulesh.micromath.widgets.OnFocusChangedListener;
 import com.mkulesh.micromath.widgets.OnFormulaChangeListener;
@@ -858,7 +858,9 @@ public abstract class FormulaView extends FormulaLayout implements OnFormulaChan
 
     public enum FocusType {
         FIRST_EDITABLE,
-        FIRST_EMPTY
+        FIRST_EMPTY,
+        FOCUS_RIGHT,
+        FOCUS_LEFT
     }
 
     public enum ValidationPassType {

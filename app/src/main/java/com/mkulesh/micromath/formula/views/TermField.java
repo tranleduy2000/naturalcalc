@@ -29,6 +29,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.duy.common.utils.DLog;
+import com.duy.natural.calc.calculator.evaluator.CalculateTask;
+import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.editstate.FormulaState;
 import com.mkulesh.micromath.editstate.clipboard.FormulaClipboardData;
 import com.mkulesh.micromath.formula.IArgumentHolder;
@@ -36,8 +38,6 @@ import com.mkulesh.micromath.formula.TermParser;
 import com.mkulesh.micromath.formula.button.CalcButtonManager;
 import com.mkulesh.micromath.formula.button.Category;
 import com.mkulesh.micromath.formula.button.ICalcButton;
-import com.duy.natural.calc.calculator.evaluator.CalculateTask;
-import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.formula.io.Constants;
 import com.mkulesh.micromath.formula.type.BaseType;
 import com.mkulesh.micromath.formula.type.BasicSymbolType;
@@ -291,6 +291,12 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
         } else if (type == FormulaView.FocusType.FIRST_EDITABLE || isEmpty()) {
             mEditText.requestFocus();
             return true;
+        } else if (type == FormulaView.FocusType.FOCUS_LEFT) {
+            mEditText.requestFocus();
+            mEditText.setSelection(0);
+        } else if (type == FormulaView.FocusType.FOCUS_RIGHT) {
+            mEditText.requestFocus();
+            mEditText.setSelection(mEditText.length());
         }
         return false;
     }

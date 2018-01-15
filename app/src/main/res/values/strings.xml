@@ -125,7 +125,6 @@
     <string name="math_function_sin">The sine of the argument</string>
     <string name="math_function_asin">The arc sine of the argument within the range [-pi/2..pi/2]</string>
     <string name="math_function_sinh">The hyperbolic sine of the argument</string>
-    <string name="math_function_asinh"></string>
     <string name="math_function_cos">The cosine of the argument</string>
     <string name="math_function_acos">The arc cosine of the argument within the range [0..pi]</string>
     <string name="math_function_cosh">The hyperbolic cosine of the argument</string>
@@ -143,6 +142,17 @@
     <string name="math_function_max">The most positive (closest to positive infinity) of the two arguments</string>
     <string name="math_function_min">The most negative (closest to negative infinity) of the two arguments</string>
     <string name="math_function_hypot">The length of the hypotenuse of a right-angle triangle: sqrt(x^2 + y^2)</string>
+    <string name="math_function_cot" />
+    <string name="math_function_acot" />
+    <string name="math_function_atanh" />
+    <string name="math_function_coth" />
+    <string name="math_function_acoth" />
+    <string name="math_constant_pi">Pi constant</string>
+    <string name="math_constant_e">E</string>
+    <string name="math_constant_i">I</string>
+    <string name="math_constant_x" />
+    <string name="math_constant_y" />
+    <string name="math_function_asinh" />
 
     <!-- Errors -->
     <string name="error_max_layout_depth">Reached layout depth limit for this Android version</string>
@@ -220,17 +230,8 @@
 
     <!-- Messages -->
     <string name="message_file_written">File %s is written</string>
-    <string name="math_function_cot" />
-    <string name="math_function_acot" />
-    <string name="math_function_atanh" />
-    <string name="math_function_coth" />
-    <string name="math_function_acoth" />
-    <string name="math_constant_pi">Pi</string>
-    <string name="math_constant_e">E</string>
-    <string name="math_constant_i">I</string>
-    <string name="math_constant_x" />
-    <string name="math_constant_y" />
-    <string name="action_delete" />
+
+    <string name="action_delete">Delete</string>
     <string name="action_clear_all">Clear all</string>
     <string name="action_calculate">Calculate</string>
     <string name="action_move_left">Move cursor to the left</string>
