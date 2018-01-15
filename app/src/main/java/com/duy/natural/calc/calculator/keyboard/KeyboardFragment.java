@@ -48,7 +48,7 @@ public class KeyboardFragment extends Fragment implements CalculatorContract.IKe
 
     @Override
     public void setPaletteBlockEnabled(Category category, boolean enabled) {
-        if (mCalcButtonManager != null) {
+       /* if (mCalcButtonManager != null) {
             mCalcButtonManager.setPaletteBlockEnabled(category, enabled);
             for (int i = 0; i < mAdapter.getCount(); i++) {
                 Fragment fragment = mAdapter.getRegisteredFragment(i);
@@ -56,7 +56,7 @@ public class KeyboardFragment extends Fragment implements CalculatorContract.IKe
                     ((CalculatorContract.IKeyboardView) fragment).setPaletteBlockEnabled(category, enabled);
                 }
             }
-        }
+        }*/
     }
 
     @Override
@@ -68,7 +68,7 @@ public class KeyboardFragment extends Fragment implements CalculatorContract.IKe
 
     @Override
     public void setEnabled(boolean enable) {
-        if (mCalcButtonManager != null) {
+      /*  if (mCalcButtonManager != null) {
             mCalcButtonManager.setEnabled(enable);
             for (int i = 0; i < mAdapter.getCount(); i++) {
                 Fragment fragment = mAdapter.getRegisteredFragment(i);
@@ -76,7 +76,7 @@ public class KeyboardFragment extends Fragment implements CalculatorContract.IKe
                     ((CalculatorContract.IKeyboardView) fragment).setEnabled(enable);
                 }
             }
-        }
+        }*/
     }
 
     @Nullable
