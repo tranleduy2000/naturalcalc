@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mkulesh.micromath.formula.button.CalcButtonManager;
+import com.duy.natural.calc.calculator.calcbutton.button.CalcButtonManager;
 import com.nstudio.calc.casio.R;
 
 /**

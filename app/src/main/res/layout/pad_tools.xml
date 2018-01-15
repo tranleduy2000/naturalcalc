@@ -6,7 +6,7 @@
     android:background="?colorPrimary"
     android:orientation="horizontal">
 
-    <com.mkulesh.micromath.formula.button.CalcImageButton
+    <com.duy.natural.calc.calculator.calcbutton.button.CalcImageButton
         android:id="@+id/btn_add_row"
         style="@style/CalcButtonStyle"
         android:layout_width="wrap_content"
@@ -14,7 +14,7 @@
         android:tint="?android:textColorPrimary"
         app:srcCompat="@drawable/ic_result" />
 
-    <com.mkulesh.micromath.formula.button.CalcImageButton
+    <com.duy.natural.calc.calculator.calcbutton.button.CalcImageButton
         android:id="@+id/btn_add_assign"
         style="@style/CalcButtonStyle"
         android:layout_width="wrap_content"
@@ -22,7 +22,7 @@
         android:tint="?android:textColorPrimary"
         app:srcCompat="@drawable/ic_equation" />
 
-    <com.mkulesh.micromath.formula.button.CalcImageButton
+    <com.duy.natural.calc.calculator.calcbutton.button.CalcImageButton
         android:id="@+id/btn_add_term"
         style="@style/CalcButtonStyle"
         android:layout_width="wrap_content"
@@ -30,28 +30,28 @@
         android:tint="?android:textColorPrimary"
         app:srcCompat="@drawable/ic_new_term" />
 
-    <com.mkulesh.micromath.formula.button.CalcImageButton
+    <com.duy.natural.calc.calculator.calcbutton.button.CalcImageButton
         android:id="@+id/btn_arrow_left"
         style="@style/CalcButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:srcCompat="@drawable/ic_keyboard_arrow_left_white_24dp" />
 
-    <com.mkulesh.micromath.formula.button.CalcImageButton
+    <com.duy.natural.calc.calculator.calcbutton.button.CalcImageButton
         android:id="@+id/btn_arrow_right"
         style="@style/CalcButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:srcCompat="@drawable/ic_keyboard_arrow_right_white_24dp" />
 
-    <com.mkulesh.micromath.formula.button.CalcImageButton
+    <com.duy.natural.calc.calculator.calcbutton.button.CalcImageButton
         android:id="@+id/btn_delete"
         style="@style/CalcButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:srcCompat="@drawable/ic_backspace_white_24dp" />
 
-    <com.mkulesh.micromath.formula.button.CalcImageButton
+    <com.duy.natural.calc.calculator.calcbutton.button.CalcImageButton
         android:id="@+id/btn_clear"
         style="@style/CalcButtonStyle"
         android:layout_width="wrap_content"

@@ -7,7 +7,7 @@ import com.nstudio.calc.casio.R;
 
 import java.util.Locale;
 
-import static com.mkulesh.micromath.formula.button.CalcButtonManager.NO_BUTTON;
+import static com.duy.natural.calc.calculator.calcbutton.button.CalcButtonManager.NO_BUTTON;
 
 /**
  * Supported functions, the name of enum also synchronize with name of function of symja library

@@ -20,35 +20,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_const_pi"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:src="@drawable/ic_function_identity"
                 android:text="Pi" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_sin"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:src="@drawable/ic_function_identity"
                 android:text="sin" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_cos"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:src="@drawable/ic_function_sqrt"
                 android:text="cos" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_tan"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:src="@drawable/ic_function_factorial"
                 android:text="tan" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_cot"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
@@ -63,40 +63,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_const_i"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:src="@drawable/ic_function_identity"
                 android:text="I" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_asin"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:src="@drawable/ic_function_identity"
                 android:text="asin" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_acos"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:src="@drawable/ic_function_sqrt"
                 android:text="acos" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_atan"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:text="atan" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_atan2"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:text="atan2" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_acot"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
@@ -112,34 +112,34 @@
             android:layout_height="wrap_content">
 
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_const_e"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:src="@drawable/ic_function_identity"
                 android:text="E" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_exp"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:src="@drawable/ic_function_identity"
                 android:text="exp" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_log"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:src="@drawable/ic_function_power"
                 android:text="ln" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_log10"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:text="log10" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_logn"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
@@ -153,32 +153,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_floor"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:text="floor" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_sinh"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:text="sinh" />
 
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_cosh"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:text="cosh" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_tanh"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:text="tanh" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_coth"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
@@ -191,32 +191,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_celi"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:text="celi" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_asinh"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:text="asinh" />
 
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_acosh"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:text="acosh" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_atanh"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:text="atanh" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_acoth"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
@@ -230,38 +230,38 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_re"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:text="re" />
 
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_im"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:text="im" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_sign"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:text="sign" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_rnd"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:text="rnd" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_max"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
                 android:text="max" />
 
-            <com.mkulesh.micromath.formula.button.CalcTextButton
+            <com.duy.natural.calc.calculator.calcbutton.button.CalcTextButton
                 android:id="@+id/btn_min"
                 style="@style/CalcButtonStyle.Function"
                 android:layout_height="@dimen/function_button_height"
