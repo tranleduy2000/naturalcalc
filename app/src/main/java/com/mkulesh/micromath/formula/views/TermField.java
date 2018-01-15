@@ -29,15 +29,15 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.duy.common.utils.DLog;
+import com.duy.natural.calc.calculator.calcbutton.CalcButtonManager;
+import com.duy.natural.calc.calculator.calcbutton.Category;
+import com.duy.natural.calc.calculator.calcbutton.ICalcButton;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.editstate.FormulaState;
 import com.mkulesh.micromath.editstate.clipboard.FormulaClipboardData;
 import com.mkulesh.micromath.formula.IArgumentHolder;
 import com.mkulesh.micromath.formula.TermParser;
-import com.duy.natural.calc.calculator.calcbutton.CalcButtonManager;
-import com.duy.natural.calc.calculator.calcbutton.Category;
-import com.duy.natural.calc.calculator.calcbutton.ICalcButton;
 import com.mkulesh.micromath.formula.io.Constants;
 import com.mkulesh.micromath.formula.type.BaseType;
 import com.mkulesh.micromath.formula.type.BasicSymbolType;
@@ -132,7 +132,7 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
             View view = viewGroup.findViewById(type.getViewId());
             if (view instanceof ICalcButton) {
                 ((ICalcButton) view).initWithParameter(CalcButtonManager.NO_BUTTON,
-                        CalcButtonManager.NO_BUTTON, type.getLowerCaseName());
+                        type.getDescriptionId(), type.getLowerCaseName());
                 ((ICalcButton) view).setCategories(categories);
             }
         }

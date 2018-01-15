@@ -42,8 +42,6 @@ public enum FunctionType implements ButtonDescriptor {
     ACOT(1, R.string.math_function_acot, null, R.id.btn_acot),
     COTH(1, R.string.math_function_coth, null, R.id.btn_coth),
     ACOTH(1, R.string.math_function_acoth, null, R.id.btn_acoth),
-
-
     EXP(1, R.string.math_function_exp, null, R.id.btn_exp),
     LOG(1, R.string.math_function_log, null, R.id.btn_log),
     LOG10(1, R.string.math_function_log10, null, R.id.btn_log10),
@@ -54,9 +52,9 @@ public enum FunctionType implements ButtonDescriptor {
     MIN(2, R.string.math_function_min, null, R.id.btn_min),
     HYPOT(2, R.string.math_function_hypot, null),
     IF(3, R.string.math_function_if, null),
-    SQRT(1, NO_BUTTON, null),
-    ABS(1, NO_BUTTON, null),
-    SIGN(1, NO_BUTTON, null, R.id.btn_sign),
+    SQRT(1, R.string.math_function_sqrt, null),
+    ABS(1, R.string.math_function_abs, null),
+    SIGN(1, R.string.math_function_sign, null, R.id.btn_sign),
     RE(1, R.string.math_function_re, null, R.id.btn_re),
     IM(1, R.string.math_function_im, null, R.id.btn_im),
     /*todo Supported all function symja library*/

@@ -199,5 +199,6 @@
 
     <!--Activity title-->
     <string name="title_activity_settings">Settings</string>
+    <string name="math_function_sign" />
 
 </resources>

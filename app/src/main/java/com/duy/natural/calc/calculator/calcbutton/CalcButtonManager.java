@@ -104,7 +104,7 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
             View view = parent.findViewById(actionType.getViewId());
             if (view instanceof ICalcButton) {
                 ICalcButton button = (ICalcButton) view;
-                button.initWithParameter(View.NO_ID, NO_BUTTON, actionType.toString());
+                button.initWithParameter(View.NO_ID, actionType.getDescriptionId(), actionType.toString());
                 button.setCategories(new Category[]{Category.NONE});
             }
         }
@@ -182,10 +182,8 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
 
     @Override
     public boolean onLongClick(View view) {
-        if (view instanceof ICalcButton) {
-            return ViewUtils.showButtonDescription(mContext, view);
-        }
-        return false;
+        if (DLog.DEBUG) DLog.d(TAG, "onLongClick() called with: view = [" + view + "]");
+        return view instanceof ICalcButton && ViewUtils.showButtonDescription(mContext, view);
     }
 
     public void enableHiddenInput(boolean hiddenInputEnabled) {

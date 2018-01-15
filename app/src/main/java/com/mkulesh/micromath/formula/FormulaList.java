@@ -33,6 +33,7 @@ import android.widget.Toast;
 import com.duy.common.utils.DLog;
 import com.duy.natural.calc.calculator.CalculatorActivity;
 import com.duy.natural.calc.calculator.CalculatorContract;
+import com.duy.natural.calc.calculator.calcbutton.Category;
 import com.duy.natural.calc.calculator.dialogs.LaTeXDialogFragment2;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.result.CalculatedResult;
@@ -46,7 +47,6 @@ import com.mkulesh.micromath.editstate.UndoState;
 import com.mkulesh.micromath.editstate.clipboard.FormulaClipboardData;
 import com.mkulesh.micromath.editstate.clipboard.FormulaClipboardData.StoredTerm;
 import com.mkulesh.micromath.fman.FileUtils;
-import com.duy.natural.calc.calculator.calcbutton.Category;
 import com.mkulesh.micromath.formula.io.FormulaWritter;
 import com.mkulesh.micromath.formula.io.XmlLoaderTask;
 import com.mkulesh.micromath.formula.type.ActionType;
@@ -312,6 +312,7 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
             // term operations
             FormulaView view = mRootFormulas.get(mSelectedFormulaId);
             if (view != null) {
+                if (!view.hasFocus()) view.requestFocus();
                 TermField tf = view.findFocusedTerm();
                 if (tf != null) {
                     if (ClipboardManager.isFormulaObject(code) && tf.getTerm() != null) {
@@ -347,6 +348,7 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
                     deleteSelectedEquations();
                 } else {
                     clearAll();
+                    addBaseFormula(BaseType.RESULT, null);
                 }
                 return;
             case DELETE:
