@@ -14,6 +14,7 @@ import com.duy.common.utils.DLog;
 import com.duy.natural.calc.calculator.CalculatorContract;
 import com.duy.natural.calc.calculator.calcbutton.CalcButtonManager;
 import com.duy.natural.calc.calculator.calcbutton.Category;
+import com.duy.natural.calc.calculator.keyboard.adapters.PagerSectionAdapter;
 import com.nstudio.calc.casio.R;
 
 /**
@@ -22,7 +23,8 @@ import com.nstudio.calc.casio.R;
 
 public class KeyboardFragment extends Fragment implements CalculatorContract.IKeyboardView, OnCalcButtonClickListener {
     private static final String TAG = "KeyboardFragment";
-    //    private CalcButtonManager mCalcButtonManager;
+    @Nullable
+    private CalcButtonManager mCalcButtonManager;
     private CalculatorContract.IPresenter mPresenter;
 
     public static KeyboardFragment newInstance() {
@@ -49,20 +51,26 @@ public class KeyboardFragment extends Fragment implements CalculatorContract.IKe
     public void setPaletteBlockEnabled(Category category, boolean enabled) {
         if (DLog.DEBUG)
             DLog.d(TAG, "setPaletteBlockEnabled() called with: category = [" + category + "], enabled = [" + enabled + "]");
-//        mCalcButtonManager.setPaletteBlockEnabled(category, enabled);
+        if (mCalcButtonManager != null) {
+            mCalcButtonManager.setPaletteBlockEnabled(category, enabled);
+        }
     }
 
     @Override
     public void enableHiddenInput(boolean hiddenInputEnabled) {
         if (DLog.DEBUG)
             DLog.d(TAG, "enableHiddenInput() called with: hiddenInputEnabled = [" + hiddenInputEnabled + "]");
-//        mCalcButtonManager.enableHiddenInput(hiddenInputEnabled);
+        if (mCalcButtonManager != null) {
+            mCalcButtonManager.enableHiddenInput(hiddenInputEnabled);
+        }
     }
 
     @Override
     public void setEnabled(boolean enable) {
         if (DLog.DEBUG) DLog.d(TAG, "setEnabled() called with: enable = [" + enable + "]");
-//        mCalcButtonManager.setEnabled(enable);
+        if (mCalcButtonManager != null) {
+            mCalcButtonManager.setEnabled(enable);
+        }
     }
 
     @Nullable
@@ -78,8 +86,7 @@ public class KeyboardFragment extends Fragment implements CalculatorContract.IKe
         viewPager.setAdapter(new PagerSectionAdapter(getChildFragmentManager(), this));
         viewPager.setCurrentItem(1);
         ((TabLayout) view.findViewById(R.id.tab_layout)).setupWithViewPager(viewPager);
-
-        new CalcButtonManager(getContext(), (ViewGroup) view, this);
+        mCalcButtonManager = new CalcButtonManager(getContext(), (ViewGroup) view, this);
     }
 
     @Override

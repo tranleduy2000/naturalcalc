@@ -18,6 +18,7 @@
  ******************************************************************************/
 package com.duy.natural.calc.calculator.calcbutton;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Vibrator;
 import android.support.v7.widget.AppCompatImageView;
@@ -31,7 +32,7 @@ import com.nstudio.calc.casio.R;
 import java.util.Arrays;
 
 public class CalcImageButton extends AppCompatImageView implements ICalcButton {
-    private final boolean[] enabled = new boolean[Category.values().length];
+    private final boolean[] mEnabledModes = new boolean[Category.values().length];
     private String code = null;
     private String shortCut = null;
     private Category[] categories = null;
@@ -97,24 +98,27 @@ public class CalcImageButton extends AppCompatImageView implements ICalcButton {
     }
 
     private void enableAll() {
-        Arrays.fill(enabled, true);
+        Arrays.fill(mEnabledModes, true);
     }
 
-    public void setEnabled(Category t, boolean value) {
-       /* enabled[t.ordinal()] = value;
+    public void setEnabled(Category category, boolean value) {
+        mEnabledModes[category.ordinal()] = value;
         super.setEnabled(true);
-        for (boolean en : enabled) {
-            if (!en) {
+        super.setFocusable(true);
+        for (boolean shouldEnable : mEnabledModes) {
+            if (!shouldEnable) {
                 super.setEnabled(false);
+                super.setFocusable(false);
                 break;
             }
-        }*/
+        }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            vibrate();
+            if (isEnabled()) vibrate();
         }
         return super.onTouchEvent(event);
     }
@@ -122,8 +126,9 @@ public class CalcImageButton extends AppCompatImageView implements ICalcButton {
     private void vibrate() {
         if (mSetting.isUseVibrate()) {
             Vibrator v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
-            // Vibrate for 500 milliseconds
-            v.vibrate(mSetting.getVibrateStrength());
+            if (v != null) {
+                v.vibrate(mSetting.getVibrateStrength());
+            }
         }
     }
 

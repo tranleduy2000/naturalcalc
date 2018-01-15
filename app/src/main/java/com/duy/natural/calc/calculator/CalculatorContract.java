@@ -33,6 +33,11 @@ public class CalculatorContract {
     public interface IKeyboardView {
         void setPresenter(IPresenter presenter);
 
+        /**
+         * Called when user click a button
+         *
+         * @param code - button code
+         */
         void onButtonPressed(String code);
 
         void setPaletteBlockEnabled(Category category, boolean enabled);

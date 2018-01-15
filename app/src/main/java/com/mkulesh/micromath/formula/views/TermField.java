@@ -854,9 +854,6 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
      * Check whether this term is enabled for the given palette
      */
     public boolean isEnableButton(Category category) {
-        if (category == Category.NONE) {
-            return true;
-        }
         if (isTerm() && mTermView instanceof FormulaTermIntervalView && category != Category.NEW_TERM) {
             return false;
         }

@@ -1,8 +1,13 @@
-package com.duy.natural.calc.calculator.keyboard;
+package com.duy.natural.calc.calculator.keyboard.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.duy.natural.calc.calculator.keyboard.BasicPadFragment;
+import com.duy.natural.calc.calculator.keyboard.FunctionPadFragment;
+import com.duy.natural.calc.calculator.keyboard.OnCalcButtonClickListener;
+import com.duy.natural.calc.calculator.keyboard.OperatorFragment;
 
 /**
  * Created by Duy on 1/14/2018.

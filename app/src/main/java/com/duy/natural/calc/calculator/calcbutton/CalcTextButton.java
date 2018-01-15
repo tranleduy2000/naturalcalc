@@ -21,14 +21,13 @@ import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import com.duy.common.utils.DLog;
 import com.duy.natural.calc.calculator.settings.CalculatorSetting;
 
 import java.util.Arrays;
 
 public class CalcTextButton extends AppCompatTextView implements ICalcButton {
     private static final String TAG = "CalcTextButton";
-    private final boolean[] enabled = new boolean[Category.values().length];
+    private final boolean[] enabledModes = new boolean[Category.values().length];
     private String code = null;
     private String shortCut = null;
     private Category[] categories = null;
@@ -92,18 +91,18 @@ public class CalcTextButton extends AppCompatTextView implements ICalcButton {
     }
 
     private void enableAll() {
-        Arrays.fill(enabled, true);
+        Arrays.fill(enabledModes, true);
     }
 
     @Override
-    public void setEnabled(Category t, boolean value) {
-        if (DLog.DEBUG)
-            DLog.d(TAG, "setEnabled() " + code + " called with: t = [" + t + "], value = [" + value + "]");
-        enabled[t.ordinal()] = value;
+    public void setEnabled(Category category, boolean value) {
+        enabledModes[category.ordinal()] = value;
         super.setEnabled(true);
-        for (boolean en : enabled) {
-            if (!en) {
+        super.setFocusable(true);
+        for (boolean shouldEnable : enabledModes) {
+            if (!shouldEnable) {
                 super.setEnabled(false);
+                super.setFocusable(false);
                 break;
             }
         }
@@ -112,7 +111,7 @@ public class CalcTextButton extends AppCompatTextView implements ICalcButton {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            vibrate();
+            if (isEnabled()) vibrate();
         }
         return super.onTouchEvent(event);
     }

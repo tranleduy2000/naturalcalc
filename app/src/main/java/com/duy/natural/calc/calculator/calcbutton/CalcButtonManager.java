@@ -20,6 +20,7 @@ package com.duy.natural.calc.calculator.calcbutton;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.text.InputType;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
@@ -54,10 +55,10 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
     private static final String TAG = "CalcButtonManager";
     private final Context mContext;
     private final OnCalcButtonClickListener mListener;
-    private final ArrayList<ArrayList<ICalcButton>> mPaletteBlock = new ArrayList<>();
+    private final ArrayList<ArrayList<ICalcButton>> mButtonCategory = new ArrayList<>();
     private final ViewGroup mPaletteLayout;
     @Nullable
-    private final CalcEditText mHiddenInput;
+    private CalcEditText mHiddenInput;
     private String mLastHiddenInput = "";
 
     public CalcButtonManager(Context context, ViewGroup parent, OnCalcButtonClickListener listener) {
@@ -66,14 +67,16 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
         mPaletteLayout = parent;
 
         mHiddenInput = parent.findViewById(R.id.hidden_edit_text);
-//        mHiddenInput.setChangeListener(this, this);
-//        mHiddenInput.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        if (mHiddenInput != null) {
+            mHiddenInput.setChangeListener(this, this);
+            mHiddenInput.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        }
+
         enableHiddenInput(false);
 
         for (int i = 0; i < Category.values().length; i++) {
-            mPaletteBlock.add(new ArrayList<ICalcButton>());
+            mButtonCategory.add(new ArrayList<ICalcButton>());
         }
-
 
         setupActionButton(parent);
         setupIntervalButton(parent);
@@ -106,7 +109,6 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
             if (view instanceof ICalcButton) {
                 ICalcButton button = (ICalcButton) view;
                 button.initWithParameter(View.NO_ID, actionType.getDescriptionId(), actionType.toString());
-                button.setCategories(new Category[]{Category.NONE});
             }
         }
     }
@@ -130,7 +132,6 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
             if (view instanceof ICalcButton) {
                 ((ICalcButton) view).initWithParameter(CalcButtonManager.NO_BUTTON,
                         type.getDescriptionId(), type.getLowerCaseName());
-                ((ICalcButton) view).setCategories(new Category[]{Category.NONE});
             }
         }
 
@@ -199,7 +200,7 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
                 ICalcButton calcButton = (ICalcButton) child;
                 if ((calcButton).getCategories() != null) {
                     for (Category category : (calcButton).getCategories()) {
-                        mPaletteBlock.get(category.ordinal()).add(calcButton);
+                        mButtonCategory.get(category.ordinal()).add(calcButton);
                     }
                 }
                 child.setOnLongClickListener(this);
@@ -221,18 +222,20 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
     /**
      * This procedure is used to enable/disable palette buttons related to a formula term
      */
-    public void setPaletteBlockEnabled(Category t, boolean enabled) {
-     /*   for (ICalcButton b : mPaletteBlock.get(t.ordinal())) {
-            b.setEnabled(t, enabled);
+    public void setPaletteBlockEnabled(Category category, boolean enabled) {
+        if (DLog.DEBUG)
+            DLog.d(TAG, "setPaletteBlockEnabled() called with: category = [" + category + "], enabled = [" + enabled + "]");
+        for (ICalcButton calcButton : mButtonCategory.get(category.ordinal())) {
+            calcButton.setEnabled(category, enabled);
         }
-        updateButtonsColor();*/
+        updateButtonsColor();
     }
 
     /**
      * Procedure sets the background color for all buttons depending on enabled status
      */
     private void updateButtonsColor() {
-        for (int i = 0; i < mPaletteLayout.getChildCount(); i++) {
+       /* for (int i = 0; i < mPaletteLayout.getChildCount(); i++) {
             if (!(mPaletteLayout.getChildAt(i) instanceof CalcImageButton)) {
                 continue;
             }
@@ -240,12 +243,11 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
             final boolean isEnabled = b.isEnabled() && mPaletteLayout.isEnabled();
             int color = isEnabled ? R.attr.colorMicroMathIcon : R.attr.colorPrimaryDark;
             ViewUtils.setImageButtonColorAttr(mContext, b, color);
-        }
+        }*/
     }
 
     @Override
     public void onClick(View view) {
-        if (DLog.DEBUG) DLog.d(TAG, "onClick() called with: view = [" + view + "]");
         if (view instanceof ICalcButton && mListener != null) {
             final ICalcButton calcButton = (ICalcButton) view;
             mListener.onButtonPressed(view, calcButton.getCategoryCode());
@@ -254,22 +256,22 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
 
     @Override
     public boolean onLongClick(View view) {
-        if (DLog.DEBUG) DLog.d(TAG, "onLongClick() called with: view = [" + view + "]");
         return view instanceof ICalcButton && ViewUtils.showButtonDescription(mContext, view);
     }
 
     public void enableHiddenInput(boolean hiddenInputEnabled) {
-//        mHiddenInput.setTextWatcher(false);
-//        final int newVis = hiddenInputEnabled ? View.VISIBLE : View.GONE;
-//        if (mHiddenInput.getVisibility() != newVis) {
-//            mHiddenInput.setVisibility(newVis);
-//        }
-//        if (mHiddenInput.getVisibility() != View.GONE) {
-//            mLastHiddenInput = "";
-//            mHiddenInput.setText(mLastHiddenInput);
-//            mHiddenInput.requestFocus();
-//            mHiddenInput.setTextWatcher(true);
-//        }
+        if (mHiddenInput == null) return;
+        mHiddenInput.setTextWatcher(false);
+        final int newVis = hiddenInputEnabled ? View.VISIBLE : View.GONE;
+        if (mHiddenInput.getVisibility() != newVis) {
+            mHiddenInput.setVisibility(newVis);
+        }
+        if (mHiddenInput.getVisibility() != View.GONE) {
+            mLastHiddenInput = "";
+            mHiddenInput.setText(mLastHiddenInput);
+            mHiddenInput.requestFocus();
+            mHiddenInput.setTextWatcher(true);
+        }
     }
 
     @Override
@@ -279,6 +281,9 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
 
     @Override
     public void onTextChanged(String text, boolean isManualInput) {
+        if (mHiddenInput == null) {
+            return;
+        }
         if (text == null || mListener == null) {
             mLastHiddenInput = null;
             return;
@@ -291,7 +296,7 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
         mLastHiddenInput = text;
 
         if (ClipboardManager.isFormulaObject(text)) {
-//            mHiddenInput.setTextWatcher(false);
+            mHiddenInput.setTextWatcher(false);
             mListener.onButtonPressed(null, text);
             return;
         }
@@ -304,7 +309,7 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
         }
 
         if (FunctionType.FUNCTION_LINK.toString().equalsIgnoreCase(code)) {
-//            mHiddenInput.setTextWatcher(false);
+            mHiddenInput.setTextWatcher(false);
             mListener.onButtonPressed(null, text);
             return;
         }
@@ -313,7 +318,7 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
             if (mPaletteLayout.getChildAt(i) instanceof CalcImageButton) {
                 CalcImageButton button = (CalcImageButton) mPaletteLayout.getChildAt(i);
                 if (button.isEnabled() && button.getCategoryCode() != null && button.getCategoryCode().equalsIgnoreCase(code)) {
-//                    mHiddenInput.setTextWatcher(false);
+                    mHiddenInput.setTextWatcher(false);
                     mListener.onButtonPressed(null, button.getCategoryCode());
                     break;
                 }
