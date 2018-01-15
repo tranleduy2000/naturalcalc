@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dialog_content_padding"
+            android:paddingTop="@dimen/dialog_content_padding">
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/dialog_button_insert_before"
+                style="@style/DialogImageButtonStyle"
+                android:contentDescription="@string/dialog_new_formula_insert_before"
+                android:src="@drawable/ic_add_before" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/dialog_button_insert_left"
+                    style="@style/DialogImageButtonStyle"
+                    android:contentDescription="@string/dialog_new_formula_insert_left"
+                    android:src="@drawable/ic_add_left" />
+
+                <View
+                    android:layout_width="68dp"
+                    android:layout_height="match_parent" />
+
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/dialog_button_insert_right"
+                    style="@style/DialogImageButtonStyle"
+                    android:contentDescription="@string/dialog_new_formula_insert_right"
+                    android:src="@drawable/ic_add_right" />
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/dialog_button_insert_after"
+                style="@style/DialogImageButtonStyle"
+                android:contentDescription="@string/dialog_new_formula_insert_after"
+                android:src="@drawable/ic_add_after" />
+
+            <View
+                style="@style/HorizontalDividerStyle"
+                android:layout_marginBottom="@dimen/dialog_content_padding"
+                android:layout_marginTop="@dimen/dialog_content_padding" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/dialog_button_new_equation"
+                    style="@style/DialogImageButtonStyle"
+                    android:contentDescription="@string/math_new_equation"
+                    android:src="@drawable/ic_equation" />
+
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/dialog_button_new_result"
+                    style="@style/DialogImageButtonStyle"
+                    android:contentDescription="@string/math_new_result"
+                    android:src="@drawable/ic_result" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</merge>

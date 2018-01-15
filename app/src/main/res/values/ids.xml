@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="fman_action_refresh" type="id" />
+    <item name="fman_action_rename" type="id" />
+    <item name="fman_action_create_folder" type="id" />
+    <item name="fman_action_delete" type="id" />
+    <item name="fman_action_sort_by_name" type="id" />
+    <item name="fman_action_sort_by_ext" type="id" />
+    <item name="fman_action_sort_by_size" type="id" />
+    <item name="fman_action_sort_by_date" type="id" />
+    <item name="fman_action_open_saf" type="id" />
+
+    <item name="btn_plus" type="id">false</item>
+    <item name="btn_minus" type="id">false</item>
+    <item name="btn_mul" type="id">false</item>
+    <item name="btn_div_splash" type="id">false</item>
+
+    <item name="btn_sum" type="id">false</item>
+    <item name="btn_product" type="id">false</item>
+    <item name="btn_integral" type="id">false</item>
+    <item name="btn_derivative" type="id">false</item>
+    <item name="btn_inverval" type="id" />
+
+
+</resources>
+
+
+
+
+
+
+
+
+
+
+

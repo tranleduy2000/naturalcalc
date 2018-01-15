@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.mkulesh.micromath.widgets.CalcEditText
+        android:id="@+id/formula_equation_name"
+        style="@style/FormulaTextEditStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/formula_left_term_key"
+        app:equationName="true" />
+
+    <com.mkulesh.micromath.widgets.CalcTextView
+        android:id="@+id/formula_equation_assign"
+        style="@style/FormulaTextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/formula_assign_definition" />
+
+    <com.mkulesh.micromath.widgets.CalcEditText
+        android:id="@+id/formula_equation_value"
+        style="@style/FormulaTextEditStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/formula_right_term_key"
+        app:fileOperationEnabled="true"
+        app:intervalEnabled="true" />
+
+</merge>

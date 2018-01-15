@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/dialog_content_padding"
+    android:paddingTop="@dimen/dialog_content_padding">
+
+    <ImageView
+        android:id="@+id/fman_message_dialog_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/dialog_content_padding"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/fman_message_dialog_prompt"
+        style="@style/DialogTextViewStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
+     

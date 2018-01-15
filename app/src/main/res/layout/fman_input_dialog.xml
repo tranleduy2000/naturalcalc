@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/dialog_content_padding"
+    android:paddingTop="@dimen/dialog_content_padding">
+
+    <TextView
+        android:id="@+id/fman_input_dialog_prompt"
+        style="@style/DialogTextViewStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        style="@style/DialogTextEditBackgroundStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/fman_input_dialog_edit_field"
+            style="@style/DialogTextEditStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
+     

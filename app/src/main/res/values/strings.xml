@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- General settings -->
+    <string name="app_name">Casio Calculator</string>
+    <string name="app_short_name">Casio Calc</string>
+    <string name="app_description">Extended visual calculator: live editing and computations of formulas</string>
+
+    <!-- Drawer -->
+    <string-array name="activity_titles">
+        <item>Worksheet</item>
+        <item>How To Use</item>
+        <item>Example</item>
+        <item>Example</item>
+        <item>Example</item>
+        <item>Example</item>
+        <item>About</item>
+        <item>Documentation</item>
+    </string-array>
+    <string name="activity_welcome">asset:/doc_en/welcome.xml</string>
+
+    <!-- Permissions -->
+    <string name="allow_storage_access_title">Allow to access worksheet files</string>
+    <string name="allow_storage_access_description">This app needs you to grant permission to access the worksheet files on this device</string>
+    <string name="allow_storage_access_grant">Grant permission</string>
+
+    <!-- Main menu -->
+    <string name="action_exit">Exit</string>
+    <string name="action_undo">Undo</string>
+    <string name="action_discard">Delete selected</string>
+    <string name="action_new_document">New document</string>
+    <string name="action_open">Open file</string>
+    <string name="action_save">Save file</string>
+    <string name="action_save_as">Save as</string>
+    <string name="action_export">Export</string>
+    <string name="action_details">Details</string>
+
+    <!-- Context menu -->
+    <string name="context_expand">Expand selection</string>
+    <string name="context_copy">Copy</string>
+    <string name="context_cut">Cut</string>
+    <string name="context_paste">Paste</string>
+
+    <!-- Application settings -->
+
+    <!-- Application settings: Languages -->
+    <!-- Translatable list of languages -->
+    <!-- Non-Translatable parameters of languages -->
+
+    <!-- Application settings: Themes -->
+    <!-- Translatable list of themes -->
+    <!-- Non-Translatable parameters of themes -->
+    <string name="pref_default_theme_code" translatable="false">indigo-orange</string>
+    <string-array name="pref_theme_codes" translatable="false">
+        <item>indigo-orange</item>
+        <item>teal-deep-orange</item>
+        <item>gray-indigo</item>
+        <item>dark-cyan</item>
+    </string-array>
+    <array name="main_themes" translatable="false">
+        <item>@style/MainThemeIndigoOrange</item>
+        <item>@style/MainThemeTealDeepOrange</item>
+        <item>@style/MainThemeGrayIndigo</item>
+        <item>@style/MainThemeDarkCyan</item>
+    </array>
+    <array name="settings_themes" translatable="false">
+        <item>@style/SettingsThemeIndigoOrange</item>
+        <item>@style/SettingsThemeTealDeepOrange</item>
+        <item>@style/SettingsThemeGrayIndigo</item>
+        <item>@style/SettingsThemeDarkCyan</item>
+    </array>
+
+    <!-- Dialogs -->
+    <string name="dialog_navigation_accept">OK</string>
+    <string name="dialog_navigation_cancel">Cancel</string>
+    <string name="dialog_button_decrease">Decrease value</string>
+    <string name="dialog_button_increase">Increase value</string>
+    <string name="dialog_new_formula_insert_before">Insert before selected</string>
+    <string name="dialog_new_formula_insert_after">Insert after selected</string>
+    <string name="dialog_new_formula_insert_left">Insert in left of selected</string>
+    <string name="dialog_new_formula_insert_right">Insert in right of selected</string>
+    <string name="dialog_result_details_argument">Argument</string>
+    <string name="dialog_result_details_value">Value</string>
+    <string name="dialog_result_title">Result properties</string>
+    <string name="dialog_result_disable_calculation">Do not calculate</string>
+    <string name="dialog_result_hide_result_field">Hide result field</string>
+    <string name="dialog_result_array_length">Number of values</string>
+    <string name="dialog_list_items">item (s)</string>
+
+    <!-- Mathematical elements -->
+    <string name="math_new_element">New element</string>
+    <string name="math_new_equation">Add equation</string>
+    <string name="math_new_result">Add result view</string>
+    <string name="math_new_term">Add new argument</string>
+    <string name="math_equidistant_interval">Equidistant interval</string>
+    <string name="math_operator_plus">Addition</string>
+    <string name="math_operator_minus">Subtraction</string>
+    <string name="math_operator_mult">Multiplication</string>
+    <string name="math_operator_divide">Division</string>
+    <string name="math_operator_divide_slash">Division</string>
+    <string name="math_comparator_equal">Test two terms for equality</string>
+    <string name="math_comparator_not_equal">Test two terms for inequality</string>
+    <string name="math_comparator_less">Test that left term is less than right one</string>
+    <string name="math_comparator_less_eq">Test that left term is less than or equal to right term</string>
+    <string name="math_comparator_greater">Test that left term is greater than right one</string>
+    <string name="math_comparator_greater_eq">Test that left term is greater than or equal to right term</string>
+    <string name="math_comparator_and">Test that both terms are true</string>
+    <string name="math_comparator_and_text"> and </string>
+    <string name="math_comparator_or">Test that at least one term is true</string>
+    <string name="math_comparator_or_text"> or </string>
+    <string name="math_loop_summation">The summation of the sequence</string>
+    <string name="math_loop_product">The product of the sequence</string>
+    <string name="math_loop_integral">The definite integral</string>
+    <string name="math_loop_derivative">The first derivative</string>
+    <string name="math_function_identity">Parenthesis</string>
+    <string name="math_function_index">Get array element by index</string>
+    <string name="math_function_power">Raise to power</string>
+    <string name="math_function_abs">The absolute value of the real or complex argument</string>
+    <string name="math_function_conjugate">The complex conjugate of the complex argument</string>
+    <string name="math_function_re">The real part of the complex argument</string>
+    <string name="math_function_im">The imaginary part of the complex argument</string>
+    <string name="math_function_sqrt">The square root of the argument</string>
+    <string name="math_function_nthrt">The n-th root of the argument</string>
+    <string name="math_function_if">Select a term to be used depending on comparison result for two expressions</string>
+    <string name="math_function_sin">The sine of the argument</string>
+    <string name="math_function_asin">The arc sine of the argument within the range [-pi/2..pi/2]</string>
+    <string name="math_function_sinh">The hyperbolic sine of the argument</string>
+    <string name="math_function_asinh"></string>
+    <string name="math_function_cos">The cosine of the argument</string>
+    <string name="math_function_acos">The arc cosine of the argument within the range [0..pi]</string>
+    <string name="math_function_cosh">The hyperbolic cosine of the argument</string>
+    <string name="math_function_tan">The tangent of the argument</string>
+    <string name="math_function_atan">The arc tangent of the argument within the range [-pi/2..pi/2]</string>
+    <string name="math_function_atan2">The arc tangent of y/x within the range [-pi..pi]</string>
+    <string name="math_function_tanh">The hyperbolic tangent of the argument</string>
+    <string name="math_function_exp">The raising \'e\' to the power of the argument</string>
+    <string name="math_function_log">The natural logarithm of the argument</string>
+    <string name="math_function_log10">The base 10 logarithm of the argument</string>
+    <string name="math_function_ceil">The most negative (closest to negative infinity) integer value greater than or equal to the argument</string>
+    <string name="math_function_floor">The most positive (closest to positive infinity) integer value less than or equal to the argument</string>
+    <string name="math_function_rnd">The pseudo-random value between zero and the argument</string>
+    <string name="math_function_factorial">The product of all positive integers less than or equal to the argument</string>
+    <string name="math_function_max">The most positive (closest to positive infinity) of the two arguments</string>
+    <string name="math_function_min">The most negative (closest to negative infinity) of the two arguments</string>
+    <string name="math_function_hypot">The length of the hypotenuse of a right-angle triangle: sqrt(x^2 + y^2)</string>
+
+    <!-- Errors -->
+    <string name="error_max_layout_depth">Reached layout depth limit for this Android version</string>
+    <string name="error_brackets_not_completed">Brackets are not completed</string>
+    <string name="error_invalid_variable_name">Invalid variable name</string>
+    <string name="error_unknown_variable">Symbol is not a known variable or argument</string>
+    <string name="error_unknown_function">Function %s is not defined and is not a built-in function</string>
+    <string name="error_unknown_array">Array %s is not defined</string>
+    <string name="error_not_an_array">%s can not be accessed by index since it is not an array</string>
+    <string name="error_not_a_function">%s can not be accessed by value since it is not a function</string>
+    <string name="error_invalid_array_dimension">Arrays of dimension %s is not yet supported</string>
+    <string name="error_invalid_array_interval">Interval %s referenced but not declared as index</string>
+    <string name="error_invalid_array_index">Index %s is not a known interval</string>
+    <string name="error_recursive_call">Equation is called recursively from its definition</string>
+    <string name="error_not_differentiable">Function is not a differentiable function of %s</string>
+    <string name="error_invalid_brackets_order">Invalid brackets order</string>
+    <string name="error_empty_argument_list">Function shall have an argument</string>
+    <string name="error_invalid_comma_position">Invalid comma position</string>
+    <string name="error_empty_argument">An argument can not be empty</string>
+    <string name="error_invalid_argument">Function argument shall contain letters or digits only</string>
+    <string name="error_ensure_double_interval">Function shall depend on two intervals</string>
+    <string name="error_indirect_intervals">There are indirectly referenced intervals: %s</string>
+    <string name="error_duplicated_identifier">This identifier is already used</string>
+    <string name="error_forbidden_arguments">Arguments are not allowed for this identifier</string>
+    <string name="error_forbidden_complex">Complex number is not allowed for this field</string>
+    <string name="error_forbidden_imaginary_unit">Symbol \'i\' is reserved for the imaginary unit that is not allowed in this context</string>
+    <string name="error_nan_value">Field contains value that is not a number</string>
+    <string name="error_unknown_file_format">Format of the file %s is unknown</string>
+    <string name="error_file_read">Can not open file %s</string>
+    <string name="error_file_write">Can not save file %s</string>
+    <string name="error_calculation_aborted">Calculation aborted</string>
+    <string name="error_paste_root_into_term">Can not paste a root equation into a term</string>
+    <string name="error_paste_term_into_text">Can not paste a term since such a content is not allowed for this field</string>
+    <string name="error_out_of_memory">Not enough memory for plot visualization</string>
+
+    <!-- File manager -->
+    <string name="fman_local">Internal storage</string>
+    <string name="fman_local_descr">Access files from the primary file system</string>
+    <string name="fman_external">External card</string>
+    <string name="fman_external_descr">Access files on the physically inserted SD card. It may be read-only on some devices</string>
+    <string name="fman_saf">Documents</string>
+    <string name="fman_saf_descr">Access files in the document storage</string>
+    <string name="fman_assets">Resources of \"microMathematics Plus\"</string>
+    <string name="fman_assets_descr">Documentation and examples delivered with this app</string>
+    <string name="fman_home">Home</string>
+    <string name="fman_sort_by_name">Sort by name</string>
+    <string name="fman_sort_by_ext">Sort by extension</string>
+    <string name="fman_sort_by_size">Sort by size</string>
+    <string name="fman_sort_by_date">Sort by date</string>
+    <string name="fman_refresh_title">Refresh</string>
+    <string name="fman_open_saf">Open storage</string>
+    <string name="fman_operation">Operations</string>
+    <string name="fman_create_folder_title">Create folder</string>
+    <string name="fman_create_folder_dialog_prompt">Name of new folder:</string>
+    <string name="fman_create_folder_error">Unable to create directory \"%s\"</string>
+    <string name="fman_rename_title">Rename</string>
+    <string name="fman_rename_dialog_prompt">Rename \"%s\" to:</string>
+    <string name="fman_rename_error">Unable to rename \"%s\"</string>
+    <string name="fman_delete_title">Delete</string>
+    <string name="fman_delete_dialog_prompt">Delete \"%s\"?</string>
+    <string name="fman_delete_confirm">Selected file deleted</string>
+    <string name="fman_delete_error">Unable to delete \"%s\"</string>
+    <string name="fman_warning_dialog_title">Warning</string>
+    <string name="fman_error_no_items">No items selected to complete the operation</string>
+    <string name="fman_error_sec_err">Security issue: %s</string>
+    <string name="fman_error_no_such_folder">\"%s\" is not a valid folder</string>
+    <string name="fman_new_file">New file name</string>
+    <string name="fman_overwrite_file">The file \"%s\" exists, are you sure that you want to overwrite it?</string>
+    <string name="fman_file_type">File type</string>
+    <string name="fman_file_type_selection">Select file type</string>
+    <string name="fman_file_type_png_image">PNG image</string>
+    <string name="fman_file_type_jpeg_image">JPEG image</string>
+    <string name="fman_file_type_latex">LaTeX document</string>
+    <string name="fman_file_type_mathjax">HTML document</string>
+
+    <!-- Messages -->
+    <string name="message_file_written">File %s is written</string>
+    <string name="math_function_cot" />
+    <string name="math_function_acot" />
+    <string name="math_function_atanh" />
+    <string name="math_function_coth" />
+    <string name="math_function_acoth" />
+    <string name="math_constant_pi">Pi</string>
+    <string name="math_constant_e">E</string>
+    <string name="math_constant_i">I</string>
+    <string name="math_constant_x" />
+    <string name="math_constant_y" />
+    <string name="action_delete" />
+    <string name="action_clear_all">Clear all</string>
+    <string name="action_calculate">Calculate</string>
+    <string name="action_move_left">Move cursor to the left</string>
+    <string name="action_move_right">Move cursor to the right</string>
+    <string name="action_remove_ads">Remove ads</string>
+
+</resources>

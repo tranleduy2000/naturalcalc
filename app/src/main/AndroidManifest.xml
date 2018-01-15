@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.nstudio.calc.casio"
+    android:installLocation="auto">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:allowClearUserData="true"
+        android:description="@string/app_description"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/BaseThemeDarkCyan">
+
+        <activity
+            android:name="com.duy.natural.calc.calculator.CalculatorActivity"
+            android:label="@string/app_short_name"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+            <!-- This filter captures protocols with type info -->
+            <intent-filter
+                android:icon="@drawable/ic_launcher"
+                android:label="@string/app_name">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="*"
+                    android:scheme="file" />
+                <data android:scheme="content" />
+
+                <data android:mimeType="text/plain" />
+                <data android:mimeType="text/xml" />
+
+                <data android:pathPattern=".*\\.xml" />
+                <data android:pathPattern=".*\\.mmt" />
+            </intent-filter>
+        </activity>
+
+
+    </application>
+
+</manifest>

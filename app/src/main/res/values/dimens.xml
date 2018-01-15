@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Main view -->
+    <dimen name="activity_vertical_margin">1dp</dimen>
+    <dimen name="activity_toolbar_height">@dimen/abc_action_bar_default_height_material</dimen>
+    <!-- flb top offset related to tool bar -->
+
+    <!-- Dialogs -->
+    <dimen name="dialog_title_text_size">@dimen/abc_text_size_subhead_material</dimen>
+    <dimen name="dialog_content_text_size">@dimen/abc_text_size_medium_material</dimen>
+    <dimen name="dialog_panel_vertical_padding">6dp</dimen>
+    <dimen name="dialog_panel_horizontal_padding">3dp</dimen>
+    <dimen name="dialog_title_height">56dp</dimen>
+    <dimen name="dialog_buttons_bar_height">56dp</dimen>
+    <dimen name="dialog_buttons_margin">5dp</dimen>
+    <dimen name="dialog_corner_radius">8dp</dimen>
+    <dimen name="dialog_content_padding">15dp</dimen>
+    <dimen name="dialog_table_cell_padding">8dp</dimen>
+
+    <!-- Formula -->
+    <dimen name="formula_hor_root_padding">10dp</dimen>
+    <dimen name="formula_vert_root_padding">5dp</dimen>
+    <dimen name="formula_header_padding">20dp</dimen>
+    <dimen name="formula_depth_step">3dp</dimen>
+    <dimen name="formula_stroke_width">2dp</dimen>
+    <dimen name="formula_text_size">28sp</dimen>
+    <dimen name="formula_text_minwidth">20dp</dimen>
+    <dimen name="formula_hor_text_padding">3dp</dimen>
+    <dimen name="formula_big_symbol_size">48dp</dimen>
+    <dimen name="formula_small_symbol_size">18dp</dimen>
+    <dimen name="formula_hor_symbol_padding">4dp</dimen>
+    <dimen name="formula_hor_bracket_padding">0dp</dimen>
+    <dimen name="formula_vert_term_padding">4dp</dimen>
+    <dimen name="formula_matrix_column_padding">4dp</dimen>
+
+    <!-- Function plot -->
+
+    <!-- Number picker: Standart dimens for the buttons -->
+    <dimen name="number_picker_height">40dp</dimen>
+    <dimen name="number_picker_number_size">@dimen/abc_text_size_large_material</dimen>
+
+    <!-- Fman dimensions -->
+    <dimen name="fman_path_size">@dimen/abc_text_size_small_material</dimen>
+    <dimen name="fman_item_attrs_size">10sp</dimen>
+    <dimen name="fman_item_icon_size">36px</dimen>
+    <dimen name="fman_item_hor_padding">3dp</dimen>
+    <dimen name="function_button_height">48dp</dimen>
+
+    <!-- HoloColorPicker library -->
+
+</resources>
