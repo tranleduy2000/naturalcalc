@@ -21,16 +21,12 @@ package com.mkulesh.micromath.formula.views;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.duy.common.utils.DLog;
-import com.mkulesh.micromath.formula.IArgumentHolder;
-import com.duy.natural.calc.calculator.calcbutton.Category;
-import com.duy.natural.calc.calculator.calcbutton.ICalcButton;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
+import com.mkulesh.micromath.formula.IArgumentHolder;
 import com.mkulesh.micromath.formula.type.LoopType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.utils.ViewUtils;
@@ -91,21 +87,7 @@ public class FormulaTermLoopView extends FormulaTermView implements IArgumentHol
         return retValue;
     }
 
-    /**
-     * Add palette buttons for this term
-     */
-    public static void addToPalette(ViewGroup parent, Category[] categories) {
-        for (int i = 0; i < LoopType.values().length; i++) {
-            final LoopType type = LoopType.values()[i];
-            int id = type.getViewId();
-            View view = parent.findViewById(id);
-            if (view instanceof ICalcButton) {
-                ICalcButton p = (ICalcButton) view;
-                p.initWithParameter(type.getSymbolId(), type.getDescriptionId(), type.getLowerCaseName());
-                p.setCategories(categories);
-            }
-        }
-    }
+
 
     @Override
     public CalculatedValue.ValueType getValue(CalculateTask thread, CalculatedValue outValue) throws CancelException {

@@ -19,6 +19,7 @@
 package com.duy.natural.calc.calculator.calcbutton;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
@@ -28,14 +29,15 @@ import com.duy.common.utils.DLog;
 import com.duy.natural.calc.calculator.keyboard.OnCalcButtonClickListener;
 import com.mkulesh.micromath.formula.type.ActionType;
 import com.mkulesh.micromath.formula.type.BaseType;
+import com.mkulesh.micromath.formula.type.BasicSymbolType;
+import com.mkulesh.micromath.formula.type.ButtonDescriptor;
+import com.mkulesh.micromath.formula.type.ComparatorType;
+import com.mkulesh.micromath.formula.type.FunctionTrigger;
 import com.mkulesh.micromath.formula.type.FunctionType;
-import com.mkulesh.micromath.formula.views.FormulaTermComparatorView;
-import com.mkulesh.micromath.formula.views.FormulaTermFunctionView;
-import com.mkulesh.micromath.formula.views.FormulaTermIntervalView;
-import com.mkulesh.micromath.formula.views.FormulaTermLoopView;
-import com.mkulesh.micromath.formula.views.FormulaTermOperatorView;
+import com.mkulesh.micromath.formula.type.IntervalType;
+import com.mkulesh.micromath.formula.type.LoopType;
+import com.mkulesh.micromath.formula.type.OperatorType;
 import com.mkulesh.micromath.formula.views.FormulaTermView;
-import com.mkulesh.micromath.formula.views.TermField;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CalcEditText;
@@ -54,7 +56,8 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
     private final OnCalcButtonClickListener mListener;
     private final ArrayList<ArrayList<ICalcButton>> mPaletteBlock = new ArrayList<>();
     private final ViewGroup mPaletteLayout;
-    //    private final CustomEditText mHiddenInput;
+    @Nullable
+    private final CalcEditText mHiddenInput;
     private String mLastHiddenInput = "";
 
     public CalcButtonManager(Context context, ViewGroup parent, OnCalcButtonClickListener listener) {
@@ -62,7 +65,7 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
         mListener = listener;
         mPaletteLayout = parent;
 
-//        mHiddenInput = parent.findViewById(R.id.hidden_edit_text);
+        mHiddenInput = parent.findViewById(R.id.hidden_edit_text);
 //        mHiddenInput.setChangeListener(this, this);
 //        mHiddenInput.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         enableHiddenInput(false);
@@ -71,36 +74,34 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
             mPaletteBlock.add(new ArrayList<ICalcButton>());
         }
 
-        // list operations
-        for (int i = 0; i < BaseType.values().length; i++) {
-            final BaseType baseType = BaseType.values()[i];
+
+        setupActionButton(parent);
+        setupIntervalButton(parent);
+        setupOperatorButton(parent);
+        setupFunctionButton(parent);
+        setupLoopFunctionButton(parent);
+        setupComparatorButton(parent);
+        setupBasicButton(parent);
+
+        // prepare all buttons
+        addButtonEvent(parent);
+    }
+
+    private void setupActionButton(ViewGroup parent) {
+        for (BaseType baseType : BaseType.values()) {
             View view = parent.findViewById(baseType.getViewId());
             if (view instanceof ICalcButton) {
-                if (baseType.getImageId() != NO_BUTTON) {
-                    if (baseType == BaseType.TERM) {
-                        ICalcButton button = (ICalcButton) view;
-                        button.initWithParameter(R.string.formula_term_separator, baseType.getDescriptionId(), baseType.toString());
-                        button.setCategories(new Category[]{Category.NEW_TERM, Category.CONVERSION});
-                    } else {
-                        ICalcButton button = (ICalcButton) view;
-                        button.initWithParameter(NO_BUTTON, baseType.getDescriptionId(), baseType.toString());
-                    }
+                if (baseType == BaseType.TERM) {
+                    ICalcButton button = (ICalcButton) view;
+                    button.initWithParameter(R.string.formula_term_separator, baseType.getDescriptionId(), baseType.toString());
+                    button.setCategories(new Category[]{Category.NEW_TERM, Category.CONVERSION});
+                } else {
+                    ICalcButton button = (ICalcButton) view;
+                    button.initWithParameter(NO_BUTTON, baseType.getDescriptionId(), baseType.toString());
                 }
             }
         }
-
-
-      /*  ArrayList<Descriptor> descriptors = new ArrayList<>();
-        descriptors.addAll(Arrays.asList(ActionType.values()));
-        descriptors.addAll(Arrays.asList(BaseType.values()));
-        descriptors.addAll(Arrays.asList(BasicSymbolType.values()));
-        descriptors.addAll(Arrays.asList(ComparatorType.values()));
-        descriptors.addAll(Arrays.asList(FunctionType.values()));
-        descriptors.addAll(Arrays.asList(LoopType.values()));
-        descriptors.addAll(Arrays.asList(OperatorType.values()));*/
-
-        for (int i = 0; i < ActionType.values().length; i++) {
-            final ActionType actionType = ActionType.values()[i];
+        for (ActionType actionType : ActionType.values()) {
             View view = parent.findViewById(actionType.getViewId());
             if (view instanceof ICalcButton) {
                 ICalcButton button = (ICalcButton) view;
@@ -108,16 +109,87 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
                 button.setCategories(new Category[]{Category.NONE});
             }
         }
+    }
 
-        FormulaTermIntervalView.addToPalette(context, parent, new Category[]{Category.TOP_LEVEL_TERM});
-        FormulaTermOperatorView.addToPalette(parent, new Category[]{Category.CONVERSION});
-        FormulaTermFunctionView.addToPalette(parent, new Category[]{Category.CONVERSION});
-        FormulaTermLoopView.addToPalette(parent, new Category[]{Category.CONVERSION});
-        FormulaTermComparatorView.addToPalette(parent, new Category[]{Category.COMPARATOR});
-        TermField.addToPalette(parent, new Category[]{Category.NONE});
+    private void setupIntervalButton(ViewGroup viewGroup) {
+        for (IntervalType intervalType : IntervalType.values()) {
+            View view = viewGroup.findViewById(intervalType.getViewId());
+            if (view instanceof ICalcButton) {
+                ICalcButton button = (ICalcButton) view;
+                button.initWithParameter(intervalType.getSymbolId(),
+                        intervalType.getDescriptionId(),
+                        intervalType.getLowerCaseName());
+                button.setCategories(new Category[]{Category.TOP_LEVEL_TERM});
+            }
+        }
+    }
 
-        // prepare all buttons
-        addButtonEvent(parent);
+    private void setupBasicButton(ViewGroup viewGroup) {
+        for (ButtonDescriptor type : BasicSymbolType.values()) {
+            View view = viewGroup.findViewById(type.getViewId());
+            if (view instanceof ICalcButton) {
+                ((ICalcButton) view).initWithParameter(CalcButtonManager.NO_BUTTON,
+                        type.getDescriptionId(), type.getLowerCaseName());
+                ((ICalcButton) view).setCategories(new Category[]{Category.NONE});
+            }
+        }
+
+    }
+
+    private void setupComparatorButton(ViewGroup parent) {
+        for (int i = 0; i < ComparatorType.values().length; i++) {
+            final ComparatorType type = ComparatorType.values()[i];
+            View view = parent.findViewById(type.getViewId());
+            if (view instanceof ICalcButton) {
+                ICalcButton p = (ICalcButton) view;
+                p.initWithParameter(type.getSymbolId(), type.getDescriptionId(), type.getLowerCaseName());
+                p.setCategories(new Category[]{Category.COMPARATOR});
+            }
+        }
+    }
+
+    private void setupLoopFunctionButton(ViewGroup parent) {
+        for (int i = 0; i < LoopType.values().length; i++) {
+            final LoopType type = LoopType.values()[i];
+            int id = type.getViewId();
+            View view = parent.findViewById(id);
+            if (view instanceof ICalcButton) {
+                ICalcButton p = (ICalcButton) view;
+                p.initWithParameter(type.getSymbolId(), type.getDescriptionId(), type.getLowerCaseName());
+                p.setCategories(new Category[]{Category.CONVERSION});
+            }
+        }
+    }
+
+    private void setupFunctionButton(ViewGroup parent) {
+        for (int i = 0; i < FunctionType.values().length; i++) {
+            final FunctionType type = FunctionType.values()[i];
+            int shortCuId = CalcButtonManager.NO_BUTTON;
+            for (FunctionTrigger functionTrigger : FunctionTrigger.values()) {
+                if (functionTrigger.getFunctionType() == type) {
+                    shortCuId = functionTrigger.getCodeId();
+                }
+            }
+            View view = parent.findViewById(type.getViewId());
+            if (view instanceof ICalcButton) {
+                ICalcButton b = (ICalcButton) view;
+                b.initWithParameter(shortCuId, type.getDescriptionId(), type.getLowerCaseName());
+                b.setCategories(new Category[]{Category.CONVERSION});
+            }
+        }
+    }
+
+    private void setupOperatorButton(ViewGroup parent) {
+        for (int i = 0; i < OperatorType.values().length; i++) {
+            final OperatorType type = OperatorType.values()[i];
+            int viewId = type.getViewId();
+            View view = parent.findViewById(viewId);
+            if (view instanceof ICalcButton) {
+                ICalcButton p = (ICalcButton) view;
+                p.initWithParameter(type.getSymbolId(), type.getDescriptionId(), type.getLowerCaseName());
+                p.setCategories(new Category[]{Category.CONVERSION});
+            }
+        }
     }
 
     private void addButtonEvent(ViewGroup parent) {

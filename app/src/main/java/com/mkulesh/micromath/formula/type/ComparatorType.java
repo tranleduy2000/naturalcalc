@@ -16,6 +16,7 @@
 
 package com.mkulesh.micromath.formula.type;
 
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 
 import com.nstudio.calc.casio.R;
@@ -26,31 +27,31 @@ import java.util.Locale;
  * Supported comparators
  */
 public enum ComparatorType implements ButtonDescriptor {
-    EQUAL(R.string.formula_comparator_equal, R.string.math_comparator_equal) {
+    EQUAL(R.string.formula_comparator_equal, R.string.math_comparator_equal, R.id.btn_equal) {
         @Override
         public String toString() {
             return "==";
         }
     },
-    NOT_EQUAL(R.string.formula_comparator_not_equal, R.string.math_comparator_not_equal) {
+    NOT_EQUAL(R.string.formula_comparator_not_equal, R.string.math_comparator_not_equal, R.id.btn_not_equal) {
         @Override
         public String toString() {
             return "=|";
         }
     },
-    LESS(R.string.formula_comparator_less, R.string.math_comparator_less) {
+    LESS(R.string.formula_comparator_less, R.string.math_comparator_less, R.id.btn_less) {
         @Override
         public String toString() {
             return "<";
         }
     },
-    LESS_EQUAL(R.string.formula_comparator_less_eq, R.string.math_comparator_less_eq) {
+    LESS_EQUAL(R.string.formula_comparator_less_eq, R.string.math_comparator_less_eq, R.id.btn_less_equal) {
         @Override
         public String toString() {
             return "<=";
         }
     },
-    GREATER(R.string.formula_comparator_greater, R.string.math_comparator_greater) {
+    GREATER(R.string.formula_comparator_greater, R.string.math_comparator_greater, R.id.btn_greater) {
         @Override
         public String toString() {
             return ">";
@@ -58,19 +59,19 @@ public enum ComparatorType implements ButtonDescriptor {
     },
     GREATER_EQUAL(
             R.string.formula_comparator_greater_eq,
-            R.string.math_comparator_greater_eq) {
+            R.string.math_comparator_greater_eq, R.id.btn_greater_equal) {
         @Override
         public String toString() {
             return ">=";
         }
     },
-    COMPARATOR_AND(R.string.formula_comparator_and, R.string.math_comparator_and) {
+    COMPARATOR_AND(R.string.formula_comparator_and, R.string.math_comparator_and, R.id.btn_and) {
         @Override
         public String toString() {
             return "&&";
         }
     },
-    COMPARATOR_OR(R.string.formula_comparator_or, R.string.math_comparator_or) {
+    COMPARATOR_OR(R.string.formula_comparator_or, R.string.math_comparator_or, R.id.btn_or) {
         @Override
         public String toString() {
             return "||";
@@ -80,16 +81,18 @@ public enum ComparatorType implements ButtonDescriptor {
     private final int symbolId;
     private final int descriptionId;
     private final String lowerCaseName;
+    private int viewId;
 
-    ComparatorType(int symbolId, int descriptionId) {
+    ComparatorType(int symbolId, int descriptionId, @IdRes int viewId) {
         this.symbolId = symbolId;
         this.descriptionId = descriptionId;
+        this.viewId = viewId;
         this.lowerCaseName = name().toLowerCase(Locale.ENGLISH);
     }
 
     @Override
     public int getViewId() {
-        return 0;
+        return viewId;
     }
 
     public int getSymbolId() {

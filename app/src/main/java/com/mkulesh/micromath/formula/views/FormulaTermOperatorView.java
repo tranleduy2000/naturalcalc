@@ -71,23 +71,6 @@ public class FormulaTermOperatorView extends FormulaTermView {
         return result;
     }
 
-    /**
-     * Add palette buttons for this term
-     */
-    public static void addToPalette(ViewGroup viewGroup, Category[] categories) {
-        for (int i = 0; i < OperatorType.values().length; i++) {
-            final OperatorType type = OperatorType.values()[i];
-            int viewId = type.getViewId();
-            View view = viewGroup.findViewById(viewId);
-            if (view instanceof ICalcButton) {
-                ICalcButton p = (ICalcButton) view;
-                p.initWithParameter(type.getSymbolId(), type.getDescriptionId(), type.getLowerCaseName());
-                p.setCategories(categories);
-            }
-        }
-    }
-
-
     @Override
     public CalculatedValue.ValueType getValue(CalculateTask thread, CalculatedValue outValue) throws CancelException {
         if (mOperatorType != null && mLeftTerm != null && mRightTerm != null) {

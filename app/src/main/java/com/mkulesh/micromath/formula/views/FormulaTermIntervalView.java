@@ -21,11 +21,12 @@ package com.mkulesh.micromath.formula.views;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.duy.natural.calc.calculator.calcbutton.CalcButtonManager;
 import com.duy.natural.calc.calculator.calcbutton.Category;
+import com.duy.natural.calc.calculator.calcbutton.ICalcButton;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.formula.type.IntervalType;
@@ -79,25 +80,6 @@ public class FormulaTermIntervalView extends FormulaTermView {
         return retValue;
     }
 
-    /**
-     * Add palette buttons for this term
-     */
-    public static void addToPalette(Context context, ViewGroup viewGroup,
-                                    Category[] categories) {
-        for (int i = 0; i < IntervalType.values().length; i++) {
-            final IntervalType intervalType = IntervalType.values()[i];
-            if (intervalType.getImageId() != CalcButtonManager.NO_BUTTON) {
-                // TODO: 1/14/2018
-                /*CalcImageButton button = new CalcImageButton(context,
-                        intervalType.getSymbolId(),
-                        intervalType.getImageId(),
-                        intervalType.getDescriptionId(),
-                        intervalType.getLowerCaseName());
-//                viewGroup.addView(button);
-                button.setCategories(categories);*/
-            }
-        }
-    }
 
 
     @Override

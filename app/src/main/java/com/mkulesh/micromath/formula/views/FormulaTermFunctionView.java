@@ -145,21 +145,7 @@ public class FormulaTermFunctionView extends FormulaTermView {
      * Add palette buttons for this term
      */
     public static void addToPalette(ViewGroup parent, Category[] categories) {
-        for (int i = 0; i < FunctionType.values().length; i++) {
-            final FunctionType type = FunctionType.values()[i];
-            int shortCuId = CalcButtonManager.NO_BUTTON;
-            for (FunctionTrigger functionTrigger : FunctionTrigger.values()) {
-                if (functionTrigger.getFunctionType() == type) {
-                    shortCuId = functionTrigger.getCodeId();
-                }
-            }
-            View view = parent.findViewById(type.getViewId());
-            if (view instanceof ICalcButton) {
-                ICalcButton button = (ICalcButton) view;
-                button.initWithParameter(shortCuId, type.getDescriptionId(), type.getLowerCaseName());
-                button.setCategories(categories);
-            }
-        }
+
     }
 
     /**

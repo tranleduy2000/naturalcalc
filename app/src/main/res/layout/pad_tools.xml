@@ -6,6 +6,13 @@
     android:background="?colorPrimary"
     android:orientation="horizontal">
 
+    <com.mkulesh.micromath.widgets.CalcEditText xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/hidden_edit_text"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
     <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
         android:id="@+id/btn_add_row"
         style="@style/CalcButtonStyle"

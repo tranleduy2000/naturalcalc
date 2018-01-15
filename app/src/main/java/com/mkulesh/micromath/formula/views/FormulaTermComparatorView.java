@@ -74,20 +74,6 @@ public class FormulaTermComparatorView extends FormulaTermView {
         return retValue;
     }
 
-    /**
-     * Add palette buttons for this term
-     */
-    public static void addToPalette(ViewGroup parent, Category[] categories) {
-        for (int i = 0; i < ComparatorType.values().length; i++) {
-            final ComparatorType type = ComparatorType.values()[i];
-            View view = parent.findViewById(type.getViewId());
-            if (view instanceof ICalcButton) {
-                ICalcButton p = (ICalcButton) view;
-                p.initWithParameter(type.getSymbolId(), type.getDescriptionId(), type.getLowerCaseName());
-                p.setCategories(categories);
-            }
-        }
-    }
 
 
     @Override

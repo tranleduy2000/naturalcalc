@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
  */
 
 public class PagerSectionAdapter extends FragmentPagerAdapter {
-    private static final int COUNT = 2;
+    private static final int COUNT = 3;
     private final OnCalcButtonClickListener listener;
 
 
@@ -22,8 +22,10 @@ public class PagerSectionAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return BasicPadFragment.newInstance(listener);
+                return OperatorFragment.newInstance(listener);
             case 1:
+                return BasicPadFragment.newInstance(listener);
+            case 2:
                 return FunctionPadFragment.newInstance(listener);
         }
         return null;
