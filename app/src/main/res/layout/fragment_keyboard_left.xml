@@ -77,27 +77,25 @@
             android:id="@+id/btn_var_a"
             style="@style/CalcButtonStyle.Constant"
             android:tag="@string/type_variable"
-            android:text="A" />
+            android:text="a" />
 
         <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
             android:id="@+id/btn_var_b"
             style="@style/CalcButtonStyle.Constant"
             android:tag="@string/type_variable"
-            android:text="B" />
+            android:text="b" />
 
         <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
             android:id="@+id/btn_var_c"
             style="@style/CalcButtonStyle.Constant"
             android:tag="@string/type_variable"
-            android:text="C" />
+            android:text="c" />
 
         <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
             android:id="@+id/btn_var_d"
             style="@style/CalcButtonStyle.Constant"
             android:tag="@string/type_variable"
-            android:text="D" />
-
-
+            android:text="d" />
     </LinearLayout>
 
     <LinearLayout

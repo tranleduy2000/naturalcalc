@@ -4,11 +4,13 @@
     <style name="AppBaseThemeLight" parent="BaseThemeLight">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
+        <item name="selectableBackground">?android:selectableItemBackgroundBorderless</item>
     </style>
 
     <style name="AppBaseThemeDark" parent="BaseThemeDark">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
+        <item name="selectableBackground">?android:selectableItemBackgroundBorderless</item>
     </style>
 
 

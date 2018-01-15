@@ -28,11 +28,12 @@
     <!-- Theme definition that is re-defined for API v.21 -->
 
     <style name="AppBaseThemeLight" parent="BaseThemeLight">
-        <!-- see values-v21/styles -->
+        <item name="selectableBackground">?android:selectableItemBackground</item>
+
     </style>
 
     <style name="AppBaseThemeDark" parent="BaseThemeDark">
-        <!-- see values-v21/styles -->
+        <item name="selectableBackground">?android:selectableItemBackground</item>
     </style>
 
     <!-- Custom styles -->
@@ -164,7 +165,7 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:background">?android:selectableItemBackgroundBorderless</item>
+        <item name="android:background">?selectableBackground</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:tint">@color/white</item>

@@ -24,6 +24,7 @@
     <attr name="colorPlotGridLine" format="color" />
     <attr name="colorButtonEnabled" format="color" />
     <attr name="colorButtonDisabled" format="color" />
+    <attr name="selectableBackground" format="reference" />
 
     <attr name="specialAlignment">
         <enum name="none" value="0" />
