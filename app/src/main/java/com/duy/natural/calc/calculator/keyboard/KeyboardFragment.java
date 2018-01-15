@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.duy.common.utils.DLog;
 import com.duy.natural.calc.calculator.CalculatorContract;
 import com.duy.natural.calc.calculator.calcbutton.CalcButtonManager;
 import com.duy.natural.calc.calculator.calcbutton.Category;
@@ -26,6 +25,7 @@ public class KeyboardFragment extends Fragment implements CalculatorContract.IKe
     @Nullable
     private CalcButtonManager mCalcButtonManager;
     private CalculatorContract.IPresenter mPresenter;
+    private PagerSectionAdapter mAdapter;
 
     public static KeyboardFragment newInstance() {
         Bundle args = new Bundle();
@@ -41,7 +41,6 @@ public class KeyboardFragment extends Fragment implements CalculatorContract.IKe
 
     @Override
     public void onButtonPressed(String code) {
-        if (DLog.DEBUG) DLog.d(TAG, "onButtonPressed() called with: code = [" + code + "]");
         if (code != null) {
             mPresenter.getDisplayView().onButtonPressed(code);
         }
@@ -49,17 +48,19 @@ public class KeyboardFragment extends Fragment implements CalculatorContract.IKe
 
     @Override
     public void setPaletteBlockEnabled(Category category, boolean enabled) {
-        if (DLog.DEBUG)
-            DLog.d(TAG, "setPaletteBlockEnabled() called with: category = [" + category + "], enabled = [" + enabled + "]");
         if (mCalcButtonManager != null) {
             mCalcButtonManager.setPaletteBlockEnabled(category, enabled);
+            for (int i = 0; i < mAdapter.getCount(); i++) {
+                Fragment fragment = mAdapter.getRegisteredFragment(i);
+                if (fragment instanceof CalculatorContract.IKeyboardView) {
+                    ((CalculatorContract.IKeyboardView) fragment).setPaletteBlockEnabled(category, enabled);
+                }
+            }
         }
     }
 
     @Override
     public void enableHiddenInput(boolean hiddenInputEnabled) {
-        if (DLog.DEBUG)
-            DLog.d(TAG, "enableHiddenInput() called with: hiddenInputEnabled = [" + hiddenInputEnabled + "]");
         if (mCalcButtonManager != null) {
             mCalcButtonManager.enableHiddenInput(hiddenInputEnabled);
         }
@@ -67,9 +68,14 @@ public class KeyboardFragment extends Fragment implements CalculatorContract.IKe
 
     @Override
     public void setEnabled(boolean enable) {
-        if (DLog.DEBUG) DLog.d(TAG, "setEnabled() called with: enable = [" + enable + "]");
         if (mCalcButtonManager != null) {
             mCalcButtonManager.setEnabled(enable);
+            for (int i = 0; i < mAdapter.getCount(); i++) {
+                Fragment fragment = mAdapter.getRegisteredFragment(i);
+                if (fragment instanceof CalculatorContract.IKeyboardView) {
+                    ((CalculatorContract.IKeyboardView) fragment).setEnabled(enable);
+                }
+            }
         }
     }
 
@@ -83,7 +89,8 @@ public class KeyboardFragment extends Fragment implements CalculatorContract.IKe
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ViewPager viewPager = view.findViewById(R.id.view_pager);
-        viewPager.setAdapter(new PagerSectionAdapter(getChildFragmentManager(), this));
+        mAdapter = new PagerSectionAdapter(getChildFragmentManager(), this);
+        viewPager.setAdapter(mAdapter);
         viewPager.setCurrentItem(1);
         ((TabLayout) view.findViewById(R.id.tab_layout)).setupWithViewPager(viewPager);
         mCalcButtonManager = new CalcButtonManager(getContext(), (ViewGroup) view, this);

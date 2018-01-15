@@ -25,6 +25,7 @@ import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
+import com.duy.common.utils.DLog;
 import com.duy.natural.calc.calculator.settings.CalculatorSetting;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.nstudio.calc.casio.R;
@@ -32,6 +33,7 @@ import com.nstudio.calc.casio.R;
 import java.util.Arrays;
 
 public class CalcImageButton extends AppCompatImageView implements ICalcButton {
+    private static final String TAG = "CalcImageButton";
     private final boolean[] mEnabledModes = new boolean[Category.values().length];
     private String code = null;
     private String shortCut = null;
@@ -103,15 +105,22 @@ public class CalcImageButton extends AppCompatImageView implements ICalcButton {
 
     public void setEnabled(Category category, boolean value) {
         mEnabledModes[category.ordinal()] = value;
-        super.setEnabled(true);
-        super.setFocusable(true);
+        setEnabled(true);
+        setFocusable(true);
         for (boolean shouldEnable : mEnabledModes) {
             if (!shouldEnable) {
-                super.setEnabled(false);
-                super.setFocusable(false);
+                setEnabled(false);
+                setFocusable(false);
                 break;
             }
         }
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        if (DLog.DEBUG) DLog.d(TAG, "setEnabled() called with: enabled = [" + enabled + "]");
+
     }
 
     @SuppressLint("ClickableViewAccessibility")

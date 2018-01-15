@@ -15,12 +15,14 @@
  */
 package com.duy.natural.calc.calculator.calcbutton;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Vibrator;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
+import com.duy.common.utils.DLog;
 import com.duy.natural.calc.calculator.settings.CalculatorSetting;
 
 import java.util.Arrays;
@@ -97,17 +99,24 @@ public class CalcTextButton extends AppCompatTextView implements ICalcButton {
     @Override
     public void setEnabled(Category category, boolean value) {
         enabledModes[category.ordinal()] = value;
-        super.setEnabled(true);
-        super.setFocusable(true);
+        setEnabled(true);
+        setFocusable(true);
         for (boolean shouldEnable : enabledModes) {
             if (!shouldEnable) {
-                super.setEnabled(false);
-                super.setFocusable(false);
+                setEnabled(false);
+                setFocusable(false);
                 break;
             }
         }
     }
 
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        if (DLog.DEBUG) DLog.d(TAG, "setEnabled() called with: enabled = [" + enabled + "]");
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -119,7 +128,6 @@ public class CalcTextButton extends AppCompatTextView implements ICalcButton {
     private void vibrate() {
         if (mSetting.isUseVibrate()) {
             Vibrator v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
-            // Vibrate for 500 milliseconds
             v.vibrate(mSetting.getVibrateStrength());
         }
     }

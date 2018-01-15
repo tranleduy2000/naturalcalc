@@ -27,12 +27,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.mkulesh.micromath.formula.BracketParser;
-import com.duy.natural.calc.calculator.calcbutton.CalcButtonManager;
 import com.duy.natural.calc.calculator.calcbutton.Category;
-import com.duy.natural.calc.calculator.calcbutton.ICalcButton;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
+import com.mkulesh.micromath.formula.BracketParser;
 import com.mkulesh.micromath.formula.type.FunctionTrigger;
 import com.mkulesh.micromath.formula.type.FunctionType;
 import com.mkulesh.micromath.math.CalculatedValue;
@@ -276,14 +274,12 @@ public class FormulaTermFunctionView extends FormulaTermView {
                     return outValue.asin(a0);
                 case SINH:
                     return outValue.sinh(a0);
-
                 case COS:
                     return outValue.cos(a0);
                 case ACOS:
                     return outValue.acos(a0);
                 case COSH:
                     return outValue.cosh(a0);
-
                 case TAN:
                     return outValue.tan(a0);
                 case ATAN:
@@ -297,20 +293,17 @@ public class FormulaTermFunctionView extends FormulaTermView {
                 }
                 case TANH:
                     return outValue.tanh(a0);
-
                 case EXP:
                     return outValue.exp(a0);
                 case LOG:
                     return outValue.log(a0);
                 case LOG10:
                     return outValue.log10(a0);
-
                 case SQRT:
                 case SQRT_LAYOUT:
                     return outValue.sqrt(a0);
                 case SURD_LAYOUT:
                     return outValue.nthRoot(argsVal[1], a0.getInteger());
-
                 case ABS:
                 case ABS_LAYOUT:
                     return outValue.abs(a0);
@@ -320,14 +313,12 @@ public class FormulaTermFunctionView extends FormulaTermView {
                     return outValue.setValue(a0.getReal());
                 case IM:
                     return outValue.setValue(a0.isComplex() ? a0.getImaginary() : 0.0);
-
                 case CEILING:
                     return outValue.ceil(a0);
                 case FLOOR:
                     return outValue.floor(a0);
                 case RND:
                     return outValue.random(a0);
-
                 case MAX:
                 case MIN: {
                     final CalculatedValue a1 = argsVal[1];
@@ -340,7 +331,6 @@ public class FormulaTermFunctionView extends FormulaTermView {
                 }
                 case HYPOT:
                     return outValue.hypot(a0, argsVal[1]);
-
                 case IF:
                     if (a0.isComplex()) {
                         return outValue.invalidate(CalculatedValue.ErrorType.PASSED_COMPLEX);
