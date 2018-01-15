@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.support.annotation.Nullable;
 
+import com.duy.common.preferences.PreferencesCompat;
 import com.nstudio.calc.casio.R;
 
 /**
@@ -24,5 +25,7 @@ public class SettingsFragment extends PreferenceFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.pref_setting);
+
+        PreferencesCompat.bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_key_vibrate_strength)));
     }
 }
