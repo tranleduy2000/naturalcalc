@@ -9,6 +9,9 @@
         <item name="themeMicroMathToolBar">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
         <item name="themeMicroMathPopup">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="colorMicroMathNavigator">@color/background_material_light</item>
+
+        <item name="colorButtonEnabled">#000000</item>
+        <item name="colorButtonDisabled">#9e9e9e</item>
     </style>
 
     <style name="BaseThemeDark" parent="@style/Theme.AppCompat.NoActionBar">
@@ -17,6 +20,9 @@
         <item name="themeMicroMathToolBar">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
         <item name="themeMicroMathPopup">@style/ThemeOverlay.AppCompat.Dark</item>
         <item name="colorMicroMathNavigator">@color/background_material_dark</item>
+
+        <item name="colorButtonEnabled">#FFFFFF</item>
+        <item name="colorButtonDisabled">#9e9e9e</item>
     </style>
 
     <!-- Theme definition that is re-defined for API v.21 -->
@@ -154,7 +160,7 @@
         <item name="android:background">?attr/colorDialogEditText</item>
     </style>
 
-    <style name="CalcButtonStyle" parent="@android:style/Widget.TextView">
+    <style name="CalcButtonStyle" parent="Base.Widget.AppCompat.Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>

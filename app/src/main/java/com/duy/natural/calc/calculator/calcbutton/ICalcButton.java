@@ -13,4 +13,8 @@ public interface ICalcButton {
     void setEnabled(Category category, boolean enabled);
 
     void initWithParameter(int shortCutId, int descriptionId, String code);
+
+    boolean isEnabled();
+
+    void setTint(int color);
 }

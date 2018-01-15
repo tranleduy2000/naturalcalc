@@ -20,6 +20,7 @@ package com.duy.natural.calc.calculator.calcbutton;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.os.Vibrator;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
@@ -77,6 +78,12 @@ public class CalcImageButton extends AppCompatImageView implements ICalcButton {
         enableAll();
         ViewUtils.setImageButtonColorAttr(getContext(), this,
                 isEnabled() ? R.attr.colorMicroMathIcon : R.attr.colorPrimaryDark);
+    }
+
+    @Override
+    public void setTint(int color) {
+        clearColorFilter();
+        setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
     }
 
     private void setup(Context context) {

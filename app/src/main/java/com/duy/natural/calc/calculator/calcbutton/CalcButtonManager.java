@@ -19,7 +19,10 @@
 package com.duy.natural.calc.calculator.calcbutton;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
+import android.support.annotation.StyleableRes;
 import android.text.InputType;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -216,7 +219,7 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
      */
     public void setEnabled(boolean enabled) {
         mPaletteLayout.setEnabled(enabled);
-        updateButtonsColor();
+        updateButtonsColor(mPaletteLayout);
     }
 
     /**
@@ -228,22 +231,34 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
         for (ICalcButton calcButton : mButtonCategory.get(category.ordinal())) {
             calcButton.setEnabled(category, enabled);
         }
-        updateButtonsColor();
+        updateButtonsColor(mPaletteLayout);
     }
 
     /**
      * Procedure sets the background color for all buttons depending on enabled status
      */
-    private void updateButtonsColor() {
-       /* for (int i = 0; i < mPaletteLayout.getChildCount(); i++) {
-            if (!(mPaletteLayout.getChildAt(i) instanceof CalcImageButton)) {
+    private void updateButtonsColor(ViewGroup viewGroup) {
+        int[] attrs = {R.attr.colorButtonEnabled, R.attr.colorButtonDisabled};
+        Resources.Theme theme = mContext.getTheme();
+        TypedArray ta = theme.obtainStyledAttributes(attrs);
+
+        int disableColor = mContext.getResources().getColor(ta.getResourceId(0, R.color.gray500));
+        @StyleableRes int enableColorIndex = 1;
+        int enableColor = mContext.getResources().getColor(ta.getResourceId(enableColorIndex, R.color.white));
+        for (int i = 0; i < viewGroup.getChildCount(); i++) {
+            View child = viewGroup.getChildAt(i);
+            if (!(child instanceof ICalcButton)) {
+                if (child instanceof ViewGroup) {
+                    updateButtonsColor((ViewGroup) child);
+                }
                 continue;
             }
-            CalcImageButton b = (CalcImageButton) mPaletteLayout.getChildAt(i);
-            final boolean isEnabled = b.isEnabled() && mPaletteLayout.isEnabled();
-            int color = isEnabled ? R.attr.colorMicroMathIcon : R.attr.colorPrimaryDark;
-            ViewUtils.setImageButtonColorAttr(mContext, b, color);
-        }*/
+            ICalcButton b = (ICalcButton) child;
+            final boolean isEnabled = b.isEnabled() && viewGroup.isEnabled();
+            int color = isEnabled ? enableColor : disableColor;
+            b.setTint(color);
+        }
+        ta.recycle();
     }
 
     @Override

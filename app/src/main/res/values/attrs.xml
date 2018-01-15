@@ -22,6 +22,8 @@
     <attr name="colorFormulaCalculatedValue" format="color" />
     <attr name="colorFormulaTextFragment" format="color" />
     <attr name="colorPlotGridLine" format="color" />
+    <attr name="colorButtonEnabled" format="color" />
+    <attr name="colorButtonDisabled" format="color" />
 
     <attr name="specialAlignment">
         <enum name="none" value="0" />

@@ -75,6 +75,11 @@ public class CalcTextButton extends AppCompatTextView implements ICalcButton {
         enableAll();
     }
 
+    @Override
+    public void setTint(int color) {
+        setTextColor(color);
+    }
+
     public String getCategoryCode() {
         return code;
     }
