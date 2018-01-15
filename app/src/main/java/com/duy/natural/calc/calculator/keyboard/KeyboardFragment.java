@@ -92,6 +92,7 @@ public class KeyboardFragment extends Fragment implements CalculatorContract.IKe
         mAdapter = new PagerSectionAdapter(getChildFragmentManager(), this);
         viewPager.setAdapter(mAdapter);
         viewPager.setCurrentItem(1);
+        viewPager.setOffscreenPageLimit(mAdapter.getCount());
         ((TabLayout) view.findViewById(R.id.tab_layout)).setupWithViewPager(viewPager);
         mCalcButtonManager = new CalcButtonManager(getContext(), (ViewGroup) view, this);
     }
