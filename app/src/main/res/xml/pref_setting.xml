@@ -7,6 +7,7 @@
     <ListPreference
         android:defaultValue="50"
         android:dependency="@string/pref_key_enable_vibrate"
+        android:entries="@array/pref_vibrate_strength"
         android:entryValues="@array/pref_vibrate_strength"
         android:key="@string/pref_key_vibrate_strength"
         android:title="@string/pref_title_vibrate_strength" />

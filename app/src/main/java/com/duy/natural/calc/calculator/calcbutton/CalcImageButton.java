@@ -101,14 +101,14 @@ public class CalcImageButton extends AppCompatImageView implements ICalcButton {
     }
 
     public void setEnabled(Category t, boolean value) {
-        enabled[t.ordinal()] = value;
+       /* enabled[t.ordinal()] = value;
         super.setEnabled(true);
         for (boolean en : enabled) {
             if (!en) {
                 super.setEnabled(false);
                 break;
             }
-        }
+        }*/
     }
 
     @Override
