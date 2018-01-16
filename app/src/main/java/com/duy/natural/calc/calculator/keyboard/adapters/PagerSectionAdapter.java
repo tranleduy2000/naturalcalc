@@ -8,6 +8,9 @@ import android.util.SparseArray;
 import android.view.ViewGroup;
 
 import com.duy.natural.calc.calculator.keyboard.OnCalcButtonClickListener;
+import com.duy.natural.calc.calculator.keyboard.fragments.BasicPadFragment;
+import com.duy.natural.calc.calculator.keyboard.fragments.FunctionPadFragment;
+import com.duy.natural.calc.calculator.keyboard.fragments.LeftKeyboardFragment;
 
 /**
  * Created by Duy on 1/14/2018.

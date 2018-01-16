@@ -63,6 +63,9 @@ public class CalcTextButton extends AppCompatTextView implements ICalcButton {
         if (attrs != null) {
             TypedArray ta = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CalcTextButton, -1, -1);
             code = ta.getString(R.styleable.CalcTextButton_code);
+            if (getText().length() == 0) {
+                setText(code);
+            }
             shortCut = ta.getString(R.styleable.CalcTextButton_shortCutId);
 
             String description = ta.getString(R.styleable.CalcTextButton_descriptionId);

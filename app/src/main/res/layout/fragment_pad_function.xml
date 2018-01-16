@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     android:orientation="vertical"
     android:weightSum="4">
@@ -11,10 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="8dp"
         android:weightSum="4">
 
         <LinearLayout
@@ -108,8 +104,8 @@
 
             <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
                 style="@style/CalcButtonStyle.Function"
-                app:code="Arg"
-                android:text="Arg" />
+                android:text="Arg"
+                app:code="Arg" />
 
             <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
                 android:id="@+id/btn_log"
@@ -254,6 +250,46 @@
 
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:listDivider" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Number theoretic functions"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
+                style="@style/CalcButtonStyle.Function"
+                app:buttonType="function"
+                app:code="CoprimeQ" />
+
+            <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
+                style="@style/CalcButtonStyle.Function"
+                app:buttonType="function"
+                app:code="Divisors" />
+
+            <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
+                style="@style/CalcButtonStyle.Function"
+                app:buttonType="function"
+                app:code="EvenQ" />
+
+            <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
+                style="@style/CalcButtonStyle.Function"
+                app:buttonType="function"
+                app:code="FactorInteger" />
+
+
+        </LinearLayout>
+
     </LinearLayout>
 
 

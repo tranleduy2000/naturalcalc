@@ -22,7 +22,7 @@
     <dimen name="formula_hor_root_padding">10dp</dimen>
     <dimen name="formula_vert_root_padding">5dp</dimen>
     <dimen name="formula_header_padding">20dp</dimen>
-    <dimen name="formula_depth_step">3dp</dimen>
+    <dimen name="formula_depth_step">2dp</dimen>
     <dimen name="formula_stroke_width">2dp</dimen>
     <dimen name="formula_text_size">28sp</dimen>
     <dimen name="formula_text_minwidth">20dp</dimen>

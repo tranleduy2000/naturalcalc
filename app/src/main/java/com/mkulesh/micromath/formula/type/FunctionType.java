@@ -24,8 +24,6 @@ public enum FunctionType implements ButtonDescriptor {
     ABS_LAYOUT(1, R.string.math_function_abs, null, R.id.btn_abs),
     CONJUGATE_LAYOUT(1, R.string.math_function_conjugate, null, R.id.btn_conjugate),
 
-    /*Math Function*/
-
     SIN(1, R.string.math_function_sin, null, R.id.btn_sin),
     ASIN(1, R.string.math_function_asin, null, R.id.btn_asin),
     SINH(1, R.string.math_function_sinh, null, R.id.btn_sinh),
@@ -60,13 +58,62 @@ public enum FunctionType implements ButtonDescriptor {
     /*todo Supported all function symja library*/
     /*Function link*/
     FUNCTION_LINK(-1, NO_BUTTON, "content:com.mkulesh.micromath.link"),
-    ARG(1, NO_BUTTON, null, NO_BUTTON);
+    ARG(1, NO_BUTTON, null, NO_BUTTON),
+
+    /*Number theoretic functions*/
+    CoprimeQ(2, "functions/CoprimeQ.md"),
+    Divisors(1, "functions/Divisors.md"),
+    EvenQ(1, "functions/EvenQ.md"),
+    FactorInteger(1, "functions/FactorInteger.md"),
+    GCD(1, "functions/GCD.md"),
+    IntegerExponent(1, "functions/IntegerExponent.md"),
+    JacobiSymbol(1, "functions/JacobiSymbol.md"),
+    LCM(1, "functions/LCM.md"),
+    MersennePrimeExponent(1, "functions/MersennePrimeExponent.md"),
+    MersennePrimeExponentQ(1, "functions/MersennePrimeExponentQ.md"),
+    Mod(1, "functions/Mod.md"),
+    NextPrime(1, "functions/NextPrime.md"),
+    OddQ(1, "functions/OddQ.md"),
+    PartitionsP(1, "functions/PartitionsP.md"),
+    PartitionsQ(1, "functions/PartitionsQ.md"),
+    PerfectNumber(1, "functions/PerfectNumber.md"),
+    PerfectNumberQ(1, "functions/PerfectNumberQ.md"),
+    PowerMod(1, "functions/PowerMod.md"),
+    Prime(1, "functions/Prime.md"),
+    PrimePi(1, "functions/PrimePi.md"),
+    PrimePowerQ(1, "functions/PrimePowerQ.md"),
+    PrimeQ(1, "functions/PrimeQ.md"),
+    Quotient(1, "functions/Quotient.md"),
+
+    /*Logic*/
+    AllTrue(1, "functions/AllTrue.md"),
+    AnyTrue(1, "functions/AnyTrue.md"),
+    And(1, "functions/And.md"),
+    Boole(1, "functions/Boole.md"),
+    BooleanMinimize(1, "functions/BooleanMinimize.md"),
+    BooleanQ(1, "functions/BooleanQ.md"),
+    Booleans(1, "functions/Booleans.md"),
+    Equivalent(1, "functions/Equivalent.md"),
+    False(1, "functions/False.md"),
+    Implies(1, "functions/Implies.md"),
+    NoneTrue(1, "functions/NoneTrue.md"),
+    Not(1, "functions/Not.md"),
+    Or(1, "functions/Or.md"),
+    SatisfiableQ(1, "functions/SatisfiableQ.md"),
+    TautologyQ(1, "functions/TautologyQ.md"),
+    True(1, "functions/True.md"),
+    TrueQ(1, "functions/TrueQ.md"),
+    Xor(1, "functions/Xor.md"),;
 
     private final int argNumber;
     private final int descriptionId;
     private final String linkObject;
     private final String lowerCaseName;
     private int viewId;
+
+    FunctionType(int argNumber, String docPath) {
+        this(argNumber, NO_BUTTON, null, NO_BUTTON);
+    }
 
     FunctionType(int argNumber, int descriptionId, String linkObject) {
         this.argNumber = argNumber;

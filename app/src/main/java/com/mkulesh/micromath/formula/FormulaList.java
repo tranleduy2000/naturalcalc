@@ -301,6 +301,12 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
     @Override
     public void onButtonPressed(String code) {
         if (isInOperation()) return;
+
+        //check formula view is empty
+        if (isEmptyFormula()) {
+            onNewFormula(Position.AFTER, FormulaType.RESULT);
+        }
+
         ActionType actionType = ActionType.getActionType(code);
         FormulaType formulaType = FormulaType.getFormulaType(code);
         if (actionType != null) {
@@ -313,7 +319,7 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
             FormulaView view = mRootFormulas.get(mSelectedFormulaId);
             if (view != null) {
                 TermField term = view.findFocusedTerm();
-                if (term == null){
+                if (term == null) {
                     view.requestFocus();
                     term = view.findFocusedTerm();
                 }
@@ -335,6 +341,10 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
             onManualInput();
         }
         finishActiveActionMode();
+    }
+
+    private boolean isEmptyFormula() {
+        return mFormulaListView.isEmpty();
     }
 
     private void onInsert(String text, CalcEditText editText) {
@@ -364,7 +374,7 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
                 }
                 break;
             case DELETE:
-                if (!deleteSelectedEquations()) {
+                if (editText != null && !deleteSelectedEquations()) {
                     editText.processDelKey(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
                 }
                 break;
@@ -379,7 +389,7 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
                 }
                 break;
             case MOVE_RIGHT:
-                if (!editText.moveRight()) {
+                if (editText != null && !editText.moveRight()) {
                     int nextFocusRightId = editText.getNextFocusRightId();
                     TermField termField = view.findTermWithId(nextFocusRightId);
                     if (termField != null) {
@@ -516,17 +526,17 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
     /**
      * Parcelable interface: procedure reads the formula state
      */
-    public void readFromBundle(Bundle inState) {
+    public void readFromBundle(Bundle data) {
         clearAll();
         IdGenerator.enableIdRestore = true;
-        final int n = inState.getInt(STATE_FORMULA_NUMBER, 0);
-        final int selectedLine = inState.getInt(STATE_SELECTED_LINE, 0);
-        mDocumentSettings.readFromBundle(inState);
+        final int count = data.getInt(STATE_FORMULA_NUMBER, 0);
+        final int selectedLine = data.getInt(STATE_SELECTED_LINE, 0);
+        mDocumentSettings.readFromBundle(data);
 
         FormulaView selectedFormula = null;
-        for (int index = 0; index < n; index++) {
-            final BaseType baseType = BaseType.valueOf(inState.getString(STATE_FORMULA_TYPE + index));
-            FormulaView formulaView = addBaseFormula(baseType, inState.getParcelable(STATE_FORMULA_STATE + index));
+        for (int index = 0; index < count; index++) {
+            final BaseType baseType = BaseType.valueOf(data.getString(STATE_FORMULA_TYPE + index));
+            FormulaView formulaView = addBaseFormula(baseType, data.getParcelable(STATE_FORMULA_STATE + index));
             mFormulaListView.add(formulaView, null, Position.AFTER); // add to the end
             if (selectedLine == index) {
                 selectedFormula = formulaView;
@@ -535,7 +545,7 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
         if (selectedFormula != null) {
             setSelectedFormula(selectedFormula.getId(), false);
         }
-        mUndoState.onRestoreInstanceState(inState.getParcelable(STATE_UNDO_STATE));
+        mUndoState.onRestoreInstanceState(data.getParcelable(STATE_UNDO_STATE));
         IdGenerator.enableIdRestore = false;
         isContentValid();
         updateButtonState();

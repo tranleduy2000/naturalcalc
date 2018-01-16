@@ -45,9 +45,6 @@ public class FormulaListView {
         mList.setSaveEnabled(false);
     }
 
-    /*********************************************************
-     * Helper static methods
-     *********************************************************/
     private static FormulaView getNextFormula(LinearLayout parent, int index) {
         if (index == ViewUtils.INVALID_INDEX) {
             return null;
@@ -390,6 +387,12 @@ public class FormulaListView {
         return null;
     }
 
+    /**
+     * @return true if this view not contains any view
+     */
+    public boolean isEmpty() {
+        return mList.getChildCount() == 0;
+    }
 
     public final class ListRow extends FormulaLayout {
         /**
