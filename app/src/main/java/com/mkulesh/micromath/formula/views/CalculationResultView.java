@@ -23,11 +23,11 @@ import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-import com.mkulesh.micromath.editstate.FormulaState;
-import com.mkulesh.micromath.formula.FormulaList;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.duy.natural.calc.calculator.evaluator.result.CalculatedResult;
+import com.mkulesh.micromath.editstate.FormulaState;
+import com.mkulesh.micromath.formula.FormulaList;
 
 public abstract class CalculationResultView extends LinkHolderView {
 
@@ -80,7 +80,7 @@ public abstract class CalculationResultView extends LinkHolderView {
 
     @Override
     public String toString() {
-        return "CalculationResultView " + getBaseType().toString() + "(Id: " + getId() + ")";
+        return getClass().getSimpleName() + " " + getBaseType().toString() + "(Id: " + getId() + ")";
     }
 
 

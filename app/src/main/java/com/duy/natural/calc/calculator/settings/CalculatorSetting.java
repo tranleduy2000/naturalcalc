@@ -45,4 +45,8 @@ public class CalculatorSetting {
             return string.isEmpty() ? def : Integer.parseInt(string);
         }
     }
+
+    public boolean useLightTheme() {
+        return false;
+    }
 }

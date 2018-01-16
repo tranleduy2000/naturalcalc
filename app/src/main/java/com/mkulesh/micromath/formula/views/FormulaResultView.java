@@ -64,7 +64,7 @@ public class FormulaResultView extends CalculationResultView implements OnResult
 
     private CalculatedValue mConstantResult = null;
     private TermField mLeftTerm = null;
-    private TermField mConstantResultField = null;
+//    private TermField mConstantResultField = null;
     private ResultType mResultType = ResultType.NONE;
     private View mExpandResult;
     private MathView mResultView;
@@ -113,10 +113,10 @@ public class FormulaResultView extends CalculationResultView implements OnResult
         }
         // create result term
         {
-            CalcEditText view = layout.findViewById(R.id.formula_result_value);
+            /*CalcEditText view = layout.findViewById(R.id.formula_result_value);
             mConstantResultField = addTerm(this, layout, view, this, true);
             mConstantResultField.bracketsType = TermField.BracketsType.NEVER;
-            mConstantResultField.isWritable = false;
+            mConstantResultField.isWritable = false;*/
             mArrayResultMatrix = layout.findViewById(R.id.formula_result_table);
         }
         // brackets
@@ -224,9 +224,9 @@ public class FormulaResultView extends CalculationResultView implements OnResult
         }
         if (mArrayResultMatrix != null) {
             int id = mArrayResultMatrix.getNextFocusId(owner, focusType);
-            if (id == ViewUtils.INVALID_INDEX) {
+            /*if (id == ViewUtils.INVALID_INDEX) {
                 id = getNextFocusId(mConstantResultField.getEditText(), focusType);
-            }
+            }*/
             return id;
         }
         return getNextFocusId(owner, focusType);
@@ -235,9 +235,10 @@ public class FormulaResultView extends CalculationResultView implements OnResult
 
     @Override
     public void invalidateResult() {
-        mConstantResultField.setText("");
+//        mConstantResultField.setText("");
         mArrayResultMatrix.setText("", getFormulaList().getDimen());
         mExpandResult.setVisibility(GONE);
+        mResultView.setText("");
         mResult = null;
     }
 
@@ -318,7 +319,7 @@ public class FormulaResultView extends CalculationResultView implements OnResult
             case NONE:
             case NAN:
             case CONSTANT: {*/
-        mConstantResultField.getEditText().setVisibility(visibility);
+//        mConstantResultField.getEditText().setVisibility(visibility);
         mResultView.setVisibility(VISIBLE);
         mLeftBracket.setVisibility(View.GONE);
         mArrayResultMatrix.setVisibility(View.GONE);

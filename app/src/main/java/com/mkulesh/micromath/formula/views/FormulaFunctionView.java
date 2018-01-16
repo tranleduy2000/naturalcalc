@@ -243,9 +243,13 @@ public class FormulaFunctionView extends FormulaTermView {
         switch (mFunctionType) {
             case Solve:
                 mTerms.get(0).getEditText().setComparatorEnabled(true);
-                mTerms.get(0).setText("==0"); //add == operator
-                mTerms.get(1).getEditText().setEquationEnable(true);
-                mTerms.get(1).setText("x");
+                if (!mTerms.get(0).isTerm()) {
+                    mTerms.get(0).setText("==0"); //add == operator
+                }
+                if (mTerms.get(1).getEditText().getText().length() == 0) {
+                    mTerms.get(1).getEditText().setEquationEnable(true);
+                    mTerms.get(1).setText("x");
+                }
                 break;
         }
     }
@@ -264,7 +268,7 @@ public class FormulaFunctionView extends FormulaTermView {
             case POWER_LAYOUT: {
                 String left = mTerms.get(0).toExpressionString();
                 String right = mTerms.get(1).toExpressionString();
-                return "Power" + "(" + left + "," + right + ")";
+                return "Power(" + left + "," + right + ")";
             }
             case FACTORIAL_LAYOUT:
                 return mFunctionType.getCode() + "(" + mTerms.get(0).toExpressionString() + ")";

@@ -5,7 +5,7 @@
 
     <style name="BaseThemeLight" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionModeOverlay">true</item>
-        <item name="android:windowBackground">@color/background_material_light</item>
+        <!--<item name="android:windowBackground">@color/background_material_light</item>-->
         <item name="themeMicroMathToolBar">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
         <item name="themeMicroMathPopup">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="colorMicroMathNavigator">@color/background_material_light</item>
@@ -168,7 +168,7 @@
         <item name="android:background">?selectableBackground</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
-        <item name="android:tint">@color/white</item>
+        <item name="android:tint">?colorMicroMathIcon</item>
         <item name="android:gravity">center</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
         <item name="android:scaleType">centerInside</item>
@@ -182,8 +182,7 @@
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
     </style>
 
-    <style name="CalcButtonStyle.Operator">
-    </style>
+    <style name="CalcButtonStyle.Operator" />
 
     <style name="CalcButtonStyle.Constant">
         <item name="android:textStyle">bold|italic</item>

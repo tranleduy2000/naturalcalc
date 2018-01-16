@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -38,16 +37,28 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
 
-        <com.mkulesh.micromath.widgets.CalcEditText
-            android:id="@+id/formula_result_value"
-            style="@style/FormulaTextEditStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/formula_right_term_key"
-            app:calculatedValue="true"
-            app:contextMenuCut="false"
-            app:contextMenuPaste="false"
-            app:emptyEnabled="true" />
+        <!--   <com.mkulesh.micromath.widgets.CalcEditText
+               android:id="@+id/formula_result_value"
+               style="@style/FormulaTextEditStyle"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/formula_right_term_key"
+               app:calculatedValue="true"
+               app:contextMenuCut="false"
+               app:contextMenuPaste="false"
+               app:emptyEnabled="true" />-->
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.duy.natural.calc.calculator.views.MathResultView
+                android:id="@+id/math_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </com.duy.natural.calc.calculator.views.MathResultView>
+        </android.support.v4.widget.NestedScrollView>
 
         <com.mkulesh.micromath.widgets.ResultMatrixLayout
             android:id="@+id/formula_result_table"
@@ -60,28 +71,15 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
 
-        <android.support.v4.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <io.github.kexanie.library.MathView
-                android:id="@+id/math_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </io.github.kexanie.library.MathView>
-        </android.support.v4.widget.NestedScrollView>
-
-        <android.support.v7.widget.AppCompatImageView
+      <!--  <android.support.v7.widget.AppCompatImageView
             android:id="@+id/btn_expand_result"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="top"
-            android:contentDescription="Expand result"
             android:scaleType="center"
-            android:src="@drawable/ic_action_content_expand"
+            android:src="@drawable/ic_more_vert_black_24dp"
             android:visibility="gone"
-            tools:visibility="visible" />
+            tools:visibility="visible" />-->
 
     </LinearLayout>
 
