@@ -43,7 +43,7 @@ import com.nstudio.calc.casio.R;
 
 import java.util.ArrayList;
 
-public class FormulaTermFunctionView extends FormulaTermView {
+public class FormulaFunctionView extends FormulaTermView {
     public static final String FUNCTION_ARGS_MARKER = ":";
 
     private FunctionType mFunctionType = null;
@@ -52,17 +52,17 @@ public class FormulaTermFunctionView extends FormulaTermView {
     private CalcTextView mFunctionTerm = null;
     private EquationView mLinkedFunction = null;
 
-    public FormulaTermFunctionView(TermField owner, LinearLayout layout, String text, int index) throws Exception {
+    public FormulaFunctionView(TermField owner, LinearLayout layout, String text, int index) throws Exception {
         super(owner.getFormulaRoot(), layout, owner.mTermDepth);
         setParentField(owner);
         onCreate(text, index);
     }
 
-    public FormulaTermFunctionView(Context context) {
+    public FormulaFunctionView(Context context) {
         super();
     }
 
-    public FormulaTermFunctionView(Context context, AttributeSet attrs) {
+    public FormulaFunctionView(Context context, AttributeSet attrs) {
         super();
     }
 

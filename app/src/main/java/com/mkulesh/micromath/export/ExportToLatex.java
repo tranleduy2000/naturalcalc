@@ -37,7 +37,7 @@ import com.mkulesh.micromath.formula.type.OperatorType;
 import com.mkulesh.micromath.formula.views.EquationView;
 import com.mkulesh.micromath.formula.views.FormulaResultView;
 import com.mkulesh.micromath.formula.views.FormulaTermComparatorView;
-import com.mkulesh.micromath.formula.views.FormulaTermFunctionView;
+import com.mkulesh.micromath.formula.views.FormulaFunctionView;
 import com.mkulesh.micromath.formula.views.FormulaTermIntervalView;
 import com.mkulesh.micromath.formula.views.FormulaTermLoopView;
 import com.mkulesh.micromath.formula.views.FormulaTermOperatorView;
@@ -307,8 +307,8 @@ public class ExportToLatex {
                 writeTermOperator((FormulaTermOperatorView) ft);
             } else if (ft instanceof FormulaTermComparatorView) {
                 writeTermComparator((FormulaTermComparatorView) ft);
-            } else if (ft instanceof FormulaTermFunctionView) {
-                writeTermFunction((FormulaTermFunctionView) ft);
+            } else if (ft instanceof FormulaFunctionView) {
+                writeTermFunction((FormulaFunctionView) ft);
             } else if (ft instanceof FormulaTermIntervalView) {
                 writeTermInterval((FormulaTermIntervalView) ft);
             } else if (ft instanceof FormulaTermLoopView) {
@@ -390,7 +390,7 @@ public class ExportToLatex {
         }
     }
 
-    private void writeTermFunction(FormulaTermFunctionView f) {
+    private void writeTermFunction(FormulaFunctionView f) {
         FunctionType functionType = f.getFunctionType();
         final ArrayList<TermField> terms = f.getTerms();
         switch (functionType) {

@@ -66,8 +66,8 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
         }
 
         // TermFunction has manual trigger (like "(" or "["): is has to be checked
-        final boolean enableFunction = !ensureManualTrigger || FormulaTermFunctionView.containsFunctionTrigger(context, text);
-        if (enableFunction && FormulaTermFunctionView.getFunctionType(context, text) != null) {
+        final boolean enableFunction = !ensureManualTrigger || FormulaFunctionView.containsFunctionTrigger(context, text);
+        if (enableFunction && FormulaFunctionView.getFunctionType(context, text) != null) {
             return TermField.TermType.FUNCTION;
         }
         if (editText.isIntervalEnabled() && FormulaTermIntervalView.getIntervalType(context, text) != null) {
@@ -92,8 +92,8 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
         }
 
         // TermFunction has manual trigger (like "(" or "["): is has to be checked
-        boolean enableFunction = !ensureManualTrigger || FormulaTermFunctionView.containsFunctionTrigger(context, code);
-        FunctionType functionType = FormulaTermFunctionView.getFunctionType(context, code);
+        boolean enableFunction = !ensureManualTrigger || FormulaFunctionView.containsFunctionTrigger(context, code);
+        FunctionType functionType = FormulaFunctionView.getFunctionType(context, code);
         if (enableFunction && functionType != null) {
             return functionType.getCode();
         }
@@ -122,7 +122,7 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
             case COMPARATOR:
                 return new FormulaTermComparatorView(termField, layout, text, textIndex);
             case FUNCTION:
-                return new FormulaTermFunctionView(termField, layout, text, textIndex);
+                return new FormulaFunctionView(termField, layout, text, textIndex);
             case INTERVAL:
                 return new FormulaTermIntervalView(termField, layout, text, textIndex);
             case LOOP:
@@ -155,7 +155,7 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
         }
 
         // function
-        final FunctionType t3 = FormulaTermFunctionView.getFunctionType(contex, code);
+        final FunctionType t3 = FormulaFunctionView.getFunctionType(contex, code);
         if (newValue == null && t3 != null) {
             // for a function, we add operator code at the beginning of line in order to move
             // existing text in the function argument term
