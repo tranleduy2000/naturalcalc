@@ -309,7 +309,7 @@ public class FormulaFunctionView extends FormulaTermView {
     @Override
     public boolean isContentValid(ValidationPassType type) {
         boolean isValid = true;
-        switch (type) {
+        /*switch (type) {
             case VALIDATE_SINGLE_FORMULA:
                 mLinkedFunction = null;
                 isValid = super.isContentValid(type);
@@ -345,46 +345,46 @@ public class FormulaFunctionView extends FormulaTermView {
             case VALIDATE_LINKS:
                 isValid = super.isContentValid(type);
                 break;
-        }
+        }*/
         return isValid;
     }
 
     @Override
-    protected CalcTextView initializeSymbol(CalcTextView v) {
+    protected CalcTextView initializeSymbol(CalcTextView view) {
         final Resources res = getContext().getResources();
-        if (v.getText() != null) {
-            String t = v.getText().toString();
-            if (t.equals(res.getString(R.string.formula_operator_key))) {
-                v.prepare(CalcTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
+        if (view.getText() != null) {
+            String code = view.getText().toString();
+            if (code.equals(res.getString(R.string.formula_operator_key))) {
+                view.prepare(CalcTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
                 switch (mFunctionType) {
                     case POWER_LAYOUT:
-                        v.setText("_");
+                        view.setText("_");
                         break;
                     case FACTORIAL_LAYOUT:
-                        v.setText(res.getString(R.string.formula_function_factorial_layout));
+                        view.setText(res.getString(R.string.formula_function_factorial_layout));
                         break;
                     case CONJUGATE_LAYOUT:
-                        v.prepare(CalcTextView.SymbolType.HOR_LINE, getFormulaRoot().getFormulaList().getActivity(), this);
-                        v.setText("_");
+                        view.prepare(CalcTextView.SymbolType.HOR_LINE, getFormulaRoot().getFormulaList().getActivity(), this);
+                        view.setText("_");
                         break;
                     default:
-                        v.setText(getFunctionLabel());
+                        view.setText(getFunctionLabel());
                         break;
                 }
-                mFunctionTerm = v;
-            } else if (t.equals(res.getString(R.string.formula_left_bracket_key))) {
+                mFunctionTerm = view;
+            } else if (code.equals(res.getString(R.string.formula_left_bracket_key))) {
                 CalcTextView.SymbolType s = (mFunctionType == FunctionType.ABS_LAYOUT) ? CalcTextView.SymbolType.VERT_LINE
                         : CalcTextView.SymbolType.LEFT_BRACKET;
-                v.prepare(s, getFormulaRoot().getFormulaList().getActivity(), this);
-                v.setText("."); // this text defines view width/height
-            } else if (t.equals(res.getString(R.string.formula_right_bracket_key))) {
+                view.prepare(s, getFormulaRoot().getFormulaList().getActivity(), this);
+                view.setText("."); // this text defines view width/height
+            } else if (code.equals(res.getString(R.string.formula_right_bracket_key))) {
                 CalcTextView.SymbolType s = (mFunctionType == FunctionType.ABS_LAYOUT) ? CalcTextView.SymbolType.VERT_LINE
                         : CalcTextView.SymbolType.RIGHT_BRACKET;
-                v.prepare(s, getFormulaRoot().getFormulaList().getActivity(), this);
-                v.setText("."); // this text defines view width/height
+                view.prepare(s, getFormulaRoot().getFormulaList().getActivity(), this);
+                view.setText("."); // this text defines view width/height
             }
         }
-        return v;
+        return view;
     }
 
     @Override
@@ -453,9 +453,6 @@ public class FormulaFunctionView extends FormulaTermView {
         return super.getArgumentTerm();
     }
 
-    /**
-     * @return function name
-     */
     private String getFunctionLabel() {
         switch (mFunctionType) {
             case FUNCTION_LINK:
@@ -470,14 +467,14 @@ public class FormulaFunctionView extends FormulaTermView {
             case CONJUGATE_LAYOUT:
                 return "";
             default:
-                return mFunctionType.getCode();
+                return mFunctionType.getFunctionName();
         }
     }
 
     @Override
     public void onDelete(CalcEditText owner) {
         final TermField ownerTerm = findTerm(owner);
-
+        final Resources res = getResources();
         if (mFunctionType == FunctionType.SURD_LAYOUT || owner == null || mTerms.size() <= 1 || !isNewTermEnabled()) {
             // search remaining text or term
             TermField remainingTerm = null;
@@ -508,10 +505,8 @@ public class FormulaFunctionView extends FormulaTermView {
             if (parentField == null || ownerTerm == null) {
                 return;
             }
-
-            TermField prevTerm = deleteArgument(ownerTerm,
-                    getContext().getResources().getString(R.string.formula_term_separator), true);
-
+            String separator = res.getString(R.string.formula_term_separator);
+            TermField prevTerm = deleteArgument(ownerTerm, separator, true);
             getFormulaRoot().getFormulaList().onManualInput();
             if (prevTerm != null) {
                 prevTerm.requestFocus();
@@ -525,9 +520,11 @@ public class FormulaFunctionView extends FormulaTermView {
     }
 
     @Override
-    public boolean onNewTerm(TermField owner, String s, boolean requestFocus) {
+    public boolean onNewTerm(TermField owner, String code, boolean requestFocus) {
+        if (DLog.DEBUG)
+            DLog.d(TAG, "onNewTerm() called with: owner = [" + owner + "], code = [" + code + "], requestFocus = [" + requestFocus + "]");
         final String sep = getContext().getResources().getString(R.string.formula_term_separator);
-        if (s == null || s.length() == 0 || !s.contains(sep)) {
+        if (code == null || code.length() == 0 || !code.contains(sep)) {
             // string does not contains the term separator: can not be processed
             return false;
         }
@@ -545,7 +542,7 @@ public class FormulaFunctionView extends FormulaTermView {
 
         updateTextSize();
         if (owner.getText().contains(sep)) {
-            TermField.divideString(s, sep, owner, newArg);
+            TermField.divideString(code, sep, owner, newArg);
         }
         isContentValid(ValidationPassType.VALIDATE_SINGLE_FORMULA);
         if (requestFocus) {
@@ -554,14 +551,10 @@ public class FormulaFunctionView extends FormulaTermView {
         return true;
     }
 
-    /*********************************************************
-     * FormulaTermFunction-specific methods
-     *********************************************************/
 
     private int getArgumentDepth() {
         return mFunctionType == FunctionType.FUNCTION_INDEX ? 3 : 0;
     }
-
 
     /**
      * Procedure extracts linked function name from given string
@@ -576,7 +569,7 @@ public class FormulaFunctionView extends FormulaTermView {
             if (s.contains(f.getLinkObject())) {
                 final String opCode = f.getLinkObject() + ".";
                 final String nameAndArgs = s.substring(s.indexOf(opCode) + opCode.length(), s.length());
-                if (nameAndArgs != null && nameAndArgs.length() > 0) {
+                if (nameAndArgs.length() > 0) {
                     final int argsMarker = nameAndArgs.indexOf(FUNCTION_ARGS_MARKER);
                     if (argsMarker > 0) {
                         return nameAndArgs.substring(0, argsMarker);
@@ -609,7 +602,7 @@ public class FormulaFunctionView extends FormulaTermView {
             }
             if (opCode != null) {
                 final String nameAndArgs = s.substring(s.indexOf(opCode) + opCode.length(), s.length());
-                if (nameAndArgs != null && nameAndArgs.length() > 0) {
+                if (nameAndArgs.length() > 0) {
                     final int argsMarker = nameAndArgs.indexOf(FUNCTION_ARGS_MARKER);
                     if (argsMarker > 0) {
                         final String argsStr = nameAndArgs.substring(argsMarker + FUNCTION_ARGS_MARKER.length(),
