@@ -32,6 +32,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 
+import com.duy.natural.calc.calculator.utils.FontManager;
 import com.nstudio.calc.casio.R;
 
 public class CalcTextView extends AppCompatTextView implements OnLongClickListener, OnClickListener {
@@ -58,15 +59,16 @@ public class CalcTextView extends AppCompatTextView implements OnLongClickListen
 
     public CalcTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        this.prepare(attrs);
+        setup(context, attrs);
     }
 
     public CalcTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        this.prepare(attrs);
+        setup(context, attrs);
     }
 
-    private void prepare(AttributeSet attrs) {
+    private void setup(Context context, AttributeSet attrs) {
+        setTypeface(FontManager.getFontFromAsset(context, "fonts/Roboto-Light.ttf"));
         mMenuHandler = new ContextMenuHandler(getContext());
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CalcEditText, 0, 0);

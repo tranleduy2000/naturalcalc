@@ -236,7 +236,7 @@ public enum FunctionType implements ButtonDescriptor {
 
     @NonNull
     public String getCode() {
-        return lowerCaseName;
+        return lowerCaseName ;
     }
 }
 

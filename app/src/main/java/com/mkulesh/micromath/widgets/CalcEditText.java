@@ -34,6 +34,7 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 
 import com.duy.common.utils.DLog;
+import com.duy.natural.calc.calculator.utils.FontManager;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.nstudio.calc.casio.R;
@@ -85,8 +86,7 @@ public class CalcEditText extends AppCompatEditText implements OnLongClickListen
     protected void setup(AttributeSet attrs) {
         setTypeface(Typeface.MONOSPACE);
         ViewUtils.setShowSoftInputOnFocus(this, false);
-
-
+        setTypeface(FontManager.getFontFromAsset(getContext(), "fonts/Roboto-Light.ttf"));
         mMenuHandler = new ContextMenuHandler(getContext());
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CalcEditText, 0, 0);

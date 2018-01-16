@@ -17,11 +17,9 @@
 package com.duy.natural.calc.calculator.utils;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Typeface;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Hashtable;
 
 
@@ -35,7 +33,7 @@ public class FontManager {
     private static final Hashtable<String, Typeface> cache = new Hashtable<>();
     private static String[] FREE_FONT_NAMES;
 
-    private static Typeface get(Context c, String assetPath) throws IOException {
+    public synchronized static Typeface get(Context c, String assetPath) throws IOException {
         if (assetPath.equalsIgnoreCase("monospace")) {
             return Typeface.MONOSPACE;
         }
@@ -56,6 +54,11 @@ public class FontManager {
     public synchronized static Typeface getFontFromAsset(Context context, String name) {
         if (name == null || name.isEmpty()) {
             return Typeface.MONOSPACE;
+        }
+        try {
+            return get(context, name);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         try {
             return get(context, PATH_TO_FONT + name);
