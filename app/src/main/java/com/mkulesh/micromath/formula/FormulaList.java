@@ -312,18 +312,21 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
             // term operations
             FormulaView view = mRootFormulas.get(mSelectedFormulaId);
             if (view != null) {
-                if (!view.hasFocus()) view.requestFocus();
-                TermField tf = view.findFocusedTerm();
-                if (tf != null) {
-                    if (ClipboardManager.isFormulaObject(code) && tf.getTerm() != null) {
-                        tf.getTerm().onPasteFromClipboard(null, code);
+                TermField term = view.findFocusedTerm();
+                if (term == null){
+                    view.requestFocus();
+                    term = view.findFocusedTerm();
+                }
+                if (term != null) {
+                    if (ClipboardManager.isFormulaObject(code) && term.getTerm() != null) {
+                        term.getTerm().onPasteFromClipboard(null, code);
                     } else {
                         BasicSymbolType numberType = BasicSymbolType.getNumberType(code);
-                        CalcEditText editText = tf.getEditText();
+                        CalcEditText editText = term.getEditText();
                         if (numberType != null) {
                             onInsert(numberType.toString(), editText);
                         } else {
-                            tf.addOperatorCode(code);
+                            term.addOperatorCode(code);
                         }
 
                     }
@@ -339,24 +342,6 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
     }
 
     private void onActionButtonPressed(ActionType actionType) {
-        switch (actionType) {
-            case CALCULATE:
-                doCalculate();
-                return;
-            case CLEAR:
-                if (getSelectedEquations().size() > 0) {
-                    deleteSelectedEquations();
-                } else {
-                    clearAll();
-                    addBaseFormula(BaseType.RESULT, null);
-                }
-                return;
-            case DELETE:
-                if (deleteSelectedEquations()) {
-                    return;
-                }
-                break;
-        }
         // term operations
         FormulaView view = mRootFormulas.get(mSelectedFormulaId);
         CalcEditText editText = null;
@@ -366,13 +351,25 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
                 editText = tf.getEditText();
             }
         }
-        if (editText == null) return;
         switch (actionType) {
+            case CALCULATE:
+                doCalculate();
+                break;
+            case CLEAR:
+                if (getSelectedEquations().size() > 0) {
+                    deleteSelectedEquations();
+                } else {
+                    clearAll();
+                    onNewFormula(Position.AFTER, FormulaType.RESULT);
+                }
+                break;
             case DELETE:
-                editText.processDelKey(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
+                if (!deleteSelectedEquations()) {
+                    editText.processDelKey(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
+                }
                 break;
             case MOVE_LEFT:
-                if (!editText.moveLeft()) {
+                if (editText != null && editText.moveLeft()) {
                     int nextFocusLeftId = editText.getNextFocusLeftId();
                     TermField termField = view.findTermWithId(nextFocusLeftId);
                     if (termField != null) {
