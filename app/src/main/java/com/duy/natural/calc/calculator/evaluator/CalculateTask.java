@@ -67,13 +67,13 @@ public class CalculateTask extends AsyncTask<Void, CalculationResultView, Void> 
 
                     IExpr numeric;
                     IExpr fraction = mEvaluator.evaluate(expr);
-                    if (!ResultUtil.isResultFraction(fraction)) {
+                   /* if (!ResultUtil.isResultFraction(fraction)) {
                         checkCancellation();
                         fraction = mEvaluator.evaluateNumeric(expr);
                         numeric = fraction;
-                    } else {
+                    } else {*/
                         numeric = mEvaluator.evaluateNumeric(expr);
-                    }
+//                    }
 
                     if (DLog.DEBUG) DLog.d(TAG, "result = " + fraction);
                     f.onCalculateResult(new CalculatedResult(expr, fraction, numeric));

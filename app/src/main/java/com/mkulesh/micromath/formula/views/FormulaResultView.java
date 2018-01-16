@@ -27,15 +27,16 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.duy.natural.calc.calculator.evaluator.CalculateTask;
+import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
+import com.duy.natural.calc.calculator.evaluator.result.CalculatedResult;
+import com.duy.natural.calc.calculator.evaluator.result.ResultUtils;
 import com.mkulesh.micromath.dialogs.DialogResultDetails;
 import com.mkulesh.micromath.dialogs.DialogResultSettings;
 import com.mkulesh.micromath.editstate.FormulaState;
 import com.mkulesh.micromath.formula.FormulaList;
-import com.duy.natural.calc.calculator.evaluator.CalculateTask;
-import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.formula.type.BaseType;
 import com.mkulesh.micromath.formula.views.TermField.ErrorNotification;
-import com.duy.natural.calc.calculator.evaluator.result.CalculatedResult;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.math.EquationArrayResult;
 import com.mkulesh.micromath.properties.OnResultPropertiesChangeListener;
@@ -52,6 +53,8 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.util.ArrayList;
 
+import io.github.kexanie.library.MathView;
+
 public class FormulaResultView extends CalculationResultView implements OnResultPropertiesChangeListener, OnFocusChangedListener, View.OnClickListener {
     public static final String CELL_DOTS = "...";
     private static final String STATE_RESULT_PROPERTIES = "result_properties";
@@ -64,6 +67,7 @@ public class FormulaResultView extends CalculationResultView implements OnResult
     private TermField mConstantResultField = null;
     private ResultType mResultType = ResultType.NONE;
     private View mExpandResult;
+    private MathView mResultView;
 
     // Array and matrix results
     private EquationArrayResult mArrayArgument = null, mArrayResult = null;
@@ -95,6 +99,7 @@ public class FormulaResultView extends CalculationResultView implements OnResult
         inflateRootLayout(R.layout.formula_result, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         mExpandResult = layout.findViewById(R.id.btn_expand_result);
         mExpandResult.setOnClickListener(this);
+        mResultView = layout.findViewById(R.id.math_view);
         // create name term
         {
             CalcEditText v = layout.findViewById(R.id.formula_result_name);
@@ -314,11 +319,13 @@ public class FormulaResultView extends CalculationResultView implements OnResult
             case NAN:
             case CONSTANT: {*/
         mConstantResultField.getEditText().setVisibility(visibility);
+        mResultView.setVisibility(VISIBLE);
         mLeftBracket.setVisibility(View.GONE);
         mArrayResultMatrix.setVisibility(View.GONE);
         mRightBracket.setVisibility(View.GONE);
-
-        mConstantResultField.setText(fillResultString());
+        if (visibility == VISIBLE) {
+            ResultUtils.showLaTeX(mResultView, mResult);
+        }
         if (mResult != null) {
             mExpandResult.setVisibility(VISIBLE);
         } else {
