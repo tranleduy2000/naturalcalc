@@ -47,7 +47,7 @@ public class LaTeXFragment extends BottomSheetDialogFragment {
         CalculatedResult result = (CalculatedResult) getArguments().getSerializable(EXTRA_EXPR);
         showToMathView((MathView) view.findViewById(R.id.input_view), result.getInput());
         showToMathView((MathView) view.findViewById(R.id.result_fraction_view), result.getFraction());
-        showToMathView((MathView) view.findViewById(R.id.result_decimal_view), result.getFraction());
+        showToMathView((MathView) view.findViewById(R.id.result_decimal_view), result.getNumeric());
     }
 
     private void showToMathView(MathView mathView, IExpr expr) {
