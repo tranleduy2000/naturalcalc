@@ -366,15 +366,13 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
                 doCalculate();
                 break;
             case CLEAR:
-                if (getSelectedEquations().size() > 0) {
-                    deleteSelectedEquations();
-                } else {
+                if (!deleteSelectedEquations()) {
                     clearAll();
                     onNewFormula(Position.AFTER, FormulaType.RESULT);
                 }
                 break;
             case DELETE:
-                if (editText != null && !deleteSelectedEquations()) {
+                if (!deleteSelectedEquations() && editText != null) {
                     editText.processDelKey(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
                 }
                 break;
