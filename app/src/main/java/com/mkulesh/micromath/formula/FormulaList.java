@@ -116,7 +116,6 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
 
         mDocumentSettings = new DocumentProperties(getContext());
         mUndoState = new UndoState(mActivity);
-        onNewFormula(Position.AFTER, FormulaType.RESULT);
     }
 
     public void setKeyboardView(CalculatorContract.IKeyboardView mKeyboardView) {
@@ -372,8 +371,10 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
                 }
                 break;
             case DELETE:
-                if (!deleteSelectedEquations() && editText != null) {
-                    editText.processDelKey(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
+                if (!deleteSelectedEquations()) {
+                    if (editText != null) {
+                        editText.processDelKey(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
+                    }
                 }
                 break;
             case MOVE_LEFT:
