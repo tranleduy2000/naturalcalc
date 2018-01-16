@@ -379,11 +379,10 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
                 }
                 break;
             case MOVE_LEFT:
-                if (editText != null && editText.moveLeft()) {
+                if (editText != null && !editText.moveLeft()) {
                     int nextFocusLeftId = editText.getNextFocusLeftId();
                     TermField termField = view.findTermWithId(nextFocusLeftId);
                     if (termField != null) {
-                        clearFocus();
                         termField.setEditableFocus(FormulaView.FocusType.FOCUS_RIGHT);
                     }
                 }
@@ -393,7 +392,6 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
                     int nextFocusRightId = editText.getNextFocusRightId();
                     TermField termField = view.findTermWithId(nextFocusRightId);
                     if (termField != null) {
-                        clearFocus();
                         termField.setEditableFocus(FormulaView.FocusType.FOCUS_LEFT);
                     }
                 }
