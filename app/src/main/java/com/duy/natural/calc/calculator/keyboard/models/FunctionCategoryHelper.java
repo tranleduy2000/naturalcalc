@@ -22,7 +22,7 @@ public class FunctionCategoryHelper {
 
     private static void addBasicMath(ArrayList<FunctionCategory> functionCategories) {
         FunctionCategory category = new FunctionCategory(R.string.fun_category_title_basic);
-        category.add(FunctionType.Abs);
+//        category.add(FunctionType.Abs);
         category.add(FunctionType.AbsArg);
         category.add(FunctionType.ArcCos);
         category.add(FunctionType.ArcCosh);
@@ -54,7 +54,7 @@ public class FunctionCategoryHelper {
         category.add(FunctionType.Log2);
         category.add(FunctionType.Log10);
         category.add(FunctionType.Mod);
-        category.add(FunctionType.Pi);
+//        category.add(FunctionType.Pi);
         category.add(FunctionType.Quotient);
         category.add(FunctionType.Re);
         category.add(FunctionType.Round);
@@ -66,7 +66,7 @@ public class FunctionCategoryHelper {
         category.add(FunctionType.Solve);
         category.add(FunctionType.Sqrt);
         category.add(FunctionType.Sum);
-        category.add(FunctionType.Surd);
+//        category.add(FunctionType.Surd);
         category.add(FunctionType.Tan);
         category.add(FunctionType.Tanh);
 
@@ -75,8 +75,8 @@ public class FunctionCategoryHelper {
 
     private static void addLinearAlgebra(ArrayList<FunctionCategory> functionCategories) {
         FunctionCategory category = new FunctionCategory(R.string.fun_category_title_linear_algebra);
-        category.add(FunctionType.ArrayDepth);
-        category.add(FunctionType.ArrayQ);
+//        category.add(FunctionType.ArrayDepth);
+//        category.add(FunctionType.ArrayQ);
         category.add(FunctionType.BrayCurtisDistance);
         category.add(FunctionType.CanberraDistance);
         category.add(FunctionType.CharacteristicPolynomial);
@@ -86,23 +86,23 @@ public class FunctionCategoryHelper {
         category.add(FunctionType.Cross);
         category.add(FunctionType.DesignMatrix);
         category.add(FunctionType.Det);
-        category.add(FunctionType.DiagonalMatrix);
-        category.add(FunctionType.Dimensions);
+//        category.add(FunctionType.DiagonalMatrix);
+//        category.add(FunctionType.Dimensions);
         category.add(FunctionType.Dot);
         category.add(FunctionType.Eigenvalues);
         category.add(FunctionType.Eigenvectors);
         category.add(FunctionType.EuclideanDistance);
-        category.add(FunctionType.FrobeniusSolve);
-        category.add(FunctionType.HilbertMatrix);
-        category.add(FunctionType.IdentityMatrix);
-        category.add(FunctionType.Inner);
+//        category.add(FunctionType.FrobeniusSolve);
+//        category.add(FunctionType.HilbertMatrix);
+//        category.add(FunctionType.IdentityMatrix);
+//        category.add(FunctionType.Inner);
         category.add(FunctionType.Inverse);
-        category.add(FunctionType.JacobiMatrix);
-        category.add(FunctionType.LinearProgramming);
+//        category.add(FunctionType.JacobiMatrix);
+//        category.add(FunctionType.LinearProgramming);
         category.add(FunctionType.LinearSolve);
         category.add(FunctionType.LUDecomposition);
         category.add(FunctionType.MatrixPower);
-        category.add(FunctionType.MatrixQ);
+//        category.add(FunctionType.MatrixQ);
         category.add(FunctionType.MatrixRank);
         category.add(FunctionType.Norm);
         category.add(FunctionType.Normalize);
@@ -114,9 +114,9 @@ public class FunctionCategoryHelper {
         category.add(FunctionType.SingularValueDecomposition);
         category.add(FunctionType.SquaredEuclideanDistance);
         category.add(FunctionType.Transpose);
-        category.add(FunctionType.VandermondeMatrix);
+//        category.add(FunctionType.VandermondeMatrix);
         category.add(FunctionType.VectorAngle);
-        category.add(FunctionType.VectorQ);
+//        category.add(FunctionType.VectorQ);
         functionCategories.add(category);
     }
 
@@ -124,50 +124,50 @@ public class FunctionCategoryHelper {
         FunctionCategory category = new FunctionCategory(R.string.fun_category_title_combinatorial);
         category.add(FunctionType.BernoulliB);
         category.add(FunctionType.Binomial);
-        category.add(FunctionType.CartesianProduct);
+//        category.add(FunctionType.CartesianProduct);
         category.add(FunctionType.CatalanNumber);
-        category.add(FunctionType.DiceDissimilarity);
-        category.add(FunctionType.Factorial);
+//        category.add(FunctionType.DiceDissimilarity);
+//        category.add(FunctionType.Factorial);
         category.add(FunctionType.Factorial2);
         category.add(FunctionType.Fibonacci);
         category.add(FunctionType.IntegerPartitions);
-        category.add(FunctionType.Intersection);
-        category.add(FunctionType.JaccardDissimilarity);
-        category.add(FunctionType.MatchingDissimilarity);
+//        category.add(FunctionType.Intersection);
+//        category.add(FunctionType.JaccardDissimilarity);
+//        category.add(FunctionType.MatchingDissimilarity);
         category.add(FunctionType.Multinomial);
-        category.add(FunctionType.Partition);
-        category.add(FunctionType.Permutations);
-        category.add(FunctionType.RogersTanimotoDissimilarity);
+//        category.add(FunctionType.Partition);
+//        category.add(FunctionType.Permutations);
+//        category.add(FunctionType.RogersTanimotoDissimilarity);
         category.add(FunctionType.StirlingS1);
         category.add(FunctionType.StirlingS2);
-        category.add(FunctionType.Subsets);
-        category.add(FunctionType.RussellRaoDissimilarity);
-        category.add(FunctionType.SokalSneathDissimilarity);
-        category.add(FunctionType.Tuples);
-        category.add(FunctionType.Union);
-        category.add(FunctionType.YuleDissimilarity);
+//        category.add(FunctionType.Subsets);
+//        category.add(FunctionType.RussellRaoDissimilarity);
+//        category.add(FunctionType.SokalSneathDissimilarity);
+//        category.add(FunctionType.Tuples);
+//        category.add(FunctionType.Union);
+//        category.add(FunctionType.YuleDissimilarity);
         functionCategories.add(category);
     }
 
     private static void addLogic(ArrayList<FunctionCategory> functionCategories) {
         FunctionCategory functions = new FunctionCategory(R.string.fun_category_title_logic);
-        functions.add(FunctionType.AllTrue);
-        functions.add(FunctionType.AnyTrue);
+//        functions.add(FunctionType.AllTrue);
+//        functions.add(FunctionType.AnyTrue);
         functions.add(FunctionType.And);
         functions.add(FunctionType.Boole);
         functions.add(FunctionType.BooleanMinimize);
-        functions.add(FunctionType.BooleanQ);
-        functions.add(FunctionType.Booleans);
+//        functions.add(FunctionType.BooleanQ);
+//        functions.add(FunctionType.Booleans);
         functions.add(FunctionType.Equivalent);
-        functions.add(FunctionType.False);
+//        functions.add(FunctionType.False);
         functions.add(FunctionType.Implies);
-        functions.add(FunctionType.NoneTrue);
+//        functions.add(FunctionType.NoneTrue);
         functions.add(FunctionType.Not);
         functions.add(FunctionType.Or);
-        functions.add(FunctionType.SatisfiableQ);
-        functions.add(FunctionType.TautologyQ);
-        functions.add(FunctionType.True);
-        functions.add(FunctionType.TrueQ);
+//        functions.add(FunctionType.SatisfiableQ);
+//        functions.add(FunctionType.TautologyQ);
+//        functions.add(FunctionType.True);
+//        functions.add(FunctionType.TrueQ);
         functions.add(FunctionType.Xor);
 
         functionCategories.add(functions);

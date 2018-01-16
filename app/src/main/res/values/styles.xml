@@ -178,8 +178,11 @@
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
     </style>
 
+    <style name="CalcButtonStyle.Number">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
+    </style>
+
     <style name="CalcButtonStyle.Operator">
-        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="CalcButtonStyle.Constant">

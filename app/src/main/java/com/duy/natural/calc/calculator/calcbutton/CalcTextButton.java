@@ -18,6 +18,7 @@ package com.duy.natural.calc.calculator.calcbutton;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
@@ -60,7 +61,11 @@ public class CalcTextButton extends AppCompatTextView implements ICalcButton {
 
     private void setup(Context context, AttributeSet attrs) {
         mSetting = new CalculatorSetting(context);
-        setTypeface(FontManager.getFontFromAsset(context, "Roboto-Light.ttf"));
+        if (getTypeface().getStyle() == Typeface.BOLD) {
+            setTypeface(FontManager.getFontFromAsset(context, "Roboto-Regular.ttf"));
+        } else {
+            setTypeface(FontManager.getFontFromAsset(context, "Roboto-Light.ttf"));
+        }
         if (attrs != null) {
             TypedArray ta = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CalcTextButton, -1, -1);
             code = ta.getString(R.styleable.CalcTextButton_code);

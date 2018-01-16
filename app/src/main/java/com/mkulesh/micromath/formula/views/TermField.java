@@ -584,10 +584,11 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
 
         // layout border
         if (mLayout instanceof FormulaLayout) {
-            ((FormulaLayout) mLayout).setContentValid(true);
             if (isTerm() && mErrorNotification == ErrorNotification.LAYOUT_BORDER && errorDetected) {
                 ((FormulaLayout) mLayout).setContentValid(false);
                 return;
+            } else {
+                ((FormulaLayout) mLayout).setContentValid(true);
             }
         }
 

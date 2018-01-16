@@ -28,7 +28,7 @@ public enum FunctionType implements ButtonDescriptor {
 
 
     /*Basic math*/
-    Abs(1, "functions/Abs.md"),
+   /* Abs(1, "functions/Abs.md") ABS_LAYOUT,*/
     AbsArg(1, "functions/AbsArg.md"),
     ArcCos(1, "functions/ArcCos.md"),
     ArcCosh(1, "functions/ArcCosh.md"),
@@ -43,7 +43,12 @@ public enum FunctionType implements ButtonDescriptor {
     ArcTan(1, "functions/ArcTan.md"),
     ArcTanh(1, "functions/ArcTanh.md"),
     Arg(1, "functions/Arg.md"),
-    Ceiling(1, "functions/Ceiling.md"),
+    Ceiling(1, "functions/Ceiling.md"){
+        @Override
+        public boolean isInfinityArg() {
+            return true;
+        }
+    },
     Conjugate(1, "functions/Conjugate.md"),
     Cos(1, "functions/Cos.md"),
     Cosh(1, "functions/Cosh.md"),
@@ -54,10 +59,14 @@ public enum FunctionType implements ButtonDescriptor {
     Exp(1, "functions/Exp.md"),
     Im(1, "functions/Im.md"),
     Ln(1, "functions/Ln.md"),
-    Log(1, "functions/Log.md"),
+    Log(1, "functions/Log.md"){
+        @Override
+        public boolean isInfinityArg() {
+            return true;
+        }
+    },
     Log2(1, "functions/Log2.md"),
     Log10(1, "functions/Log10.md"),
-    Pi(1, "functions/Pi.md"),
     Re(1, "functions/Re.md"),
     Round(1, "functions/Round.md"),
     Sec(1, "functions/Sec.md"),
@@ -65,10 +74,11 @@ public enum FunctionType implements ButtonDescriptor {
     Sin(1, "functions/Sin.md"),
     Sinh(1, "functions/Sinh.md"),
     Sign(1, "functions/Sign.md"),
-    Solve(1, "functions/Solve.md"),
+    Solve(2, "functions/Solve.md"),
     Sqrt(1, "functions/Sqrt.md"),
     Sum(1, "functions/Sum.md"),
-    Surd(1, "functions/Surd.md"),
+
+   /* Surd(1, "functions/Surd.md"), SURD_LAYOUT*/
     Tan(1, "functions/Tan.md"),
     Tanh(1, "functions/Tanh.md"),
 
@@ -78,103 +88,143 @@ public enum FunctionType implements ButtonDescriptor {
     Divisors(1, "functions/Divisors.md"),
     EvenQ(1, "functions/EvenQ.md"),
     FactorInteger(1, "functions/FactorInteger.md"),
-    GCD(1, "functions/GCD.md"),
-    IntegerExponent(1, "functions/IntegerExponent.md"),
-    JacobiSymbol(1, "functions/JacobiSymbol.md"),
-    LCM(1, "functions/LCM.md"),
+    GCD(2, "functions/GCD.md"){
+        @Override
+        public boolean isInfinityArg() {
+            return true;
+        }
+    },
+    IntegerExponent(2, "functions/IntegerExponent.md"),
+    JacobiSymbol(2, "functions/JacobiSymbol.md"),
+    LCM(2, "functions/LCM.md"){
+        @Override
+        public boolean isInfinityArg() {
+            return true;
+        }
+    },
     MersennePrimeExponent(1, "functions/MersennePrimeExponent.md"),
     MersennePrimeExponentQ(1, "functions/MersennePrimeExponentQ.md"),
-    Mod(1, "functions/Mod.md"),
+    Mod(2, "functions/Mod.md"),
     NextPrime(1, "functions/NextPrime.md"),
     OddQ(1, "functions/OddQ.md"),
     PartitionsP(1, "functions/PartitionsP.md"),
     PartitionsQ(1, "functions/PartitionsQ.md"),
     PerfectNumber(1, "functions/PerfectNumber.md"),
     PerfectNumberQ(1, "functions/PerfectNumberQ.md"),
-    PowerMod(1, "functions/PowerMod.md"),
+    PowerMod(3, "functions/PowerMod.md"),
     Prime(1, "functions/Prime.md"),
     PrimePi(1, "functions/PrimePi.md"),
     PrimePowerQ(1, "functions/PrimePowerQ.md"),
     PrimeQ(1, "functions/PrimeQ.md"),
-    Quotient(1, "functions/Quotient.md"),
+    Quotient(2, "functions/Quotient.md"),
 
     /*Logic*/
-    AllTrue(1, "functions/AllTrue.md"),
-    AnyTrue(1, "functions/AnyTrue.md"),
-    And(1, "functions/And.md"),
+    /*AllTrue(1, "functions/AllTrue.md"),*/
+    /*AnyTrue(1, "functions/AnyTrue.md"),*/
+    And(2, "functions/And.md"){
+        @Override
+        public boolean isInfinityArg() {
+            return true;
+        }
+    },
     Boole(1, "functions/Boole.md"),
     BooleanMinimize(1, "functions/BooleanMinimize.md"),
-    BooleanQ(1, "functions/BooleanQ.md"),
-    Booleans(1, "functions/Booleans.md"),
-    Equivalent(1, "functions/Equivalent.md"),
-    False(1, "functions/False.md"),
-    Implies(1, "functions/Implies.md"),
-    NoneTrue(1, "functions/NoneTrue.md"),
+    /*BooleanQ(1, "functions/BooleanQ.md"),*/
+    /*Booleans(1, "functions/Booleans.md"),*/
+    Equivalent(2, "functions/Equivalent.md"){
+        @Override
+        public boolean isInfinityArg() {
+            return true;
+        }
+    },
+    /*False(1, "functions/False.md") CONST FALSE,*/
+    Implies(2, "functions/Implies.md"),
+    /*NoneTrue(1, "functions/NoneTrue.md"),*/
     Not(1, "functions/Not.md"),
-    Or(1, "functions/Or.md"),
-    SatisfiableQ(1, "functions/SatisfiableQ.md"),
-    TautologyQ(1, "functions/TautologyQ.md"),
-    True(1, "functions/True.md"),
-    TrueQ(1, "functions/TrueQ.md"),
-    Xor(1, "functions/Xor.md"),
+    Or(2, "functions/Or.md"){
+        @Override
+        public boolean isInfinityArg() {
+            return true;
+        }
+    },
+    /*SatisfiableQ(1, "functions/SatisfiableQ.md"),*/
+    /*TautologyQ(1, "functions/TautologyQ.md"),*/
+    /*True(1, "functions/True.md") TRUE const,*/
+    /*TrueQ(1, "functions/TrueQ.md"),*/
+    Xor(2, "functions/Xor.md"){
+        @Override
+        public boolean isInfinityArg() {
+            return true;
+        }
+    },
 
     /*Combinatorial*/
     BernoulliB(1, "functions/BernoulliB.md"),
-    Binomial(1, "functions/Binomial.md"),
-    CartesianProduct(1, "functions/CartesianProduct.md"),
+    Binomial(2, "functions/Binomial.md"),
+    /*CartesianProduct(1, "functions/CartesianProduct.md"),*/
     CatalanNumber(1, "functions/CatalanNumber.md"),
-    DiceDissimilarity(1, "functions/DiceDissimilarity.md"),
-    Factorial(1, "functions/Factorial.md"),
+    /*DiceDissimilarity(1, "functions/DiceDissimilarity.md"),*/
+    /*Factorial(1, "functions/Factorial.md"), FACTORIAL_LAYOUT*/
     Factorial2(1, "functions/Factorial2.md"),
     Fibonacci(1, "functions/Fibonacci.md"),
     IntegerPartitions(1, "functions/IntegerPartitions.md"),
-    Intersection(1, "functions/Intersection.md"),
-    JaccardDissimilarity(1, "functions/JaccardDissimilarity.md"),
-    MatchingDissimilarity(1, "functions/MatchingDissimilarity.md"),
-    Multinomial(1, "functions/Multinomial.md"),
-    Partition(1, "functions/Partition.md"),
-    Permutations(1, "functions/Permutations.md"),
-    RogersTanimotoDissimilarity(1, "functions/RogersTanimotoDissimilarity.md"),
-    StirlingS1(1, "functions/StirlingS1.md"),
-    StirlingS2(1, "functions/StirlingS2.md"),
-    Subsets(1, "functions/Subsets.md"),
+    /*Intersection(1, "functions/Intersection.md"),*/
+    /*JaccardDissimilarity(1, "functions/JaccardDissimilarity.md"),*/
+    /*MatchingDissimilarity(1, "functions/MatchingDissimilarity.md"),*/
+    Multinomial(2, "functions/Multinomial.md"){
+        @Override
+        public boolean isInfinityArg() {
+            return true;
+        }
+    },
+    /*Partition(1, "functions/Partition.md"),*/
+    /*Permutations(1, "functions/Permutations.md"),*/
+    /*RogersTanimotoDissimilarity(1, "functions/RogersTanimotoDissimilarity.md"),*/
+    StirlingS1(2, "functions/StirlingS1.md"),
+    StirlingS2(2, "functions/StirlingS2.md"),
+    /*Subsets(1, "functions/Subsets.md"),
     RussellRaoDissimilarity(1, "functions/RussellRaoDissimilarity.md"),
-    SokalSneathDissimilarity(1, "functions/SokalSneathDissimilarity.md"),
-    Tuples(1, "functions/Tuples.md"),
+    SokalSneathDissimilarity(1, "functions/SokalSneathDissimilarity.md"),*/
+    /*Tuples(1, "functions/Tuples.md"),
     Union(1, "functions/Union.md"),
-    YuleDissimilarity(1, "functions/YuleDissimilarity.md"),
+    YuleDissimilarity(1, "functions/YuleDissimilarity.md"),*/
 
     /*Linear algebra*/
-    ArrayDepth(1, "functions/ArrayDepth.md"),
-    ArrayQ(1, "functions/ArrayQ.md"),
-    BrayCurtisDistance(1, "functions/BrayCurtisDistance.md"),
-    CanberraDistance(1, "functions/CanberraDistance.md"),
-    CharacteristicPolynomial(1, "functions/CharacteristicPolynomial.md"),
-    ChessboardDistance(1, "functions/ChessboardDistance.md"),
+    /*ArrayDepth(1, "functions/ArrayDepth.md"),
+    ArrayQ(1, "functions/ArrayQ.md"),*/
+    BrayCurtisDistance(2, "functions/BrayCurtisDistance.md"),
+    CanberraDistance(2, "functions/CanberraDistance.md"),
+    CharacteristicPolynomial(2, "functions/CharacteristicPolynomial.md"),
+    ChessboardDistance(2, "functions/ChessboardDistance.md"),
     ConjugateTranspose(1, "functions/ConjugateTranspose.md"),
-    CosineDistance(1, "functions/CosineDistance.md"),
-    Cross(1, "functions/Cross.md"),
-    DesignMatrix(1, "functions/DesignMatrix.md"),
+    CosineDistance(2, "functions/CosineDistance.md"),
+    Cross(2, "functions/Cross.md"),
+    DesignMatrix(3, "functions/DesignMatrix.md"),
     Det(1, "functions/Det.md"),
-    DiagonalMatrix(1, "functions/DiagonalMatrix.md"),
-    Dimensions(1, "functions/Dimensions.md"),
-    Dot(1, "functions/Dot.md"),
+    /*DiagonalMatrix(1, "functions/DiagonalMatrix.md"),
+    Dimensions(1, "functions/Dimensions.md"),*/
+    Dot(2, "functions/Dot.md"),
     Eigenvalues(1, "functions/Eigenvalues.md"),
     Eigenvectors(1, "functions/Eigenvectors.md"),
-    EuclideanDistance(1, "functions/EuclideanDistance.md"),
-    FrobeniusSolve(1, "functions/FrobeniusSolve.md"),
-    HilbertMatrix(1, "functions/HilbertMatrix.md"),
-    IdentityMatrix(1, "functions/IdentityMatrix.md"),
-    Inner(1, "functions/Inner.md"),
+    EuclideanDistance(2, "functions/EuclideanDistance.md"),
+   /* FrobeniusSolve(1, "functions/FrobeniusSolve.md"),*/
+    /*HilbertMatrix(1, "functions/HilbertMatrix.md"),
+    IdentityMatrix(1, "functions/IdentityMatrix.md"),*/
+    /*Inner(1, "functions/Inner.md"),*/
     Inverse(1, "functions/Inverse.md"),
-    JacobiMatrix(1, "functions/JacobiMatrix.md"),
-    LinearProgramming(1, "functions/LinearProgramming.md"),
-    LinearSolve(1, "functions/LinearSolve.md"),
+    /*JacobiMatrix(1, "functions/JacobiMatrix.md"),*/
+    /*LinearProgramming(1, "functions/LinearProgramming.md"),*/
+    LinearSolve(2, "functions/LinearSolve.md"),
     LUDecomposition(1, "functions/LUDecomposition.md"),
-    MatrixPower(1, "functions/MatrixPower.md"),
-    MatrixQ(1, "functions/MatrixQ.md"),
+    MatrixPower(2, "functions/MatrixPower.md"),
+    /*MatrixQ(1, "functions/MatrixQ.md"),*/
     MatrixRank(1, "functions/MatrixRank.md"),
-    Norm(1, "functions/Norm.md"),
+    Norm(1, "functions/Norm.md"){
+        @Override
+        public boolean isInfinityArg() {
+            return true;
+        }
+    },
     Normalize(1, "functions/Normalize.md"),
     NullSpace(1, "functions/NullSpace.md"),
     Outer(1, "functions/Outer.md"),
@@ -184,9 +234,9 @@ public enum FunctionType implements ButtonDescriptor {
     SingularValueDecomposition(1, "functions/SingularValueDecomposition.md"),
     SquaredEuclideanDistance(1, "functions/SquaredEuclideanDistance.md"),
     Transpose(1, "functions/Transpose.md"),
-    VandermondeMatrix(1, "functions/VandermondeMatrix.md"),
-    VectorAngle(1, "functions/VectorAngle.md"),
-    VectorQ(1, "functions/VectorQ.md"),;
+    /*VandermondeMatrix(1, "functions/VandermondeMatrix.md"),*/
+    VectorAngle(2, "functions/VectorAngle.md"),
+    /*VectorQ(1, "functions/VectorQ.md"),*/;
 
 
     private final int argNumber;
