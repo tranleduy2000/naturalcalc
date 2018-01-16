@@ -475,25 +475,29 @@ public class FormulaFunctionView extends FormulaTermView {
     public void onDelete(CalcEditText owner) {
         final TermField ownerTerm = findTerm(owner);
         final Resources res = getResources();
-        if (mFunctionType == FunctionType.SURD_LAYOUT || owner == null || mTerms.size() <= 1 || !isNewTermEnabled()) {
+        if (mFunctionType == FunctionType.SURD_LAYOUT
+                || owner == null
+                || mTerms.size() <= 1
+                || !isNewTermEnabled()) {
             // search remaining text or term
             TermField remainingTerm = null;
             CharSequence remainingText = "";
-            if (ownerTerm != null) {
+            /*if (ownerTerm != null) {
                 if (mFunctionTerm != null) {
                     remainingText = getFunctionLabel();
                 }
-                for (TermField t : mTerms) {
-                    if (t == ownerTerm) {
+                for (TermField term : mTerms) {
+                    if (term == ownerTerm) {
                         continue;
                     }
-                    if (t.isTerm()) {
-                        remainingTerm = t;
-                    } else if (!t.isEmpty()) {
-                        remainingText = t.getText();
+                    if (term.isTerm()) {
+                        remainingTerm = term;
+                    } else if (!term.isEmpty()) {
+                        remainingText = term.getText();
                     }
                 }
-            }
+            }*/
+
             if (parentField != null && remainingTerm != null) {
                 parentField.onTermDelete(removeElements(), remainingTerm);
             } else if (parentField != null) {
@@ -516,7 +520,7 @@ public class FormulaFunctionView extends FormulaTermView {
 
     @Override
     public boolean isNewTermEnabled() {
-        return mFunctionType.isLink();
+        return mFunctionType.isLink() || mFunctionType.isInfinityArg();
     }
 
     @Override

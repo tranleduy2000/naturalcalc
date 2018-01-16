@@ -444,6 +444,7 @@ public class CalcTextView extends AppCompatTextView implements OnLongClickListen
         return true;
     }
 
+
     public enum SymbolType {
         EMPTY,
         TEXT,

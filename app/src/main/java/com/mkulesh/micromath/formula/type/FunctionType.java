@@ -246,5 +246,9 @@ public enum FunctionType implements ButtonDescriptor {
     public String getCode() {
         return lowerCaseName;
     }
+
+    public boolean isInfinityArg() {
+        return false;
+    }
 }
 
