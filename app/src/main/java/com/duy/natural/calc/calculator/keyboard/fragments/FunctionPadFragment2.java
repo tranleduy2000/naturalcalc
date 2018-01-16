@@ -4,14 +4,17 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.duy.natural.calc.calculator.calcbutton.ICalcButton;
 import com.duy.natural.calc.calculator.keyboard.OnCalcButtonClickListener;
 import com.duy.natural.calc.calculator.keyboard.adapters.FunctionAdapter;
+import com.duy.natural.calc.calculator.keyboard.models.FunctionItem;
+import com.mkulesh.micromath.utils.ViewUtils;
 import com.nstudio.calc.casio.R;
 
 /**
@@ -20,7 +23,7 @@ import com.nstudio.calc.casio.R;
 
 public class FunctionPadFragment2 extends Fragment implements View.OnLongClickListener, View.OnClickListener {
 
-    private OnCalcButtonClickListener listener;
+    private OnCalcButtonClickListener mListener;
     private RecyclerView mRecyclerView;
     private FunctionAdapter mFunctionAdapter;
 
@@ -43,7 +46,18 @@ public class FunctionPadFragment2 extends Fragment implements View.OnLongClickLi
         mFunctionAdapter = new FunctionAdapter(getContext());
         mRecyclerView = view.findViewById(R.id.recycle_view);
         mRecyclerView.setHasFixedSize(false);
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 4);
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                if (mFunctionAdapter.getItemViewType(position) == FunctionItem.TYPE_CATEGORY) {
+                    return 4;
+                }
+                return 1;
+            }
+        });
+        mRecyclerView.setLayoutManager(gridLayoutManager);
+
         mRecyclerView.setAdapter(mFunctionAdapter);
 
         mFunctionAdapter.setOnClickListener(this);
@@ -51,16 +65,22 @@ public class FunctionPadFragment2 extends Fragment implements View.OnLongClickLi
     }
 
     public void setListener(OnCalcButtonClickListener listener) {
-        this.listener = listener;
+        this.mListener = listener;
     }
 
     @Override
-    public boolean onLongClick(View v) {
-        return false;
+    public boolean onLongClick(View view) {
+        return view instanceof ICalcButton && ViewUtils.showButtonDescription(getContext(), view);
     }
 
     @Override
-    public void onClick(View v) {
-
+    public void onClick(View view) {
+        if (view instanceof ICalcButton && mListener != null) {
+            final ICalcButton calcButton = (ICalcButton) view;
+            String categoryCode = calcButton.getCategoryCode();
+            if (categoryCode != null) {
+                mListener.onButtonPressed(view, categoryCode);
+            }
+        }
     }
 }

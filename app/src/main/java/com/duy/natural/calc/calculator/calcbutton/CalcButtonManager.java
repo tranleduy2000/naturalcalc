@@ -123,7 +123,7 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
                 ICalcButton button = (ICalcButton) view;
                 button.initWithParameter(intervalType.getSymbolId(),
                         intervalType.getDescriptionId(),
-                        intervalType.getLowerCaseName());
+                        intervalType.getCode());
                 button.setCategories(new Category[]{Category.TOP_LEVEL_TERM});
             }
         }
@@ -134,7 +134,7 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
             View view = viewGroup.findViewById(type.getViewId());
             if (view instanceof ICalcButton) {
                 ((ICalcButton) view).initWithParameter(CalcButtonManager.NO_BUTTON,
-                        type.getDescriptionId(), type.getLowerCaseName());
+                        type.getDescriptionId(), type.getCode());
             }
         }
 
@@ -146,7 +146,7 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
             View view = parent.findViewById(type.getViewId());
             if (view instanceof ICalcButton) {
                 ICalcButton p = (ICalcButton) view;
-                p.initWithParameter(type.getSymbolId(), type.getDescriptionId(), type.getLowerCaseName());
+                p.initWithParameter(type.getSymbolId(), type.getDescriptionId(), type.getCode());
                 p.setCategories(new Category[]{Category.COMPARATOR});
             }
         }
@@ -159,7 +159,7 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
             View view = parent.findViewById(id);
             if (view instanceof ICalcButton) {
                 ICalcButton p = (ICalcButton) view;
-                p.initWithParameter(type.getSymbolId(), type.getDescriptionId(), type.getLowerCaseName());
+                p.initWithParameter(type.getSymbolId(), type.getDescriptionId(), type.getCode());
                 p.setCategories(new Category[]{Category.CONVERSION});
             }
         }
@@ -177,7 +177,7 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
             View view = parent.findViewById(type.getViewId());
             if (view instanceof ICalcButton) {
                 ICalcButton b = (ICalcButton) view;
-                b.initWithParameter(shortCuId, type.getDescriptionId(), type.getLowerCaseName());
+                b.initWithParameter(shortCuId, type.getDescriptionId(), type.getCode());
                 b.setCategories(new Category[]{Category.CONVERSION});
             }
         }
@@ -190,7 +190,7 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
             View view = parent.findViewById(viewId);
             if (view instanceof ICalcButton) {
                 ICalcButton p = (ICalcButton) view;
-                p.initWithParameter(type.getSymbolId(), type.getDescriptionId(), type.getLowerCaseName());
+                p.initWithParameter(type.getSymbolId(), type.getDescriptionId(), type.getCode());
                 p.setCategories(new Category[]{Category.CONVERSION});
             }
         }

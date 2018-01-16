@@ -21,12 +21,8 @@ package com.mkulesh.micromath.formula.views;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.duy.natural.calc.calculator.calcbutton.Category;
-import com.duy.natural.calc.calculator.calcbutton.ICalcButton;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.formula.type.IntervalType;
@@ -71,7 +67,7 @@ public class FormulaTermIntervalView extends FormulaTermView {
     public static IntervalType getIntervalType(Context context, String s) {
         IntervalType retValue = null;
         for (IntervalType f : IntervalType.values()) {
-            if (s.equals(f.getLowerCaseName())
+            if (s.equals(f.getCode())
                     || s.contains(context.getResources().getString(f.getSymbolId()))) {
                 retValue = f;
                 break;
@@ -122,7 +118,7 @@ public class FormulaTermIntervalView extends FormulaTermView {
 
     @Override
     public String getTermCode() {
-        return getIntervalType().getLowerCaseName();
+        return getIntervalType().getCode();
     }
 
     @Override

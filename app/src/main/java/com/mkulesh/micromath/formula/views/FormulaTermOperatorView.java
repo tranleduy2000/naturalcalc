@@ -21,12 +21,8 @@ package com.mkulesh.micromath.formula.views;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.duy.natural.calc.calculator.calcbutton.Category;
-import com.duy.natural.calc.calculator.calcbutton.ICalcButton;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.formula.type.OperatorType;
@@ -62,7 +58,7 @@ public class FormulaTermOperatorView extends FormulaTermView {
     public static OperatorType getOperatorType(Context context, String text) {
         OperatorType result = null;
         for (OperatorType operatorType : OperatorType.values()) {
-            if (text.equals(operatorType.getLowerCaseName())
+            if (text.equals(operatorType.getCode())
                     || text.contains(context.getResources().getString(operatorType.getSymbolId()))) {
                 result = operatorType;
                 break;
@@ -108,7 +104,7 @@ public class FormulaTermOperatorView extends FormulaTermView {
 
     @Override
     public String getTermCode() {
-        return getOperatorType().getLowerCaseName();
+        return getOperatorType().getCode();
     }
 
     @Override

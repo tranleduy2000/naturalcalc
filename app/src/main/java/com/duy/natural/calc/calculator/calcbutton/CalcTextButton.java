@@ -77,6 +77,7 @@ public class CalcTextButton extends AppCompatTextView implements ICalcButton {
         }
     }
 
+    @Override
     public void initWithParameter(int shortCutId, int descriptionId, String code) {
         if (shortCutId != CalcButtonManager.NO_BUTTON) {
             shortCut = getContext().getResources().getString(shortCutId);
@@ -93,6 +94,9 @@ public class CalcTextButton extends AppCompatTextView implements ICalcButton {
             setLongClickable(true);
         }
         this.code = code;
+        if (getText().length() == 0) {
+            setText(code);
+        }
         enableAll();
     }
 

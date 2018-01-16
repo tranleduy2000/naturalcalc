@@ -77,7 +77,7 @@ public enum LoopType implements ButtonDescriptor {
     }
 
     @NonNull
-    public String getLowerCaseName() {
+    public String getCode() {
         return lowerCaseName;
     }
 }

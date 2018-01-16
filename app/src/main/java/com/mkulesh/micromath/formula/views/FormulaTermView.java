@@ -83,29 +83,29 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
     public static String getOperatorCode(Context context, String code, boolean ensureManualTrigger) {
         OperatorType operatorType = FormulaTermOperatorView.getOperatorType(context, code);
         if (operatorType != null) {
-            return operatorType.getLowerCaseName();
+            return operatorType.getCode();
         }
 
         ComparatorType comparatorType = FormulaTermComparatorView.getComparatorType(context, code);
         if (comparatorType != null) {
-            return comparatorType.getLowerCaseName();
+            return comparatorType.getCode();
         }
 
         // TermFunction has manual trigger (like "(" or "["): is has to be checked
         boolean enableFunction = !ensureManualTrigger || FormulaTermFunctionView.containsFunctionTrigger(context, code);
         FunctionType functionType = FormulaTermFunctionView.getFunctionType(context, code);
         if (enableFunction && functionType != null) {
-            return functionType.getLowerCaseName();
+            return functionType.getCode();
         }
 
         IntervalType intervalType = FormulaTermIntervalView.getIntervalType(context, code);
         if (intervalType != null) {
-            return intervalType.getLowerCaseName();
+            return intervalType.getCode();
         }
 
         LoopType loopType = FormulaTermLoopView.getLoopType(context, code);
         if (loopType != null) {
-            return loopType.getLowerCaseName();
+            return loopType.getCode();
         }
 
         return null;
@@ -159,7 +159,7 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
         if (newValue == null && t3 != null) {
             // for a function, we add operator code at the beginning of line in order to move
             // existing text in the function argument term
-            newValue = (t3 == FunctionType.FUNCTION_LINK) ? code : t3.getLowerCaseName();
+            newValue = (t3 == FunctionType.FUNCTION_LINK) ? code : t3.getCode();
             if (prevText != null) {
                 if (t3 != FunctionType.FUNCTION_LINK) {
                     newValue += contex.getResources().getString(R.string.formula_function_start_bracket);

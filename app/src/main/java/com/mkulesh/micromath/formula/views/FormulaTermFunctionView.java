@@ -87,10 +87,10 @@ public class FormulaTermFunctionView extends FormulaTermView {
             if (type.isLink() && allText.contains(type.getLinkObject())) {
                 return type;
             }
-            if (allText.equalsIgnoreCase(type.getLowerCaseName())) {
+            if (allText.equalsIgnoreCase(type.getCode())) {
                 return type;
             }
-            if (funcName != null && funcName.equalsIgnoreCase(type.getLowerCaseName())) {
+            if (funcName != null && funcName.equalsIgnoreCase(type.getCode())) {
                 return type;
             }
         }
@@ -122,7 +122,7 @@ public class FormulaTermFunctionView extends FormulaTermView {
 
     @NonNull
     public static String getFunctionString(FunctionType type) {
-        return type.isLink() ? type.getLinkObject() : type.getLowerCaseName();
+        return type.isLink() ? type.getLinkObject() : type.getCode();
     }
 
     public static boolean containsFunctionTrigger(Context context, String text) {
@@ -263,10 +263,10 @@ public class FormulaTermFunctionView extends FormulaTermView {
             case POWER_LAYOUT: {
                 String left = mTerms.get(0).toExpressionString();
                 String right = mTerms.get(1).toExpressionString();
-                return mFunctionType.getLowerCaseName() + "(" + left + "," + right + ")";
+                return mFunctionType.getCode() + "(" + left + "," + right + ")";
             }
             case FACTORIAL_LAYOUT:
-                return mFunctionType.getLowerCaseName() + "(" + mTerms.get(0).toExpressionString() + ")";
+                return mFunctionType.getCode() + "(" + mTerms.get(0).toExpressionString() + ")";
             case SQRT_LAYOUT:
                 return "Sqrt(" + mTerms.get(0).toExpressionString() + ")";
             case SURD_LAYOUT:
@@ -473,7 +473,7 @@ public class FormulaTermFunctionView extends FormulaTermView {
             case CONJUGATE_LAYOUT:
                 return "";
             default:
-                return mFunctionType.getLowerCaseName();
+                return mFunctionType.getCode();
         }
     }
 
@@ -587,7 +587,7 @@ public class FormulaTermFunctionView extends FormulaTermView {
                 }
                 return nameAndArgs;
             }
-            final String fName = f.getLowerCaseName()
+            final String fName = f.getCode()
                     + res.getString(R.string.formula_function_start_bracket);
             if (s.contains(fName)) {
                 return s.replace(fName, "");

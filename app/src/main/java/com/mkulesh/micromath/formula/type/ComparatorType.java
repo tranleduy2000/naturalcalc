@@ -104,7 +104,7 @@ public enum ComparatorType implements ButtonDescriptor {
     }
 
     @NonNull
-    public String getLowerCaseName() {
+    public String getCode() {
         return lowerCaseName;
     }
 }

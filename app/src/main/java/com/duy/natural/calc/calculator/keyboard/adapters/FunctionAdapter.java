@@ -7,10 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.duy.natural.calc.calculator.calcbutton.CalcTextButton;
 import com.duy.natural.calc.calculator.keyboard.models.FunctionCategory;
 import com.duy.natural.calc.calculator.keyboard.models.FunctionCategoryHelper;
+import com.duy.natural.calc.calculator.keyboard.models.FunctionItem;
 import com.mkulesh.micromath.formula.type.FunctionType;
-import com.mkulesh.micromath.widgets.CalcTextView;
 import com.nstudio.calc.casio.R;
 
 import java.util.ArrayList;
@@ -64,8 +65,9 @@ public class FunctionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             ((CategoryHolder) holder).txtTitle.setText(category.getTitleId());
         } else if (holder instanceof FunctionHolder) {
             FunctionType category = (FunctionType) functionItem.data;
-            CalcTextView button = ((FunctionHolder) holder).mCalcButton;
+            CalcTextButton button = ((FunctionHolder) holder).mCalcButton;
             button.setText(category.getFunctionName());
+            button.initWithParameter(-1, -1, category.getCode());
             button.setOnClickListener(onClickListener);
             button.setOnLongClickListener(onLongClickListener);
         }
@@ -89,17 +91,7 @@ public class FunctionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.onLongClickListener = onLongClickListener;
     }
 
-    static final class FunctionItem {
-        static final int TYPE_CATEGORY = 1;
-        static final int TYPE_FUNCTION = 2;
-        final int type;
-        final Object data;
 
-        FunctionItem(int type, Object data) {
-            this.type = type;
-            this.data = data;
-        }
-    }
 
     static final class CategoryHolder extends RecyclerView.ViewHolder {
         private TextView txtTitle;
@@ -111,7 +103,7 @@ public class FunctionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     static final class FunctionHolder extends RecyclerView.ViewHolder {
-        private CalcTextView mCalcButton;
+        private CalcTextButton mCalcButton;
 
         FunctionHolder(View itemView) {
             super(itemView);

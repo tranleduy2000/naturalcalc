@@ -78,7 +78,7 @@ public class FormulaTermLoopView extends FormulaTermView implements IArgumentHol
     public static LoopType getLoopType(Context context, String code) {
         LoopType retValue = null;
         for (LoopType f : LoopType.values()) {
-            if (code.equals(f.getLowerCaseName())
+            if (code.equals(f.getCode())
                     || code.contains(context.getResources().getString(f.getSymbolId()))) {
                 retValue = f;
                 break;
@@ -120,7 +120,7 @@ public class FormulaTermLoopView extends FormulaTermView implements IArgumentHol
 
     @Override
     public String getTermCode() {
-        return getLoopType().getLowerCaseName();
+        return getLoopType().getCode();
     }
 
     @Override

@@ -107,7 +107,7 @@ public enum BasicSymbolType implements ButtonDescriptor {
     }
 
     @NonNull
-    public String getLowerCaseName() {
+    public String getCode() {
         return name().toLowerCase(Locale.US);
     }
 

@@ -51,7 +51,7 @@ public enum BaseType implements ButtonDescriptor {
 
     @NonNull
     @Override
-    public String getLowerCaseName() {
+    public String getCode() {
         return name().toLowerCase();
     }
 

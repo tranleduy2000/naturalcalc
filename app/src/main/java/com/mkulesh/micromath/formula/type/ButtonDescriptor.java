@@ -16,5 +16,5 @@ public interface ButtonDescriptor {
     int getViewId();
 
     @NonNull
-    String getLowerCaseName();
+    String getCode();
 }
