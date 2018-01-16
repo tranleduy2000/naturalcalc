@@ -3,13 +3,9 @@
 
     <!-- Dark theme with cyan accent -->
     <style name="BaseThemeDarkCyan" parent="AppBaseThemeDark">
-        <item name="colorPrimary">@color/material_grey_800</item>
-        <item name="colorPrimaryDark">@color/background_material_dark</item>
-        <item name="colorAccent">#00BCD4</item>
-
-        <!--<item name="android:textColor">@android:color/white</item>-->
-        <!--<item name="android:textColorPrimary">@android:color/white</item>-->
-        <!--<item name="android:textColorSecondary">@color/material_grey_300</item>-->
+        <!--<item name="colorPrimary">@color/material_grey_800</item>-->
+        <!--<item name="colorPrimaryDark">@color/background_material_dark</item>-->
+        <!--<item name="colorAccent">#00BCD4</item>-->
 
         <item name="colorMicroMathIcon">@android:color/white</item>
         <!-- Dialog style -->
@@ -32,7 +28,7 @@
         <item name="colorFormulaTextFragment">@android:color/white</item>
         <item name="colorPlotGridLine">#efefef</item>
         <!-- Other elements -->
-        <item name="actionModeBackground">?attr/colorPrimary</item>
+        <!--<item name="actionModeBackground">?attr/colorPrimary</item>-->
     </style>
 
     <style name="MainThemeDarkCyan" parent="BaseThemeDarkCyan">
