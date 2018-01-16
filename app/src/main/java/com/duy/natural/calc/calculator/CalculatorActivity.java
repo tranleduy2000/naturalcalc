@@ -25,9 +25,11 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.duy.common.purchase.InAppPurchaseActivity;
+import com.duy.common.utils.ShareUtil;
 import com.duy.natural.calc.calculator.display.DisplayFragment;
 import com.duy.natural.calc.calculator.keyboard.KeyboardFragment;
 import com.duy.natural.calc.calculator.settings.SettingActivity;
+import com.kobakei.ratethisapp.RateThisApp;
 import com.mkulesh.micromath.BaseFragment;
 import com.mkulesh.micromath.editstate.clipboard.FormulaClipboardData;
 import com.mkulesh.micromath.fman.AdapterDocuments;
@@ -82,6 +84,15 @@ public class CalculatorActivity extends InAppPurchaseActivity {
 
         mActiveActionModes = new ArrayList<>();
         postShowFullScreenAdsAfter(1000 * 60 * 4); //4 minus
+
+        showDialogRate();
+    }
+
+    private void showDialogRate() {
+        // Monitor launch times and interval from installation
+        RateThisApp.onCreate(this);
+        // If the condition is satisfied, "Rate this app" dialog will be shown
+        RateThisApp.showRateDialogIfNeeded(this);
     }
 
     @Override
@@ -143,6 +154,10 @@ public class CalculatorActivity extends InAppPurchaseActivity {
                 return true;
             case R.id.action_setting:
                 openSetting();
+                return true;
+            case R.id.action_share:
+                ShareUtil.shareThisApp(this);
+                return true;
             default:
                 return super.onOptionsItemSelected(menuItem);
         }
