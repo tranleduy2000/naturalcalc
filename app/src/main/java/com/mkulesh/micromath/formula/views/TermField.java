@@ -670,7 +670,7 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
                 mTermView.updateTextSize();
             } catch (Exception ex) {
                 ViewUtils.debug(this, ex.getLocalizedMessage());
-                mLayout.addView(this.mEditText);
+                mLayout.addView(mEditText);
                 mEditText.setTextWatcher(true);
             }
         }

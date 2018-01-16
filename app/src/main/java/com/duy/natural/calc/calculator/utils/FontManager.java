@@ -56,11 +56,6 @@ public class FontManager {
             return Typeface.MONOSPACE;
         }
         try {
-            return get(context, name);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
             return get(context, PATH_TO_FONT + name);
         } catch (Exception e) {//can not find font
         }

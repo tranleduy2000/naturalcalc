@@ -68,7 +68,7 @@ public class CalcTextView extends AppCompatTextView implements OnLongClickListen
     }
 
     private void setup(Context context, AttributeSet attrs) {
-        setTypeface(FontManager.getFontFromAsset(context, "fonts/Roboto-Light.ttf"));
+        setTypeface(FontManager.getFontFromAsset(context, "Roboto-Light.ttf"));
         mMenuHandler = new ContextMenuHandler(getContext());
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CalcEditText, 0, 0);
