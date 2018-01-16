@@ -30,7 +30,7 @@ public enum FunctionTrigger {
             return "Sqrt";
         }
     },
-    POWER(R.string.formula_function_power, FunctionType.POWER, false) {
+    POWER(R.string.formula_function_power, FunctionType.POWER_LAYOUT, false) {
         @Override
         public String toString() {
             return "Power";
@@ -42,7 +42,7 @@ public enum FunctionTrigger {
             return "Surd";
         }
     },
-    FACTORIAL(R.string.formula_function_factorial_layout, FunctionType.FACTORIAL, false) {
+    FACTORIAL(R.string.formula_function_factorial_layout, FunctionType.FACTORIAL_LAYOUT, false) {
         @Override
         public String toString() {
             return "Factorial";

@@ -204,6 +204,11 @@
     <string name="math_constant_b" />
     <string name="math_constant_a" />
     <string name="math_constant_d" />
+
     <string name="fun_category_title_number_theoretic">Number theoretic functions</string>
+    <string name="fun_category_title_logic">Logic</string>
+    <string name="fun_category_title_combinatorial">Combinatorial</string>
+    <string name="fun_category_title_linear_algebra">Linear algebra</string>
+    <string name="fun_category_title_basic" />
 
 </resources>

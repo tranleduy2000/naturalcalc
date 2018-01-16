@@ -413,12 +413,12 @@ public class ExportToLatex {
                 writeTermField(terms.get(0));
                 writer.append("} ");
                 break;
-            case RE:
+            case Re:
                 writer.append("\\Re\\left( ");
                 writeTermField(terms.get(0));
                 writer.append(" \\right) ");
                 break;
-            case IM:
+            case Im:
                 writer.append("\\Im\\left( ");
                 writeTermField(terms.get(0));
                 writer.append(" \\right) ");
@@ -428,11 +428,11 @@ public class ExportToLatex {
                 writeTermField(terms.get(0));
                 writer.append(" \\right| ");
                 break;
-            case FACTORIAL:
+            case FACTORIAL_LAYOUT:
                 writeTermField(terms.get(0));
                 writer.append("! ");
                 break;
-            case POWER:
+            case POWER_LAYOUT:
                 writer.append("{");
                 writeTermField(terms.get(0));
                 writer.append("}^{");

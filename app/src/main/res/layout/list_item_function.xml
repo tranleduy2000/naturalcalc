@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mkulesh.micromath.widgets.CalcTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/calc_button"
+    style="@style/CalcButtonStyle.Function"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+</com.mkulesh.micromath.widgets.CalcTextView>

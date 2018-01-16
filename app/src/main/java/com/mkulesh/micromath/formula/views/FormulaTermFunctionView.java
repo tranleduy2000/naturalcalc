@@ -99,7 +99,7 @@ public class FormulaTermFunctionView extends FormulaTermView {
         if (funcName != null && funcName.length() == 0 && bracketId != ViewUtils.INVALID_INDEX) {
             if (bracketId == BracketParser.START_BRACKET_IDS[BracketParser.FUNCTION_BRACKETS]) {
                 // an identity function (just brackets) is a special case of a function
-                return FunctionType.IDENTITY;
+                return FunctionType.IDENTITY_LAYOUT;
             } else {
                 // index only valid if fName not empty
                 return null;
@@ -180,17 +180,17 @@ public class FormulaTermFunctionView extends FormulaTermView {
             case SURD_LAYOUT:
                 inflateElements(R.layout.formula_function_nthrt, true);
                 break;
-            case FACTORIAL:
+            case FACTORIAL_LAYOUT:
                 inflateElements(R.layout.formula_function_factorial, true);
                 break;
             case CONJUGATE_LAYOUT:
                 inflateElements(R.layout.formula_function_conjugate, true);
                 break;
             case ABS_LAYOUT:
-            case IDENTITY:
+            case IDENTITY_LAYOUT:
                 inflateElements(R.layout.formula_function_noname, true);
                 break;
-            case POWER:
+            case POWER_LAYOUT:
                 inflateElements(R.layout.formula_function_pow, true);
                 break;
             default:
@@ -217,9 +217,9 @@ public class FormulaTermFunctionView extends FormulaTermView {
         }
 
         // special text properties
-        if (mFunctionType == FunctionType.IF) {
-            mTerms.get(0).getEditText().setComparatorEnabled(true);
-        }
+//        if (mFunctionType.isBooleanFunction()) {
+//            mTerms.get(0).getEditText().setComparatorEnabled(true);
+//        }
 
         // set texts for left and right parts (in editing mode only)
         for (int brIdx = 0; brIdx < BracketParser.START_BRACKET_IDS.length; brIdx++) {
@@ -258,60 +258,26 @@ public class FormulaTermFunctionView extends FormulaTermView {
     @Override
     public String toExpressionString() {
         switch (mFunctionType) {
-            case IDENTITY:
+            case IDENTITY_LAYOUT:
                 return "(" + ")";
-            case POWER:
-            case MAX:
-            case MIN:
-            case HYPOT:
-            case ATAN2: {
+            case POWER_LAYOUT: {
                 String left = mTerms.get(0).toExpressionString();
                 String right = mTerms.get(1).toExpressionString();
                 return mFunctionType.getLowerCaseName() + "(" + left + "," + right + ")";
             }
-            case ASINH:
-            case ATANH:
-            case COT:
-            case ACOT:
-            case COTH:
-            case ACOTH:
-            case SIN:
-            case ASIN:
-            case SINH:
-            case COS:
-            case ACOS:
-            case COSH:
-            case TAN:
-            case ATAN:
-            case TANH:
-            case EXP:
-            case LOG:
-            case LOG10:
-            case RE:
-            case IM:
-            case CEILING:
-            case FLOOR:
-            case SIGN:
-            case FACTORIAL:
+            case FACTORIAL_LAYOUT:
                 return mFunctionType.getLowerCaseName() + "(" + mTerms.get(0).toExpressionString() + ")";
-
-            case SQRT:
             case SQRT_LAYOUT:
                 return "Sqrt(" + mTerms.get(0).toExpressionString() + ")";
             case SURD_LAYOUT:
                 return "Surd(" + mTerms.get(1).toExpressionString() + "," + mTerms.get(0).toExpressionString() + ")";
-            case ABS:
             case ABS_LAYOUT:
                 return "Abs(" + mTerms.get(0).toExpressionString() + ")";
             case CONJUGATE_LAYOUT:
                 return "Conjugate(" + mTerms.get(0).toExpressionString() + ")";
-            case RND:
-                return "RandomReal()";
-
             case FUNCTION_LINK:
             case FUNCTION_INDEX:
                 return mLinkedFunction.toExpressionString();
-
             default: {
                 StringBuilder args = new StringBuilder();
                 for (int i = 0; i < mTerms.size(); i++) {
@@ -321,7 +287,7 @@ public class FormulaTermFunctionView extends FormulaTermView {
                         args.append(",");
                     }
                 }
-                return mFunctionType.toString() + "(" + args.toString() + ")";
+                return mFunctionType.getFunctionName() + "(" + args.toString() + ")";
             }
         }
     }
@@ -394,10 +360,10 @@ public class FormulaTermFunctionView extends FormulaTermView {
             if (t.equals(res.getString(R.string.formula_operator_key))) {
                 v.prepare(CalcTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
                 switch (mFunctionType) {
-                    case POWER:
+                    case POWER_LAYOUT:
                         v.setText("_");
                         break;
-                    case FACTORIAL:
+                    case FACTORIAL_LAYOUT:
                         v.setText(res.getString(R.string.formula_function_factorial_layout));
                         break;
                     case CONJUGATE_LAYOUT:
@@ -435,7 +401,7 @@ public class FormulaTermFunctionView extends FormulaTermView {
             } else if (mFunctionType != FunctionType.FUNCTION_INDEX
                     && val.equals(getContext().getResources().getString(R.string.formula_arg_term_key))) {
                 final TermField t = addTerm(getFormulaRoot(), l, -1, v, this, 0);
-                t.bracketsType = (mFunctionType == FunctionType.FACTORIAL || mFunctionType == FunctionType.CONJUGATE_LAYOUT) ? TermField.BracketsType.ALWAYS
+                t.bracketsType = (mFunctionType == FunctionType.FACTORIAL_LAYOUT || mFunctionType == FunctionType.CONJUGATE_LAYOUT) ? TermField.BracketsType.ALWAYS
                         : TermField.BracketsType.NEVER;
             } else if (mFunctionType == FunctionType.SURD_LAYOUT
                     && val.equals(getContext().getResources().getString(R.string.formula_left_term_key))) {
@@ -445,11 +411,11 @@ public class FormulaTermFunctionView extends FormulaTermView {
                     && val.equals(getContext().getResources().getString(R.string.formula_right_term_key))) {
                 final TermField t = addTerm(getFormulaRoot(), l, -1, v, this, 0);
                 t.bracketsType = TermField.BracketsType.NEVER;
-            } else if (mFunctionType == FunctionType.POWER
+            } else if (mFunctionType == FunctionType.POWER_LAYOUT
                     && val.equals(getContext().getResources().getString(R.string.formula_left_term_key))) {
                 final TermField t = addTerm(getFormulaRoot(), l, v, this, false);
                 t.bracketsType = TermField.BracketsType.ALWAYS;
-            } else if (mFunctionType == FunctionType.POWER
+            } else if (mFunctionType == FunctionType.POWER_LAYOUT
                     && val.equals(getContext().getResources().getString(R.string.formula_right_term_key))) {
                 final TermField t = addTerm(getFormulaRoot(), l, -1, v, this, 3);
                 t.bracketsType = TermField.BracketsType.NEVER;
@@ -498,11 +464,11 @@ public class FormulaTermFunctionView extends FormulaTermView {
             case FUNCTION_LINK:
             case FUNCTION_INDEX:
                 return mFunctionLinkName;
-            case IDENTITY:
-            case POWER:
+            case IDENTITY_LAYOUT:
+            case POWER_LAYOUT:
             case SQRT_LAYOUT:
             case SURD_LAYOUT:
-            case FACTORIAL:
+            case FACTORIAL_LAYOUT:
             case ABS_LAYOUT:
             case CONJUGATE_LAYOUT:
                 return "";
