@@ -34,7 +34,7 @@ import com.duy.common.utils.DLog;
 import com.duy.natural.calc.calculator.CalculatorActivity;
 import com.duy.natural.calc.calculator.CalculatorContract;
 import com.duy.natural.calc.calculator.calcbutton.Category;
-import com.duy.natural.calc.calculator.dialogs.LaTeXDialogFragment2;
+import com.duy.natural.calc.calculator.dialogs.LaTeXFragment;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.result.CalculatedResult;
 import com.mkulesh.micromath.BaseFragment;
@@ -301,7 +301,6 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
     public void onButtonPressed(String code) {
         if (isInOperation()) return;
 
-
         ActionType actionType = ActionType.getActionType(code);
         FormulaType formulaType = FormulaType.getFormulaType(code);
         if (actionType != null) {
@@ -478,8 +477,8 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
 
     @Override
     public void onExpandResult(CalculatedResult result) {
-        LaTeXDialogFragment2 dialog = new LaTeXDialogFragment2(mActivity, result);
-        dialog.show();
+        LaTeXFragment dialog = LaTeXFragment.newInstance(result);
+        dialog.show(mActivity.getSupportFragmentManager(), dialog.getClass().getName());
     }
 
     @Override

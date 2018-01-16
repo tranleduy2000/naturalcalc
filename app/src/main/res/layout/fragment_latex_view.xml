@@ -1,18 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/white"
-    android:minHeight="200dp"
-    android:minWidth="200dp"
     android:orientation="vertical">
 
-    <io.github.kexanie.library.MathView
-        android:id="@+id/math_view"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center">
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="300dp"
+        android:orientation="vertical">
 
-    </io.github.kexanie.library.MathView>
+        <com.mkulesh.micromath.widgets.CalcTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Input"
+            android:textColor="#000" />
 
-</LinearLayout>
+        <com.duy.natural.calc.calculator.views.MathResultView
+            android:id="@+id/input_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </com.duy.natural.calc.calculator.views.MathResultView>
+
+        <com.mkulesh.micromath.widgets.CalcTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Exactly"
+            android:textColor="#000" />
+
+        <com.duy.natural.calc.calculator.views.MathResultView
+            android:id="@+id/result_fraction_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </com.duy.natural.calc.calculator.views.MathResultView>
+
+        <com.mkulesh.micromath.widgets.CalcTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Decimal"
+            android:textColor="#000" />
+
+        <com.duy.natural.calc.calculator.views.MathResultView
+            android:id="@+id/result_decimal_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </com.duy.natural.calc.calculator.views.MathResultView>
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

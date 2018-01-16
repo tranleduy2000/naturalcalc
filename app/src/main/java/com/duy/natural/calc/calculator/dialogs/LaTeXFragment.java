@@ -3,11 +3,12 @@ package com.duy.natural.calc.calculator.dialogs;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
+import android.support.design.widget.BottomSheetDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.duy.natural.calc.calculator.evaluator.result.CalculatedResult;
 import com.nstudio.calc.casio.R;
 
 import org.matheclipse.core.eval.EvalEngine;
@@ -23,13 +24,13 @@ import io.github.kexanie.library.MathView;
  * Created by Duy on 1/14/2018.
  */
 
-public class LaTeXDialogFragment extends DialogFragment {
+public class LaTeXFragment extends BottomSheetDialogFragment {
     private static final String EXTRA_EXPR = "EXTRA_EXPR";
 
-    public static LaTeXDialogFragment newInstance(IExpr expr) {
+    public static LaTeXFragment newInstance(CalculatedResult expr) {
         Bundle args = new Bundle();
         args.putSerializable(EXTRA_EXPR, expr);
-        LaTeXDialogFragment fragment = new LaTeXDialogFragment();
+        LaTeXFragment fragment = new LaTeXFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -43,9 +44,10 @@ public class LaTeXDialogFragment extends DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        MathView mathView = view.findViewById(R.id.math_view);
-        IExpr expr = (IExpr) getArguments().getSerializable(EXTRA_EXPR);
-        showToMathView(mathView, expr);
+        CalculatedResult result = (CalculatedResult) getArguments().getSerializable(EXTRA_EXPR);
+        showToMathView((MathView) view.findViewById(R.id.input_view), result.getInput());
+        showToMathView((MathView) view.findViewById(R.id.result_fraction_view), result.getFraction());
+        showToMathView((MathView) view.findViewById(R.id.result_decimal_view), result.getFraction());
     }
 
     private void showToMathView(MathView mathView, IExpr expr) {

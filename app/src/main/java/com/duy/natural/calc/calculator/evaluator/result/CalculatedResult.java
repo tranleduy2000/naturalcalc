@@ -9,10 +9,10 @@ import java.io.Serializable;
  */
 
 public final class CalculatedResult implements Serializable, Cloneable {
-    private final String input;
+    private final IExpr input;
     private final IExpr fraction, numeric;
 
-    public CalculatedResult(String input, IExpr fraction, IExpr numeric) {
+    public CalculatedResult(IExpr input, IExpr fraction, IExpr numeric) {
         this.input = input;
         this.fraction = fraction;
         this.numeric = numeric;
@@ -22,11 +22,18 @@ public final class CalculatedResult implements Serializable, Cloneable {
         return fraction;
     }
 
-    public String getInput() {
+    public IExpr getInput() {
         return input;
     }
 
     public IExpr getNumeric() {
         return numeric;
+    }
+
+    public String numericToString() {
+        return numeric.toString().replaceAll("[\\\\r\n]", "");
+    }
+    public String fractionToString(){
+        return fraction.toString().replaceAll("[\\\\r\n]", "");
     }
 }

@@ -6,26 +6,31 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-
-    <com.mkulesh.micromath.widgets.TwoDScrollView
-        android:id="@+id/main_scroll_view"
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fadingEdge="horizontal|vertical"
-        android:scrollbars="horizontal|vertical"
-        app:autoScrollMargins="20dp">
+        android:fillViewport="true"
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/container_display"
+        <com.mkulesh.micromath.widgets.TwoDScrollView
+            android:id="@+id/main_scroll_view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:gravity="left"
-            android:orientation="vertical" />
+            android:layout_height="match_parent"
+            android:fadingEdge="horizontal|vertical"
+            android:fillViewport="true"
+            android:scrollbars="horizontal|vertical"
+            app:autoScrollMargins="20dp">
 
-    </com.mkulesh.micromath.widgets.TwoDScrollView>
+            <LinearLayout
+                android:id="@+id/container_display"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="left"
+                android:orientation="vertical" />
 
+        </com.mkulesh.micromath.widgets.TwoDScrollView>
+    </HorizontalScrollView>
 
     <android.support.v4.widget.ContentLoadingProgressBar
         android:id="@+id/progress_bar"

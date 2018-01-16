@@ -25,9 +25,9 @@ import android.widget.Toast;
 
 import com.duy.common.utils.DLog;
 import com.duy.natural.calc.calculator.CalculatorContract;
+import com.duy.natural.calc.calculator.evaluator.result.CalculatedResult;
 import com.mkulesh.micromath.formula.FormulaList;
 import com.mkulesh.micromath.formula.views.CalculationResultView;
-import com.duy.natural.calc.calculator.evaluator.result.CalculatedResult;
 import com.mkulesh.micromath.properties.DocumentProperties;
 import com.nstudio.calc.casio.R;
 
@@ -65,18 +65,11 @@ public class CalculateTask extends AsyncTask<Void, CalculationResultView, Void> 
                     if (DLog.DEBUG) DLog.d(TAG, "expr = " + expr);
                     f.calculate(this);
 
-                    IExpr numeric;
-                    IExpr fraction = mEvaluator.evaluate(expr);
-                   /* if (!ResultUtil.isResultFraction(fraction)) {
-                        checkCancellation();
-                        fraction = mEvaluator.evaluateNumeric(expr);
-                        numeric = fraction;
-                    } else {*/
-                        numeric = mEvaluator.evaluateNumeric(expr);
-//                    }
-
+                    IExpr input = mEvaluator.getExprEvaluator().parse(expr);
+                    IExpr fraction = mEvaluator.evaluate(input);
+                    IExpr numeric = mEvaluator.evaluateNumeric(input);
                     if (DLog.DEBUG) DLog.d(TAG, "result = " + fraction);
-                    f.onCalculateResult(new CalculatedResult(expr, fraction, numeric));
+                    f.onCalculateResult(new CalculatedResult(input, fraction, numeric));
                 } catch (Exception e) {
                     e.printStackTrace();
                     f.onCalculateError(e);

@@ -30,7 +30,6 @@ import android.widget.LinearLayout;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.duy.natural.calc.calculator.evaluator.result.CalculatedResult;
-import com.duy.natural.calc.calculator.evaluator.result.ResultUtils;
 import com.mkulesh.micromath.dialogs.DialogResultDetails;
 import com.mkulesh.micromath.dialogs.DialogResultSettings;
 import com.mkulesh.micromath.editstate.FormulaState;
@@ -53,8 +52,6 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.util.ArrayList;
 
-import io.github.kexanie.library.MathView;
-
 public class FormulaResultView extends CalculationResultView implements OnResultPropertiesChangeListener, OnFocusChangedListener, View.OnClickListener {
     public static final String CELL_DOTS = "...";
     private static final String STATE_RESULT_PROPERTIES = "result_properties";
@@ -64,10 +61,9 @@ public class FormulaResultView extends CalculationResultView implements OnResult
 
     private CalculatedValue mConstantResult = null;
     private TermField mLeftTerm = null;
-//    private TermField mConstantResultField = null;
+    private TermField mConstantResultField = null;
     private ResultType mResultType = ResultType.NONE;
     private View mExpandResult;
-    private MathView mResultView;
 
     // Array and matrix results
     private EquationArrayResult mArrayArgument = null, mArrayResult = null;
@@ -99,7 +95,6 @@ public class FormulaResultView extends CalculationResultView implements OnResult
         inflateRootLayout(R.layout.formula_result, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         mExpandResult = layout.findViewById(R.id.btn_expand_result);
         mExpandResult.setOnClickListener(this);
-        mResultView = layout.findViewById(R.id.math_view);
         // create name term
         {
             CalcEditText v = layout.findViewById(R.id.formula_result_name);
@@ -113,10 +108,10 @@ public class FormulaResultView extends CalculationResultView implements OnResult
         }
         // create result term
         {
-            /*CalcEditText view = layout.findViewById(R.id.formula_result_value);
+            CalcEditText view = layout.findViewById(R.id.formula_result_value);
             mConstantResultField = addTerm(this, layout, view, this, true);
             mConstantResultField.bracketsType = TermField.BracketsType.NEVER;
-            mConstantResultField.isWritable = false;*/
+            mConstantResultField.isWritable = false;
             mArrayResultMatrix = layout.findViewById(R.id.formula_result_table);
         }
         // brackets
@@ -235,10 +230,9 @@ public class FormulaResultView extends CalculationResultView implements OnResult
 
     @Override
     public void invalidateResult() {
-//        mConstantResultField.setText("");
+        mConstantResultField.setText("");
         mArrayResultMatrix.setText("", getFormulaList().getDimen());
         mExpandResult.setVisibility(GONE);
-        mResultView.setText("");
         mResult = null;
     }
 
@@ -319,14 +313,12 @@ public class FormulaResultView extends CalculationResultView implements OnResult
             case NONE:
             case NAN:
             case CONSTANT: {*/
-//        mConstantResultField.getEditText().setVisibility(visibility);
-        mResultView.setVisibility(VISIBLE);
+        mConstantResultField.getEditText().setVisibility(visibility);
         mLeftBracket.setVisibility(View.GONE);
         mArrayResultMatrix.setVisibility(View.GONE);
         mRightBracket.setVisibility(View.GONE);
-        if (visibility == VISIBLE) {
-            ResultUtils.showLaTeX(mResultView, mResult);
-        }
+
+        mConstantResultField.setText(fillResultString());
         if (mResult != null) {
             mExpandResult.setVisibility(VISIBLE);
         } else {
@@ -569,7 +561,7 @@ public class FormulaResultView extends CalculationResultView implements OnResult
 
     private String fillResultString() {
         if (mResult != null) {
-            return mResult.getNumeric().toString();
+            return mResult.fractionToString();
         }
        /* if (mResultType == ResultType.NAN) {
             return TermParser.CONST_NAN;

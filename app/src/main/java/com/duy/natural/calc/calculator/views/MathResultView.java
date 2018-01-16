@@ -1,7 +1,6 @@
 package com.duy.natural.calc.calculator.views;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
 import com.duy.natural.calc.calculator.settings.CalculatorSetting;
@@ -26,12 +25,17 @@ public class MathResultView extends MathView {
     private void setup(Context context) {
         setEngine(Engine.MATHJAX);
 
-        TypedArray typedArray = context.getTheme().obtainStyledAttributes(new int[]{android.R.attr.textColorPrimary});
+        getSettings().setSupportZoom(true);
+        getSettings().setBuiltInZoomControls(true);
+
+        //hide control view
+        getSettings().setDisplayZoomControls(false);
         CalculatorSetting setting = new CalculatorSetting(context);
         String color = !setting.useLightTheme() ? "#FFFFFF" : "#000000";
-        String config = String.format("MathJax.Hub.Config({" +
-                "\"HTML-CSS\":{styles:{\".MathJax\":{color:\"%s\"}}}});", color);
-        config(config);
+//        String config = String.format("MathJax.Hub.Config({" +
+//                "\"HTML-CSS\":{styles:{\".MathJax\":{color:\"%s\"}}}});", color);
+//        config(config);
+
     }
 
 
