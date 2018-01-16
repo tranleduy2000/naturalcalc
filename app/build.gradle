@@ -9,8 +9,8 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         applicationId "com.nstudio.calc.casio"
-        versionCode 5
-        versionName "1.0.5"
+        versionCode 7
+        versionName "1.0.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -65,6 +65,7 @@ dependencies {
     compile 'com.github.mukeshsolanki:MarkdownView-Android:1.0.4'
     compile 'org.apache.commons:commons-math3:3.6.1'
     compile 'io.github.kexanie.library:MathView:0.0.4'
+    compile 'io.github.kobakei:ratethisapp:1.2.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:minHeight="250dp"
+        android:minHeight="300dp"
         android:orientation="vertical">
 
         <com.mkulesh.micromath.widgets.CalcTextView

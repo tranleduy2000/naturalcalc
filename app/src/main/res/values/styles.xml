@@ -169,6 +169,7 @@
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:tint">?colorMicroMathIcon</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
         <item name="android:gravity">center</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
         <item name="android:scaleType">centerInside</item>

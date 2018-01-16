@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.mkulesh.micromath.widgets.FormulaLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
@@ -56,13 +56,12 @@
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/btn_expand_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:padding="8dp"
+        style="@style/CalcButtonStyle"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:src="@drawable/ic_action_content_expand"
         android:tint="?colorMicroMathIcon"
         android:visibility="gone"
         tools:visibility="visible" />
 
-</com.mkulesh.micromath.widgets.FormulaLayout>
+</merge>
