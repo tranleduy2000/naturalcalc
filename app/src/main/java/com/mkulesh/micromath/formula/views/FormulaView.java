@@ -694,10 +694,10 @@ public abstract class FormulaView extends FormulaLayout implements OnFormulaChan
      */
     @Nullable
     public TermField findFocusedTerm() {
-        for (TermField t : mTerms) {
-            TermField f = t.findFocusedTerm();
-            if (f != null) {
-                return f;
+        for (TermField term : mTerms) {
+            TermField focusedTerm = term.findFocusedTerm();
+            if (focusedTerm != null) {
+                return focusedTerm;
             }
         }
         return null;

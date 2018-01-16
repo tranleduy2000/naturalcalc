@@ -217,7 +217,7 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
      */
     @Override
     public CalculatedValue.ValueType getValue(CalculateTask thread, CalculatedValue outValue) throws CancelException {
-        if (thread != null) {
+        /*if (thread != null) {
             thread.checkCancellation();
         }
         if (isTerm()) {
@@ -239,7 +239,8 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
                 default:
                     return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
             }
-        }
+        }*/
+        return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
     }
 
     @NonNull

@@ -134,7 +134,7 @@ public class TermParser {
         sign = 1.0;
         isArray = false;
         errorId = TermField.NO_ERROR_ID;
-        if (inText == null || inText.length() == 0) {
+        if (inText.length() == 0) {
             return;
         }
 
