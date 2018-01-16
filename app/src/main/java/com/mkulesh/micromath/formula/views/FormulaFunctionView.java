@@ -26,6 +26,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.duy.common.utils.DLog;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.formula.BracketParser;
@@ -43,10 +44,9 @@ import java.util.ArrayList;
 
 public class FormulaFunctionView extends FormulaTermView {
     public static final String FUNCTION_ARGS_MARKER = ":";
-
+    private static final String TAG = "FormulaFunctionView";
     private FunctionType mFunctionType = null;
     private String mFunctionLinkName = "unknown";
-
     private CalcTextView mFunctionTerm = null;
     private EquationView mLinkedFunction = null;
 
@@ -251,7 +251,7 @@ public class FormulaFunctionView extends FormulaTermView {
     public String toExpressionString() {
         switch (mFunctionType) {
             case IDENTITY_LAYOUT:
-                return "(" + ")";
+                return "(" + argsToString() + ")";
             case POWER_LAYOUT: {
                 String left = mTerms.get(0).toExpressionString();
                 String right = mTerms.get(1).toExpressionString();
@@ -260,7 +260,7 @@ public class FormulaFunctionView extends FormulaTermView {
             case FACTORIAL_LAYOUT:
                 return mFunctionType.getCode() + "(" + mTerms.get(0).toExpressionString() + ")";
             case SQRT_LAYOUT:
-                return "Sqrt(" + mTerms.get(0).toExpressionString() + ")";
+                return "Sqrt(" + argsToString() + ")";
             case SURD_LAYOUT:
                 return "Surd(" + mTerms.get(1).toExpressionString() + "," + mTerms.get(0).toExpressionString() + ")";
             case ABS_LAYOUT:
@@ -271,17 +271,21 @@ public class FormulaFunctionView extends FormulaTermView {
             case FUNCTION_INDEX:
                 return mLinkedFunction.toExpressionString();
             default: {
-                StringBuilder args = new StringBuilder();
-                for (int i = 0; i < mTerms.size(); i++) {
-                    TermField term = mTerms.get(i);
-                    args.append(term.toExpressionString());
-                    if (i != mTerms.size() - 1) {
-                        args.append(",");
-                    }
-                }
-                return mFunctionType.getFunctionName() + "(" + args.toString() + ")";
+                return mFunctionType.getFunctionName() + "(" + argsToString() + ")";
             }
         }
+    }
+
+    private String argsToString() {
+        StringBuilder args = new StringBuilder();
+        for (int i = 0; i < mTerms.size(); i++) {
+            TermField term = mTerms.get(i);
+            args.append(term.toExpressionString());
+            if (i != mTerms.size() - 1) {
+                args.append(",");
+            }
+        }
+        return args.toString();
     }
 
     @Override
@@ -291,14 +295,15 @@ public class FormulaFunctionView extends FormulaTermView {
 
     @Override
     public String getTermCode() {
-        String t = getFunctionString(getFunctionType());
+        String code = getFunctionString(getFunctionType());
         if (mFunctionType.isLink()) {
-            t += "." + mFunctionLinkName;
+            code += "." + mFunctionLinkName;
             if (mTerms.size() > 1) {
-                t += FUNCTION_ARGS_MARKER + mTerms.size();
+                code += FUNCTION_ARGS_MARKER + mTerms.size();
             }
         }
-        return t;
+        if (DLog.DEBUG) DLog.d(TAG, "getTermCode() returned: " + code);
+        return code;
     }
 
     @Override

@@ -58,7 +58,7 @@ public class FormulaBinaryOperatorView extends FormulaTermView {
     public static OperatorType getOperatorType(Context context, String text) {
         OperatorType result = null;
         for (OperatorType operatorType : OperatorType.values()) {
-            if (text.equals(operatorType.getCode())
+            if (text.equalsIgnoreCase(operatorType.getCode())
                     || text.contains(context.getResources().getString(operatorType.getSymbolId()))) {
                 result = operatorType;
                 break;
@@ -69,21 +69,6 @@ public class FormulaBinaryOperatorView extends FormulaTermView {
 
     @Override
     public CalculatedValue.ValueType getValue(CalculateTask thread, CalculatedValue outValue) throws CancelException {
-        if (mOperatorType != null && mLeftTerm != null && mRightTerm != null) {
-            mLeftTerm.getValue(thread, fVal);
-            mRightTerm.getValue(thread, gVal);
-            switch (mOperatorType) {
-                case PLUS:
-                    return outValue.add(fVal, gVal);
-                case MINUS:
-                    return outValue.subtract(fVal, gVal);
-                case MULTIPLY:
-                    return outValue.multiply(fVal, gVal);
-                case FRACTION:
-                case DIVIDE_SLASH:
-                    return outValue.divide(fVal, gVal);
-            }
-        }
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
     }
 
