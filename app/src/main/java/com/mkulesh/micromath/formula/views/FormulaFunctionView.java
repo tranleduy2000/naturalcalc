@@ -24,10 +24,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.duy.natural.calc.calculator.calcbutton.Category;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.formula.BracketParser;
@@ -135,45 +133,39 @@ public class FormulaFunctionView extends FormulaTermView {
     }
 
     /**
-     * Add palette buttons for this term
-     */
-    public static void addToPalette(ViewGroup parent, Category[] categories) {
-
-    }
-
-    /**
      * Procedure creates the formula layout
      */
-    private void onCreate(String functionText, int index) throws Exception {
+    private void onCreate(String funcCode, int index) throws Exception {
         if (index < 0 || index > layout.getChildCount()) {
             throw new Exception("cannot create FormulaFunction for invalid insertion index " + index);
         }
-        mFunctionType = getFunctionType(getContext(), functionText);
+        mFunctionType = getFunctionType(getContext(), funcCode);
         if (mFunctionType == null) {
             throw new Exception("cannot create FormulaFunction for unknown function");
         }
         int argNumber = mFunctionType.getArgNumber();
         switch (mFunctionType) {
             case FUNCTION_LINK:
-                mFunctionLinkName = getFunctionLinkName(functionText, mFunctionType,
+                mFunctionLinkName = getFunctionLinkName(funcCode, mFunctionType,
                         R.string.formula_function_start_bracket);
                 if (mFunctionLinkName == null) {
                     throw new Exception("cannot create FormulaFunction(FUNCTION_LINK) since function name is invalid");
                 }
                 inflateElements(R.layout.formula_function_named, true);
-                argNumber = getArgNumber(functionText, mFunctionLinkName);
+                argNumber = getArgNumber(funcCode, mFunctionLinkName);
                 break;
             case FUNCTION_INDEX:
-                mFunctionLinkName = getFunctionLinkName(functionText, mFunctionType,
+                mFunctionLinkName = getFunctionLinkName(funcCode, mFunctionType,
                         R.string.formula_function_start_index);
                 if (mFunctionLinkName == null) {
                     throw new Exception("cannot create FormulaFunction(INDEX) since function name is invalid");
                 }
-                functionText = mFunctionLinkName +
+                funcCode = mFunctionLinkName +
                         getContext().getResources().getString(R.string.formula_function_start_index);
                 inflateElements(R.layout.formula_function_index, true);
-                argNumber = getArgNumber(functionText, mFunctionLinkName);
+                argNumber = getArgNumber(funcCode, mFunctionLinkName);
                 break;
+
             case SQRT_LAYOUT:
                 inflateElements(R.layout.formula_function_sqrt, true);
                 break;
@@ -225,20 +217,20 @@ public class FormulaFunctionView extends FormulaTermView {
         for (int brIdx = 0; brIdx < BracketParser.START_BRACKET_IDS.length; brIdx++) {
             final String startBracket = getContext().getResources().getString(BracketParser.START_BRACKET_IDS[brIdx]);
             final String endBracket = getContext().getResources().getString(BracketParser.END_BRACKET_IDS[brIdx]);
-            if (functionText.contains(startBracket) && functionText.endsWith(endBracket)) {
-                functionText = functionText.substring(0, functionText.indexOf(endBracket)).trim();
+            if (funcCode.contains(startBracket) && funcCode.endsWith(endBracket)) {
+                funcCode = funcCode.substring(0, funcCode.indexOf(endBracket)).trim();
             }
         }
-        for (FunctionTrigger t : FunctionTrigger.values()) {
-            String opCode = getContext().getResources().getString(t.getCodeId());
-            final int opPosition = functionText.indexOf(opCode);
+        for (FunctionTrigger trigger : FunctionTrigger.values()) {
+            String triggerCode = getContext().getResources().getString(trigger.getCodeId());
+            final int position = funcCode.indexOf(triggerCode);
             final TermField term = getArgumentTerm();
-            if (opPosition >= 0 && term != null) {
+            if (position >= 0 && term != null) {
                 try {
-                    if (t.isBeforeText()) {
-                        term.setText(functionText.subSequence(opPosition + opCode.length(), functionText.length()));
+                    if (trigger.isBeforeText()) {
+                        term.setText(funcCode.subSequence(position + triggerCode.length(), funcCode.length()));
                     } else {
-                        term.setText(functionText.subSequence(0, opPosition));
+                        term.setText(funcCode.subSequence(0, position));
                     }
                     isContentValid(ValidationPassType.VALIDATE_SINGLE_FORMULA);
                 } catch (Exception ex) {

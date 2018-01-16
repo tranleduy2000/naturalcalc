@@ -58,7 +58,7 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
     }
 
     public static TermField.TermType getTermType(Context context, CalcEditText editText, String text, boolean ensureManualTrigger) {
-        if (FormulaTermOperatorView.getOperatorType(context, text) != null) {
+        if (FormulaBinaryOperatorView.getOperatorType(context, text) != null) {
             return TermField.TermType.OPERATOR;
         }
         if (editText.isComparatorEnabled() && FormulaTermComparatorView.getComparatorType(context, text) != null) {
@@ -81,7 +81,7 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
 
     @Nullable
     public static String getOperatorCode(Context context, String code, boolean ensureManualTrigger) {
-        OperatorType operatorType = FormulaTermOperatorView.getOperatorType(context, code);
+        OperatorType operatorType = FormulaBinaryOperatorView.getOperatorType(context, code);
         if (operatorType != null) {
             return operatorType.getCode();
         }
@@ -118,7 +118,7 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
                     + "] text = [" + text + "], textIndex = [" + textIndex + "]");
         switch (type) {
             case OPERATOR:
-                return new FormulaTermOperatorView(termField, layout, text, textIndex);
+                return new FormulaBinaryOperatorView(termField, layout, text, textIndex);
             case COMPARATOR:
                 return new FormulaTermComparatorView(termField, layout, text, textIndex);
             case FUNCTION:
@@ -134,7 +134,7 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
     public static String createOperatorCode(Context contex, String code, String prevText) {
         String newValue = null;
         // operator
-        final OperatorType t1 = FormulaTermOperatorView.getOperatorType(contex, code);
+        final OperatorType t1 = FormulaBinaryOperatorView.getOperatorType(contex, code);
         if (t1 != null) {
             // for an operator, we add operator code to the end of line in order to move
             // existing text in the first term

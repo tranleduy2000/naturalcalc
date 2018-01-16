@@ -31,7 +31,7 @@ import com.mkulesh.micromath.widgets.CalcEditText;
 import com.mkulesh.micromath.widgets.CalcTextView;
 import com.nstudio.calc.casio.R;
 
-public class FormulaTermOperatorView extends FormulaTermView {
+public class FormulaBinaryOperatorView extends FormulaTermView {
     // Attention: this is not thread-safety declaration!
     private final CalculatedValue fVal = new CalculatedValue();
     private final CalculatedValue gVal = new CalculatedValue();
@@ -41,17 +41,17 @@ public class FormulaTermOperatorView extends FormulaTermView {
     private TermField mRightTerm = null;
     private boolean mUseBrackets = false;
 
-    public FormulaTermOperatorView(TermField owner, LinearLayout layout, String text, int index) throws Exception {
+    public FormulaBinaryOperatorView(TermField owner, LinearLayout layout, String text, int index) throws Exception {
         super(owner.getFormulaRoot(), layout, owner.mTermDepth);
         setParentField(owner);
         onCreate(text, index, owner.bracketsType);
     }
 
-    public FormulaTermOperatorView(Context context) {
+    public FormulaBinaryOperatorView(Context context) {
         super();
     }
 
-    public FormulaTermOperatorView(Context context, AttributeSet attrs) {
+    public FormulaBinaryOperatorView(Context context, AttributeSet attrs) {
         super();
     }
 

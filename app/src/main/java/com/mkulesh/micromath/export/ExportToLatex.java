@@ -40,7 +40,7 @@ import com.mkulesh.micromath.formula.views.FormulaTermComparatorView;
 import com.mkulesh.micromath.formula.views.FormulaFunctionView;
 import com.mkulesh.micromath.formula.views.FormulaTermIntervalView;
 import com.mkulesh.micromath.formula.views.FormulaTermLoopView;
-import com.mkulesh.micromath.formula.views.FormulaTermOperatorView;
+import com.mkulesh.micromath.formula.views.FormulaBinaryOperatorView;
 import com.mkulesh.micromath.formula.views.FormulaTermView;
 import com.mkulesh.micromath.formula.views.FormulaView;
 import com.mkulesh.micromath.formula.views.TermField;
@@ -303,8 +303,8 @@ public class ExportToLatex {
             }
         } else {
             FormulaTermView ft = t.getTerm();
-            if (ft instanceof FormulaTermOperatorView) {
-                writeTermOperator((FormulaTermOperatorView) ft);
+            if (ft instanceof FormulaBinaryOperatorView) {
+                writeTermOperator((FormulaBinaryOperatorView) ft);
             } else if (ft instanceof FormulaTermComparatorView) {
                 writeTermComparator((FormulaTermComparatorView) ft);
             } else if (ft instanceof FormulaFunctionView) {
@@ -317,7 +317,7 @@ public class ExportToLatex {
         }
     }
 
-    private void writeTermOperator(FormulaTermOperatorView f) {
+    private void writeTermOperator(FormulaBinaryOperatorView f) {
         OperatorType operatorType = f.getOperatorType();
         if (f.isUseBrackets()) {
             writer.append("\\left( ");
