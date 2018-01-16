@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:minHeight="300dp"
+        android:minHeight="250dp"
         android:orientation="vertical">
 
         <com.mkulesh.micromath.widgets.CalcTextView
@@ -23,7 +20,8 @@
         <com.duy.natural.calc.calculator.views.MathResultView
             android:id="@+id/input_view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:longClickable="false">
 
         </com.duy.natural.calc.calculator.views.MathResultView>
 
@@ -37,7 +35,8 @@
         <com.duy.natural.calc.calculator.views.MathResultView
             android:id="@+id/result_fraction_view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:longClickable="false">
 
         </com.duy.natural.calc.calculator.views.MathResultView>
 
@@ -51,7 +50,8 @@
         <com.duy.natural.calc.calculator.views.MathResultView
             android:id="@+id/result_decimal_view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:longClickable="false">
 
         </com.duy.natural.calc.calculator.views.MathResultView>
 

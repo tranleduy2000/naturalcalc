@@ -64,7 +64,7 @@ dependencies {
     compile 'com.android.support:multidex:1.0.2'
     compile 'com.github.mukeshsolanki:MarkdownView-Android:1.0.4'
     compile 'org.apache.commons:commons-math3:3.6.1'
-    compile 'io.github.kexanie.library:MathView:0.0.6'
+    compile 'io.github.kexanie.library:MathView:0.0.4'
 }
 
 apply plugin: 'com.google.gms.google-services'
