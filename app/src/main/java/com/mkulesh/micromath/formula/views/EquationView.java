@@ -259,7 +259,7 @@ public class EquationView extends CalculationResultView implements IArgumentHold
      * Procedure creates the formula layout
      */
     private void onCreate() {
-        inflateRootLayout(R.layout.formula_equation, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        inflateRootLayout(R.layout.formula_equation, LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         // create name term
         {
             CalcEditText v = layout.findViewById(R.id.formula_equation_name);

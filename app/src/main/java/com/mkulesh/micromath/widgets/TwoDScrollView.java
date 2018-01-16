@@ -25,7 +25,6 @@ import android.graphics.Rect;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.EdgeEffectCompat;
 import android.util.AttributeSet;
 import android.view.FocusFinder;
 import android.view.GestureDetector;
@@ -35,6 +34,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.animation.AnimationUtils;
+import android.support.v4.widget.EdgeEffectCompat;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
@@ -88,6 +88,9 @@ public class TwoDScrollView extends FrameLayout {
     private EdgeEffectCompat mEdgeGlowLeft;
     private EdgeEffectCompat mEdgeGlowRight;
 
+    /*********************************************************
+     * Creating
+     *********************************************************/
 
     public TwoDScrollView(Context context) {
         super(context);
@@ -252,6 +255,10 @@ public class TwoDScrollView extends FrameLayout {
         }
         return retVal || super.onTouchEvent(event);
     }
+
+    /*********************************************************
+     * Realization
+     *********************************************************/
 
     @Override
     protected float getTopFadingEdgeStrength() {

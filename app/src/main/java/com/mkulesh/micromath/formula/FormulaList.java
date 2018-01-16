@@ -301,10 +301,6 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
     public void onButtonPressed(String code) {
         if (isInOperation()) return;
 
-        //check formula view is empty
-        if (isEmptyFormula()) {
-            onNewFormula(Position.AFTER, FormulaType.RESULT);
-        }
 
         ActionType actionType = ActionType.getActionType(code);
         FormulaType formulaType = FormulaType.getFormulaType(code);
@@ -314,6 +310,7 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
             // list operations
             onNewFormula(Position.AFTER, formulaType);
         } else {
+            ensureHasFormulaView();
             // term operations
             FormulaView view = mRootFormulas.get(mSelectedFormulaId);
             if (view != null) {
@@ -340,6 +337,13 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
             onManualInput();
         }
         finishActiveActionMode();
+    }
+
+    private void ensureHasFormulaView() {
+        //check formula view is empty
+        if (isEmptyFormula()) {
+            onNewFormula(Position.AFTER, FormulaType.RESULT);
+        }
     }
 
     private boolean isEmptyFormula() {
@@ -952,8 +956,8 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
             f.invalidateResult();
         }
 //        if (isContentValid()) {
-            CalculateTask calculateTask = new CalculateTask(this, mDisplayView, formulas);
-            CompatUtils.executeAsyncTask(calculateTask);
+        CalculateTask calculateTask = new CalculateTask(this, mDisplayView, formulas);
+        CompatUtils.executeAsyncTask(calculateTask);
 //        }
     }
 

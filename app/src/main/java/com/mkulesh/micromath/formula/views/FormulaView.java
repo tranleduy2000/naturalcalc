@@ -537,9 +537,9 @@ public abstract class FormulaView extends FormulaLayout implements OnFormulaChan
     /**
      * Procedure inflates layout with given resource ID
      */
-    protected void inflateRootLayout(int resId, int w, int h) {
+    protected void inflateRootLayout(int resId, int width, int height) {
         layout = this;
-        layout.setLayoutParams(new LayoutParams(w, h));
+        layout.setLayoutParams(new LayoutParams(width, height));
         final LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(resId, layout);
         for (int i = 0; i < layout.getChildCount(); i++) {

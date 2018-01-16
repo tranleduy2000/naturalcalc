@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
@@ -48,17 +48,17 @@
                app:contextMenuPaste="false"
                app:emptyEnabled="true" />-->
 
-        <android.support.v4.widget.NestedScrollView
-            android:layout_width="match_parent"
+        <FrameLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.duy.natural.calc.calculator.views.MathResultView
                 android:id="@+id/math_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
             </com.duy.natural.calc.calculator.views.MathResultView>
-        </android.support.v4.widget.NestedScrollView>
+        </FrameLayout>
 
         <com.mkulesh.micromath.widgets.ResultMatrixLayout
             android:id="@+id/formula_result_table"
@@ -71,15 +71,17 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
 
-      <!--  <android.support.v7.widget.AppCompatImageView
+        <android.support.v7.widget.AppCompatImageView
             android:id="@+id/btn_expand_result"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="top"
+            android:padding="8dp"
             android:scaleType="center"
             android:src="@drawable/ic_more_vert_black_24dp"
+            android:tint="?colorMicroMathIcon"
             android:visibility="gone"
-            tools:visibility="visible" />-->
+            tools:visibility="visible" />
 
     </LinearLayout>
 
