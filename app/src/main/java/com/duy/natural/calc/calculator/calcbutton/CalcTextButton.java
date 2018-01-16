@@ -26,6 +26,7 @@ import android.view.MotionEvent;
 
 import com.duy.common.utils.DLog;
 import com.duy.natural.calc.calculator.settings.CalculatorSetting;
+import com.duy.natural.calc.calculator.utils.FontManager;
 import com.nstudio.calc.casio.R;
 
 import java.util.Arrays;
@@ -58,6 +59,7 @@ public class CalcTextButton extends AppCompatTextView implements ICalcButton {
 
     private void setup(Context context, AttributeSet attrs) {
         mSetting = new CalculatorSetting(context);
+        setTypeface(FontManager.getFontFromAsset(context, "Roboto-Light.ttf"));
         if (attrs != null) {
             TypedArray ta = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CalcTextButton, -1, -1);
             code = ta.getString(R.styleable.CalcTextButton_code);
