@@ -38,6 +38,7 @@ public class CalcTextButton extends AppCompatTextView implements ICalcButton {
     private String shortCut = null;
     private Category[] categories = null;
     private CalculatorSetting mSetting;
+    private String documentPath;
 
     public CalcTextButton(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -158,17 +159,18 @@ public class CalcTextButton extends AppCompatTextView implements ICalcButton {
 
     private void vibrate() {
         if (mSetting.isUseVibrate()) {
-            Vibrator v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
-            v.vibrate(mSetting.getVibrateStrength());
+            Vibrator vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+            if (vibrator != null) {
+                vibrator.vibrate(mSetting.getVibrateStrength());
+            }
         }
     }
 
-    public String getType() {
-        Object tag = getTag();
-        if (tag != null)
-            return tag.toString();
-        else {
-            return "";
-        }
+    public String getDocumentPath() {
+        return documentPath;
+    }
+
+    public void setDocumentPath(String documentPath) {
+        this.documentPath = documentPath;
     }
 }

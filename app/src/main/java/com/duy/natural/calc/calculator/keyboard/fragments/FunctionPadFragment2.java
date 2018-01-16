@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.duy.natural.calc.calculator.calcbutton.ICalcButton;
+import com.duy.natural.calc.calculator.dialogs.DialogDocument;
 import com.duy.natural.calc.calculator.keyboard.OnCalcButtonClickListener;
 import com.duy.natural.calc.calculator.keyboard.adapters.FunctionAdapter;
 import com.duy.natural.calc.calculator.keyboard.models.FunctionItem;
@@ -70,7 +71,16 @@ public class FunctionPadFragment2 extends Fragment implements View.OnLongClickLi
 
     @Override
     public boolean onLongClick(View view) {
-        return view instanceof ICalcButton && ViewUtils.showButtonDescription(getContext(), view);
+        if (view instanceof ICalcButton) {
+            String documentPath = ((ICalcButton) view).getDocumentPath();
+            if (documentPath != null){
+                DialogDocument dialogDocument = DialogDocument.newInstance(documentPath);
+                dialogDocument.show(getChildFragmentManager(), dialogDocument.getClass().getName());
+            }else {
+                return ViewUtils.showButtonDescription(getContext(), view);
+            }
+        }
+        return false;
     }
 
     @Override

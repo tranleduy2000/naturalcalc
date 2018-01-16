@@ -87,6 +87,12 @@ public class CalcImageButton extends AppCompatImageView implements ICalcButton {
         setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
     }
 
+    @Nullable
+    @Override
+    public String getDocumentPath() {
+        return null;
+    }
+
     private void setup(Context context) {
         mSetting = new CalculatorSetting(context);
     }

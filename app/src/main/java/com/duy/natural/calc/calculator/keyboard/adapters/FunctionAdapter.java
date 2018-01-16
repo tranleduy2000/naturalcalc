@@ -64,10 +64,11 @@ public class FunctionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             FunctionCategory category = (FunctionCategory) functionItem.data;
             ((CategoryHolder) holder).txtTitle.setText(category.getTitleId());
         } else if (holder instanceof FunctionHolder) {
-            FunctionType category = (FunctionType) functionItem.data;
+            FunctionType type = (FunctionType) functionItem.data;
             CalcTextButton button = ((FunctionHolder) holder).mCalcButton;
-            button.setText(category.getFunctionName());
-            button.initWithParameter(-1, -1, category.getCode());
+            button.setText(type.getFunctionName());
+            button.initWithParameter(-1, type.getDescriptionId(), type.getCode());
+            button.setDocumentPath(type.getDocumentPath());
             button.setOnClickListener(onClickListener);
             button.setOnLongClickListener(onLongClickListener);
         }
@@ -90,7 +91,6 @@ public class FunctionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void setOnLongClickListener(View.OnLongClickListener onLongClickListener) {
         this.onLongClickListener = onLongClickListener;
     }
-
 
 
     static final class CategoryHolder extends RecyclerView.ViewHolder {

@@ -2,6 +2,7 @@ package com.mkulesh.micromath.formula.type;
 
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.nstudio.calc.casio.R;
 
@@ -193,9 +194,11 @@ public enum FunctionType implements ButtonDescriptor {
     private final String linkObject;
     private final String lowerCaseName;
     private int viewId;
+    private String docPath;
 
     FunctionType(int argNumber, String docPath) {
         this(argNumber, NO_BUTTON, null, NO_BUTTON);
+        this.docPath = docPath;
     }
 
     FunctionType(int argNumber, int descriptionId, String linkObject) {
@@ -234,9 +237,14 @@ public enum FunctionType implements ButtonDescriptor {
         return name();
     }
 
+    @Nullable
+    public String getDocumentPath() {
+        return docPath;
+    }
+
     @NonNull
     public String getCode() {
-        return lowerCaseName ;
+        return lowerCaseName;
     }
 }
 

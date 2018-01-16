@@ -20,4 +20,7 @@ public interface ICalcButton {
     boolean isEnabled();
 
     void setTint(int color);
+
+    @Nullable
+    String getDocumentPath();
 }
