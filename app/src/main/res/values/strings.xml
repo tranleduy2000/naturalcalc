@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Casio Calculator</string>
+    <string name="app_name">Casio</string>
     <string name="activity_welcome">asset:/doc_en/welcome.xml</string>
 
     <!-- Permissions -->
