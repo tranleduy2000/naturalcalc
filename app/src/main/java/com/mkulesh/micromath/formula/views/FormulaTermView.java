@@ -131,60 +131,68 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
         return null;
     }
 
-    public static String createOperatorCode(Context contex, String code, String prevText) {
+    public static String createOperatorCode(Context context, String code, String allText, int splitIndex) {
+        String left = allText;
+        String right = "";
+        if (splitIndex >= 0 && splitIndex < allText.length()) {
+            left = allText.substring(0, splitIndex);
+            right = allText.substring(splitIndex);
+        }
+
         String newValue = null;
         // operator
-        final OperatorType t1 = FormulaBinaryOperatorView.getOperatorType(contex, code);
-        if (t1 != null) {
+        final OperatorType operatorType = FormulaBinaryOperatorView.getOperatorType(context, code);
+        if (operatorType != null) {
             // for an operator, we add operator code to the end of line in order to move
             // existing text in the first term
-            newValue = contex.getResources().getString(t1.getSymbolId());
-            if (prevText != null) {
-                newValue = prevText + newValue;
+            String opStr = context.getResources().getString(operatorType.getSymbolId());
+            if (left != null) {
+                newValue = left + opStr + right;
             }
         }
+
         // comparator
-        final ComparatorType t2 = FormulaComparatorView.getComparatorType(contex, code);
-        if (newValue == null && t2 != null) {
+        final ComparatorType comparatorType = FormulaComparatorView.getComparatorType(context, code);
+        if (newValue == null && comparatorType != null) {
             // for a comparator, we add operator code to the end of line in order to move
             // existing text in the first term
-            newValue = contex.getResources().getString(t2.getSymbolId());
-            if (prevText != null) {
-                newValue = prevText + newValue;
+            newValue = context.getResources().getString(comparatorType.getSymbolId());
+            if (left != null) {
+                newValue = left + newValue;
             }
         }
 
         // function
-        final FunctionType t3 = FormulaFunctionView.getFunctionType(contex, code);
+        final FunctionType t3 = FormulaFunctionView.getFunctionType(context, code);
         if (newValue == null && t3 != null) {
             // for a function, we add operator code at the beginning of line in order to move
             // existing text in the function argument term
             newValue = (t3 == FunctionType.FUNCTION_LINK) ? code : t3.getCode();
-            if (prevText != null) {
+            if (left != null) {
                 if (t3 != FunctionType.FUNCTION_LINK) {
-                    newValue += contex.getResources().getString(R.string.formula_function_start_bracket);
+                    newValue += context.getResources().getString(R.string.formula_function_start_bracket);
                 }
-                newValue += prevText;
+                newValue += left;
             }
         }
         // interval
-        final IntervalType t4 = FormulaTermIntervalView.getIntervalType(contex, code);
+        final IntervalType t4 = FormulaTermIntervalView.getIntervalType(context, code);
         if (newValue == null && t4 != null) {
             // for an interval, we add operator code at the beginning of line in order to move
             // existing text in the function argument term
-            newValue = contex.getResources().getString(t4.getSymbolId());
-            if (prevText != null) {
-                newValue += prevText;
+            newValue = context.getResources().getString(t4.getSymbolId());
+            if (left != null) {
+                newValue += left;
             }
         }
         // loop
-        final LoopType t5 = FormulaTermLoopView.getLoopType(contex, code);
+        final LoopType t5 = FormulaTermLoopView.getLoopType(context, code);
         if (newValue == null && t5 != null) {
             // for a loop, we add operator code at the beginning of line in order to move
             // existing text in the function argument term
-            newValue = contex.getResources().getString(t5.getSymbolId());
-            if (prevText != null) {
-                newValue += prevText;
+            newValue = context.getResources().getString(t5.getSymbolId());
+            if (left != null) {
+                newValue += left;
             }
         }
         return newValue;

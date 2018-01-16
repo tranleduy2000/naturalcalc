@@ -217,29 +217,6 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
      */
     @Override
     public CalculatedValue.ValueType getValue(CalculateTask thread, CalculatedValue outValue) throws CancelException {
-        /*if (thread != null) {
-            thread.checkCancellation();
-        }
-        if (isTerm()) {
-            return mTermView.getValue(thread, outValue);
-        } else {
-            switch (mContentType) {
-                case NUMBER:
-                    return outValue.assign(mParser.getValue());
-                case ARGUMENT:
-                    outValue.assign(mParser.getArgumentHolder().getArgumentValue(mParser.getArgumentIndex()));
-                    return outValue.multiply(mParser.getSign());
-                case VARIABLE_LINK:
-                    if (mLinkedVariable.isInterval()) {
-                        outValue.assign(mLinkedVariable.getArgumentValue(0));
-                    } else {
-                        mLinkedVariable.getValue(thread, outValue);
-                    }
-                    return outValue.multiply(mParser.getSign());
-                default:
-                    return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
-            }
-        }*/
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
     }
 
@@ -725,7 +702,7 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
             writeToBundle(savedState, "savedState");
             clear();
         }
-        String newValue = FormulaTermView.createOperatorCode(getContext(), code, getText());
+        String newValue = FormulaTermView.createOperatorCode(getContext(), code, getText(), getEditText().getSelectionStart());
         if (newValue != null) {
             onTextChanged(newValue, false);
         }

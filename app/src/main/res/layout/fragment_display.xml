@@ -9,7 +9,7 @@
 
     <com.mkulesh.micromath.widgets.TwoDScrollView
         android:id="@+id/main_scroll_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fadingEdge="horizontal|vertical"
         android:fillViewport="true"
