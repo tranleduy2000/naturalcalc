@@ -951,10 +951,10 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
         for (CalculationResultView f : formulas) {
             f.invalidateResult();
         }
-        if (isContentValid()) {
+//        if (isContentValid()) {
             CalculateTask calculateTask = new CalculateTask(this, mDisplayView, formulas);
             CompatUtils.executeAsyncTask(calculateTask);
-        }
+//        }
     }
 
     /**

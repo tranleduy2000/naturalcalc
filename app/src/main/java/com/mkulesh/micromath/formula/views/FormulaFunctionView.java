@@ -243,6 +243,7 @@ public class FormulaFunctionView extends FormulaTermView {
         switch (mFunctionType) {
             case Solve:
                 mTerms.get(0).getEditText().setComparatorEnabled(true);
+                mTerms.get(0).setText("==0"); //add == operator
                 mTerms.get(1).getEditText().setEquationEnable(true);
                 mTerms.get(1).setText("x");
                 break;
@@ -317,7 +318,7 @@ public class FormulaFunctionView extends FormulaTermView {
     @Override
     public boolean isContentValid(ValidationPassType type) {
         boolean isValid = true;
-        /*switch (type) {
+        switch (type) {
             case VALIDATE_SINGLE_FORMULA:
                 mLinkedFunction = null;
                 isValid = super.isContentValid(type);
@@ -353,7 +354,7 @@ public class FormulaFunctionView extends FormulaTermView {
             case VALIDATE_LINKS:
                 isValid = super.isContentValid(type);
                 break;
-        }*/
+        }
         return isValid;
     }
 
