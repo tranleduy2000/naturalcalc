@@ -136,6 +136,10 @@ public class CalcEditText extends AppCompatEditText implements OnLongClickListen
         this.comparatorEnabled = comparatorEnabled;
     }
 
+    public void setEquationEnable(boolean enable) {
+        this.equationName = enable;
+    }
+
     public boolean isNewTermEnabled() {
         return newTermEnabled;
     }

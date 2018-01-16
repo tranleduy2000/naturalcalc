@@ -61,7 +61,7 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
         if (FormulaBinaryOperatorView.getOperatorType(context, text) != null) {
             return TermField.TermType.OPERATOR;
         }
-        if (editText.isComparatorEnabled() && FormulaTermComparatorView.getComparatorType(context, text) != null) {
+        if (editText.isComparatorEnabled() && FormulaComparatorView.getComparatorType(context, text) != null) {
             return TermField.TermType.COMPARATOR;
         }
 
@@ -86,7 +86,7 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
             return operatorType.getCode();
         }
 
-        ComparatorType comparatorType = FormulaTermComparatorView.getComparatorType(context, code);
+        ComparatorType comparatorType = FormulaComparatorView.getComparatorType(context, code);
         if (comparatorType != null) {
             return comparatorType.getCode();
         }
@@ -120,7 +120,7 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
             case OPERATOR:
                 return new FormulaBinaryOperatorView(termField, layout, text, textIndex);
             case COMPARATOR:
-                return new FormulaTermComparatorView(termField, layout, text, textIndex);
+                return new FormulaComparatorView(termField, layout, text, textIndex);
             case FUNCTION:
                 return new FormulaFunctionView(termField, layout, text, textIndex);
             case INTERVAL:
@@ -144,7 +144,7 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
             }
         }
         // comparator
-        final ComparatorType t2 = FormulaTermComparatorView.getComparatorType(contex, code);
+        final ComparatorType t2 = FormulaComparatorView.getComparatorType(contex, code);
         if (newValue == null && t2 != null) {
             // for a comparator, we add operator code to the end of line in order to move
             // existing text in the first term

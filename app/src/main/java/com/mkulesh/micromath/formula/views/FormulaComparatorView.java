@@ -31,30 +31,30 @@ import com.mkulesh.micromath.widgets.CalcEditText;
 import com.mkulesh.micromath.widgets.CalcTextView;
 import com.nstudio.calc.casio.R;
 
-public class FormulaTermComparatorView extends FormulaTermView {
+public class FormulaComparatorView extends FormulaTermView {
     // Attention: this is not thread-safety declaration!
     private final CalculatedValue leftTermValue = new CalculatedValue(), rightTermValue = new CalculatedValue();
     /**
      * Private attributes
      */
-    private ComparatorType comparatorType = null;
+    private ComparatorType mComparatorType = null;
     private TermField mLeftTerm = null, mRightTerm = null;
     private CalcTextView operatorKey = null;
     private boolean useBrackets = false;
 
 
-    public FormulaTermComparatorView(TermField owner, LinearLayout layout, String text, int index) throws Exception {
+    public FormulaComparatorView(TermField owner, LinearLayout layout, String text, int index) throws Exception {
         super(owner.getFormulaRoot(), layout, owner.mTermDepth);
         setParentField(owner);
         onCreate(text, index, owner.bracketsType);
     }
 
 
-    public FormulaTermComparatorView(Context context) {
+    public FormulaComparatorView(Context context) {
         super();
     }
 
-    public FormulaTermComparatorView(Context context, AttributeSet attrs) {
+    public FormulaComparatorView(Context context, AttributeSet attrs) {
         super();
     }
 
@@ -71,32 +71,8 @@ public class FormulaTermComparatorView extends FormulaTermView {
     }
 
 
-
     @Override
     public CalculatedValue.ValueType getValue(CalculateTask thread, CalculatedValue outValue) throws CancelException {
-        if (comparatorType != null) {
-            mLeftTerm.getValue(thread, leftTermValue);
-            mRightTerm.getValue(thread, rightTermValue);
-            // Do not check invalid value since a comparator can handle it!
-            switch (comparatorType) {
-                case EQUAL:
-                    return outValue.setValue((leftTermValue.getReal() == rightTermValue.getReal()) ? 1 : -1);
-                case NOT_EQUAL:
-                    return outValue.setValue((leftTermValue.getReal() != rightTermValue.getReal()) ? 1 : -1);
-                case LESS:
-                    return outValue.setValue((leftTermValue.getReal() < rightTermValue.getReal()) ? 1 : -1);
-                case LESS_EQUAL:
-                    return outValue.setValue((leftTermValue.getReal() <= rightTermValue.getReal()) ? 1 : -1);
-                case GREATER:
-                    return outValue.setValue((leftTermValue.getReal() > rightTermValue.getReal()) ? 1 : -1);
-                case GREATER_EQUAL:
-                    return outValue.setValue((leftTermValue.getReal() >= rightTermValue.getReal()) ? 1 : -1);
-                case COMPARATOR_AND:
-                    return outValue.setValue((leftTermValue.getReal() > 0 && rightTermValue.getReal() > 0) ? 1 : -1);
-                case COMPARATOR_OR:
-                    return outValue.setValue((leftTermValue.getReal() > 0 || rightTermValue.getReal() > 0) ? 1 : -1);
-            }
-        }
         return outValue.invalidate(CalculatedValue.ErrorType.TERM_NOT_READY);
     }
 
@@ -105,7 +81,7 @@ public class FormulaTermComparatorView extends FormulaTermView {
     public String toExpressionString() {
         String left = mLeftTerm.toExpressionString();
         String right = mRightTerm.toExpressionString();
-        String opStr = operatorKey.toString();
+        String opStr = mComparatorType.toString();
         return "((" + left + ")" + opStr + "(" + right + "))";
     }
 
@@ -178,8 +154,8 @@ public class FormulaTermComparatorView extends FormulaTermView {
         if (index < 0 || index > layout.getChildCount()) {
             throw new Exception("cannot create FormulaTermComparator for invalid insertion index " + index);
         }
-        comparatorType = getComparatorType(getContext(), text);
-        if (comparatorType == null) {
+        mComparatorType = getComparatorType(getContext(), text);
+        if (mComparatorType == null) {
             throw new Exception("cannot create FormulaTermComparator for unknown comparator");
         }
         useBrackets = bracketsType != TermField.BracketsType.NEVER;
@@ -189,10 +165,10 @@ public class FormulaTermComparatorView extends FormulaTermView {
             throw new Exception("cannot initialize comparators terms");
         }
         // set texts for left and right parts
-        TermField.divideString(text, getContext().getResources().getString(comparatorType.getSymbolId()), mLeftTerm,
+        TermField.divideString(text, getContext().getResources().getString(mComparatorType.getSymbolId()), mLeftTerm,
                 mRightTerm);
         // disable brackets of child terms in some cases
-        switch (comparatorType) {
+        switch (mComparatorType) {
             case EQUAL:
             case NOT_EQUAL:
             case GREATER:
@@ -216,7 +192,7 @@ public class FormulaTermComparatorView extends FormulaTermView {
      * Returns comparator type
      */
     public ComparatorType getComparatorType() {
-        return comparatorType;
+        return mComparatorType;
     }
 
     /**
@@ -227,10 +203,10 @@ public class FormulaTermComparatorView extends FormulaTermView {
             return false;
         }
         if (newType == ComparatorType.COMPARATOR_AND || newType == ComparatorType.COMPARATOR_OR
-                || comparatorType == ComparatorType.COMPARATOR_AND || comparatorType == ComparatorType.COMPARATOR_OR) {
+                || mComparatorType == ComparatorType.COMPARATOR_AND || mComparatorType == ComparatorType.COMPARATOR_OR) {
             return false;
         }
-        comparatorType = newType;
+        mComparatorType = newType;
         updateOperatorKey();
         return true;
     }

@@ -708,10 +708,10 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
         mFormulaRoot.getFormulaList().getUndoState().addEntry(getState());
 
         //comparator change
-        ComparatorType comparatorType = FormulaTermComparatorView.getComparatorType(getContext(), code);
+        ComparatorType comparatorType = FormulaComparatorView.getComparatorType(getContext(), code);
         if (isTerm() && comparatorType != null) {
-            if (getTerm() instanceof FormulaTermComparatorView) {
-                if (((FormulaTermComparatorView) getTerm()).changeComparatorType(comparatorType)) {
+            if (getTerm() instanceof FormulaComparatorView) {
+                if (((FormulaComparatorView) getTerm()).changeComparatorType(comparatorType)) {
                     return;
                 }
             }
