@@ -697,19 +697,22 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
 
         mEditText.setRequestFocusEnabled(false);
         Bundle savedState = null;
+        final String saveKey = "savedState";
         if (isTerm()) {
             savedState = new Bundle();
-            writeToBundle(savedState, "savedState");
+            writeToBundle(savedState, saveKey);
             clear();
         }
-        String newValue = FormulaTermView.createOperatorCode(getContext(), code, getText(), getEditText().getSelectionStart());
+
+        int splitIndex = mEditText.getSelectionStart() != mEditText.getSelectionEnd() ? -1 : mEditText.getSelectionStart();
+        String newValue = FormulaTermView.createOperatorCode(getContext(), code, getText(), splitIndex);
         if (newValue != null) {
             onTextChanged(newValue, false);
         }
         if (isTerm() && !mTermView.getTerms().isEmpty() && savedState != null) {
-            final TermField tf = mTermView.getArgumentTerm();
-            if (tf != null && tf.getEditText() != null && tf.getEditText().isConversionEnabled()) {
-                tf.readFromBundle(savedState, "savedState");
+            final TermField args = mTermView.getArgumentTerm();
+            if (args != null && args.getEditText() != null && args.getEditText().isConversionEnabled()) {
+                args.readFromBundle(savedState, saveKey);
             }
         }
         repairTermDepth(true);
