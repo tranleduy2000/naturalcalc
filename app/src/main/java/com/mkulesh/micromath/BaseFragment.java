@@ -204,8 +204,8 @@ abstract public class BaseFragment extends Fragment implements OnClickListener {
                         .setStream(uri) // uri from FileProvider
                         .setType("image/png")
                         .getIntent()
-                        .setAction(Intent.ACTION_MEDIA_SHARED) //Change if needed
-                        .setDataAndType(uri, "image/*")
+                        .setAction(Intent.ACTION_SEND) //Change if needed
+                        .setDataAndType(uri, "image/png")
                         .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 startActivity(intent);
             }

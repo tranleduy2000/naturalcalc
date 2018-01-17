@@ -77,5 +77,10 @@
         android:orderInCategory="930"
         android:title="@string/action_share"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_rate"
+        android:orderInCategory="930"
+        android:title="@string/action_rate_app"
+        app:showAsAction="never" />
 
 </menu>

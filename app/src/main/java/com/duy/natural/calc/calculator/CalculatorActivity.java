@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.duy.common.purchase.InAppPurchaseActivity;
 import com.duy.common.utils.ShareUtil;
+import com.duy.common.utils.StoreUtil;
 import com.duy.natural.calc.calculator.display.DisplayFragment;
 import com.duy.natural.calc.calculator.keyboard.KeyboardFragment;
 import com.duy.natural.calc.calculator.settings.SettingActivity;
@@ -158,6 +159,9 @@ public class CalculatorActivity extends InAppPurchaseActivity {
                 return true;
             case R.id.action_share:
                 ShareUtil.shareThisApp(this);
+                return true;
+            case R.id.action_rate:
+                StoreUtil.gotoPlayStore(this, getPackageName());
                 return true;
             default:
                 return super.onOptionsItemSelected(menuItem);
