@@ -25,6 +25,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.ShareCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -186,6 +188,30 @@ abstract public class BaseFragment extends Fragment implements OnClickListener {
                     }
                 });
         commander.show();
+    }
+
+    protected void exportImage() {
+        mFormulaList.setSelectedFormula(ViewUtils.INVALID_INDEX, false);
+        File file = new File(getContext().getFilesDir(),
+                "images" + File.separator + System.currentTimeMillis() + ".png");
+        try {
+            if (!file.exists()) {
+                if (file.getParentFile().mkdir()) file.createNewFile();
+            }
+            if (Exporter.write(mFormulaList, Uri.fromFile(file), FileType.PNG_IMAGE, null, null)) {
+                Uri uri = FileProvider.getUriForFile(getContext(), "com.nstudio.calc.casio.FileProvider", file);
+                Intent intent = ShareCompat.IntentBuilder.from(getActivity())
+                        .setStream(uri) // uri from FileProvider
+                        .setType("image/png")
+                        .getIntent()
+                        .setAction(Intent.ACTION_MEDIA_SHARED) //Change if needed
+                        .setDataAndType(uri, "image/*")
+                        .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                startActivity(intent);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void calculate() {

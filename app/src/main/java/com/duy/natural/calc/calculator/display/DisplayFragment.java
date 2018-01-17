@@ -227,9 +227,14 @@ public class DisplayFragment extends BaseFragment implements CalculatorContract.
             case R.id.action_export:
                 export();
                 break;
+            case R.id.action_export_image:
+                exportImage();
+                break;
 
         }
     }
+
+
 
     @Override
     public void setXmlReadingResult(boolean success) {

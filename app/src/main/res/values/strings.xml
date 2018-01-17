@@ -211,5 +211,6 @@
     <string name="fun_category_title_linear_algebra">Linear algebra</string>
     <string name="fun_category_title_basic">Basic</string>
     <string name="action_share">Share this app</string>
+    <string name="action_export_image">Export to image</string>
 
 </resources>

@@ -21,6 +21,7 @@ package com.mkulesh.micromath.export;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.support.annotation.Nullable;
 import android.widget.Toast;
 
 import com.mkulesh.micromath.fman.AdapterIf;
@@ -33,7 +34,7 @@ import com.mkulesh.micromath.utils.ViewUtils;
 import java.io.OutputStream;
 
 public class Exporter {
-    public static boolean write(FormulaList formulas, Uri uri, FileType fileType, final AdapterIf adapter,
+    public static boolean write(FormulaList formulas, Uri uri, FileType fileType,@Nullable final AdapterIf adapter,
                                 final Exporter.Parameters exportParameters) {
         final String fName = FileUtils.getFileName(formulas.getActivity(), uri);
         if (fileType != null) {

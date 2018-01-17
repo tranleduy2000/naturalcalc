@@ -139,7 +139,8 @@ public class CalculatorActivity extends InAppPurchaseActivity {
             case R.id.action_open:
             case R.id.action_save:
             case R.id.action_save_as:
-            case R.id.action_export: {
+            case R.id.action_export:
+            case R.id.action_export_image: {
                 if (checkStoragePermission(menuItem.getItemId())) {
                     BaseFragment baseFragment = getVisibleFragment();
                     if (baseFragment == null) {

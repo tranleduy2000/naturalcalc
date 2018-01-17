@@ -25,12 +25,13 @@ import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.OpenableColumns;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
-import com.nstudio.calc.casio.R;
 import com.mkulesh.micromath.utils.ViewUtils;
+import com.nstudio.calc.casio.R;
 
 import java.io.Closeable;
 import java.io.File;
@@ -320,17 +321,18 @@ public final class FileUtils {
         return null;
     }
 
-    public static OutputStream getOutputStream(final Context c, final Uri u) {
+    @Nullable
+    public static OutputStream getOutputStream(final Context c, final Uri uri) {
         try {
-            ContentResolver cr = c.getContentResolver();
-            OutputStream os = cr.openOutputStream(u);
-            ViewUtils.debug(c, "writing uri: " + u.toString());
-            if (os != null) {
-                return os;
+            ContentResolver contentResolver = c.getContentResolver();
+            OutputStream outputStream = contentResolver.openOutputStream(uri);
+            ViewUtils.debug(c, "writing uri: " + uri.toString());
+            if (outputStream != null) {
+                return outputStream;
             }
         } catch (Exception e) {
             final String error = String.format(c.getResources().getString(R.string.error_file_write),
-                    u.getLastPathSegment());
+                    uri.getLastPathSegment());
             ViewUtils.debug(c, error + ", " + e.getLocalizedMessage());
             Toast.makeText(c, error, Toast.LENGTH_LONG).show();
         }

@@ -55,6 +55,11 @@
         android:orderInCategory="810"
         android:title="@string/action_export"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_export_image"
+        android:orderInCategory="810"
+        android:title="@string/action_export_image"
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/action_remove_ads"
