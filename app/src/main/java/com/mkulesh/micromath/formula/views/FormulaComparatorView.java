@@ -20,6 +20,7 @@ package com.mkulesh.micromath.formula.views;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
@@ -58,16 +59,15 @@ public class FormulaComparatorView extends FormulaTermView {
         super();
     }
 
+    @Nullable
     public static ComparatorType getComparatorType(Context context, String text) {
-        ComparatorType retValue = null;
-        for (ComparatorType f : ComparatorType.values()) {
-            if (text.equals(f.getCode())
-                    || text.contains(context.getResources().getString(f.getSymbolId()))) {
-                retValue = f;
-                break;
+        for (ComparatorType type : ComparatorType.values()) {
+            String symbol = context.getResources().getString(type.getSymbolId());
+            if (text.equalsIgnoreCase(type.getCode()) || text.contains(symbol)) {
+                return type;
             }
         }
-        return retValue;
+        return null;
     }
 
 

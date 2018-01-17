@@ -20,6 +20,7 @@ package com.mkulesh.micromath.formula.views;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
@@ -75,18 +76,16 @@ public class FormulaTermLoopView extends FormulaTermView implements IArgumentHol
         super();
     }
 
+    @Nullable
     public static LoopType getLoopType(Context context, String code) {
-        LoopType retValue = null;
-        for (LoopType f : LoopType.values()) {
-            if (code.equals(f.getCode())
-                    || code.contains(context.getResources().getString(f.getSymbolId()))) {
-                retValue = f;
-                break;
+        for (LoopType type : LoopType.values()) {
+            String symbol = context.getResources().getString(type.getSymbolId());
+            if (code.equals(type.getCode()) || code.contains(symbol)) {
+                return type;
             }
         }
-        return retValue;
+        return null;
     }
-
 
 
     @Override

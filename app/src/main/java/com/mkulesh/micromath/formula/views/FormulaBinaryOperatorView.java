@@ -20,6 +20,7 @@ package com.mkulesh.micromath.formula.views;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
@@ -55,16 +56,15 @@ public class FormulaBinaryOperatorView extends FormulaTermView {
         super();
     }
 
+    @Nullable
     public static OperatorType getOperatorType(Context context, String text) {
-        OperatorType result = null;
-        for (OperatorType operatorType : OperatorType.values()) {
-            if (text.equalsIgnoreCase(operatorType.getCode())
-                    || text.contains(context.getResources().getString(operatorType.getSymbolId()))) {
-                result = operatorType;
-                break;
+        for (OperatorType type : OperatorType.values()) {
+            String symbol = context.getResources().getString(type.getSymbolId());
+            if (text.equalsIgnoreCase(type.getCode()) || text.contains(symbol)) {
+                return type;
             }
         }
-        return result;
+        return null;
     }
 
     @Override

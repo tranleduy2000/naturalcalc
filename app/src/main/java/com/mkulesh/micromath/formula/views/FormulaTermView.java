@@ -111,22 +111,22 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
         return null;
     }
 
-    public static FormulaTermView createTermView(TermField.TermType type, TermField termField, LinearLayout layout, String text,
-                                                 int textIndex) throws Exception {
+    public static FormulaTermView createTermView(TermField.TermType type, TermField termField,
+                                                 LinearLayout layout, String text, int viewIndex) throws Exception {
         if (DLog.DEBUG)
             DLog.d(TAG, "createTermView() called with: type = [" + type + "], termField = [" + termField
-                    + "] text = [" + text + "], textIndex = [" + textIndex + "]");
+                    + "] text = [" + text + "], textIndex = [" + viewIndex + "]");
         switch (type) {
             case OPERATOR:
-                return new FormulaBinaryOperatorView(termField, layout, text, textIndex);
+                return new FormulaBinaryOperatorView(termField, layout, text, viewIndex);
             case COMPARATOR:
-                return new FormulaComparatorView(termField, layout, text, textIndex);
+                return new FormulaComparatorView(termField, layout, text, viewIndex);
             case FUNCTION:
-                return new FormulaFunctionView(termField, layout, text, textIndex);
+                return new FormulaFunctionView(termField, layout, text, viewIndex);
             case INTERVAL:
-                return new FormulaTermIntervalView(termField, layout, text, textIndex);
+                return new FormulaTermIntervalView(termField, layout, text, viewIndex);
             case LOOP:
-                return new FormulaTermLoopView(termField, layout, text, textIndex);
+                return new FormulaTermLoopView(termField, layout, text, viewIndex);
         }
         return null;
     }

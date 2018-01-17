@@ -629,9 +629,9 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
     /**
      * Procedure converts this term field to an other term
      */
-    private FormulaTermView convertToTerm(String termCode, Parcelable data, boolean ensureManualTrigger) {
+    private FormulaTermView convertToTerm(String termCode, Parcelable restore, boolean ensureManualTrigger) {
         if (DLog.DEBUG)
-            DLog.d(TAG, "convertToTerm() called with: code = [" + termCode + "], p = [" + data +
+            DLog.d(TAG, "convertToTerm() called with: code = [" + termCode + "], p = [" + restore +
                     "], ensureManualTrigger = [" + ensureManualTrigger + "]");
 
         TermType targetType = FormulaTermView.getTermType(getContext(), mEditText, termCode, ensureManualTrigger);
@@ -656,8 +656,8 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
         repairTermDepth(true);
         if (isTerm()) {
             setText("");
-            if (data != null) {
-                mTermView.onRestoreInstanceState(data);
+            if (restore != null) {
+                mTermView.onRestoreInstanceState(restore);
             }
         }
         return mTermView;
