@@ -31,9 +31,10 @@ public final class CalculatedResult implements Serializable, Cloneable {
     }
 
     public String numericToString() {
-        return numeric.toString().replaceAll("[\\\\r\n]", "");
+        return numeric.toString().replaceAll("[\r\n\\\\]", "");
     }
-    public String fractionToString(){
-        return fraction.toString().replaceAll("[\\\\r\n]", "");
+
+    public String fractionToString() {
+        return fraction.toString().replaceAll("[\r\n\\\\]", "");
     }
 }

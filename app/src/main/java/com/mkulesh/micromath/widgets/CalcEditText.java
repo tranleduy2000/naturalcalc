@@ -60,7 +60,7 @@ public class CalcEditText extends AppCompatEditText implements OnLongClickListen
     private boolean emptyEnabled = false;
     private boolean intervalEnabled = false;
     private boolean complexEnabled = true;
-    private boolean comparatorEnabled = false;
+    private boolean comparatorEnabled = true;
     private boolean newTermEnabled = false;
 
     // context menu handling
@@ -70,23 +70,23 @@ public class CalcEditText extends AppCompatEditText implements OnLongClickListen
 
     public CalcEditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        setup(attrs);
+        setup(context, attrs);
     }
 
     public CalcEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setup(attrs);
+        setup(context, attrs);
     }
 
     public CalcEditText(Context context) {
         super(context);
-        setup(null);
+        setup(context, null);
     }
 
-    protected void setup(AttributeSet attrs) {
-        setTypeface(Typeface.MONOSPACE);
+    protected void setup(Context context, AttributeSet attrs) {
         ViewUtils.setShowSoftInputOnFocus(this, false);
-        setTypeface(FontManager.getFontFromAsset(getContext(), "Roboto-Light.ttf"));
+        FontManager.setDefaultFont(context, this);
+
         mMenuHandler = new ContextMenuHandler(getContext());
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CalcEditText, 0, 0);
@@ -99,8 +99,8 @@ public class CalcEditText extends AppCompatEditText implements OnLongClickListen
             emptyEnabled = a.getBoolean(R.styleable.CalcEditText_emptyEnabled, false);
             intervalEnabled = a.getBoolean(R.styleable.CalcEditText_intervalEnabled, false);
             complexEnabled = a.getBoolean(R.styleable.CalcEditText_complexEnabled, true);
-            comparatorEnabled = a.getBoolean(R.styleable.CalcEditText_comparatorEnabled, false);
-            newTermEnabled = a.getBoolean(R.styleable.CalcEditText_newTermEnabled, false);
+            comparatorEnabled = a.getBoolean(R.styleable.CalcEditText_comparatorEnabled, comparatorEnabled);
+            newTermEnabled = a.getBoolean(R.styleable.CalcEditText_newTermEnabled, newTermEnabled);
             // menu
             mMenuHandler.initialize(a);
             a.recycle();

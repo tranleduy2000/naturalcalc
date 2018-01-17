@@ -18,6 +18,7 @@ package com.duy.natural.calc.calculator.utils;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.Hashtable;
@@ -63,4 +64,11 @@ public class FontManager {
     }
 
 
+    public static void setDefaultFont(Context context, TextView textView) {
+        if (textView.getTypeface().getStyle() == Typeface.BOLD) {
+            textView.setTypeface(FontManager.getFontFromAsset(context, "Roboto-Regular.ttf"));
+        } else {
+            textView.setTypeface(FontManager.getFontFromAsset(context, "Roboto-Light.ttf"));
+        }
+    }
 }
