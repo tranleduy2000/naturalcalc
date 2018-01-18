@@ -227,7 +227,7 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
     /**
      * Procedure will be called for a custom edit term initialization
      */
-    protected abstract CalcEditText initializeTerm(CalcEditText v, LinearLayout l);
+    protected abstract CalcEditText initializeTerm(CalcEditText child, LinearLayout parent);
 
 
     @Override
@@ -291,17 +291,17 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
     /**
      * This procedure performs recursive initialization of elements from included layouts
      */
-    private void initializeLayout(LinearLayout l) {
-        for (int k = 0; k < l.getChildCount(); k++) {
-            View v = l.getChildAt(k);
-            if (v instanceof CalcTextView) {
-                initializeSymbol((CalcTextView) v);
+    private void initializeLayout(LinearLayout parent) {
+        for (int k = 0; k < parent.getChildCount(); k++) {
+            View child = parent.getChildAt(k);
+            if (child instanceof CalcTextView) {
+                initializeSymbol((CalcTextView) child);
             }
-            if (v instanceof CalcEditText) {
-                initializeTerm((CalcEditText) v, l);
+            if (child instanceof CalcEditText) {
+                initializeTerm((CalcEditText) child, parent);
             }
-            if (v instanceof LinearLayout) {
-                initializeLayout((LinearLayout) v);
+            if (child instanceof LinearLayout) {
+                initializeLayout((LinearLayout) child);
             }
         }
     }

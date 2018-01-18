@@ -74,7 +74,7 @@ public enum FunctionType implements ButtonDescriptor {
     Sin(1, "functions/Sin.md"),
     Sinh(1, "functions/Sinh.md"),
     Sign(1, "functions/Sign.md"),
-    Solve(2, "functions/Solve.md"),
+    Solve(3, "functions/Solve.md"),
     Sqrt(1, "functions/Sqrt.md"),
     Sum(1, "functions/Sum.md"),
 

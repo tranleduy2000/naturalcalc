@@ -117,16 +117,16 @@ public class FormulaComparatorView extends FormulaTermView {
     }
 
     @Override
-    protected CalcEditText initializeTerm(CalcEditText v, LinearLayout l) {
-        if (v.getText() != null) {
-            if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_left_term_key))) {
-                mLeftTerm = addTerm(getFormulaRoot(), l, v, this, false);
+    protected CalcEditText initializeTerm(CalcEditText child, LinearLayout parent) {
+        if (child.getText() != null) {
+            if (child.getText().toString().equals(getContext().getResources().getString(R.string.formula_left_term_key))) {
+                mLeftTerm = addTerm(getFormulaRoot(), parent, child, this, false);
             }
-            if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_right_term_key))) {
-                mRightTerm = addTerm(getFormulaRoot(), l, v, this, false);
+            if (child.getText().toString().equals(getContext().getResources().getString(R.string.formula_right_term_key))) {
+                mRightTerm = addTerm(getFormulaRoot(), parent, child, this, false);
             }
         }
-        return v;
+        return child;
     }
 
 

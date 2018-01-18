@@ -132,18 +132,18 @@ public class FormulaBinaryOperatorView extends FormulaTermView {
     }
 
     @Override
-    protected CalcEditText initializeTerm(CalcEditText editText, LinearLayout l) {
-        if (editText.getText() != null) {
-            if (editText.getText().toString().equals(getContext().getResources().getString(R.string.formula_left_term_key))) {
+    protected CalcEditText initializeTerm(CalcEditText child, LinearLayout parent) {
+        if (child.getText() != null) {
+            if (child.getText().toString().equals(getContext().getResources().getString(R.string.formula_left_term_key))) {
                 final boolean addDepth = mOperatorType == OperatorType.FRACTION;
-                mLeftTerm = addTerm(getFormulaRoot(), l, editText, this, addDepth);
+                mLeftTerm = addTerm(getFormulaRoot(), parent, child, this, addDepth);
             }
-            if (editText.getText().toString().equals(getContext().getResources().getString(R.string.formula_right_term_key))) {
+            if (child.getText().toString().equals(getContext().getResources().getString(R.string.formula_right_term_key))) {
                 final int addDepth = (mOperatorType == OperatorType.FRACTION) ? 1 : 0;
-                mRightTerm = addTerm(getFormulaRoot(), l, -1, editText, this, addDepth);
+                mRightTerm = addTerm(getFormulaRoot(), parent, -1, child, this, addDepth);
             }
         }
-        return editText;
+        return child;
     }
 
 

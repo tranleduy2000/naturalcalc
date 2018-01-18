@@ -145,22 +145,22 @@ public class FormulaTermIntervalView extends FormulaTermView {
     }
 
     @Override
-    protected CalcEditText initializeTerm(CalcEditText v, LinearLayout l) {
-        if (v.getText() != null) {
-            if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_min_value_key))) {
-                mMinValueTerm = addTerm(getFormulaRoot(), l, v, this, false);
+    protected CalcEditText initializeTerm(CalcEditText child, LinearLayout parent) {
+        if (child.getText() != null) {
+            if (child.getText().toString().equals(getContext().getResources().getString(R.string.formula_min_value_key))) {
+                mMinValueTerm = addTerm(getFormulaRoot(), parent, child, this, false);
                 mMinValueTerm.bracketsType = TermField.BracketsType.NEVER;
-            } else if (v.getText().toString()
+            } else if (child.getText().toString()
                     .equals(getContext().getResources().getString(R.string.formula_next_value_key))) {
-                mNextValueTerm = addTerm(getFormulaRoot(), l, v, this, false);
+                mNextValueTerm = addTerm(getFormulaRoot(), parent, child, this, false);
                 mNextValueTerm.bracketsType = TermField.BracketsType.NEVER;
-            } else if (v.getText().toString()
+            } else if (child.getText().toString()
                     .equals(getContext().getResources().getString(R.string.formula_max_value_key))) {
-                mMaxValueTerm = addTerm(getFormulaRoot(), l, v, this, false);
+                mMaxValueTerm = addTerm(getFormulaRoot(), parent, child, this, false);
                 mMaxValueTerm.bracketsType = TermField.BracketsType.NEVER;
             }
         }
-        return v;
+        return child;
     }
 
 

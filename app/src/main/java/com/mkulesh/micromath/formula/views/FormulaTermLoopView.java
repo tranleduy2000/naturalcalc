@@ -177,21 +177,21 @@ public class FormulaTermLoopView extends FormulaTermView implements IArgumentHol
     }
 
     @Override
-    protected CalcEditText initializeTerm(CalcEditText v, LinearLayout l) {
+    protected CalcEditText initializeTerm(CalcEditText child, LinearLayout parent) {
         final int addDepth = (mLoopType == INTEGRAL || mLoopType == LoopType.DERIVATIVE) ? 0 : 3;
-        if (v.getText() != null) {
-            if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_max_value_key))) {
-                mMaxValueTerm = addTerm(getFormulaRoot(), l, -1, v, this, addDepth);
-            } else if (v.getText().toString()
+        if (child.getText() != null) {
+            if (child.getText().toString().equals(getContext().getResources().getString(R.string.formula_max_value_key))) {
+                mMaxValueTerm = addTerm(getFormulaRoot(), parent, -1, child, this, addDepth);
+            } else if (child.getText().toString()
                     .equals(getContext().getResources().getString(R.string.formula_min_value_key))) {
-                mMinValueTerm = addTerm(getFormulaRoot(), l, -1, v, this, addDepth);
-            } else if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_index_key))) {
-                mIndexTerm = addTerm(getFormulaRoot(), l, -1, v, this, addDepth);
-            } else if (v.getText().toString().equals(getContext().getResources().getString(R.string.formula_arg_term_key))) {
-                mArgTerm = addTerm(getFormulaRoot(), l, v, this, false);
+                mMinValueTerm = addTerm(getFormulaRoot(), parent, -1, child, this, addDepth);
+            } else if (child.getText().toString().equals(getContext().getResources().getString(R.string.formula_index_key))) {
+                mIndexTerm = addTerm(getFormulaRoot(), parent, -1, child, this, addDepth);
+            } else if (child.getText().toString().equals(getContext().getResources().getString(R.string.formula_arg_term_key))) {
+                mArgTerm = addTerm(getFormulaRoot(), parent, child, this, false);
             }
         }
-        return v;
+        return child;
     }
 
     @Override
