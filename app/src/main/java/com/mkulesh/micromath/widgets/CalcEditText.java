@@ -20,7 +20,6 @@ package com.mkulesh.micromath.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Typeface;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
@@ -330,10 +329,11 @@ public class CalcEditText extends AppCompatEditText implements OnLongClickListen
 
     @Override
     public void insert(String text) {
+        if (!hasFocus()) requestFocus();
         int start = Math.max(getSelectionStart(), 0);
         int end = Math.max(getSelectionEnd(), 0);
-        getText().replace(start, end, "");
-        getText().insert(start, text);
+        getEditableText().replace(start, end, "");
+        getEditableText().insert(start, text);
     }
 
     @Override

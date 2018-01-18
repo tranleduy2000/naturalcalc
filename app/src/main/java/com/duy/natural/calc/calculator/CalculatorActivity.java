@@ -34,7 +34,7 @@ import com.duy.natural.calc.calculator.display.DisplayFragment;
 import com.duy.natural.calc.calculator.keyboard.KeyboardFragment;
 import com.duy.natural.calc.calculator.settings.SettingActivity;
 import com.kobakei.ratethisapp.RateThisApp;
-import com.mkulesh.micromath.BaseFragment;
+import com.mkulesh.micromath.BaseDisplayFragment;
 import com.mkulesh.micromath.editstate.clipboard.FormulaClipboardData;
 import com.mkulesh.micromath.fman.AdapterDocuments;
 import com.mkulesh.micromath.utils.AppLocale;
@@ -145,24 +145,25 @@ public class CalculatorActivity extends InAppPurchaseActivity {
             case R.id.action_new:
             case R.id.action_discard:
             case R.id.action_new_document: {
-                BaseFragment baseFragment = getVisibleFragment();
-                if (baseFragment == null) {
+                BaseDisplayFragment baseDisplayFragment = getVisibleFragment();
+                if (baseDisplayFragment == null) {
                     return true;
                 }
-                baseFragment.performAction(menuItem.getItemId());
+                baseDisplayFragment.performAction(menuItem.getItemId());
                 return true;
             }
             case R.id.action_open:
             case R.id.action_save:
             case R.id.action_save_as:
             case R.id.action_export:
-            case R.id.action_export_image: {
+            case R.id.action_export_image:
+            case R.id.action_save_to_file: {
                 if (checkStoragePermission(menuItem.getItemId())) {
-                    BaseFragment baseFragment = getVisibleFragment();
-                    if (baseFragment == null) {
+                    BaseDisplayFragment baseDisplayFragment = getVisibleFragment();
+                    if (baseDisplayFragment == null) {
                         return true;
                     }
-                    baseFragment.performAction(menuItem.getItemId());
+                    baseDisplayFragment.performAction(menuItem.getItemId());
                 }
                 return true;
             }
@@ -242,7 +243,7 @@ public class CalculatorActivity extends InAppPurchaseActivity {
         mToolbar.setVisibility(View.INVISIBLE);
         super.onSupportActionModeStarted(mode);
         mActiveActionModes.add(mode);
-        final BaseFragment f = getVisibleFragment();
+        final BaseDisplayFragment f = getVisibleFragment();
         if (f != null) {
             f.updateModeTitle();
         }
@@ -287,12 +288,12 @@ public class CalculatorActivity extends InAppPurchaseActivity {
         this.mWorksheetName = name;
     }
 
-    public BaseFragment getVisibleFragment() {
+    public BaseDisplayFragment getVisibleFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         List<Fragment> fragments = fragmentManager.getFragments();
         for (Fragment fragment : fragments) {
-            if (fragment != null && fragment.isVisible() && (fragment instanceof BaseFragment)) {
-                return (BaseFragment) fragment;
+            if (fragment != null && fragment.isVisible() && (fragment instanceof BaseDisplayFragment)) {
+                return (BaseDisplayFragment) fragment;
             }
         }
         return null;
@@ -357,7 +358,7 @@ public class CalculatorActivity extends InAppPurchaseActivity {
                 if (mStoragePermissionAction != ViewUtils.INVALID_INDEX && grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     ViewUtils.debug(this, "permission was granted, performing file operation action");
-                    final BaseFragment f = getVisibleFragment();
+                    final BaseDisplayFragment f = getVisibleFragment();
                     if (f != null) {
                         f.performAction(mStoragePermissionAction);
                     }

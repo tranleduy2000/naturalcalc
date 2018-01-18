@@ -51,7 +51,7 @@ import com.nstudio.calc.casio.R;
 import java.io.File;
 import java.io.FileOutputStream;
 
-abstract public class BaseFragment extends Fragment implements OnClickListener {
+abstract public class BaseDisplayFragment extends Fragment implements OnClickListener {
     /**
      * Constants used to save/restore the instance state.
      */

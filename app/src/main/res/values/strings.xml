@@ -213,8 +213,13 @@
     <string name="fun_category_title_combinatorial">Combinatorial</string>
     <string name="fun_category_title_linear_algebra">Linear algebra</string>
     <string name="fun_category_title_basic">Basic</string>
+
     <string name="open_drawer">Open drawer</string>
     <string name="close_drawer">Close drawer</string>
+
+    <string name="action_zoom_in">Zoom in</string>
+    <string name="action_zoom_out">Zoom out</string>
+    <string name="action_zoom_reset">Reset</string>
 
 
 </resources>

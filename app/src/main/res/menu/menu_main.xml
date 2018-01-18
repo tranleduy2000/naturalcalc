@@ -40,21 +40,29 @@
         android:id="@+id/action_save"
         android:icon="@drawable/ic_action_content_save"
         android:orderInCategory="700"
-
         android:title="@string/action_save"
         android:visible="false"
         app:showAsAction="ifRoom" />
+
     <item
         android:id="@+id/action_save_as"
         android:orderInCategory="800"
         android:title="@string/action_save_as"
         android:visible="false"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_save_to_file"
+        android:orderInCategory="800"
+        android:title="action_save_to_file"
+        app:showAsAction="never" />
+
     <item
         android:id="@+id/action_export"
         android:orderInCategory="810"
         android:title="@string/action_export"
         app:showAsAction="never" />
+
     <item
         android:id="@+id/action_export_image"
         android:orderInCategory="810"

@@ -37,7 +37,7 @@ import com.duy.natural.calc.calculator.calcbutton.Category;
 import com.duy.natural.calc.calculator.dialogs.LaTeXFragment;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.result.CalculatedResult;
-import com.mkulesh.micromath.BaseFragment;
+import com.mkulesh.micromath.BaseDisplayFragment;
 import com.mkulesh.micromath.editstate.Coordinate;
 import com.mkulesh.micromath.editstate.DeleteState;
 import com.mkulesh.micromath.editstate.FormulaState;
@@ -86,7 +86,7 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
     private static final String TAG = "FormulaList";
 
     private final ArrayList<FormulaView> mSelectedEquations = new ArrayList<>();
-    private final BaseFragment mFragment;
+    private final BaseDisplayFragment mFragment;
     private final AppCompatActivity mActivity;
     private final TwoDScrollView mFormulaScrollView;
     private final FormulaListView mFormulaListView;
@@ -103,7 +103,7 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
     private CalculatorContract.IDisplayView mDisplayView;
     private CalculatorContract.IKeyboardView mKeyboardView;
 
-    public FormulaList(BaseFragment fragment, View rootView) {
+    public FormulaList(BaseDisplayFragment fragment, View rootView) {
         mFragment = fragment;
         mActivity = (AppCompatActivity) fragment.getActivity();
 

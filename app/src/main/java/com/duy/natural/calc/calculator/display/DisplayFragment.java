@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.duy.natural.calc.calculator.CalculatorContract;
-import com.mkulesh.micromath.BaseFragment;
+import com.mkulesh.micromath.BaseDisplayFragment;
 import com.mkulesh.micromath.dialogs.DialogNewFormula;
 import com.mkulesh.micromath.fman.AdapterIf;
 import com.mkulesh.micromath.fman.Commander;
@@ -24,12 +24,13 @@ import com.mkulesh.micromath.utils.ViewUtils;
 import com.nstudio.calc.casio.R;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by Duy on 1/13/2018.
  */
 
-public class DisplayFragment extends BaseFragment implements CalculatorContract.IDisplayView {
+public class DisplayFragment extends BaseDisplayFragment implements CalculatorContract.IDisplayView {
     public static final String AUTOSAVE_FILE_NAME = "autosave.mmt";
     protected boolean invalidateFile = false;
     private CalculatorContract.IPresenter mPresenter;
@@ -230,10 +231,22 @@ public class DisplayFragment extends BaseFragment implements CalculatorContract.
             case R.id.action_export_image:
                 exportImage();
                 break;
+            case R.id.action_save_to_file:
+                createExample();
+                break;
 
         }
     }
 
+    private void createExample() {
+        File file = new File(getContext().getFilesDir(), "tmp.xml");
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mFormulaList.writeToFile(Uri.fromFile(file));
+    }
 
 
     @Override

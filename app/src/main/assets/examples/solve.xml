@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<micromath>
+    <formulaList redefineAllowed="false" scale="1.00000" significantDigits="6" textWidth="60">
+        <result arrayLength="7" disableCalculation="false" hideResultField="false">
+            <term code="solve" key="leftTerm">
+                <term code="equal" key="argTerm1">
+                    <term code="plus" key="leftTerm">
+                        <term code="power_layout" key="leftTerm">
+                            <term key="leftTerm" text="x" />
+                            <term key="rightTerm" text="2" />
+                        </term>
+                        <term code="minus" key="rightTerm">
+                            <term code="multiply" key="leftTerm">
+                                <term key="leftTerm" text="2" />
+                                <term key="rightTerm" text="x" />
+                            </term>
+                            <term key="rightTerm" text="3" />
+                        </term>
+                    </term>
+                    <term key="rightTerm" text="0" />
+                </term>
+                <term key="argTerm2" text="x" />
+            </term>
+            <term key="rightTerm" />
+        </result>
+        <result arrayLength="7" disableCalculation="false" hideResultField="false">
+            <term code="solve" key="leftTerm">
+                <term code="equal" key="argTerm1">
+                    <term code="minus" key="leftTerm">
+                        <term key="leftTerm" text="2" />
+                        <term key="rightTerm" text="x" />
+                    </term>
+                    <term code="multiply" key="rightTerm">
+                        <term key="leftTerm" text="66" />
+                        <term key="rightTerm" text="x" />
+                    </term>
+                </term>
+                <term key="argTerm2" text="x" />
+            </term>
+            <term key="rightTerm" />
+        </result>
+        <result arrayLength="7" disableCalculation="false" hideResultField="false">
+            <term code="solve" key="leftTerm">
+                <term code="equal" key="argTerm1">
+                    <term code="plus" key="leftTerm">
+                        <term code="minus" key="leftTerm">
+                            <term key="leftTerm" text="y" />
+                            <term key="rightTerm" text="3" />
+                        </term>
+                        <term key="rightTerm" text="2y" />
+                    </term>
+                    <term key="rightTerm" text="0" />
+                </term>
+                <term key="argTerm2" text="y" />
+            </term>
+            <term key="rightTerm" />
+        </result>
+        <result arrayLength="7" disableCalculation="false" hideResultField="false">
+            <term code="solve" key="leftTerm">
+                <term code="equal" key="argTerm1">
+                    <term key="leftTerm" text="" />
+                    <term key="rightTerm" text="0" />
+                </term>
+                <term key="argTerm2" text="x" />
+            </term>
+            <term key="rightTerm" />
+        </result>
+    </formulaList>
+</micromath>
