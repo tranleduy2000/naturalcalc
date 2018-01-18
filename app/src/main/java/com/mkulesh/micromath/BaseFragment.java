@@ -20,6 +20,7 @@ package com.mkulesh.micromath;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -37,6 +38,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.duy.natural.calc.calculator.CalculatorActivity;
+import com.mkulesh.micromath.export.ExportToImage;
 import com.mkulesh.micromath.export.Exporter;
 import com.mkulesh.micromath.fman.AdapterIf;
 import com.mkulesh.micromath.fman.Commander;
@@ -47,6 +49,7 @@ import com.mkulesh.micromath.utils.ViewUtils;
 import com.nstudio.calc.casio.R;
 
 import java.io.File;
+import java.io.FileOutputStream;
 
 abstract public class BaseFragment extends Fragment implements OnClickListener {
     /**
@@ -192,23 +195,23 @@ abstract public class BaseFragment extends Fragment implements OnClickListener {
 
     protected void exportImage() {
         mFormulaList.setSelectedFormula(ViewUtils.INVALID_INDEX, false);
-        File file = new File(getContext().getFilesDir(),
-                "images" + File.separator + System.currentTimeMillis() + ".png");
+        String path = "images" + File.separator + System.currentTimeMillis() + ".png";
+        File file = new File(getContext().getFilesDir(), path);
         try {
-            if (!file.exists()) {
-                if (file.getParentFile().mkdir()) file.createNewFile();
-            }
-            if (Exporter.write(mFormulaList, Uri.fromFile(file), FileType.PNG_IMAGE, null, null)) {
-                Uri uri = FileProvider.getUriForFile(getContext(), "com.nstudio.calc.casio.FileProvider", file);
-                Intent intent = ShareCompat.IntentBuilder.from(getActivity())
-                        .setStream(uri) // uri from FileProvider
-                        .setType("image/png")
-                        .getIntent()
-                        .setAction(Intent.ACTION_SEND) //Change if needed
-                        .setDataAndType(uri, "image/png")
-                        .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                startActivity(intent);
-            }
+            if (!file.exists()) if (file.getParentFile().mkdir()) file.createNewFile();
+            FileOutputStream stream = new FileOutputStream(file);
+            final ExportToImage writer = new ExportToImage(stream);
+            writer.write(mFormulaList.getFormulaListView(), Bitmap.CompressFormat.PNG);
+
+            Uri uri = FileProvider.getUriForFile(getContext(), "com.nstudio.calc.casio.FileProvider", file);
+            Intent intent = ShareCompat.IntentBuilder.from(getActivity())
+                    .setStream(uri) // uri from FileProvider
+                    .setType("image/png")
+                    .getIntent()
+                    .setAction(Intent.ACTION_SEND) //Change if needed
+                    .setDataAndType(uri, "image/png")
+                    .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivity(intent);
         } catch (Exception e) {
             e.printStackTrace();
         }

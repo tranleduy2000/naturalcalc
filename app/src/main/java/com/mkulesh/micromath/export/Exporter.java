@@ -46,12 +46,12 @@ public class Exporter {
             try {
                 switch (fileType) {
                     case PNG_IMAGE: {
-                        final ExportToImage ex = new ExportToImage(formulas.getActivity(), stream, uri);
+                        final ExportToImage ex = new ExportToImage(stream);
                         ex.write(formulas.getFormulaListView(), Bitmap.CompressFormat.PNG);
                         break;
                     }
                     case JPEG_IMAGE: {
-                        final ExportToImage ex = new ExportToImage(formulas.getActivity(), stream, uri);
+                        final ExportToImage ex = new ExportToImage(stream);
                         ex.write(formulas.getFormulaListView(), Bitmap.CompressFormat.JPEG);
                         break;
                     }

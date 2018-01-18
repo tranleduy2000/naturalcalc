@@ -25,6 +25,7 @@ import android.graphics.Rect;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
+import android.support.v4.widget.EdgeEffectCompat;
 import android.util.AttributeSet;
 import android.view.FocusFinder;
 import android.view.GestureDetector;
@@ -34,7 +35,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.animation.AnimationUtils;
-import android.support.v4.widget.EdgeEffectCompat;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
@@ -57,6 +57,7 @@ import java.util.List;
  * <p>
  * Source: http://web.archive.org/web/20131020193237/http://blog.gorges.us/2010/06/android-two-dimensional-scrollview
  */
+@SuppressWarnings("deprecation")
 public class TwoDScrollView extends FrameLayout {
     static final int ANIMATED_SCROLL_GAP = 250;
     static final float MAX_SCROLL_FACTOR = 0.5f;
@@ -1085,6 +1086,7 @@ public class TwoDScrollView extends FrameLayout {
     /**
      * The gesture listener, used for handling simple gestures such as double touches, scrolls, and flings.
      */
+    @SuppressWarnings("deprecation")
     private class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
         public float velocityX = 0, velocityY = 0;
         private boolean isMoved = false;
