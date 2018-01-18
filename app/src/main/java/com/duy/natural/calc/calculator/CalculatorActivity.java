@@ -12,9 +12,12 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.Toolbar;
@@ -63,7 +66,8 @@ public class CalculatorActivity extends InAppPurchaseActivity {
     private CharSequence mWorksheetName = null;
     private Toolbar mToolbar = null;
     private ArrayList<ActionMode> mActiveActionModes = null;
-
+    private DrawerLayout mDrawerLayout;
+    private NavigationView mNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +75,9 @@ public class CalculatorActivity extends InAppPurchaseActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_calculator);
+
+        bindView();
+
 
         KeyboardFragment keyboard = KeyboardFragment.newInstance();
         replaceFragment(keyboard, R.id.container_keyboard);
@@ -80,13 +87,21 @@ public class CalculatorActivity extends InAppPurchaseActivity {
         mPresenter = new CalculatorPresenter(display, keyboard);
         mPresenter.onCreate();
 
+        mActiveActionModes = new ArrayList<>();
+
+        postShowFullScreenAdsAfter(1000 * 60 * 4); //4 minus
+        showDialogRate();
+    }
+
+    private void bindView() {
         mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-
-        mActiveActionModes = new ArrayList<>();
-        postShowFullScreenAdsAfter(1000 * 60 * 4); //4 minus
-
-        showDialogRate();
+        mNavigationView = findViewById(R.id.nav_view);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle listener = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar,
+                R.string.open_drawer, R.string.close_drawer);
+        mDrawerLayout.addDrawerListener(listener);
+        listener.syncState();
     }
 
     private void showDialogRate() {
