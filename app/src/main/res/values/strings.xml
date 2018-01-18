@@ -221,6 +221,8 @@
     <string name="action_zoom_out">Zoom out</string>
     <string name="action_zoom_reset">Reset</string>
     <string name="action_change_size">Change font size</string>
+    <string name="fun_category_title_other">Other</string>
+    <string name="fun_category_title_common">Common</string>
 
 
 </resources>
