@@ -23,7 +23,7 @@ public class MathResultView extends MathView {
     }
 
     private void setup(Context context) {
-        setEngine(Engine.MATHJAX);
+        setEngine(Engine.KATEX);
 
         getSettings().setSupportZoom(true);
         getSettings().setBuiltInZoomControls(true);
