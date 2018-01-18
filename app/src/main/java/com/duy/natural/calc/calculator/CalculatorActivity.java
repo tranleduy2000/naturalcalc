@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.IdRes;
@@ -31,6 +32,7 @@ import com.duy.common.purchase.InAppPurchaseActivity;
 import com.duy.common.utils.ShareUtil;
 import com.duy.common.utils.StoreUtil;
 import com.duy.natural.calc.calculator.display.DisplayFragment;
+import com.duy.natural.calc.calculator.evaluator.SystemLoaderTask;
 import com.duy.natural.calc.calculator.keyboard.KeyboardFragment;
 import com.duy.natural.calc.calculator.settings.SettingActivity;
 import com.kobakei.ratethisapp.RateThisApp;
@@ -91,6 +93,8 @@ public class CalculatorActivity extends InAppPurchaseActivity {
 
         postShowFullScreenAdsAfter(1000 * 60 * 4); //4 minus
         showDialogRate();
+
+        new SystemLoaderTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     private void bindView() {
