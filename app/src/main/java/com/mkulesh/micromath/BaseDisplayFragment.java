@@ -205,10 +205,8 @@ abstract public class BaseDisplayFragment extends Fragment implements OnClickLis
 
             Uri uri = FileProvider.getUriForFile(getContext(), "com.nstudio.calc.casio.FileProvider", file);
             Intent intent = ShareCompat.IntentBuilder.from(getActivity())
-                    .setStream(uri) // uri from FileProvider
-                    .setType("image/png")
                     .getIntent()
-                    .setAction(Intent.ACTION_SEND) //Change if needed
+                    .setAction(Intent.ACTION_SEND)
                     .setDataAndType(uri, "image/png")
                     .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivity(intent);

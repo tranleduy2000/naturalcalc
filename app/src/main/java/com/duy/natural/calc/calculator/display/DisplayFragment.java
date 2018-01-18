@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,6 +23,7 @@ import com.mkulesh.micromath.fman.FileType;
 import com.mkulesh.micromath.fman.FileUtils;
 import com.mkulesh.micromath.formula.io.XmlLoaderTask;
 import com.mkulesh.micromath.utils.ViewUtils;
+import com.mkulesh.micromath.widgets.ScaleMenuHandler;
 import com.nstudio.calc.casio.R;
 
 import java.io.File;
@@ -234,10 +237,19 @@ public class DisplayFragment extends BaseDisplayFragment implements CalculatorCo
             case R.id.action_save_to_file:
                 createExample();
                 break;
+            case R.id.action_change_size:
+                openZoomControl();
+                break;
 
         }
     }
 
+    private void openZoomControl() {
+        ScaleMenuHandler mScaleMenuHandler = new ScaleMenuHandler(getContext());
+        mScaleMenuHandler.startActionMode((AppCompatActivity) getActivity(), mFormulaList);
+    }
+
+    @VisibleForTesting
     private void createExample() {
         File file = new File(getContext().getFilesDir(), "tmp.xml");
         try {

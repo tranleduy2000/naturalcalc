@@ -144,7 +144,9 @@ public class CalculatorActivity extends InAppPurchaseActivity {
             case R.id.action_undo:
             case R.id.action_new:
             case R.id.action_discard:
-            case R.id.action_new_document: {
+            case R.id.action_new_document:
+            case R.id.action_export_image:
+            case R.id.action_change_size: {
                 BaseDisplayFragment baseDisplayFragment = getVisibleFragment();
                 if (baseDisplayFragment == null) {
                     return true;
@@ -156,7 +158,6 @@ public class CalculatorActivity extends InAppPurchaseActivity {
             case R.id.action_save:
             case R.id.action_save_as:
             case R.id.action_export:
-            case R.id.action_export_image:
             case R.id.action_save_to_file: {
                 if (checkStoragePermission(menuItem.getItemId())) {
                     BaseDisplayFragment baseDisplayFragment = getVisibleFragment();
