@@ -271,7 +271,7 @@ public class FormulaFunctionView extends FormulaTermView {
                 return "Power(" + left + "," + right + ")";
             }
             case FACTORIAL_LAYOUT:
-                return mFunctionType.getCode() + "(" + mTerms.get(0).toExpressionString() + ")";
+                return "Factorial(" + mTerms.get(0).toExpressionString() + ")";
             case SQRT_LAYOUT:
                 return "Sqrt(" + argsToString() + ")";
             case SURD_LAYOUT:
