@@ -25,50 +25,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="5">
-
-        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
-            android:id="@+id/btn_solve"
-            style="@style/CalcButtonStyle.Function"
-            android:text="@string/formula_function_solve"
-            app:buttonType="function" />
-
-        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
-            android:id="@+id/btn_expand"
-            style="@style/CalcButtonStyle.Function"
-            app:buttonType="function"
-            app:code="Expand" />
-
-        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
-            android:id="@+id/btn_solve"
-            style="@style/CalcButtonStyle.Function"
-            android:text="@string/formula_function_solve"
-            app:buttonType="function" />
-
-        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
-            android:id="@+id/btn_expand"
-            style="@style/CalcButtonStyle.Function"
-            app:buttonType="function"
-            app:code="Expand" />
-
-        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
-            android:id="@+id/btn_solve"
-            style="@style/CalcButtonStyle.Function"
-            android:text="@string/formula_function_solve"
-            app:buttonType="function" />
-
-        <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
-            android:id="@+id/btn_expand"
-            style="@style/CalcButtonStyle.Function"
-            app:buttonType="function"
-            app:code="Expand" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
         android:orientation="horizontal">
 
         <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
