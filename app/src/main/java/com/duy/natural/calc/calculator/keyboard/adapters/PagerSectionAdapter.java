@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.duy.natural.calc.calculator.keyboard.OnCalcButtonClickListener;
 import com.duy.natural.calc.calculator.keyboard.fragments.BasicPadFragment;
-import com.duy.natural.calc.calculator.keyboard.fragments.FunctionPadFragment2;
+import com.duy.natural.calc.calculator.keyboard.fragments.FunctionPadFragment;
 import com.duy.natural.calc.calculator.keyboard.fragments.LeftKeyboardFragment;
 
 /**
@@ -52,7 +52,7 @@ public class PagerSectionAdapter extends FragmentPagerAdapter {
             case 1:
                 return BasicPadFragment.newInstance(listener);
             case 2:
-                return FunctionPadFragment2.newInstance(listener);
+                return FunctionPadFragment.newInstance(listener);
         }
         return null;
     }

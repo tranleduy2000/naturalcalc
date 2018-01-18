@@ -18,7 +18,6 @@
         style="@style/CalcButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:tint="?android:textColorPrimary"
         app:srcCompat="@drawable/ic_result" />
 
     <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
@@ -26,7 +25,6 @@
         style="@style/CalcButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:tint="?android:textColorPrimary"
         app:srcCompat="@drawable/ic_equation" />
 
     <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
@@ -34,7 +32,6 @@
         style="@style/CalcButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:tint="?android:textColorPrimary"
         app:srcCompat="@drawable/ic_new_term" />
 
     <com.duy.natural.calc.calculator.calcbutton.CalcImageButton
