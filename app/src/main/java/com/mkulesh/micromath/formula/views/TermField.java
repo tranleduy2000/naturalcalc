@@ -792,7 +792,7 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
      * If there is a parsing error, it will be shown
      */
     public void showParsingError() {
-        if (DLog.DEBUG) DLog.d(TAG, "showParsingError() called");
+        /*if (DLog.DEBUG) DLog.d(TAG, "showParsingError() called");
         final String errMsg = findErrorMsg();
         if (errMsg != null) {
             Toast.makeText(mFormulaRoot.getContext(), errMsg, Toast.LENGTH_SHORT).show();
@@ -802,7 +802,7 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
         } else if (!isEmpty() && mContentType == ContentType.INVALID && mParser.errorId != NO_ERROR_ID) {
             Toast.makeText(mFormulaRoot.getContext(), mFormulaRoot.getContext().getResources().getString(mParser.errorId),
                     Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 
     /**

@@ -265,25 +265,26 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
     /**
      * This procedure shall be called in order to prepare all visual elements
      */
-    protected void initializeElements(int idx) {
+    protected void initializeElements(int index) {
         boolean[] isValid = new boolean[mElements.size()];
         for (int i = 0; i < mElements.size(); i++) {
-            View v = mElements.get(i);
-            if (v instanceof CalcTextView) {
-                isValid[i] = (initializeSymbol((CalcTextView) v) != null);
-            } else if (v instanceof CalcEditText) {
-                isValid[i] = (initializeTerm((CalcEditText) v, layout) != null);
-            } else if (v instanceof LinearLayout) {
-                initializeLayout((LinearLayout) v);
+            View child = mElements.get(i);
+            if (child instanceof CalcTextView) {
+                isValid[i] = (initializeSymbol((CalcTextView) child) != null);
+            } else if (child instanceof CalcEditText) {
+                isValid[i] = (initializeTerm((CalcEditText) child, layout) != null);
+            } else if (child instanceof LinearLayout) {
+                initializeLayout((LinearLayout) child);
                 isValid[i] = true;
             }
         }
+
         for (int i = mElements.size() - 1; i >= 0; i--) {
-            View v = mElements.get(i);
+            View child = mElements.get(i);
             if (isValid[i]) {
-                layout.addView(v, idx);
+                layout.addView(child, index);
             } else {
-                mElements.remove(v);
+                mElements.remove(child);
             }
         }
     }

@@ -15,7 +15,7 @@ import static com.duy.natural.calc.calculator.calcbutton.CalcButtonManager.NO_BU
  * https://github.com/axkr/symja_android_library/tree/master/symja_android_library/doc/functions
  */
 public enum FunctionType implements ButtonDescriptor {
-    /*Layout*/
+   // Layout
     IDENTITY_LAYOUT(1, R.string.math_function_identity, null, R.id.btn_parentheses),
     POWER_LAYOUT(2, R.string.math_function_power, null, R.id.btn_power),
     SQRT_LAYOUT(1, R.string.math_function_sqrt, null, R.id.btn_sqrt),
@@ -27,8 +27,8 @@ public enum FunctionType implements ButtonDescriptor {
     FUNCTION_INDEX(-1, R.string.math_function_index, "content:com.mkulesh.micromath.index"),
 
 
-    /*Basic math*/
-   /* Abs(1, "functions/Abs.md") ABS_LAYOUT,*/
+    //Basic math
+    Abs(1, "functions/Abs.md"),
     AbsArg(1, "functions/AbsArg.md"),
     ArcCos(1, "functions/ArcCos.md"),
     ArcCosh(1, "functions/ArcCosh.md"),
@@ -78,12 +78,12 @@ public enum FunctionType implements ButtonDescriptor {
     Sqrt(1, "functions/Sqrt.md"),
     Sum(1, "functions/Sum.md"),
 
-   /* Surd(1, "functions/Surd.md"), SURD_LAYOUT*/
+    Surd(1, "functions/Surd.md"),
     Tan(1, "functions/Tan.md"),
     Tanh(1, "functions/Tanh.md"),
 
 
-    /*Number theoretic functions*/
+    //Number theoretic functions
     CoprimeQ(2, "functions/CoprimeQ.md"),
     Divisors(1, "functions/Divisors.md"),
     EvenQ(1, "functions/EvenQ.md"),
@@ -118,9 +118,9 @@ public enum FunctionType implements ButtonDescriptor {
     PrimeQ(1, "functions/PrimeQ.md"),
     Quotient(2, "functions/Quotient.md"),
 
-    /*Logic*/
-    /*AllTrue(1, "functions/AllTrue.md"),*/
-    /*AnyTrue(1, "functions/AnyTrue.md"),*/
+    //Logic
+    AllTrue(1, "functions/AllTrue.md"),
+    AnyTrue(1, "functions/AnyTrue.md"),
     And(2, "functions/And.md"){
         @Override
         public boolean isInfinityArg() {
@@ -129,17 +129,17 @@ public enum FunctionType implements ButtonDescriptor {
     },
     Boole(1, "functions/Boole.md"),
     BooleanMinimize(1, "functions/BooleanMinimize.md"),
-    /*BooleanQ(1, "functions/BooleanQ.md"),*/
-    /*Booleans(1, "functions/Booleans.md"),*/
+    BooleanQ(1, "functions/BooleanQ.md"),
+    Booleans(1, "functions/Booleans.md"),
     Equivalent(2, "functions/Equivalent.md"){
         @Override
         public boolean isInfinityArg() {
             return true;
         }
     },
-    /*False(1, "functions/False.md") CONST FALSE,*/
+    False(1, "functions/False.md"),
     Implies(2, "functions/Implies.md"),
-    /*NoneTrue(1, "functions/NoneTrue.md"),*/
+    NoneTrue(1, "functions/NoneTrue.md"),
     Not(1, "functions/Not.md"),
     Or(2, "functions/Or.md"){
         @Override
@@ -147,10 +147,10 @@ public enum FunctionType implements ButtonDescriptor {
             return true;
         }
     },
-    /*SatisfiableQ(1, "functions/SatisfiableQ.md"),*/
-    /*TautologyQ(1, "functions/TautologyQ.md"),*/
-    /*True(1, "functions/True.md") TRUE const,*/
-    /*TrueQ(1, "functions/TrueQ.md"),*/
+    SatisfiableQ(1, "functions/SatisfiableQ.md"),
+    TautologyQ(1, "functions/TautologyQ.md"),
+    True(1, "functions/True.md") ,
+    TrueQ(1, "functions/TrueQ.md"),
     Xor(2, "functions/Xor.md"){
         @Override
         public boolean isInfinityArg() {
@@ -158,40 +158,40 @@ public enum FunctionType implements ButtonDescriptor {
         }
     },
 
-    /*Combinatorial*/
+    //Combinatorial
     BernoulliB(1, "functions/BernoulliB.md"),
     Binomial(2, "functions/Binomial.md"),
-    /*CartesianProduct(1, "functions/CartesianProduct.md"),*/
+    CartesianProduct(1, "functions/CartesianProduct.md"),
     CatalanNumber(1, "functions/CatalanNumber.md"),
-    /*DiceDissimilarity(1, "functions/DiceDissimilarity.md"),*/
-    /*Factorial(1, "functions/Factorial.md"), FACTORIAL_LAYOUT*/
+    DiceDissimilarity(1, "functions/DiceDissimilarity.md"),
+    Factorial(1, "functions/Factorial.md"),
     Factorial2(1, "functions/Factorial2.md"),
     Fibonacci(1, "functions/Fibonacci.md"),
     IntegerPartitions(1, "functions/IntegerPartitions.md"),
-    /*Intersection(1, "functions/Intersection.md"),*/
-    /*JaccardDissimilarity(1, "functions/JaccardDissimilarity.md"),*/
-    /*MatchingDissimilarity(1, "functions/MatchingDissimilarity.md"),*/
+    Intersection(1, "functions/Intersection.md"),
+    JaccardDissimilarity(1, "functions/JaccardDissimilarity.md"),
+    MatchingDissimilarity(1, "functions/MatchingDissimilarity.md"),
     Multinomial(2, "functions/Multinomial.md"){
         @Override
         public boolean isInfinityArg() {
             return true;
         }
     },
-    /*Partition(1, "functions/Partition.md"),*/
-    /*Permutations(1, "functions/Permutations.md"),*/
-    /*RogersTanimotoDissimilarity(1, "functions/RogersTanimotoDissimilarity.md"),*/
+    Partition(1, "functions/Partition.md"),
+    Permutations(1, "functions/Permutations.md"),
+    RogersTanimotoDissimilarity(1, "functions/RogersTanimotoDissimilarity.md"),
     StirlingS1(2, "functions/StirlingS1.md"),
     StirlingS2(2, "functions/StirlingS2.md"),
-    /*Subsets(1, "functions/Subsets.md"),
+    Subsets(1, "functions/Subsets.md"),
     RussellRaoDissimilarity(1, "functions/RussellRaoDissimilarity.md"),
-    SokalSneathDissimilarity(1, "functions/SokalSneathDissimilarity.md"),*/
-    /*Tuples(1, "functions/Tuples.md"),
+    SokalSneathDissimilarity(1, "functions/SokalSneathDissimilarity.md"),
+    Tuples(1, "functions/Tuples.md"),
     Union(1, "functions/Union.md"),
-    YuleDissimilarity(1, "functions/YuleDissimilarity.md"),*/
+    YuleDissimilarity(1, "functions/YuleDissimilarity.md"),
 
-    /*Linear algebra*/
-    /*ArrayDepth(1, "functions/ArrayDepth.md"),
-    ArrayQ(1, "functions/ArrayQ.md"),*/
+   // Linear algebra
+    ArrayDepth(1, "functions/ArrayDepth.md"),
+    ArrayQ(1, "functions/ArrayQ.md"),
     BrayCurtisDistance(2, "functions/BrayCurtisDistance.md"),
     CanberraDistance(2, "functions/CanberraDistance.md"),
     CharacteristicPolynomial(2, "functions/CharacteristicPolynomial.md"),
@@ -201,23 +201,23 @@ public enum FunctionType implements ButtonDescriptor {
     Cross(2, "functions/Cross.md"),
     DesignMatrix(3, "functions/DesignMatrix.md"),
     Det(1, "functions/Det.md"),
-    /*DiagonalMatrix(1, "functions/DiagonalMatrix.md"),
-    Dimensions(1, "functions/Dimensions.md"),*/
+    DiagonalMatrix(1, "functions/DiagonalMatrix.md"),
+    Dimensions(1, "functions/Dimensions.md"),
     Dot(2, "functions/Dot.md"),
     Eigenvalues(1, "functions/Eigenvalues.md"),
     Eigenvectors(1, "functions/Eigenvectors.md"),
     EuclideanDistance(2, "functions/EuclideanDistance.md"),
-   /* FrobeniusSolve(1, "functions/FrobeniusSolve.md"),*/
-    /*HilbertMatrix(1, "functions/HilbertMatrix.md"),
-    IdentityMatrix(1, "functions/IdentityMatrix.md"),*/
-    /*Inner(1, "functions/Inner.md"),*/
+    FrobeniusSolve(1, "functions/FrobeniusSolve.md"),
+    HilbertMatrix(1, "functions/HilbertMatrix.md"),
+    IdentityMatrix(1, "functions/IdentityMatrix.md"),
+    Inner(1, "functions/Inner.md"),
     Inverse(1, "functions/Inverse.md"),
-    /*JacobiMatrix(1, "functions/JacobiMatrix.md"),*/
-    /*LinearProgramming(1, "functions/LinearProgramming.md"),*/
+    JacobiMatrix(1, "functions/JacobiMatrix.md"),
+    LinearProgramming(1, "functions/LinearProgramming.md"),
     LinearSolve(2, "functions/LinearSolve.md"),
     LUDecomposition(1, "functions/LUDecomposition.md"),
     MatrixPower(2, "functions/MatrixPower.md"),
-    /*MatrixQ(1, "functions/MatrixQ.md"),*/
+    MatrixQ(1, "functions/MatrixQ.md"),
     MatrixRank(1, "functions/MatrixRank.md"),
     Norm(1, "functions/Norm.md"){
         @Override
@@ -234,9 +234,9 @@ public enum FunctionType implements ButtonDescriptor {
     SingularValueDecomposition(1, "functions/SingularValueDecomposition.md"),
     SquaredEuclideanDistance(1, "functions/SquaredEuclideanDistance.md"),
     Transpose(1, "functions/Transpose.md"),
-    /*VandermondeMatrix(1, "functions/VandermondeMatrix.md"),*/
+    VandermondeMatrix(1, "functions/VandermondeMatrix.md"),
     VectorAngle(2, "functions/VectorAngle.md"),
-    /*VectorQ(1, "functions/VectorQ.md"),*/;
+    VectorQ(1, "functions/VectorQ.md"),;
 
 
     private final int argNumber;

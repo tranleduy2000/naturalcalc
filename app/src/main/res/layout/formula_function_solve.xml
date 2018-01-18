@@ -39,7 +39,7 @@
             style="@style/FormulaTextEditStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="@string/formula_arg_term_key"
             app:newTermEnabled="false" />
 
         <com.mkulesh.micromath.widgets.CalcTextView
@@ -52,16 +52,17 @@
             style="@style/FormulaTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:symbol="TEXT"
-            android:text="for" />
+            android:layout_marginLeft="@dimen/formula_hor_text_padding"
+            android:layout_marginRight="@dimen/formula_hor_text_padding"
+            android:text="@string/formula_function_solve_for" />
 
         <com.mkulesh.micromath.widgets.CalcEditText
             style="@style/FormulaTextEditStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="x"
+            android:text="@string/formula_index_key"
             app:equationName="true"
-            app:newTermEnabled="false" />
+            app:indexName="true" />
 
 
     </com.mkulesh.micromath.widgets.FormulaLayout>

@@ -50,6 +50,7 @@
         <attr name="calculatedValue" format="boolean" />
         <attr name="autoScrollMargins" format="dimension" />
         <attr name="fileName" format="boolean" />
+
         <!-- custom content types -->
         <attr name="emptyEnabled" format="boolean" />
         <attr name="intervalEnabled" format="boolean" />
@@ -58,6 +59,7 @@
         <attr name="newTermEnabled" format="boolean" />
         <attr name="fileOperationEnabled" format="boolean" />
     </declare-styleable>
+
     <declare-styleable name="PlotViewExtension">
         <attr name="gridLineColor" format="color" />
         <attr name="gridLineWidth" format="dimension" />

@@ -56,6 +56,7 @@
     <string name="formula_function_factorial_layout" translatable="false">!</string>
     <string name="formula_function_conjugate_layout" translatable="false">~</string>
     <string name="formula_function_solve" translatable="false">Solve</string>
+    <string name="formula_function_solve_for" translatable="false">for</string>
     <string name="formula_quidistant_interval" translatable="false">:</string>
     <string name="formula_interval_first_separator" translatable="false">,</string>
     <string name="formula_interval_second_separator" translatable="false"> .. </string>

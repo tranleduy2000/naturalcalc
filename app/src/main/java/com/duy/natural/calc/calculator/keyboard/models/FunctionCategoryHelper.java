@@ -64,8 +64,8 @@ public class FunctionCategoryHelper {
         category.add(FunctionType.Sinh);
         category.add(FunctionType.Sign);
         category.add(FunctionType.Solve);
-        category.add(FunctionType.Sqrt);
-        category.add(FunctionType.Sum);
+//        category.add(FunctionType.Sqrt);
+//        category.add(FunctionType.Sum);
 //        category.add(FunctionType.Surd);
         category.add(FunctionType.Tan);
         category.add(FunctionType.Tanh);
