@@ -153,7 +153,7 @@ public class FunctionCategoryHelper {
 
         category.add(FunctionType.PrimeOmega);
         category.add(FunctionType.PrimitiveRootList);
-        category.add(FunctionType.Product);
+//        category.add(FunctionType.Product);
         category.add(FunctionType.ProductLog);
         category.add(FunctionType.Projection);
         category.add(FunctionType.Quantile);
