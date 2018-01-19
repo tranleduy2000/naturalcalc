@@ -132,7 +132,6 @@ public enum FunctionType implements FormulaTermType {
     Module(1, "functions/Module.md"),
     MoebiusMu(1, "functions/MoebiusMu.md"),
     MonomialList(1, "functions/MonomialList.md"),
-    Most(1, "functions/Most.md"),
     Negative(1, "functions/Negative.md"),
     NIntegrate(1, "functions/NIntegrate.md"),
     NMaximize(1, "functions/NMaximize.md"),

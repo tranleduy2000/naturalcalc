@@ -136,7 +136,6 @@ public class FunctionCategoryHelper {
         category.add(FunctionType.Min);
         category.add(FunctionType.Module);
         category.add(FunctionType.MonomialList);
-        category.add(FunctionType.Most);
         category.add(FunctionType.Negative);
         category.add(FunctionType.NIntegrate);
         category.add(FunctionType.NMaximize);
