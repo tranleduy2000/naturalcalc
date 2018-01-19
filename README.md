@@ -1,6 +1,14 @@
- ## License
+## Overview
 
-    Copyright (C) 2018 Mr Duy
+Natural Calculator on Android. This project using Natural display and Symja library
+
+<src img="art/google-play-store/en_badge_web_generic.png" alt="Google Play">
+
+## License
+
+**This project is published under the GNU GENERAL PUBLIC LICENSE Version 3.**
+
+    Copyright (C) 2018 Tran Le Duy
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
