@@ -26,7 +26,7 @@
                 app:complexEnabled="false" />
         </com.mkulesh.micromath.widgets.FormulaLayout>
 
-        <com.mkulesh.micromath.widgets.CalcTextView
+        <com.mkulesh.micromath.widgets.FormulaTextView
             style="@style/FormulaTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:text="@string/formula_arg_term_key" />
 
-    <com.mkulesh.micromath.widgets.CalcTextView
+    <com.mkulesh.micromath.widgets.FormulaTextView
         style="@style/FormulaTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -9,7 +9,7 @@
         app:symbol="SQRT"
         app:verticalTermPadding="true">
 
-        <com.mkulesh.micromath.widgets.CalcTextView
+        <com.mkulesh.micromath.widgets.FormulaTextView
             style="@style/FormulaTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

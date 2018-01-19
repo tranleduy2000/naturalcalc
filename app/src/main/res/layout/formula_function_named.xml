@@ -8,13 +8,13 @@
         android:tag="@string/function_main_layout"
         app:verticalTermPadding="true">
 
-        <com.mkulesh.micromath.widgets.CalcTextView
+        <com.mkulesh.micromath.widgets.FormulaTextView
             style="@style/FormulaTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/formula_operator_key" />
 
-        <com.mkulesh.micromath.widgets.CalcTextView
+        <com.mkulesh.micromath.widgets.FormulaTextView
             style="@style/FormulaTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -27,7 +27,7 @@
             android:text="@string/formula_arg_term_key"
             app:newTermEnabled="true" />
 
-        <com.mkulesh.micromath.widgets.CalcTextView
+        <com.mkulesh.micromath.widgets.FormulaTextView
             style="@style/FormulaTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

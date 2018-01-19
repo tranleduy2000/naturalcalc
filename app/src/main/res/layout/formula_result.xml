@@ -19,14 +19,14 @@
             android:text="@string/formula_left_term_key" />
     </com.mkulesh.micromath.widgets.FormulaLayout>
 
-    <com.mkulesh.micromath.widgets.CalcTextView
+    <com.mkulesh.micromath.widgets.FormulaTextView
         android:id="@+id/formula_result_assign"
         style="@style/FormulaTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/formula_result_definition" />
 
-    <com.mkulesh.micromath.widgets.CalcTextView
+    <com.mkulesh.micromath.widgets.FormulaTextView
         android:id="@+id/formula_result_left_bracket"
         style="@style/FormulaTextViewStyle"
         android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <com.mkulesh.micromath.widgets.CalcTextView
+    <com.mkulesh.micromath.widgets.FormulaTextView
         android:id="@+id/formula_result_right_bracket"
         style="@style/FormulaTextViewStyle"
         android:layout_width="wrap_content"

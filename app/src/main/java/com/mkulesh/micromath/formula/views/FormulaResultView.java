@@ -42,7 +42,7 @@ import com.mkulesh.micromath.properties.OnResultPropertiesChangeListener;
 import com.mkulesh.micromath.properties.ResultProperties;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CalcEditText;
-import com.mkulesh.micromath.widgets.CalcTextView;
+import com.mkulesh.micromath.widgets.FormulaTextView;
 import com.mkulesh.micromath.widgets.OnFocusChangedListener;
 import com.mkulesh.micromath.widgets.ResultMatrixLayout;
 import com.nstudio.calc.casio.R;
@@ -56,8 +56,8 @@ public class FormulaResultView extends CalculationResultView implements OnResult
     public static final String CELL_DOTS = "...";
     private static final String STATE_RESULT_PROPERTIES = "result_properties";
     private final ResultProperties properties = new ResultProperties();
-    private CalcTextView mResultAssign = null;
-    private CalcTextView mLeftBracket = null, mRightBracket = null;
+    private FormulaTextView mResultAssign = null;
+    private FormulaTextView mLeftBracket = null, mRightBracket = null;
 
     private CalculatedValue mConstantResult = null;
     private TermField mLeftTerm = null;
@@ -104,7 +104,7 @@ public class FormulaResultView extends CalculationResultView implements OnResult
         // create assign character
         {
             mResultAssign = layout.findViewById(R.id.formula_result_assign);
-            mResultAssign.prepare(CalcTextView.SymbolType.TEXT, getFormulaList().getActivity(), this);
+            mResultAssign.prepare(FormulaTextView.SymbolType.TEXT, getFormulaList().getActivity(), this);
         }
         // create result term
         {
@@ -117,11 +117,11 @@ public class FormulaResultView extends CalculationResultView implements OnResult
         // brackets
         {
             mLeftBracket = layout.findViewById(R.id.formula_result_left_bracket);
-            mLeftBracket.prepare(CalcTextView.SymbolType.LEFT_SQR_BRACKET, getFormulaList().getActivity(), this);
+            mLeftBracket.prepare(FormulaTextView.SymbolType.LEFT_SQR_BRACKET, getFormulaList().getActivity(), this);
             mLeftBracket.setText("."); // this text defines view width/height
 
             mRightBracket = layout.findViewById(R.id.formula_result_right_bracket);
-            mRightBracket.prepare(CalcTextView.SymbolType.RIGHT_SQR_BRACKET, getFormulaList().getActivity(), this);
+            mRightBracket.prepare(FormulaTextView.SymbolType.RIGHT_SQR_BRACKET, getFormulaList().getActivity(), this);
             mRightBracket.setText("."); // this text defines view width/height
         }
         updateResultView(false);

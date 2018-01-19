@@ -10,7 +10,7 @@
         android:text="@string/formula_left_term_key"
         app:equationName="true" />
 
-    <com.mkulesh.micromath.widgets.CalcTextView
+    <com.mkulesh.micromath.widgets.FormulaTextView
         android:id="@+id/formula_equation_assign"
         style="@style/FormulaTextViewStyle"
         android:layout_width="wrap_content"

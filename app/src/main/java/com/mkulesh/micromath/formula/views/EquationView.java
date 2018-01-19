@@ -37,7 +37,7 @@ import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.math.EquationArrayResult;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CalcEditText;
-import com.mkulesh.micromath.widgets.CalcTextView;
+import com.mkulesh.micromath.widgets.FormulaTextView;
 import com.nstudio.calc.casio.R;
 
 import java.util.ArrayList;
@@ -267,8 +267,8 @@ public class EquationView extends CalculationResultView implements IArgumentHold
         }
         // create assign character
         {
-            CalcTextView v = layout.findViewById(R.id.formula_equation_assign);
-            v.prepare(CalcTextView.SymbolType.TEXT, getFormulaList().getActivity(), this);
+            FormulaTextView v = layout.findViewById(R.id.formula_equation_assign);
+            v.prepare(FormulaTextView.SymbolType.TEXT, getFormulaList().getActivity(), this);
         }
         // create value term
         {

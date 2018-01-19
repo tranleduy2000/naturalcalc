@@ -29,7 +29,7 @@ import com.mkulesh.micromath.formula.type.FormulaTermType;
 import com.mkulesh.micromath.formula.type.IntervalType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.widgets.CalcEditText;
-import com.mkulesh.micromath.widgets.CalcTextView;
+import com.mkulesh.micromath.widgets.FormulaTextView;
 import com.nstudio.calc.casio.R;
 
 import org.apache.commons.math3.util.FastMath;
@@ -123,22 +123,22 @@ public class FormulaTermIntervalView extends FormulaTermView {
     }
 
     @Override
-    protected CalcTextView initializeSymbol(CalcTextView v) {
+    protected FormulaTextView initializeSymbol(FormulaTextView v) {
         if (v.getText() != null) {
             String t = v.getText().toString();
             if (t.equals(getContext().getResources().getString(R.string.formula_left_bracket_key))) {
-                v.prepare(CalcTextView.SymbolType.LEFT_SQR_BRACKET, getFormulaRoot().getFormulaList().getActivity(),
+                v.prepare(FormulaTextView.SymbolType.LEFT_SQR_BRACKET, getFormulaRoot().getFormulaList().getActivity(),
                         this);
                 v.setText("."); // this text defines view width/height
             } else if (t.equals(getContext().getResources().getString(R.string.formula_right_bracket_key))) {
-                v.prepare(CalcTextView.SymbolType.RIGHT_SQR_BRACKET, getFormulaRoot().getFormulaList().getActivity(),
+                v.prepare(FormulaTextView.SymbolType.RIGHT_SQR_BRACKET, getFormulaRoot().getFormulaList().getActivity(),
                         this);
                 v.setText("."); // this text defines view width/height
             } else if (t.equals(getContext().getResources().getString(R.string.formula_first_separator_key))) {
-                v.prepare(CalcTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
+                v.prepare(FormulaTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
                 v.setText(getContext().getResources().getString(R.string.formula_interval_first_separator));
             } else if (t.equals(getContext().getResources().getString(R.string.formula_second_separator_key))) {
-                v.prepare(CalcTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
+                v.prepare(FormulaTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
                 v.setText(getContext().getResources().getString(R.string.formula_interval_second_separator));
             }
         }

@@ -10,7 +10,7 @@
         android:minHeight="300dp"
         android:orientation="vertical">
 
-        <com.mkulesh.micromath.widgets.CalcTextView
+        <com.mkulesh.micromath.widgets.FormulaTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
@@ -25,7 +25,7 @@
 
         </com.duy.natural.calc.calculator.views.MathResultView>
 
-        <com.mkulesh.micromath.widgets.CalcTextView
+        <com.mkulesh.micromath.widgets.FormulaTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
@@ -40,7 +40,7 @@
 
         </com.duy.natural.calc.calculator.views.MathResultView>
 
-        <com.mkulesh.micromath.widgets.CalcTextView
+        <com.mkulesh.micromath.widgets.FormulaTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"

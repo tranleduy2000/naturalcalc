@@ -35,7 +35,7 @@ import com.mkulesh.micromath.formula.type.OperatorType;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CalcEditText;
-import com.mkulesh.micromath.widgets.CalcTextView;
+import com.mkulesh.micromath.widgets.FormulaTextView;
 import com.mkulesh.micromath.widgets.FormulaLayout;
 import com.mkulesh.micromath.widgets.OnFocusChangedListener;
 import com.nstudio.calc.casio.R;
@@ -223,7 +223,7 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
     /**
      * Procedure will be called for a custom text view initialization
      */
-    protected abstract CalcTextView initializeSymbol(CalcTextView v);
+    protected abstract FormulaTextView initializeSymbol(FormulaTextView v);
 
     /**
      * Procedure will be called for a custom edit term initialization
@@ -270,8 +270,8 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
         boolean[] isValid = new boolean[mElements.size()];
         for (int i = 0; i < mElements.size(); i++) {
             View child = mElements.get(i);
-            if (child instanceof CalcTextView) {
-                isValid[i] = (initializeSymbol((CalcTextView) child) != null);
+            if (child instanceof FormulaTextView) {
+                isValid[i] = (initializeSymbol((FormulaTextView) child) != null);
             } else if (child instanceof CalcEditText) {
                 isValid[i] = (initializeTerm((CalcEditText) child, layout) != null);
             } else if (child instanceof LinearLayout) {
@@ -296,8 +296,8 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
     private void initializeLayout(LinearLayout parent) {
         for (int k = 0; k < parent.getChildCount(); k++) {
             View child = parent.getChildAt(k);
-            if (child instanceof CalcTextView) {
-                initializeSymbol((CalcTextView) child);
+            if (child instanceof FormulaTextView) {
+                initializeSymbol((FormulaTextView) child);
             }
             if (child instanceof CalcEditText) {
                 initializeTerm((CalcEditText) child, parent);
@@ -340,8 +340,8 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
         inflateElements(newTerms, argLayoutId, true);
         TermField newArg = null;
         for (View t : newTerms) {
-            if (t instanceof CalcTextView) {
-                ((CalcTextView) t).prepare(CalcTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList()
+            if (t instanceof FormulaTextView) {
+                ((FormulaTextView) t).prepare(FormulaTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList()
                         .getActivity(), this);
             } else if (t instanceof CalcEditText) {
                 newArg = addTerm(getFormulaRoot(), expandableLayout, ++termIndex, (CalcEditText) t, this, addDepth);
@@ -376,14 +376,14 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
             final String termKey = getContext().getResources().getString(R.string.formula_arg_term_key);
             final boolean firstTerm = owner.getTermKey().equals(termKey + String.valueOf(1));
             if (firstTerm && startIndex + 1 < expandableLayout.getChildCount()
-                    && expandableLayout.getChildAt(startIndex + 1) instanceof CalcTextView) {
-                final CalcTextView next = ((CalcTextView) expandableLayout.getChildAt(startIndex + 1));
+                    && expandableLayout.getChildAt(startIndex + 1) instanceof FormulaTextView) {
+                final FormulaTextView next = ((FormulaTextView) expandableLayout.getChildAt(startIndex + 1));
                 if (next.getText().toString().equals(sep)) {
                     count++;
                 }
             } else if (!firstTerm && startIndex >= 1
-                    && expandableLayout.getChildAt(startIndex - 1) instanceof CalcTextView) {
-                final CalcTextView prev = ((CalcTextView) expandableLayout.getChildAt(startIndex - 1));
+                    && expandableLayout.getChildAt(startIndex - 1) instanceof FormulaTextView) {
+                final FormulaTextView prev = ((FormulaTextView) expandableLayout.getChildAt(startIndex - 1));
                 if (prev.getText().toString().equals(sep)) {
                     startIndex--;
                     count++;

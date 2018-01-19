@@ -7,7 +7,7 @@
         android:layout_height="wrap_content"
         micromath:verticalTermPadding="true">
 
-        <com.mkulesh.micromath.widgets.CalcTextView
+        <com.mkulesh.micromath.widgets.FormulaTextView
             style="@style/FormulaTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -15,7 +15,7 @@
 
         <include layout="@layout/formula_operator_vert" />
 
-        <com.mkulesh.micromath.widgets.CalcTextView
+        <com.mkulesh.micromath.widgets.FormulaTextView
             style="@style/FormulaTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

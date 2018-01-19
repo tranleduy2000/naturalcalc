@@ -30,7 +30,7 @@ import com.mkulesh.micromath.formula.type.ComparatorType;
 import com.mkulesh.micromath.formula.type.FormulaTermType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.widgets.CalcEditText;
-import com.mkulesh.micromath.widgets.CalcTextView;
+import com.mkulesh.micromath.widgets.FormulaTextView;
 import com.nstudio.calc.casio.R;
 
 public class FormulaComparatorView extends FormulaTermView {
@@ -41,7 +41,7 @@ public class FormulaComparatorView extends FormulaTermView {
      */
     private ComparatorType mComparatorType = null;
     private TermField mLeftTerm = null, mRightTerm = null;
-    private CalcTextView operatorKey = null;
+    private FormulaTextView operatorKey = null;
     private boolean useBrackets = false;
 
 
@@ -98,18 +98,18 @@ public class FormulaComparatorView extends FormulaTermView {
     }
 
     @Override
-    protected CalcTextView initializeSymbol(CalcTextView v) {
+    protected FormulaTextView initializeSymbol(FormulaTextView v) {
         if (v.getText() != null) {
             String t = v.getText().toString();
             if (t.equals(getContext().getResources().getString(R.string.formula_operator_key))) {
                 operatorKey = v;
-                v.prepare(CalcTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
+                v.prepare(FormulaTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
                 updateOperatorKey();
             } else if (t.equals(getContext().getResources().getString(R.string.formula_left_bracket_key))) {
-                v.prepare(CalcTextView.SymbolType.LEFT_BRACKET, getFormulaRoot().getFormulaList().getActivity(), this);
+                v.prepare(FormulaTextView.SymbolType.LEFT_BRACKET, getFormulaRoot().getFormulaList().getActivity(), this);
                 v.setText("."); // this text defines view width/height
             } else if (t.equals(getContext().getResources().getString(R.string.formula_right_bracket_key))) {
-                v.prepare(CalcTextView.SymbolType.RIGHT_BRACKET, getFormulaRoot().getFormulaList().getActivity(),
+                v.prepare(FormulaTextView.SymbolType.RIGHT_BRACKET, getFormulaRoot().getFormulaList().getActivity(),
                         this);
                 v.setText("."); // this text defines view width/height
             }

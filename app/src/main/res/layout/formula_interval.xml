@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <com.mkulesh.micromath.widgets.CalcTextView
+    <com.mkulesh.micromath.widgets.FormulaTextView
         style="@style/FormulaTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="@string/formula_min_value_key" />
 
-    <com.mkulesh.micromath.widgets.CalcTextView
+    <com.mkulesh.micromath.widgets.FormulaTextView
         style="@style/FormulaTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:text="@string/formula_next_value_key" />
 
-    <com.mkulesh.micromath.widgets.CalcTextView
+    <com.mkulesh.micromath.widgets.FormulaTextView
         style="@style/FormulaTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:text="@string/formula_max_value_key" />
 
-    <com.mkulesh.micromath.widgets.CalcTextView
+    <com.mkulesh.micromath.widgets.FormulaTextView
         style="@style/FormulaTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

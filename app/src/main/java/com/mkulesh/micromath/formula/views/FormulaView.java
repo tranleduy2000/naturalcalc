@@ -41,7 +41,7 @@ import com.mkulesh.micromath.utils.IdGenerator;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.utils.XmlUtils;
 import com.mkulesh.micromath.widgets.CalcEditText;
-import com.mkulesh.micromath.widgets.CalcTextView;
+import com.mkulesh.micromath.widgets.FormulaTextView;
 import com.mkulesh.micromath.widgets.ContextMenuHandler;
 import com.mkulesh.micromath.widgets.FormulaLayout;
 import com.mkulesh.micromath.widgets.OnFocusChangedListener;
@@ -179,7 +179,7 @@ public abstract class FormulaView extends FormulaLayout implements OnFormulaChan
                 boolean finishActionMode = false;
                 if (view instanceof CalcEditText && ((CalcEditText) view).getActionMode() == null) {
                     finishActionMode = true;
-                } else if (view instanceof CalcTextView && ((CalcTextView) view).getActionMode() == null) {
+                } else if (view instanceof FormulaTextView && ((FormulaTextView) view).getActionMode() == null) {
                     finishActionMode = true;
                 }
                 if (finishActionMode) {
@@ -761,8 +761,8 @@ public abstract class FormulaView extends FormulaLayout implements OnFormulaChan
             final int vert = dimen.get(ScaledDimensions.Type.VERT_ROOT_PADDING);
             layout.setPadding(hor, vert, hor, vert);
         }
-        if (v instanceof CalcTextView) {
-            ((CalcTextView) v).updateTextSize(dimen, termDepth);
+        if (v instanceof FormulaTextView) {
+            ((FormulaTextView) v).updateTextSize(dimen, termDepth);
         }
         if (v instanceof FormulaLayout) {
             ((FormulaLayout) v).updateTextSize(dimen, termDepth);

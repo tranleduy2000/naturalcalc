@@ -37,7 +37,7 @@ import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CalcEditText;
-import com.mkulesh.micromath.widgets.CalcTextView;
+import com.mkulesh.micromath.widgets.FormulaTextView;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
 import com.nstudio.calc.casio.R;
 
@@ -48,7 +48,7 @@ public class FormulaFunctionView extends FormulaTermView {
     private static final String TAG = "FormulaFunctionView";
     private FunctionType mFunctionType = null;
     private String mFunctionLinkName = "unknown";
-    private CalcTextView mFunctionTerm = null;
+    private FormulaTextView mFunctionTerm = null;
     private EquationView mLinkedFunction = null;
 
     public FormulaFunctionView(TermField owner, LinearLayout layout, String code, int index) throws Exception {
@@ -365,12 +365,12 @@ public class FormulaFunctionView extends FormulaTermView {
     }
 
     @Override
-    protected CalcTextView initializeSymbol(CalcTextView view) {
+    protected FormulaTextView initializeSymbol(FormulaTextView view) {
         final Resources res = getContext().getResources();
         if (view.getText() != null) {
             String code = view.getText().toString();
             if (code.equals(res.getString(R.string.formula_operator_key))) {
-                view.prepare(CalcTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
+                view.prepare(FormulaTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
                 switch (mFunctionType) {
                     case POWER_LAYOUT:
                         view.setText("_");
@@ -379,7 +379,7 @@ public class FormulaFunctionView extends FormulaTermView {
                         view.setText(res.getString(R.string.formula_function_factorial_layout));
                         break;
                     case CONJUGATE_LAYOUT:
-                        view.prepare(CalcTextView.SymbolType.HOR_LINE, getFormulaRoot().getFormulaList().getActivity(), this);
+                        view.prepare(FormulaTextView.SymbolType.HOR_LINE, getFormulaRoot().getFormulaList().getActivity(), this);
                         view.setText("_");
                         break;
                     default:
@@ -388,15 +388,15 @@ public class FormulaFunctionView extends FormulaTermView {
                 }
                 mFunctionTerm = view;
             } else if (code.equals(res.getString(R.string.formula_left_bracket_key))) {
-                CalcTextView.SymbolType s = (mFunctionType == FunctionType.ABS_LAYOUT)
-                        ? CalcTextView.SymbolType.VERT_LINE
-                        : CalcTextView.SymbolType.LEFT_BRACKET;
+                FormulaTextView.SymbolType s = (mFunctionType == FunctionType.ABS_LAYOUT)
+                        ? FormulaTextView.SymbolType.VERT_LINE
+                        : FormulaTextView.SymbolType.LEFT_BRACKET;
                 view.prepare(s, getFormulaRoot().getFormulaList().getActivity(), this);
                 view.setText("."); // this text defines view width/height
             } else if (code.equals(res.getString(R.string.formula_right_bracket_key))) {
-                CalcTextView.SymbolType s = (mFunctionType == FunctionType.ABS_LAYOUT)
-                        ? CalcTextView.SymbolType.VERT_LINE
-                        : CalcTextView.SymbolType.RIGHT_BRACKET;
+                FormulaTextView.SymbolType s = (mFunctionType == FunctionType.ABS_LAYOUT)
+                        ? FormulaTextView.SymbolType.VERT_LINE
+                        : FormulaTextView.SymbolType.RIGHT_BRACKET;
                 view.prepare(s, getFormulaRoot().getFormulaList().getActivity(), this);
                 view.setText("."); // this text defines view width/height
             }
@@ -682,7 +682,7 @@ public class FormulaFunctionView extends FormulaTermView {
     /**
      * Returns function term
      */
-    public CalcTextView getFunctionTerm() {
+    public FormulaTextView getFunctionTerm() {
         return mFunctionTerm;
     }
 

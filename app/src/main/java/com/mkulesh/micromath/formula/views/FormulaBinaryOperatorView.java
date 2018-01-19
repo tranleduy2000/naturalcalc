@@ -30,7 +30,7 @@ import com.mkulesh.micromath.formula.type.FormulaTermType;
 import com.mkulesh.micromath.formula.type.OperatorType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.widgets.CalcEditText;
-import com.mkulesh.micromath.widgets.CalcTextView;
+import com.mkulesh.micromath.widgets.FormulaTextView;
 import com.nstudio.calc.casio.R;
 
 public class FormulaBinaryOperatorView extends FormulaTermView {
@@ -94,37 +94,37 @@ public class FormulaBinaryOperatorView extends FormulaTermView {
     }
 
     @Override
-    protected CalcTextView initializeSymbol(CalcTextView view) {
+    protected FormulaTextView initializeSymbol(FormulaTextView view) {
         if (view.getText() != null) {
             String t = view.getText().toString();
             if (t.equals(getContext().getResources().getString(R.string.formula_operator_key))) {
                 switch (mOperatorType) {
                     case PLUS:
-                        view.prepare(CalcTextView.SymbolType.PLUS, getFormulaRoot().getFormulaList().getActivity(), this);
+                        view.prepare(FormulaTextView.SymbolType.PLUS, getFormulaRoot().getFormulaList().getActivity(), this);
                         view.setText("..");
                         break;
                     case MINUS:
-                        view.prepare(CalcTextView.SymbolType.MINUS, getFormulaRoot().getFormulaList().getActivity(), this);
+                        view.prepare(FormulaTextView.SymbolType.MINUS, getFormulaRoot().getFormulaList().getActivity(), this);
                         view.setText("..");
                         break;
                     case MULTIPLY:
-                        view.prepare(CalcTextView.SymbolType.MULT, getFormulaRoot().getFormulaList().getActivity(), this);
+                        view.prepare(FormulaTextView.SymbolType.MULT, getFormulaRoot().getFormulaList().getActivity(), this);
                         view.setText(".");
                         break;
                     case FRACTION:
-                        view.prepare(CalcTextView.SymbolType.HOR_LINE, getFormulaRoot().getFormulaList().getActivity(), this);
+                        view.prepare(FormulaTextView.SymbolType.HOR_LINE, getFormulaRoot().getFormulaList().getActivity(), this);
                         view.setText("_");
                         break;
                     case DIVIDE_SLASH:
-                        view.prepare(CalcTextView.SymbolType.SLASH, getFormulaRoot().getFormulaList().getActivity(), this);
+                        view.prepare(FormulaTextView.SymbolType.SLASH, getFormulaRoot().getFormulaList().getActivity(), this);
                         view.setText("_");
                         break;
                 }
             } else if (t.equals(getContext().getResources().getString(R.string.formula_left_bracket_key))) {
-                view.prepare(CalcTextView.SymbolType.LEFT_BRACKET, getFormulaRoot().getFormulaList().getActivity(), this);
+                view.prepare(FormulaTextView.SymbolType.LEFT_BRACKET, getFormulaRoot().getFormulaList().getActivity(), this);
                 view.setText("."); // this text defines view width/height
             } else if (t.equals(getContext().getResources().getString(R.string.formula_right_bracket_key))) {
-                view.prepare(CalcTextView.SymbolType.RIGHT_BRACKET, getFormulaRoot().getFormulaList().getActivity(),
+                view.prepare(FormulaTextView.SymbolType.RIGHT_BRACKET, getFormulaRoot().getFormulaList().getActivity(),
                         this);
                 view.setText("."); // this text defines view width/height
             }

@@ -35,7 +35,7 @@ import android.view.View.OnLongClickListener;
 import com.duy.natural.calc.calculator.utils.FontManager;
 import com.nstudio.calc.casio.R;
 
-public class CalcTextView extends AppCompatTextView implements OnLongClickListener, OnClickListener {
+public class FormulaTextView extends AppCompatTextView implements OnLongClickListener, OnClickListener {
 
     protected final Paint mPaint = new Paint();
     protected final Path mPath = new Path();
@@ -53,16 +53,16 @@ public class CalcTextView extends AppCompatTextView implements OnLongClickListen
      * Creating
      *********************************************************/
 
-    public CalcTextView(Context context) {
+    public FormulaTextView(Context context) {
         super(context);
     }
 
-    public CalcTextView(Context context, AttributeSet attrs) {
+    public FormulaTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setup(context, attrs);
     }
 
-    public CalcTextView(Context context, AttributeSet attrs, int defStyle) {
+    public FormulaTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         setup(context, attrs);
     }

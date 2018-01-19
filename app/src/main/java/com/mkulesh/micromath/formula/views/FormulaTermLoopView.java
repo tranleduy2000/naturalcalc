@@ -33,14 +33,14 @@ import com.mkulesh.micromath.formula.type.LoopType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.widgets.CalcEditText;
-import com.mkulesh.micromath.widgets.CalcTextView;
+import com.mkulesh.micromath.widgets.FormulaTextView;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
 import com.nstudio.calc.casio.R;
 
 import java.util.ArrayList;
 
 import static com.mkulesh.micromath.formula.type.LoopType.INTEGRAL;
-import static com.mkulesh.micromath.widgets.CalcTextView.SymbolType.SUMMATION;
+import static com.mkulesh.micromath.widgets.FormulaTextView.SymbolType.SUMMATION;
 
 public class FormulaTermLoopView extends FormulaTermView implements IArgumentHolder {
     private static final String SYMBOL_LAYOUT_TAG = "SYMBOL_LAYOUT_TAG";
@@ -141,7 +141,7 @@ public class FormulaTermLoopView extends FormulaTermView implements IArgumentHol
     }
 
     @Override
-    protected CalcTextView initializeSymbol(CalcTextView v) {
+    protected FormulaTextView initializeSymbol(FormulaTextView v) {
         if (v.getText() != null) {
             String t = v.getText().toString();
             if (t.equals(getContext().getResources().getString(R.string.formula_operator_key))) {
@@ -152,26 +152,26 @@ public class FormulaTermLoopView extends FormulaTermView implements IArgumentHol
                         v.setText("S..");
                         break;
                     case PRODUCT:
-                        v.prepare(CalcTextView.SymbolType.PRODUCT, getFormulaRoot().getFormulaList().getActivity(), this);
+                        v.prepare(FormulaTextView.SymbolType.PRODUCT, getFormulaRoot().getFormulaList().getActivity(), this);
                         v.setText("S..");
                         break;
                     case INTEGRAL:
-                        v.prepare(CalcTextView.SymbolType.INTEGRAL, getFormulaRoot().getFormulaList().getActivity(), this);
+                        v.prepare(FormulaTextView.SymbolType.INTEGRAL, getFormulaRoot().getFormulaList().getActivity(), this);
                         v.setText("S..");
                         break;
                     case DERIVATIVE:
-                        v.prepare(CalcTextView.SymbolType.HOR_LINE, getFormulaRoot().getFormulaList().getActivity(), this);
+                        v.prepare(FormulaTextView.SymbolType.HOR_LINE, getFormulaRoot().getFormulaList().getActivity(), this);
                         break;
                 }
             } else if (t.equals(getContext().getResources().getString(R.string.formula_left_bracket_key))) {
-                v.prepare(CalcTextView.SymbolType.LEFT_BRACKET, getFormulaRoot().getFormulaList().getActivity(), this);
+                v.prepare(FormulaTextView.SymbolType.LEFT_BRACKET, getFormulaRoot().getFormulaList().getActivity(), this);
                 v.setText("."); // this text defines view width/height
             } else if (t.equals(getContext().getResources().getString(R.string.formula_right_bracket_key))) {
-                v.prepare(CalcTextView.SymbolType.RIGHT_BRACKET, getFormulaRoot().getFormulaList().getActivity(),
+                v.prepare(FormulaTextView.SymbolType.RIGHT_BRACKET, getFormulaRoot().getFormulaList().getActivity(),
                         this);
                 v.setText("."); // this text defines view width/height
             } else if (t.equals(getContext().getResources().getString(R.string.formula_loop_diff))) {
-                v.prepare(CalcTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
+                v.prepare(FormulaTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList().getActivity(), this);
             }
         }
         return v;

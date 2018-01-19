@@ -24,7 +24,7 @@
                 micromath:complexEnabled="false" />
         </com.mkulesh.micromath.widgets.FormulaLayout>
 
-        <com.mkulesh.micromath.widgets.CalcTextView
+        <com.mkulesh.micromath.widgets.FormulaTextView
             style="@style/FormulaTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
                 micromath:equationName="true"
                 micromath:indexName="true" />
 
-            <com.mkulesh.micromath.widgets.CalcTextView
+            <com.mkulesh.micromath.widgets.FormulaTextView
                 style="@style/FormulaTextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
