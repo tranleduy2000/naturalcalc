@@ -109,7 +109,7 @@ public class FunctionCategoryHelper {
         category.add(FunctionType.HornerForm);
         category.add(FunctionType.Indeterminate);
         category.add(FunctionType.IntegerPart);
-        category.add(FunctionType.Integrate);
+//        category.add(FunctionType.Integrate);
         category.add(FunctionType.InterpolatingPolynomial);
         category.add(FunctionType.InverseErf);
         category.add(FunctionType.InverseErfc);
