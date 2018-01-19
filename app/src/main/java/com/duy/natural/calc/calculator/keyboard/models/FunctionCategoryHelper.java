@@ -288,8 +288,8 @@ public class FunctionCategoryHelper {
         functions.add(FunctionType.And);
         functions.add(FunctionType.Boole);
         functions.add(FunctionType.BooleanMinimize);
-        functions.add(FunctionType.Equivalent);
-        functions.add(FunctionType.Implies);
+//        functions.add(FunctionType.Equivalent);
+//        functions.add(FunctionType.Implies);
         functions.add(FunctionType.Not);
         functions.add(FunctionType.Or);
         functions.add(FunctionType.Xor);
