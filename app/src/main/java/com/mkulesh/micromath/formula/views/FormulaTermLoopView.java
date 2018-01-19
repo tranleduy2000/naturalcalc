@@ -28,6 +28,7 @@ import com.duy.common.utils.DLog;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.formula.IArgumentHolder;
+import com.mkulesh.micromath.formula.type.FormulaTermType;
 import com.mkulesh.micromath.formula.type.LoopType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.utils.ViewUtils;
@@ -113,8 +114,8 @@ public class FormulaTermLoopView extends FormulaTermView implements IArgumentHol
     }
 
     @Override
-    public TermField.TermType getTermType() {
-        return TermField.TermType.LOOP;
+    public FormulaTermType.TermType getTermType() {
+        return FormulaTermType.TermType.LOOP;
     }
 
     @Override

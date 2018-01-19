@@ -26,6 +26,7 @@ import android.widget.LinearLayout;
 
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
+import com.mkulesh.micromath.formula.type.FormulaTermType;
 import com.mkulesh.micromath.formula.type.OperatorType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.widgets.CalcEditText;
@@ -83,8 +84,8 @@ public class FormulaBinaryOperatorView extends FormulaTermView {
 
 
     @Override
-    public TermField.TermType getTermType() {
-        return TermField.TermType.OPERATOR;
+    public FormulaTermType.TermType getTermType() {
+        return FormulaTermType.TermType.OPERATOR;
     }
 
     @Override

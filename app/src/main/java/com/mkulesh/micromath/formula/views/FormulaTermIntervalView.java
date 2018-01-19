@@ -25,6 +25,7 @@ import android.widget.LinearLayout;
 
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
+import com.mkulesh.micromath.formula.type.FormulaTermType;
 import com.mkulesh.micromath.formula.type.IntervalType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.widgets.CalcEditText;
@@ -112,8 +113,8 @@ public class FormulaTermIntervalView extends FormulaTermView {
     }
 
     @Override
-    public TermField.TermType getTermType() {
-        return TermField.TermType.INTERVAL;
+    public FormulaTermType.TermType getTermType() {
+        return FormulaTermType.TermType.INTERVAL;
     }
 
     @Override

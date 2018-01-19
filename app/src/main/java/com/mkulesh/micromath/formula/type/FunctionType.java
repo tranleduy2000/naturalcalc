@@ -14,7 +14,7 @@ import static com.duy.natural.calc.calculator.calcbutton.CalcButtonManager.NO_BU
  * Supported functions, the name of enum also synchronize with name of function of symja library
  * https://github.com/axkr/symja_android_library/tree/master/symja_android_library/doc/functions
  */
-public enum FunctionType implements FunctionTermType {
+public enum FunctionType implements FormulaTermType {
     //Layout
     IDENTITY_LAYOUT(1, R.string.math_function_identity, null, R.id.btn_parentheses),
     POWER_LAYOUT(2, R.string.math_function_power, null, R.id.btn_power),
@@ -447,6 +447,18 @@ public enum FunctionType implements FunctionTermType {
 
     public boolean isInfinityArg() {
         return false;
+    }
+
+    @NonNull
+    @Override
+    public String getLowerCaseName() {
+        return lowerCaseName;
+    }
+
+    @Nullable
+    @Override
+    public TermType getType() {
+        return TermType.FUNCTION;
     }
 }
 

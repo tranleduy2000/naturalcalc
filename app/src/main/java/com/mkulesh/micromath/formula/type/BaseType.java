@@ -16,37 +16,30 @@
 
 package com.mkulesh.micromath.formula.type;
 
-import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 
 import com.nstudio.calc.casio.R;
 
 
-public enum BaseType implements FunctionTermType {
-    EQUATION(R.drawable.ic_equation, R.string.math_new_equation, R.id.btn_add_assign),
-    RESULT(R.drawable.ic_result, R.string.math_new_result, R.id.btn_add_row),
-    TERM(R.drawable.ic_new_term, R.string.math_new_term, R.id.btn_add_term);
-    @DrawableRes
-    private final int imageId;
+public enum BaseType implements FormulaTermType {
+    EQUATION(R.string.math_new_equation, R.id.btn_add_assign),
+    RESULT(R.string.math_new_result, R.id.btn_add_row),
+    TERM(R.string.math_new_term, R.id.btn_add_term);
     @StringRes
     private final int descriptionId;
     @IdRes
     private final int viewId;
 
-    BaseType(@DrawableRes int imageId, @StringRes int descriptionId, @IdRes int viewId) {
-        this.imageId = imageId;
+    BaseType(@StringRes int descriptionId, @IdRes int viewId) {
         this.descriptionId = descriptionId;
         this.viewId = viewId;
     }
 
     public int getViewId() {
         return viewId;
-    }
-
-    public int getImageId() {
-        return imageId;
     }
 
     @NonNull
@@ -57,5 +50,17 @@ public enum BaseType implements FunctionTermType {
 
     public int getDescriptionId() {
         return descriptionId;
+    }
+
+    @Nullable
+    @Override
+    public TermType getType() {
+        return null;
+    }
+
+    @NonNull
+    @Override
+    public String getLowerCaseName() {
+        return null;
     }
 }

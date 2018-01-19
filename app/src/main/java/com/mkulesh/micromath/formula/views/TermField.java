@@ -38,6 +38,7 @@ import com.mkulesh.micromath.formula.TermParser;
 import com.mkulesh.micromath.formula.io.Constants;
 import com.mkulesh.micromath.formula.type.BaseType;
 import com.mkulesh.micromath.formula.type.ComparatorType;
+import com.mkulesh.micromath.formula.type.FormulaTermType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.IdGenerator;
@@ -630,11 +631,8 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
      * Procedure converts this term field to an other term
      */
     private FormulaTermView convertToTerm(String termCode, Parcelable restore, boolean ensureManualTrigger) {
-        if (DLog.DEBUG)
-            DLog.d(TAG, "convertToTerm() called with: code = [" + termCode + "], p = [" + restore +
-                    "], ensureManualTrigger = [" + ensureManualTrigger + "]");
-
-        TermType targetType = FormulaTermView.getTermType(getContext(), mEditText, termCode, ensureManualTrigger);
+        FormulaTermType.TermType targetType = FormulaTermView.getTermType(getContext(), mEditText,
+                termCode, ensureManualTrigger);
         mTermView = null;
         if (targetType != null) {
             try {
@@ -932,11 +930,4 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
         PARENT_LAYOUT
     }
 
-    public static enum TermType {
-        OPERATOR,
-        COMPARATOR,
-        FUNCTION,
-        INTERVAL,
-        LOOP
-    }
 }

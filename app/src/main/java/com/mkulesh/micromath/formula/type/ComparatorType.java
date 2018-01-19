@@ -18,6 +18,7 @@ package com.mkulesh.micromath.formula.type;
 
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.nstudio.calc.casio.R;
 
@@ -26,7 +27,7 @@ import java.util.Locale;
 /**
  * Supported comparators
  */
-public enum ComparatorType implements FunctionTermType {
+public enum ComparatorType implements FormulaTermType {
     EQUAL(R.string.formula_comparator_equal, R.string.math_comparator_equal, R.id.btn_equal) {
         @Override
         public String toString() {
@@ -105,6 +106,18 @@ public enum ComparatorType implements FunctionTermType {
 
     @NonNull
     public String getCode() {
+        return lowerCaseName;
+    }
+
+    @Nullable
+    @Override
+    public TermType getType() {
+        return TermType.COMPARATOR;
+    }
+
+    @NonNull
+    @Override
+    public String getLowerCaseName() {
         return lowerCaseName;
     }
 }

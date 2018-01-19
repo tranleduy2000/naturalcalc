@@ -18,6 +18,7 @@ package com.mkulesh.micromath.formula.type;
 
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.nstudio.calc.casio.R;
 
@@ -26,7 +27,7 @@ import java.util.Locale;
 /**
  * Supported loop types
  */
-public enum LoopType implements FunctionTermType {
+public enum LoopType implements FormulaTermType {
     SUMMATION(R.string.formula_loop_summation, R.string.math_loop_summation, R.id.btn_sum) {
         @Override
         public String toString() {
@@ -79,5 +80,17 @@ public enum LoopType implements FunctionTermType {
     @NonNull
     public String getCode() {
         return lowerCaseName;
+    }
+
+    @NonNull
+    @Override
+    public String getLowerCaseName() {
+        return lowerCaseName;
+    }
+
+    @Nullable
+    @Override
+    public TermType getType() {
+        return TermType.LOOP;
     }
 }

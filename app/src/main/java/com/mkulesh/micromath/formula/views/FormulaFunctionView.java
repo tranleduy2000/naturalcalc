@@ -30,6 +30,7 @@ import com.duy.common.utils.DLog;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.formula.BracketParser;
+import com.mkulesh.micromath.formula.type.FormulaTermType;
 import com.mkulesh.micromath.formula.type.FunctionTrigger;
 import com.mkulesh.micromath.formula.type.FunctionType;
 import com.mkulesh.micromath.math.CalculatedValue;
@@ -300,8 +301,8 @@ public class FormulaFunctionView extends FormulaTermView {
     }
 
     @Override
-    public TermField.TermType getTermType() {
-        return TermField.TermType.FUNCTION;
+    public FormulaTermType.TermType getTermType() {
+        return FormulaTermType.TermType.FUNCTION;
     }
 
     @Override

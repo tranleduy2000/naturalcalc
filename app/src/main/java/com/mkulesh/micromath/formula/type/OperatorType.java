@@ -18,6 +18,7 @@ package com.mkulesh.micromath.formula.type;
 
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.nstudio.calc.casio.R;
 
@@ -26,7 +27,7 @@ import java.util.Locale;
 /**
  * Supported operators
  */
-public enum OperatorType implements FunctionTermType {
+public enum OperatorType implements FormulaTermType {
     PLUS(R.string.formula_operator_plus, R.string.math_operator_plus, R.id.btn_plus) {
         @Override
         public String toString() {
@@ -84,6 +85,18 @@ public enum OperatorType implements FunctionTermType {
 
     @NonNull
     public String getCode() {
+        return lowerCaseName;
+    }
+
+    @Nullable
+    @Override
+    public TermType getType() {
+        return TermType.OPERATOR;
+    }
+
+    @NonNull
+    @Override
+    public String getLowerCaseName() {
         return lowerCaseName;
     }
 }

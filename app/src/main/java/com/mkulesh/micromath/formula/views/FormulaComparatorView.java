@@ -27,6 +27,7 @@ import android.widget.LinearLayout;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask;
 import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.formula.type.ComparatorType;
+import com.mkulesh.micromath.formula.type.FormulaTermType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.widgets.CalcEditText;
 import com.mkulesh.micromath.widgets.CalcTextView;
@@ -87,8 +88,8 @@ public class FormulaComparatorView extends FormulaTermView {
 
 
     @Override
-    public TermField.TermType getTermType() {
-        return TermField.TermType.COMPARATOR;
+    public FormulaTermType.TermType getTermType() {
+        return FormulaTermType.TermType.COMPARATOR;
     }
 
     @Override

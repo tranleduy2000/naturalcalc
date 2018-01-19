@@ -15,7 +15,7 @@ import static com.duy.natural.calc.calculator.calcbutton.CalcButtonManager.NO_BU
  * Created by Duy on 1/14/2018.
  */
 
-public enum BasicSymbolType implements FunctionTermType {
+public enum BasicSymbolType implements FormulaTermType {
     ONE(NO_BUTTON, R.id.btn_one),
     TWO(NO_BUTTON, R.id.btn_two),
     THREE(NO_BUTTON, R.id.btn_three),
@@ -119,5 +119,17 @@ public enum BasicSymbolType implements FunctionTermType {
     @Override
     public String toString() {
         return String.valueOf(NUMBER.charAt(ordinal()));
+    }
+
+    @NonNull
+    @Override
+    public String getLowerCaseName() {
+        return null;
+    }
+
+    @Nullable
+    @Override
+    public TermType getType() {
+        return null;
     }
 }

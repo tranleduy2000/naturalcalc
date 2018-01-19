@@ -18,6 +18,7 @@ package com.mkulesh.micromath.formula.type;
 
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.nstudio.calc.casio.R;
 
@@ -26,7 +27,7 @@ import java.util.Locale;
 /**
  * Supported functions
  */
-public enum IntervalType implements FunctionTermType {
+public enum IntervalType implements FormulaTermType {
     EQUIDISTANT_INTERVAL(
             R.string.formula_quidistant_interval,
             R.drawable.p_equidistant_interval,
@@ -66,5 +67,17 @@ public enum IntervalType implements FunctionTermType {
     @NonNull
     public String getCode() {
         return lowerCaseName;
+    }
+
+    @NonNull
+    @Override
+    public String getLowerCaseName() {
+        return lowerCaseName;
+    }
+
+    @Nullable
+    @Override
+    public TermType getType() {
+        return TermType.INTERVAL;
     }
 }
