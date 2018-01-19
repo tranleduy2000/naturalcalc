@@ -2,7 +2,9 @@
 
 Natural Calculator on Android. This project using Natural display and Symja library
 
-<src img="art/google-play-store/en_badge_web_generic.png" alt="Google Play">
+<a href="https://play.google.com/store/apps/details?id=com.nstudio.calc.casio">
+    <img src="art/google-play-store/en_badge_web_generic.png" alt="Google Play" width="200">
+<a/>
 
 ## License
 
