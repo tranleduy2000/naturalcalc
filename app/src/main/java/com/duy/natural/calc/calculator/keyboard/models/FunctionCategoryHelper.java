@@ -206,7 +206,7 @@ public class FunctionCategoryHelper {
         category.add(FunctionType.ArcTanh);
         category.add(FunctionType.Arg);
         category.add(FunctionType.Ceiling);
-        category.add(FunctionType.Conjugate);
+//        category.add(FunctionType.Conjugate);
         category.add(FunctionType.Cos);
         category.add(FunctionType.Cosh);
         category.add(FunctionType.Cot);
