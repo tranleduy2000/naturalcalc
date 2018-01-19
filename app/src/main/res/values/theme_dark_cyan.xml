@@ -3,6 +3,9 @@
 
     <!-- Dark theme with cyan accent -->
     <style name="BaseThemeDarkCyan" parent="AppBaseThemeDark">
+
+        <item name="colorAccent">#02bcd4</item>
+
         <item name="colorMicroMathIcon">@android:color/white</item>
         <!-- Dialog style -->
         <item name="drawableDialogWindow">@drawable/dialog_window_dark</item>

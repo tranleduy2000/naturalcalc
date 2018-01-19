@@ -209,7 +209,7 @@
 
         <com.duy.natural.calc.calculator.calcbutton.CalcTextButton
             android:id="@+id/btn_calculate"
-            style="@style/CalcButtonStyle.Number"
+            style="@style/CalcButtonStyle.Equal"
             android:text="=" />
 
         <com.duy.natural.calc.calculator.calcbutton.CalcImageButton

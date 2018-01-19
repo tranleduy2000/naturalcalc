@@ -166,6 +166,10 @@
     <string name="action_share">Share this app</string>
     <string name="action_export_image">Export to image</string>
     <string name="action_rate_app">Rate this app</string>
+    <string name="action_zoom_in">Zoom in</string>
+    <string name="action_zoom_out">Zoom out</string>
+    <string name="action_zoom_reset">Reset</string>
+    <string name="action_change_size">Change font size</string>
 
     <!--Preferences-->
     <string name="pref_title_vibrate">Vibrate</string>
@@ -183,16 +187,12 @@
     <string name="fun_category_title_combinatorial">Combinatorial</string>
     <string name="fun_category_title_linear_algebra">Linear algebra</string>
     <string name="fun_category_title_basic">Basic</string>
+    <string name="fun_category_title_other">Other</string>
+    <string name="fun_category_title_common">Common</string>
 
     <string name="open_drawer">Open drawer</string>
     <string name="close_drawer">Close drawer</string>
 
-    <string name="action_zoom_in">Zoom in</string>
-    <string name="action_zoom_out">Zoom out</string>
-    <string name="action_zoom_reset">Reset</string>
-    <string name="action_change_size">Change font size</string>
-    <string name="fun_category_title_other">Other</string>
-    <string name="fun_category_title_common">Common</string>
 
 
 </resources>
