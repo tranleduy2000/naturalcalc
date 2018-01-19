@@ -216,12 +216,7 @@ public enum FunctionType implements FormulaTermType {
     Exp(1, "functions/Exp.md"),
     Im(1, "functions/Im.md"),
     Ln(1, "functions/Ln.md"),
-    Log(1, "functions/Log.md") {
-        @Override
-        public boolean isInfinityArg() {
-            return true;
-        }
-    },
+    Log(2, "functions/Log.md"),
     Log2(1, "functions/Log2.md"),
     Log10(1, "functions/Log10.md"),
     Re(1, "functions/Re.md"),

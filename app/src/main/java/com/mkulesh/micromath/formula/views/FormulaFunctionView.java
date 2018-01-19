@@ -442,9 +442,14 @@ public class FormulaFunctionView extends FormulaTermView {
                 t.bracketsType = TermField.BracketsType.NEVER;
 
             } else if (mFunctionType == FunctionType.Log) {
-                TermField t = addTerm(getFormulaRoot(), parent, -1, child, this, 0);
-                t.bracketsType = TermField.BracketsType.NEVER;
+                if (key.equals(leftTermKey)) {
+                    TermField t = addTerm(getFormulaRoot(), parent, -1, child, this, 3);
+                    t.bracketsType = TermField.BracketsType.IFNECESSARY;
 
+                } else if (key.equals(rightTermKey)) {
+                    TermField t = addTerm(getFormulaRoot(), parent, -1, child, this, 0);
+                    t.bracketsType = TermField.BracketsType.IFNECESSARY;
+                }
             } else if (key.equals(argTermKey)) {
                 TermField t = addTerm(getFormulaRoot(), parent, -1, child, this, 0);
                 if (mFunctionType == FunctionType.FACTORIAL_LAYOUT

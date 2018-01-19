@@ -19,44 +19,49 @@
             android:layout_height="wrap_content"
             app:specialAlignment="below_the_previous">
 
-            <com.mkulesh.micromath.widgets.CalcTextView
+        <!--    <com.mkulesh.micromath.widgets.CalcTextView
                 style="@style/FormulaTextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/formula_left_bracket_key" />
+                android:text="@string/formula_left_bracket_key" />-->
 
             <com.mkulesh.micromath.widgets.CalcEditText
                 style="@style/FormulaTextEditStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/formula_arg_term_key"
+                android:text="@string/formula_left_term_key"
                 app:newTermEnabled="true" />
 
-            <com.mkulesh.micromath.widgets.CalcTextView
+           <!-- <com.mkulesh.micromath.widgets.CalcTextView
                 style="@style/FormulaTextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/formula_right_bracket_key" />
+                android:text="@string/formula_right_bracket_key" />-->
         </com.mkulesh.micromath.widgets.FormulaLayout>
 
-        <com.mkulesh.micromath.widgets.CalcTextView
-            style="@style/FormulaTextViewStyle"
+        <com.mkulesh.micromath.widgets.FormulaLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/formula_left_bracket_key" />
+            android:layout_height="wrap_content">
 
-        <com.mkulesh.micromath.widgets.CalcEditText
-            style="@style/FormulaTextEditStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/formula_arg_term_key"
-            app:newTermEnabled="true" />
+         <!--   <com.mkulesh.micromath.widgets.CalcTextView
+                style="@style/FormulaTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/formula_left_bracket_key" />-->
 
-        <com.mkulesh.micromath.widgets.CalcTextView
-            style="@style/FormulaTextViewStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/formula_right_bracket_key" />
+            <com.mkulesh.micromath.widgets.CalcEditText
+                style="@style/FormulaTextEditStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/formula_right_term_key"
+                app:newTermEnabled="true" />
+
+        <!--    <com.mkulesh.micromath.widgets.CalcTextView
+                style="@style/FormulaTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/formula_right_bracket_key" />-->
+        </com.mkulesh.micromath.widgets.FormulaLayout>
     </com.mkulesh.micromath.widgets.FormulaLayout>
 
 </merge>
