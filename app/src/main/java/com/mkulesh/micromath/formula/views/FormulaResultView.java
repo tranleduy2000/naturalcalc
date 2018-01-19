@@ -41,7 +41,7 @@ import com.mkulesh.micromath.math.EquationArrayResult;
 import com.mkulesh.micromath.properties.OnResultPropertiesChangeListener;
 import com.mkulesh.micromath.properties.ResultProperties;
 import com.mkulesh.micromath.utils.ViewUtils;
-import com.mkulesh.micromath.widgets.CalcEditText;
+import com.mkulesh.micromath.widgets.FormulaEditText;
 import com.mkulesh.micromath.widgets.FormulaTextView;
 import com.mkulesh.micromath.widgets.OnFocusChangedListener;
 import com.mkulesh.micromath.widgets.ResultMatrixLayout;
@@ -97,7 +97,7 @@ public class FormulaResultView extends CalculationResultView implements OnResult
         mExpandResult.setOnClickListener(this);
         // create name term
         {
-            CalcEditText v = layout.findViewById(R.id.formula_result_name);
+            FormulaEditText v = layout.findViewById(R.id.formula_result_name);
             mLeftTerm = addTerm(this, (LinearLayout) layout.findViewById(R.id.result_function_layout), v, this, false);
             mLeftTerm.bracketsType = TermField.BracketsType.NEVER;
         }
@@ -108,7 +108,7 @@ public class FormulaResultView extends CalculationResultView implements OnResult
         }
         // create result term
         {
-            CalcEditText view = layout.findViewById(R.id.formula_result_value);
+            FormulaEditText view = layout.findViewById(R.id.formula_result_value);
             mConstantResultField = addTerm(this, layout, view, this, true);
             mConstantResultField.bracketsType = TermField.BracketsType.NEVER;
             mConstantResultField.isWritable = false;
@@ -199,7 +199,7 @@ public class FormulaResultView extends CalculationResultView implements OnResult
     }
 
     @Override
-    public int getNextFocusId(CalcEditText owner, OnFocusChangedListener.FocusType focusType) {
+    public int getNextFocusId(FormulaEditText owner, OnFocusChangedListener.FocusType focusType) {
         if (isArrayResult()) {
             if (owner == mLeftTerm.getEditText() && focusType == OnFocusChangedListener.FocusType.FOCUS_RIGHT) {
                 return mArrayResultMatrix.getFirstFocusId();
@@ -213,7 +213,7 @@ public class FormulaResultView extends CalculationResultView implements OnResult
 
 
     @Override
-    public int onGetNextFocusId(CalcEditText owner, OnFocusChangedListener.FocusType focusType) {
+    public int onGetNextFocusId(FormulaEditText owner, OnFocusChangedListener.FocusType focusType) {
         if (owner == null) {
             return R.id.container_display;
         }

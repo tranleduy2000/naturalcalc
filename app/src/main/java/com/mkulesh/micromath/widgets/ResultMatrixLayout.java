@@ -35,7 +35,7 @@ import com.mkulesh.micromath.utils.ViewUtils;
 import java.util.ArrayList;
 
 public class ResultMatrixLayout extends TableLayout {
-    private final ArrayList<CalcEditText> fields = new ArrayList<>();
+    private final ArrayList<FormulaEditText> fields = new ArrayList<>();
     private int rowsNumber = 0;
     private int colsNumber = 0;
 
@@ -90,7 +90,7 @@ public class ResultMatrixLayout extends TableLayout {
             }
 
             for (int col = 0; col < tableRow.getChildCount(); col++) {
-                final CalcEditText c = (CalcEditText) tableRow.getChildAt(col);
+                final FormulaEditText c = (FormulaEditText) tableRow.getChildAt(col);
                 if (c != null) {
                     c.setId(IdGenerator.generateId());
                     c.setTag(new ElementTag(row, col, fields.size()));
@@ -104,38 +104,38 @@ public class ResultMatrixLayout extends TableLayout {
         setBaselineAlignedChildIndex(rowsNumber > 1 ? rowsNumber / 2 : 0);
     }
 
-    private CalcEditText getCell(int row, int col) {
+    private FormulaEditText getCell(int row, int col) {
         if (row < getChildCount()) {
             final TableRow tr = (TableRow) getChildAt(row);
             if (tr != null && col < tr.getChildCount()) {
-                return (CalcEditText) tr.getChildAt(col);
+                return (FormulaEditText) tr.getChildAt(col);
             }
         }
         return null;
     }
 
     public void setText(int row, int col, String text) {
-        final CalcEditText cell = getCell(row, col);
+        final FormulaEditText cell = getCell(row, col);
         if (cell != null) {
             cell.setText(text);
         }
     }
 
     public void updateTextSize(ScaledDimensions dimen) {
-        for (CalcEditText field : fields) {
+        for (FormulaEditText field : fields) {
             field.updateTextSize(dimen, 0, ScaledDimensions.Type.MATRIX_COLUMN_PADDING);
         }
     }
 
     public void prepare(AppCompatActivity activity, OnFormulaChangeListener termChangeIf, OnFocusChangedListener onFocusChangedListener) {
-        for (CalcEditText field : fields) {
+        for (FormulaEditText field : fields) {
             field.setup(activity, termChangeIf);
             field.setChangeListener(null, onFocusChangedListener);
         }
     }
 
     public void updateTextColor(int normalDrawable, int selectedDrawable, @AttrRes int colorAttr) {
-        for (CalcEditText field : fields) {
+        for (FormulaEditText field : fields) {
             if (field.isSelected()) {
                 CompatUtils.updateBackgroundAttr(getContext(), field, selectedDrawable, colorAttr);
             } else {
@@ -144,7 +144,7 @@ public class ResultMatrixLayout extends TableLayout {
         }
     }
 
-    public boolean isCell(CalcEditText c) {
+    public boolean isCell(FormulaEditText c) {
         return c != null && c.getTag() != null && c.getTag() instanceof ElementTag;
     }
 
@@ -156,12 +156,12 @@ public class ResultMatrixLayout extends TableLayout {
         return fields.isEmpty() ? ViewUtils.INVALID_INDEX : fields.get(fields.size() - 1).getId();
     }
 
-    public int getNextFocusId(CalcEditText c, OnFocusChangedListener.FocusType focusType) {
+    public int getNextFocusId(FormulaEditText c, OnFocusChangedListener.FocusType focusType) {
         if (!isCell(c)) {
             return ViewUtils.INVALID_INDEX;
         }
         ElementTag tag = (ElementTag) c.getTag();
-        CalcEditText nextC = null;
+        FormulaEditText nextC = null;
         switch (focusType) {
             case FOCUS_DOWN:
                 nextC = tag.row + 1 < rowsNumber ? getCell(tag.row + 1, tag.col) : null;
@@ -180,7 +180,7 @@ public class ResultMatrixLayout extends TableLayout {
     }
 
     public void setText(String s, ScaledDimensions dimen) {
-        for (CalcEditText field : fields) {
+        for (FormulaEditText field : fields) {
             field.setText(s);
             field.updateTextSize(dimen, 0, ScaledDimensions.Type.MATRIX_COLUMN_PADDING);
         }

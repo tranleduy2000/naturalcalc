@@ -69,7 +69,7 @@ public interface OnFormulaChangeListener {
     /**
      * Procedure will be called if a term shall be deleted
      */
-    void onDelete(CalcEditText owner);
+    void onDelete(FormulaEditText owner);
 
     /**
      * Procedure will be called if a object property dialog for given owner term shall be called

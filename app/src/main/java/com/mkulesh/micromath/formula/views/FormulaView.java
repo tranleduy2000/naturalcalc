@@ -40,7 +40,7 @@ import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.IdGenerator;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.mkulesh.micromath.utils.XmlUtils;
-import com.mkulesh.micromath.widgets.CalcEditText;
+import com.mkulesh.micromath.widgets.FormulaEditText;
 import com.mkulesh.micromath.widgets.FormulaTextView;
 import com.mkulesh.micromath.widgets.ContextMenuHandler;
 import com.mkulesh.micromath.widgets.FormulaLayout;
@@ -83,7 +83,7 @@ public abstract class FormulaView extends FormulaLayout implements OnFormulaChan
      * Procedure checks the given owner is the main equation owner (root view)
      */
     static boolean isEquationOwner(View owner) {
-        return !(owner instanceof CalcEditText);
+        return !(owner instanceof FormulaEditText);
     }
 
     /**
@@ -161,7 +161,7 @@ public abstract class FormulaView extends FormulaLayout implements OnFormulaChan
     @Override
     public void onFocus(View view, boolean hasFocus) {
         if (hasFocus) {
-            if (!(view instanceof CalcEditText)) {
+            if (!(view instanceof FormulaEditText)) {
                 getFormulaList().clearFocus();
             }
             final FormulaView eq = (this instanceof FormulaTermView) ? ((FormulaTermView) this).getFormulaRoot() : this;
@@ -177,7 +177,7 @@ public abstract class FormulaView extends FormulaLayout implements OnFormulaChan
                 // we shall finish active action mode if focus is moved to an elements
                 // that is not an owner of this mode
                 boolean finishActionMode = false;
-                if (view instanceof CalcEditText && ((CalcEditText) view).getActionMode() == null) {
+                if (view instanceof FormulaEditText && ((FormulaEditText) view).getActionMode() == null) {
                     finishActionMode = true;
                 } else if (view instanceof FormulaTextView && ((FormulaTextView) view).getActionMode() == null) {
                     finishActionMode = true;
@@ -220,7 +220,7 @@ public abstract class FormulaView extends FormulaLayout implements OnFormulaChan
             } else {
                 getFormulaList().setSelectedFormula(getId(), false);
             }
-            if (!(owner instanceof CalcEditText)) {
+            if (!(owner instanceof FormulaEditText)) {
                 getFormulaList().clearFocus();
             }
         } else {
@@ -228,7 +228,7 @@ public abstract class FormulaView extends FormulaLayout implements OnFormulaChan
         }
 
         for (View v : list) {
-            if (v instanceof CalcEditText) {
+            if (v instanceof FormulaEditText) {
                 v.setSelected(isSelected);
             } else if (isSelected) {
                 CompatUtils.updateBackgroundAttr(getContext(), v,
@@ -262,7 +262,7 @@ public abstract class FormulaView extends FormulaLayout implements OnFormulaChan
         FormulaView retValue = null;
         if (isRootFormula() && (owner == null || isEquationOwner(owner))) {
             getFormulaList().selectAll();
-        } else if (owner != null && owner instanceof CalcEditText) {
+        } else if (owner != null && owner instanceof FormulaEditText) {
             retValue = this;
         } else if (parentField != null) {
             retValue = parentField.getParentFormula();
@@ -292,10 +292,10 @@ public abstract class FormulaView extends FormulaLayout implements OnFormulaChan
         }
 
         TermField term = null;
-        final boolean pasteIntoEditText = (owner != null && owner instanceof CalcEditText);
+        final boolean pasteIntoEditText = (owner != null && owner instanceof FormulaEditText);
         if (pasteIntoEditText) {
             // paste into text edit
-            term = findTerm((CalcEditText) owner);
+            term = findTerm((FormulaEditText) owner);
         } else if (!isRootFormula()) {
             // paste into parent term
             term = parentField;
@@ -356,7 +356,7 @@ public abstract class FormulaView extends FormulaLayout implements OnFormulaChan
     }
 
     @Override
-    public void onDelete(CalcEditText owner) {
+    public void onDelete(FormulaEditText owner) {
         if (isRootFormula() && getFormulaList().deleteSelectedEquations()) {
             getFormulaList().onManualInput();
             return;
@@ -608,7 +608,7 @@ public abstract class FormulaView extends FormulaLayout implements OnFormulaChan
     /**
      * Procedure adds a term to the term list
      */
-    protected TermField addTerm(FormulaView formulaView, LinearLayout parent, CalcEditText editText,
+    protected TermField addTerm(FormulaView formulaView, LinearLayout parent, FormulaEditText editText,
                                 OnFormulaChangeListener onFormulaChangeListener, boolean addDepth) {
         return addTerm(formulaView, parent, -1, editText, onFormulaChangeListener, ((addDepth) ? 1 : 0));
     }
@@ -616,7 +616,7 @@ public abstract class FormulaView extends FormulaLayout implements OnFormulaChan
     /**
      * Procedure adds a term to the term list with given index
      */
-    protected TermField addTerm(FormulaView formulaView, LinearLayout l, int idx, CalcEditText editText,
+    protected TermField addTerm(FormulaView formulaView, LinearLayout l, int idx, FormulaEditText editText,
                                 OnFormulaChangeListener onFormulaChangeListener, int addDepth) {
         editText.setup(formulaView.getFormulaList().getActivity(), onFormulaChangeListener);
         TermField termField = new TermField(formulaView, this, l, termDepth + addDepth, editText);
@@ -644,7 +644,7 @@ public abstract class FormulaView extends FormulaLayout implements OnFormulaChan
     /**
      * Returns term field object related to the given edit
      */
-    protected TermField findTerm(CalcEditText editText) {
+    protected TermField findTerm(FormulaEditText editText) {
         for (TermField t : mTerms) {
             if (editText == t.getEditText()) {
                 return t;
@@ -800,7 +800,7 @@ public abstract class FormulaView extends FormulaLayout implements OnFormulaChan
     /**
      * Procedure returns the ID of the next focused EditText relative to the given owner
      */
-    public int getNextFocusId(CalcEditText owner, OnFocusChangedListener.FocusType focusType) {
+    public int getNextFocusId(FormulaEditText owner, OnFocusChangedListener.FocusType focusType) {
         FormulaView f = null;
         // Process UP/DOWN
         if (isRootFormula() && owner != null) {

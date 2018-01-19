@@ -71,8 +71,8 @@ public class FormulaTextView extends AppCompatTextView implements OnLongClickLis
         FontManager.setDefaultFont(context, this);
         mMenuHandler = new ContextMenuHandler(getContext());
         if (attrs != null) {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CalcEditText, 0, 0);
-            String s = a.getString(R.styleable.CalcEditText_symbol);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FormulaEditText, 0, 0);
+            String s = a.getString(R.styleable.FormulaEditText_symbol);
             if (s != null) {
                 for (SymbolType f : SymbolType.values()) {
                     if (s.equals(f.toString())) {

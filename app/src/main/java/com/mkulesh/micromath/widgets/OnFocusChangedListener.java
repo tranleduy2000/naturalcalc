@@ -22,7 +22,7 @@ public interface OnFocusChangedListener {
     /**
      * Procedure is called ID of next focused term is required
      */
-    int onGetNextFocusId(CalcEditText owner, FocusType focusType);
+    int onGetNextFocusId(FormulaEditText owner, FocusType focusType);
 
    /* *//**
      * Called when user click {@link com.nstudio.calc.casio.R.id#btn_arrow_left}

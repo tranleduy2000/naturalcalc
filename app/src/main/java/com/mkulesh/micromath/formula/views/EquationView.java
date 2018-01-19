@@ -36,7 +36,7 @@ import com.duy.natural.calc.calculator.evaluator.result.CalculatedResult;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.math.EquationArrayResult;
 import com.mkulesh.micromath.utils.ViewUtils;
-import com.mkulesh.micromath.widgets.CalcEditText;
+import com.mkulesh.micromath.widgets.FormulaEditText;
 import com.mkulesh.micromath.widgets.FormulaTextView;
 import com.nstudio.calc.casio.R;
 
@@ -262,7 +262,7 @@ public class EquationView extends CalculationResultView implements IArgumentHold
         inflateRootLayout(R.layout.formula_equation, LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         // create name term
         {
-            CalcEditText v = layout.findViewById(R.id.formula_equation_name);
+            FormulaEditText v = layout.findViewById(R.id.formula_equation_name);
             mLeftTerm = addTerm(this, layout, v, this, false);
         }
         // create assign character
@@ -272,7 +272,7 @@ public class EquationView extends CalculationResultView implements IArgumentHold
         }
         // create value term
         {
-            CalcEditText v = layout.findViewById(R.id.formula_equation_value);
+            FormulaEditText v = layout.findViewById(R.id.formula_equation_value);
             mRightTerm = addTerm(this, layout, v, this, false);
             mRightTerm.bracketsType = TermField.BracketsType.NEVER;
         }

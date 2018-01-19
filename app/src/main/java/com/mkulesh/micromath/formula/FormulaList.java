@@ -64,7 +64,7 @@ import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.IdGenerator;
 import com.mkulesh.micromath.utils.ViewUtils;
-import com.mkulesh.micromath.widgets.CalcEditText;
+import com.mkulesh.micromath.widgets.FormulaEditText;
 import com.mkulesh.micromath.widgets.OnListChangeListener;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
 import com.mkulesh.micromath.widgets.TwoDScrollView;
@@ -323,7 +323,7 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
                         term.getTerm().onPasteFromClipboard(null, code);
                     } else {
                         BasicSymbolType numberType = BasicSymbolType.getNumberType(code);
-                        CalcEditText editText = term.getEditText();
+                        FormulaEditText editText = term.getEditText();
                         if (numberType != null) {
                             onInsert(numberType.toString(), editText);
                         } else {
@@ -349,14 +349,14 @@ public class FormulaList implements OnClickListener, OnListChangeListener, OnDoc
         return mFormulaListView.isEmpty();
     }
 
-    private void onInsert(String text, CalcEditText editText) {
+    private void onInsert(String text, FormulaEditText editText) {
         editText.insert(text);
     }
 
     private void onActionButtonPressed(ActionType actionType) {
         // term operations
         FormulaView view = mRootFormulas.get(mSelectedFormulaId);
-        CalcEditText editText = null;
+        FormulaEditText editText = null;
         if (view != null) {
             TermField tf = view.findFocusedTerm();
             if (tf != null) {

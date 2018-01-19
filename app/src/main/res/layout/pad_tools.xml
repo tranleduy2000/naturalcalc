@@ -6,7 +6,7 @@
     android:background="?colorPrimary"
     android:orientation="horizontal">
 
-    <com.mkulesh.micromath.widgets.CalcEditText xmlns:tools="http://schemas.android.com/tools"
+    <com.mkulesh.micromath.widgets.FormulaEditText xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/hidden_edit_text"
         android:layout_width="50dp"
         android:layout_height="match_parent"

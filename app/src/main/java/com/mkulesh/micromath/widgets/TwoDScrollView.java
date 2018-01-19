@@ -115,8 +115,8 @@ public class TwoDScrollView extends FrameLayout {
         mScroller = new Scroller(getContext());
         mGestureDetector = new GestureDetectorCompat(getContext(), mGestureListener);
         if (attrs != null) {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CalcEditText, 0, 0);
-            autoScrollMargins = a.getDimensionPixelSize(R.styleable.CalcEditText_autoScrollMargins, 0);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FormulaEditText, 0, 0);
+            autoScrollMargins = a.getDimensionPixelSize(R.styleable.FormulaEditText_autoScrollMargins, 0);
             a.recycle();
         }
         mEdgeGlowLeft = new EdgeEffectCompat(getContext());

@@ -34,7 +34,7 @@ import com.mkulesh.micromath.formula.type.LoopType;
 import com.mkulesh.micromath.formula.type.OperatorType;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.ViewUtils;
-import com.mkulesh.micromath.widgets.CalcEditText;
+import com.mkulesh.micromath.widgets.FormulaEditText;
 import com.mkulesh.micromath.widgets.FormulaTextView;
 import com.mkulesh.micromath.widgets.FormulaLayout;
 import com.mkulesh.micromath.widgets.OnFocusChangedListener;
@@ -58,7 +58,7 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
         this.mFormulaRoot = null;
     }
 
-    public static FormulaTermType.TermType getTermType(Context context, CalcEditText editText, String text, boolean ensureManualTrigger) {
+    public static FormulaTermType.TermType getTermType(Context context, FormulaEditText editText, String text, boolean ensureManualTrigger) {
         if (FormulaBinaryOperatorView.getOperatorType(context, text) != null) {
             return FormulaTermType.TermType.OPERATOR;
         }
@@ -228,7 +228,7 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
     /**
      * Procedure will be called for a custom edit term initialization
      */
-    protected abstract CalcEditText initializeTerm(CalcEditText child, LinearLayout parent);
+    protected abstract FormulaEditText initializeTerm(FormulaEditText child, LinearLayout parent);
 
 
     @Override
@@ -239,7 +239,7 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
     }
 
     @Override
-    public int getNextFocusId(CalcEditText owner, OnFocusChangedListener.FocusType focusType) {
+    public int getNextFocusId(FormulaEditText owner, OnFocusChangedListener.FocusType focusType) {
         if (mFormulaRoot != null
                 && owner != null
                 && (focusType == OnFocusChangedListener.FocusType.FOCUS_UP || focusType == OnFocusChangedListener.FocusType.FOCUS_DOWN)) {
@@ -272,8 +272,8 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
             View child = mElements.get(i);
             if (child instanceof FormulaTextView) {
                 isValid[i] = (initializeSymbol((FormulaTextView) child) != null);
-            } else if (child instanceof CalcEditText) {
-                isValid[i] = (initializeTerm((CalcEditText) child, layout) != null);
+            } else if (child instanceof FormulaEditText) {
+                isValid[i] = (initializeTerm((FormulaEditText) child, layout) != null);
             } else if (child instanceof LinearLayout) {
                 initializeLayout((LinearLayout) child);
                 isValid[i] = true;
@@ -299,8 +299,8 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
             if (child instanceof FormulaTextView) {
                 initializeSymbol((FormulaTextView) child);
             }
-            if (child instanceof CalcEditText) {
-                initializeTerm((CalcEditText) child, parent);
+            if (child instanceof FormulaEditText) {
+                initializeTerm((FormulaEditText) child, parent);
             }
             if (child instanceof LinearLayout) {
                 initializeLayout((LinearLayout) child);
@@ -343,8 +343,8 @@ public abstract class FormulaTermView extends FormulaView implements ICalculable
             if (t instanceof FormulaTextView) {
                 ((FormulaTextView) t).prepare(FormulaTextView.SymbolType.TEXT, getFormulaRoot().getFormulaList()
                         .getActivity(), this);
-            } else if (t instanceof CalcEditText) {
-                newArg = addTerm(getFormulaRoot(), expandableLayout, ++termIndex, (CalcEditText) t, this, addDepth);
+            } else if (t instanceof FormulaEditText) {
+                newArg = addTerm(getFormulaRoot(), expandableLayout, ++termIndex, (FormulaEditText) t, this, addDepth);
                 newArg.bracketsType = TermField.BracketsType.NEVER;
             }
             expandableLayout.addView(t, ++viewIndex);

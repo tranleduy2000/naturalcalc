@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/formula_loop_diff" />
 
-            <com.mkulesh.micromath.widgets.CalcEditText
+            <com.mkulesh.micromath.widgets.FormulaEditText
                 style="@style/FormulaTextEditStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
         </com.mkulesh.micromath.widgets.FormulaLayout>
     </LinearLayout>
 
-    <com.mkulesh.micromath.widgets.CalcEditText
+    <com.mkulesh.micromath.widgets.FormulaEditText
         style="@style/FormulaTextEditStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

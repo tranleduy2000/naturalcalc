@@ -36,7 +36,7 @@ import com.mkulesh.micromath.formula.type.FunctionType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.ViewUtils;
-import com.mkulesh.micromath.widgets.CalcEditText;
+import com.mkulesh.micromath.widgets.FormulaEditText;
 import com.mkulesh.micromath.widgets.FormulaTextView;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
 import com.nstudio.calc.casio.R;
@@ -405,7 +405,7 @@ public class FormulaFunctionView extends FormulaTermView {
     }
 
     @Override
-    protected CalcEditText initializeTerm(CalcEditText child, LinearLayout parent) {
+    protected FormulaEditText initializeTerm(FormulaEditText child, LinearLayout parent) {
         if (child.getText() != null) {
             final String key = child.getText().toString();
             String argTermKey = getContext().getResources().getString(R.string.formula_arg_term_key);
@@ -514,7 +514,7 @@ public class FormulaFunctionView extends FormulaTermView {
     }
 
     @Override
-    public void onDelete(CalcEditText owner) {
+    public void onDelete(FormulaEditText owner) {
         final TermField ownerTerm = findTerm(owner);
         final Resources res = getResources();
         if (mFunctionType == FunctionType.SURD_LAYOUT

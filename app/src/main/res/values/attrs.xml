@@ -34,7 +34,7 @@
         <enum name="below_the_previous" value="4" />
     </attr>
 
-    <declare-styleable name="CalcEditText">
+    <declare-styleable name="FormulaEditText">
         <attr name="contextMenuExpand" format="boolean" />
         <attr name="contextMenuCut" format="boolean" />
         <attr name="contextMenuCopy" format="boolean" />

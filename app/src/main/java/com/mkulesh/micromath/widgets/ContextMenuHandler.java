@@ -95,10 +95,10 @@ public class ContextMenuHandler {
     }
 
     public void initialize(TypedArray data) {
-        mEnabled[Type.EXPAND.ordinal()] = data.getBoolean(R.styleable.CalcEditText_contextMenuExpand, true);
-        mEnabled[Type.CUT.ordinal()] = data.getBoolean(R.styleable.CalcEditText_contextMenuCut, true);
-        mEnabled[Type.COPY.ordinal()] = data.getBoolean(R.styleable.CalcEditText_contextMenuCopy, true);
-        mEnabled[Type.PASTE.ordinal()] = data.getBoolean(R.styleable.CalcEditText_contextMenuPaste, true);
+        mEnabled[Type.EXPAND.ordinal()] = data.getBoolean(R.styleable.FormulaEditText_contextMenuExpand, true);
+        mEnabled[Type.CUT.ordinal()] = data.getBoolean(R.styleable.FormulaEditText_contextMenuCut, true);
+        mEnabled[Type.COPY.ordinal()] = data.getBoolean(R.styleable.FormulaEditText_contextMenuCopy, true);
+        mEnabled[Type.PASTE.ordinal()] = data.getBoolean(R.styleable.FormulaEditText_contextMenuPaste, true);
     }
 
     public boolean isMenuEmpty() {
@@ -119,7 +119,7 @@ public class ContextMenuHandler {
         mOnFormulaChangeListener = onFormulaChangeListener;
 
         ArrayList<View> list = null;
-        if (mActionModeOwner != null && mActionModeOwner instanceof CalcEditText) {
+        if (mActionModeOwner != null && mActionModeOwner instanceof FormulaEditText) {
             list = new ArrayList<>();
             list.add(mActionModeOwner);
         }
@@ -145,8 +145,8 @@ public class ContextMenuHandler {
                 return false;
 
             case R.id.context_menu_cut:
-                if (mActionModeOwner != null && mActionModeOwner instanceof CalcEditText) {
-                    CalcEditText t = (CalcEditText) mActionModeOwner;
+                if (mActionModeOwner != null && mActionModeOwner instanceof FormulaEditText) {
+                    FormulaEditText t = (FormulaEditText) mActionModeOwner;
                     ClipboardManager.copyToClipboard(context, t.getText().toString());
                     if (t.getText().length() == 0) {
                         mOnFormulaChangeListener.onDelete(t);
@@ -161,8 +161,8 @@ public class ContextMenuHandler {
                 break;
 
             case R.id.context_menu_copy:
-                if (mActionModeOwner != null && mActionModeOwner instanceof CalcEditText) {
-                    CalcEditText t = (CalcEditText) mActionModeOwner;
+                if (mActionModeOwner != null && mActionModeOwner instanceof FormulaEditText) {
+                    FormulaEditText t = (FormulaEditText) mActionModeOwner;
                     ClipboardManager.copyToClipboard(context, t.getText().toString());
                 } else {
                     mOnFormulaChangeListener.onCopyToClipboard();

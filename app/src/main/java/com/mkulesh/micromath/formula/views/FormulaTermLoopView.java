@@ -32,7 +32,7 @@ import com.mkulesh.micromath.formula.type.FormulaTermType;
 import com.mkulesh.micromath.formula.type.LoopType;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.utils.ViewUtils;
-import com.mkulesh.micromath.widgets.CalcEditText;
+import com.mkulesh.micromath.widgets.FormulaEditText;
 import com.mkulesh.micromath.widgets.FormulaTextView;
 import com.mkulesh.micromath.widgets.ScaledDimensions;
 import com.nstudio.calc.casio.R;
@@ -178,7 +178,7 @@ public class FormulaTermLoopView extends FormulaTermView implements IArgumentHol
     }
 
     @Override
-    protected CalcEditText initializeTerm(CalcEditText child, LinearLayout parent) {
+    protected FormulaEditText initializeTerm(FormulaEditText child, LinearLayout parent) {
         final int addDepth = (mLoopType == INTEGRAL || mLoopType == LoopType.DERIVATIVE) ? 0 : 3;
         if (child.getText() != null) {
             if (child.getText().toString().equals(getContext().getResources().getString(R.string.formula_max_value_key))) {
@@ -213,7 +213,7 @@ public class FormulaTermLoopView extends FormulaTermView implements IArgumentHol
 
 
     @Override
-    public void onDelete(CalcEditText owner) {
+    public void onDelete(FormulaEditText owner) {
         final TermField t = findTerm(owner);
         TermField r = (t != null && t != getArgumentTerm()) ? getArgumentTerm() : null;
         parentField.onTermDelete(removeElements(), r);

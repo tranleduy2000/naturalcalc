@@ -38,7 +38,7 @@ import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.ViewUtils;
 import com.nstudio.calc.casio.R;
 
-public class CalcEditText extends AppCompatEditText implements OnLongClickListener,
+public class FormulaEditText extends AppCompatEditText implements OnLongClickListener,
         View.OnFocusChangeListener, EditorController {
 
     private static final String TAG = "CustomEditText";
@@ -67,17 +67,17 @@ public class CalcEditText extends AppCompatEditText implements OnLongClickListen
     @Nullable
     private OnFormulaChangeListener mOnFormulaChangeListener = null;
 
-    public CalcEditText(Context context, AttributeSet attrs, int defStyle) {
+    public FormulaEditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         setup(context, attrs);
     }
 
-    public CalcEditText(Context context, AttributeSet attrs) {
+    public FormulaEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         setup(context, attrs);
     }
 
-    public CalcEditText(Context context) {
+    public FormulaEditText(Context context) {
         super(context);
         setup(context, null);
     }
@@ -88,18 +88,18 @@ public class CalcEditText extends AppCompatEditText implements OnLongClickListen
 
         mMenuHandler = new ContextMenuHandler(getContext());
         if (attrs != null) {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CalcEditText, 0, 0);
-            equationName = a.getBoolean(R.styleable.CalcEditText_equationName, false);
-            indexName = a.getBoolean(R.styleable.CalcEditText_indexName, false);
-            intermediateArgument = a.getBoolean(R.styleable.CalcEditText_intermediateArgument, false);
-            calculatedValue = a.getBoolean(R.styleable.CalcEditText_calculatedValue, false);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FormulaEditText, 0, 0);
+            equationName = a.getBoolean(R.styleable.FormulaEditText_equationName, false);
+            indexName = a.getBoolean(R.styleable.FormulaEditText_indexName, false);
+            intermediateArgument = a.getBoolean(R.styleable.FormulaEditText_intermediateArgument, false);
+            calculatedValue = a.getBoolean(R.styleable.FormulaEditText_calculatedValue, false);
 
             // custom content types
-            emptyEnabled = a.getBoolean(R.styleable.CalcEditText_emptyEnabled, false);
-            intervalEnabled = a.getBoolean(R.styleable.CalcEditText_intervalEnabled, false);
-            complexEnabled = a.getBoolean(R.styleable.CalcEditText_complexEnabled, true);
-            comparatorEnabled = a.getBoolean(R.styleable.CalcEditText_comparatorEnabled, comparatorEnabled);
-            newTermEnabled = a.getBoolean(R.styleable.CalcEditText_newTermEnabled, newTermEnabled);
+            emptyEnabled = a.getBoolean(R.styleable.FormulaEditText_emptyEnabled, false);
+            intervalEnabled = a.getBoolean(R.styleable.FormulaEditText_intervalEnabled, false);
+            complexEnabled = a.getBoolean(R.styleable.FormulaEditText_complexEnabled, true);
+            comparatorEnabled = a.getBoolean(R.styleable.FormulaEditText_comparatorEnabled, comparatorEnabled);
+            newTermEnabled = a.getBoolean(R.styleable.FormulaEditText_newTermEnabled, newTermEnabled);
             // menu
             mMenuHandler.initialize(a);
             a.recycle();

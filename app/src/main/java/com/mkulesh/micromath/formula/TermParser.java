@@ -24,7 +24,7 @@ import com.mkulesh.micromath.formula.views.FormulaView;
 import com.mkulesh.micromath.math.CalculatedValue;
 import com.nstudio.calc.casio.R;
 import com.mkulesh.micromath.utils.ViewUtils;
-import com.mkulesh.micromath.widgets.CalcEditText;
+import com.mkulesh.micromath.widgets.FormulaEditText;
 
 import org.apache.commons.math3.complex.Complex;
 
@@ -123,7 +123,7 @@ public class TermParser {
         return isArray;
     }
 
-    public void setText(TermField owner, FormulaView formulaRoot, CalcEditText editText) {
+    public void setText(TermField owner, FormulaView formulaRoot, FormulaEditText editText) {
         String inText = editText.getText().toString();
         value = null;
         functionName = null;
@@ -261,7 +261,7 @@ public class TermParser {
         errorId = R.string.error_unknown_variable;
     }
 
-    private boolean checkArgumentIndex(TermField owner, CalcEditText editText) {
+    private boolean checkArgumentIndex(TermField owner, FormulaEditText editText) {
         argumentHolder = owner.findArgumentHolder(functionName);
         // no argument holder is found
         if (argumentHolder == null || !(argumentHolder instanceof FormulaView)) {

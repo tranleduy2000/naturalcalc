@@ -69,8 +69,8 @@ public class FormulaLayout extends LinearLayout {
     private void prepare(AttributeSet attrs) {
         setBaselineAligned(true);
         if (attrs != null) {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CalcEditText, 0, 0);
-            String s = a.getString(R.styleable.CalcEditText_symbol);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FormulaEditText, 0, 0);
+            String s = a.getString(R.styleable.FormulaEditText_symbol);
             if (s != null) {
                 for (SymbolType f : SymbolType.values()) {
                     if (s.equals(f.toString())) {
@@ -79,12 +79,12 @@ public class FormulaLayout extends LinearLayout {
                     }
                 }
             }
-            symbolViewIndex = a.getInteger(R.styleable.CalcEditText_symbolViewIndex, -1);
-            final int specialAllignmentInt = a.getInteger(R.styleable.CalcEditText_specialAlignment, -1);
+            symbolViewIndex = a.getInteger(R.styleable.FormulaEditText_symbolViewIndex, -1);
+            final int specialAllignmentInt = a.getInteger(R.styleable.FormulaEditText_specialAlignment, -1);
             if (specialAllignmentInt >= 0 && specialAllignmentInt < SpecialAlignment.values().length) {
                 mAlignment = SpecialAlignment.values()[specialAllignmentInt];
             }
-            verticalTermPadding = a.getBoolean(R.styleable.CalcEditText_verticalTermPadding, false);
+            verticalTermPadding = a.getBoolean(R.styleable.FormulaEditText_verticalTermPadding, false);
             a.recycle();
         }
         textColor = CompatUtils.getThemeColorAttr(getContext(), R.attr.colorFormulaNormal);

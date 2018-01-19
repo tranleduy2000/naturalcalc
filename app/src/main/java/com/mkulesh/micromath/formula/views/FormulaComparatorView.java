@@ -29,7 +29,7 @@ import com.duy.natural.calc.calculator.evaluator.CalculateTask.CancelException;
 import com.mkulesh.micromath.formula.type.ComparatorType;
 import com.mkulesh.micromath.formula.type.FormulaTermType;
 import com.mkulesh.micromath.math.CalculatedValue;
-import com.mkulesh.micromath.widgets.CalcEditText;
+import com.mkulesh.micromath.widgets.FormulaEditText;
 import com.mkulesh.micromath.widgets.FormulaTextView;
 import com.nstudio.calc.casio.R;
 
@@ -118,7 +118,7 @@ public class FormulaComparatorView extends FormulaTermView {
     }
 
     @Override
-    protected CalcEditText initializeTerm(CalcEditText child, LinearLayout parent) {
+    protected FormulaEditText initializeTerm(FormulaEditText child, LinearLayout parent) {
         if (child.getText() != null) {
             if (child.getText().toString().equals(getContext().getResources().getString(R.string.formula_left_term_key))) {
                 mLeftTerm = addTerm(getFormulaRoot(), parent, child, this, false);
@@ -132,7 +132,7 @@ public class FormulaComparatorView extends FormulaTermView {
 
 
     @Override
-    public void onDelete(CalcEditText owner) {
+    public void onDelete(FormulaEditText owner) {
         if (parentField != null) {
             TermField t = findTerm(owner);
             TermField r = null;

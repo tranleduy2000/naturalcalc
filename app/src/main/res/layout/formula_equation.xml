@@ -2,7 +2,7 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.mkulesh.micromath.widgets.CalcEditText
+    <com.mkulesh.micromath.widgets.FormulaEditText
         android:id="@+id/formula_equation_name"
         style="@style/FormulaTextEditStyle"
         android:layout_width="wrap_content"
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:text="@string/formula_assign_definition" />
 
-    <com.mkulesh.micromath.widgets.CalcEditText
+    <com.mkulesh.micromath.widgets.FormulaEditText
         android:id="@+id/formula_equation_value"
         style="@style/FormulaTextEditStyle"
         android:layout_width="wrap_content"

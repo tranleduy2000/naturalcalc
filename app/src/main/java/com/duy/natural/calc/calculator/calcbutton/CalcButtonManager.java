@@ -44,7 +44,7 @@ import com.mkulesh.micromath.formula.type.OperatorType;
 import com.mkulesh.micromath.formula.views.FormulaTermView;
 import com.mkulesh.micromath.utils.ClipboardManager;
 import com.mkulesh.micromath.utils.ViewUtils;
-import com.mkulesh.micromath.widgets.CalcEditText;
+import com.mkulesh.micromath.widgets.FormulaEditText;
 import com.mkulesh.micromath.widgets.OnFocusChangedListener;
 import com.mkulesh.micromath.widgets.OnTextChangeListener;
 import com.nstudio.calc.casio.R;
@@ -61,7 +61,7 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
     private final ArrayList<ArrayList<ICalcButton>> mButtonCategory = new ArrayList<>();
     private final ViewGroup mPaletteLayout;
     @Nullable
-    private CalcEditText mHiddenInput;
+    private FormulaEditText mHiddenInput;
     private String mLastHiddenInput = "";
 
     public CalcButtonManager(Context context, ViewGroup parent, OnCalcButtonClickListener listener) {
@@ -350,7 +350,7 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
     }
 
     @Override
-    public int onGetNextFocusId(CalcEditText owner, FocusType focusType) {
+    public int onGetNextFocusId(FormulaEditText owner, FocusType focusType) {
         return R.id.container_display;
     }
 }

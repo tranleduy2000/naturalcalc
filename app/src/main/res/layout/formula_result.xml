@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.mkulesh.micromath.widgets.CalcEditText
+        <com.mkulesh.micromath.widgets.FormulaEditText
             android:id="@+id/formula_result_name"
             style="@style/FormulaTextEditStyle"
             android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent" />
 
-    <com.mkulesh.micromath.widgets.CalcEditText
+    <com.mkulesh.micromath.widgets.FormulaEditText
         android:id="@+id/formula_result_value"
         style="@style/FormulaTextEditStyle"
         android:layout_width="wrap_content"

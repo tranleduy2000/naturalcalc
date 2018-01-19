@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:text="@string/formula_left_bracket_key" />
 
-    <com.mkulesh.micromath.widgets.CalcEditText
+    <com.mkulesh.micromath.widgets.FormulaEditText
         style="@style/FormulaTextEditStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:text="@string/formula_first_separator_key" />
 
-    <com.mkulesh.micromath.widgets.CalcEditText
+    <com.mkulesh.micromath.widgets.FormulaEditText
         style="@style/FormulaTextEditStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:text="@string/formula_second_separator_key" />
 
-    <com.mkulesh.micromath.widgets.CalcEditText
+    <com.mkulesh.micromath.widgets.FormulaEditText
         style="@style/FormulaTextEditStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

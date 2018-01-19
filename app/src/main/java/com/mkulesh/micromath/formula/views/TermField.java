@@ -43,7 +43,7 @@ import com.mkulesh.micromath.math.CalculatedValue;
 import com.mkulesh.micromath.utils.CompatUtils;
 import com.mkulesh.micromath.utils.IdGenerator;
 import com.mkulesh.micromath.utils.ViewUtils;
-import com.mkulesh.micromath.widgets.CalcEditText;
+import com.mkulesh.micromath.widgets.FormulaEditText;
 import com.mkulesh.micromath.widgets.FormulaLayout;
 import com.mkulesh.micromath.widgets.OnFocusChangedListener;
 import com.mkulesh.micromath.widgets.OnTextChangeListener;
@@ -68,7 +68,7 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
     private static final String TAG = "TermField";
 
     private final TermParser mParser = new TermParser();
-    private final CalcEditText mEditText;
+    private final FormulaEditText mEditText;
     private final FormulaView mFormulaRoot, mParentFormula;
     private final LinearLayout mLayout;
 
@@ -88,7 +88,7 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
     private EquationView mLinkedVariable = null;
 
     public TermField(FormulaView formulaRoot, FormulaView parentFormula, LinearLayout layout,
-                     int termDepth, CalcEditText editText) {
+                     int termDepth, FormulaEditText editText) {
         super();
         initLayoutDepth();
 
@@ -332,7 +332,7 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
     }
 
     @Override
-    public int onGetNextFocusId(CalcEditText owner, FocusType focusType) {
+    public int onGetNextFocusId(FormulaEditText owner, FocusType focusType) {
         return mParentFormula.getNextFocusId(mEditText, focusType);
     }
 
@@ -482,7 +482,7 @@ public class TermField implements OnTextChangeListener, OnFocusChangedListener, 
     /**
      * Procedure returns associated edit text component
      */
-    public CalcEditText getEditText() {
+    public FormulaEditText getEditText() {
         return mEditText;
     }
 
