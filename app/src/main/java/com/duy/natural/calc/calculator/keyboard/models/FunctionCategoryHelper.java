@@ -258,7 +258,7 @@ public class FunctionCategoryHelper {
         category.add(FunctionType.Norm);
         category.add(FunctionType.Normalize);
         category.add(FunctionType.NullSpace);
-        category.add(FunctionType.Outer);
+//        category.add(FunctionType.Outer);
         category.add(FunctionType.PseudoInverse);
         category.add(FunctionType.QRDecomposition);
         category.add(FunctionType.RowReduce);
