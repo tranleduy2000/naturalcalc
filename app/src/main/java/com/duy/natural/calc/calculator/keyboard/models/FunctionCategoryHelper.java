@@ -218,8 +218,8 @@ public class FunctionCategoryHelper {
         category.add(FunctionType.Im);
         category.add(FunctionType.LCM);
         category.add(FunctionType.Ln);
-        category.add(FunctionType.Log);
-        category.add(FunctionType.Log2);
+//        category.add(FunctionType.Log);
+//        category.add(FunctionType.Log2);
         category.add(FunctionType.Log10);
         category.add(FunctionType.Mod);
         category.add(FunctionType.Quotient);

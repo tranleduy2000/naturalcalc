@@ -189,6 +189,9 @@ public class FormulaFunctionView extends FormulaTermView {
             case Solve:
                 inflateElements(R.layout.formula_function_solve, true);
                 break;
+            case Log:
+                inflateElements(R.layout.formula_function_logn, true);
+                break;
             default:
                 inflateElements(R.layout.formula_function_named, true);
                 break;
@@ -385,12 +388,14 @@ public class FormulaFunctionView extends FormulaTermView {
                 }
                 mFunctionTerm = view;
             } else if (code.equals(res.getString(R.string.formula_left_bracket_key))) {
-                CalcTextView.SymbolType s = (mFunctionType == FunctionType.ABS_LAYOUT) ? CalcTextView.SymbolType.VERT_LINE
+                CalcTextView.SymbolType s = (mFunctionType == FunctionType.ABS_LAYOUT)
+                        ? CalcTextView.SymbolType.VERT_LINE
                         : CalcTextView.SymbolType.LEFT_BRACKET;
                 view.prepare(s, getFormulaRoot().getFormulaList().getActivity(), this);
                 view.setText("."); // this text defines view width/height
             } else if (code.equals(res.getString(R.string.formula_right_bracket_key))) {
-                CalcTextView.SymbolType s = (mFunctionType == FunctionType.ABS_LAYOUT) ? CalcTextView.SymbolType.VERT_LINE
+                CalcTextView.SymbolType s = (mFunctionType == FunctionType.ABS_LAYOUT)
+                        ? CalcTextView.SymbolType.VERT_LINE
                         : CalcTextView.SymbolType.RIGHT_BRACKET;
                 view.prepare(s, getFormulaRoot().getFormulaList().getActivity(), this);
                 view.setText("."); // this text defines view width/height
@@ -433,8 +438,13 @@ public class FormulaFunctionView extends FormulaTermView {
 
                 }
             } else if (mFunctionType == FunctionType.Solve) {
-                TermField t = addTerm(getFormulaRoot(), parent, -1, child, this, getArgumentDepth());
+                TermField t = addTerm(getFormulaRoot(), parent, -1, child, this, 0);
                 t.bracketsType = TermField.BracketsType.NEVER;
+
+            } else if (mFunctionType == FunctionType.Log) {
+                TermField t = addTerm(getFormulaRoot(), parent, -1, child, this, 0);
+                t.bracketsType = TermField.BracketsType.NEVER;
+
             } else if (key.equals(argTermKey)) {
                 TermField t = addTerm(getFormulaRoot(), parent, -1, child, this, 0);
                 if (mFunctionType == FunctionType.FACTORIAL_LAYOUT

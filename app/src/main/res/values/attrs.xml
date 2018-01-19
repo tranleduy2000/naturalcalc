@@ -105,5 +105,9 @@
         <attr name="buttonType" />
     </declare-styleable>
 
+    <declare-styleable name="FormulaLayout">
+        <attr name="specialAlignment" />
+    </declare-styleable>
+
 
 </resources>
