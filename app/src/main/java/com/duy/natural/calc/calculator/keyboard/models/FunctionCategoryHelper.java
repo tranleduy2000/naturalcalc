@@ -57,7 +57,7 @@ public class FunctionCategoryHelper {
         category.add(FunctionType.ContinuedFraction);
         category.add(FunctionType.Correlation);
         category.add(FunctionType.Covariance);
-        category.add(FunctionType.CubeRoot);
+//        category.add(FunctionType.CubeRoot);
         category.add(FunctionType.Curl);
         category.add(FunctionType.D);
         category.add(FunctionType.Denominator);
