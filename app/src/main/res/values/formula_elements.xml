@@ -19,7 +19,6 @@
     <string name="function_main_layout" translatable="false">functionMainLayout</string>
 
     <!--button type-->
-    <string name="type_function" translatable="false">type_function</string>
     <string name="type_constant" translatable="false">type_constant</string>
     <string name="type_variable" translatable="false">type_variable</string>
 

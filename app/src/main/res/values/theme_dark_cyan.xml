@@ -29,8 +29,4 @@
         <!-- No settings -->
     </style>
 
-    <style name="SettingsThemeDarkCyan" parent="BaseThemeDarkCyan">
-        <item name="windowActionModeOverlay">false</item>
-    </style>
-
 </resources>

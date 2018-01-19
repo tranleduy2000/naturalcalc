@@ -109,5 +109,5 @@
         <attr name="specialAlignment" />
     </declare-styleable>
 
-
+    <declare-styleable name="CalculatorTheme" />
 </resources>

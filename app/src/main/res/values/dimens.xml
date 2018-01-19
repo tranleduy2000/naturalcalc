@@ -3,7 +3,6 @@
 
     <!-- Main view -->
     <dimen name="activity_vertical_margin">1dp</dimen>
-    <dimen name="activity_toolbar_height">@dimen/abc_action_bar_default_height_material</dimen>
     <!-- flb top offset related to tool bar -->
 
     <!-- Dialogs -->
@@ -45,7 +44,6 @@
     <dimen name="fman_item_attrs_size">10sp</dimen>
     <dimen name="fman_item_icon_size">36px</dimen>
     <dimen name="fman_item_hor_padding">3dp</dimen>
-    <dimen name="function_button_height">48dp</dimen>
 
     <!-- HoloColorPicker library -->
 

@@ -3,16 +3,6 @@
 
     <!-- Theme definition used for all API levels -->
 
-    <style name="BaseThemeLight" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="windowActionModeOverlay">true</item>
-        <item name="themeMicroMathToolBar">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-        <item name="themeMicroMathPopup">@style/ThemeOverlay.AppCompat.Light</item>
-        <item name="colorMicroMathNavigator">@color/background_material_light</item>
-
-        <item name="colorButtonEnabled">#000000</item>
-        <item name="colorButtonDisabled">#9e9e9e</item>
-    </style>
-
     <style name="BaseThemeDark" parent="@style/Theme.AppCompat.NoActionBar">
         <item name="windowActionModeOverlay">true</item>
         <item name="themeMicroMathToolBar">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
@@ -24,10 +14,6 @@
     </style>
 
     <!-- Theme definition that is re-defined for API v.21 -->
-    <style name="AppBaseThemeLight" parent="BaseThemeLight">
-        <item name="selectableBackground">?android:selectableItemBackground</item>
-
-    </style>
 
     <style name="AppBaseThemeDark" parent="BaseThemeDark">
         <item name="selectableBackground">?android:selectableItemBackground</item>
