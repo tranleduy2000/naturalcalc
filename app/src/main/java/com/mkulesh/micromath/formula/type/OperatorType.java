@@ -26,7 +26,7 @@ import java.util.Locale;
 /**
  * Supported operators
  */
-public enum OperatorType implements ButtonDescriptor {
+public enum OperatorType implements FunctionTermType {
     PLUS(R.string.formula_operator_plus, R.string.math_operator_plus, R.id.btn_plus) {
         @Override
         public String toString() {

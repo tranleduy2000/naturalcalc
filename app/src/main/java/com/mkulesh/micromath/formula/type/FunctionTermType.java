@@ -8,7 +8,7 @@ import android.support.annotation.StringRes;
  * Created by Duy on 1/14/2018.
  */
 
-public interface ButtonDescriptor {
+public interface FunctionTermType {
     @StringRes
     int getDescriptionId();
 

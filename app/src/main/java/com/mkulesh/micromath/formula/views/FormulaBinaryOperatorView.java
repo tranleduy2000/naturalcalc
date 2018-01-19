@@ -42,10 +42,10 @@ public class FormulaBinaryOperatorView extends FormulaTermView {
     private TermField mRightTerm = null;
     private boolean mUseBrackets = false;
 
-    public FormulaBinaryOperatorView(TermField owner, LinearLayout layout, String text, int index) throws Exception {
+    public FormulaBinaryOperatorView(TermField owner, LinearLayout layout, String code, int index) throws Exception {
         super(owner.getFormulaRoot(), layout, owner.mTermDepth);
         setParentField(owner);
-        onCreate(text, index, owner.bracketsType);
+        onCreate(code, index, owner.bracketsType);
     }
 
     public FormulaBinaryOperatorView(Context context) {
@@ -164,13 +164,13 @@ public class FormulaBinaryOperatorView extends FormulaTermView {
     /**
      * Procedure creates the formula layout
      */
-    private void onCreate(String textCode, int index, TermField.BracketsType bracketsType) throws Exception {
+    private void onCreate(String code, int index, TermField.BracketsType bracketsType) throws Exception {
         if (index < 0 || index > layout.getChildCount()) {
             throw new Exception("cannot create FormulaTermOperator for invalid insertion index " + index);
         }
-        mOperatorType = getOperatorType(getContext(), textCode);
+        mOperatorType = getOperatorType(getContext(), code);
         if (mOperatorType == null) {
-            throw new Exception("cannot create FormulaTermOperator for unknown operator");
+            throw new Exception("cannot create FormulaBinaryOperatorView for unknown operator");
         }
         switch (mOperatorType) {
             case PLUS:
@@ -193,7 +193,7 @@ public class FormulaBinaryOperatorView extends FormulaTermView {
             throw new Exception("cannot initialize operator terms");
         }
         // set texts for left and right parts
-        TermField.divideString(textCode, getContext().getResources().getString(mOperatorType.getSymbolId()), mLeftTerm, mRightTerm);
+        TermField.divideString(code, getContext().getResources().getString(mOperatorType.getSymbolId()), mLeftTerm, mRightTerm);
 
         // disable brackets of child terms in some cases
         switch (mOperatorType) {

@@ -26,7 +26,7 @@ import java.util.Locale;
 /**
  * Supported functions
  */
-public enum IntervalType implements ButtonDescriptor {
+public enum IntervalType implements FunctionTermType {
     EQUIDISTANT_INTERVAL(
             R.string.formula_quidistant_interval,
             R.drawable.p_equidistant_interval,

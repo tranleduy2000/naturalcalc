@@ -34,7 +34,7 @@ import com.duy.natural.calc.calculator.keyboard.OnCalcButtonClickListener;
 import com.mkulesh.micromath.formula.type.ActionType;
 import com.mkulesh.micromath.formula.type.BaseType;
 import com.mkulesh.micromath.formula.type.BasicSymbolType;
-import com.mkulesh.micromath.formula.type.ButtonDescriptor;
+import com.mkulesh.micromath.formula.type.FunctionTermType;
 import com.mkulesh.micromath.formula.type.ComparatorType;
 import com.mkulesh.micromath.formula.type.FunctionTrigger;
 import com.mkulesh.micromath.formula.type.FunctionType;
@@ -130,7 +130,7 @@ public class CalcButtonManager implements OnClickListener, OnLongClickListener,
     }
 
     private void setupBasicButton(ViewGroup viewGroup) {
-        for (ButtonDescriptor type : BasicSymbolType.values()) {
+        for (FunctionTermType type : BasicSymbolType.values()) {
             View view = viewGroup.findViewById(type.getViewId());
             if (view instanceof ICalcButton) {
                 ((ICalcButton) view).initWithParameter(CalcButtonManager.NO_BUTTON,

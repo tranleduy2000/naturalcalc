@@ -11,7 +11,7 @@ import com.nstudio.calc.casio.R;
  * Created by Duy on 1/14/2018.
  */
 
-public enum ActionType implements ButtonDescriptor {
+public enum ActionType implements FunctionTermType {
     DELETE(R.string.action_delete, R.id.btn_delete),
     CLEAR(R.string.action_clear_all, R.id.btn_clear),
     CALCULATE(R.string.action_calculate, R.id.btn_calculate),

@@ -24,7 +24,7 @@ import android.support.annotation.StringRes;
 import com.nstudio.calc.casio.R;
 
 
-public enum BaseType implements ButtonDescriptor {
+public enum BaseType implements FunctionTermType {
     EQUATION(R.drawable.ic_equation, R.string.math_new_equation, R.id.btn_add_assign),
     RESULT(R.drawable.ic_result, R.string.math_new_result, R.id.btn_add_row),
     TERM(R.drawable.ic_new_term, R.string.math_new_term, R.id.btn_add_term);

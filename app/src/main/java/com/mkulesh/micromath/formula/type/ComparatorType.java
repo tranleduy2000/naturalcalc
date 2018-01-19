@@ -26,7 +26,7 @@ import java.util.Locale;
 /**
  * Supported comparators
  */
-public enum ComparatorType implements ButtonDescriptor {
+public enum ComparatorType implements FunctionTermType {
     EQUAL(R.string.formula_comparator_equal, R.string.math_comparator_equal, R.id.btn_equal) {
         @Override
         public String toString() {

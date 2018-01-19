@@ -26,7 +26,7 @@ import java.util.Locale;
 /**
  * Supported loop types
  */
-public enum LoopType implements ButtonDescriptor {
+public enum LoopType implements FunctionTermType {
     SUMMATION(R.string.formula_loop_summation, R.string.math_loop_summation, R.id.btn_sum) {
         @Override
         public String toString() {
