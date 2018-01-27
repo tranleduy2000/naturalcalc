@@ -20,7 +20,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
-import com.duy.common.BuildConfig;
+import com.nstudio.calc.casio.BuildConfig;
 
 /**
  * Android logcat

@@ -3,9 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/casio2.iml" filepath="$PROJECT_DIR$/casio2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://C:\github\naturalcalc\app\app.iml" filepath="C:\github\naturalcalc\app\app.iml" />
+      <module fileurl="file://C:\github\naturalcalc\casio2.iml" filepath="C:\github\naturalcalc\casio2.iml" />
+      <module fileurl="file://C:\github\naturalcalc\common\common.iml" filepath="C:\github\naturalcalc\common\common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/naturalcalc.iml" filepath="$PROJECT_DIR$/.idea/naturalcalc.iml" />
       <module fileurl="file://$PROJECT_DIR$/symja-release/symja-release.iml" filepath="$PROJECT_DIR$/symja-release/symja-release.iml" />
+      <module fileurl="file://C:\github\naturalcalc\symja-release\symja-release.iml" filepath="C:\github\naturalcalc\symja-release\symja-release.iml" />
     </modules>
   </component>
 </project>

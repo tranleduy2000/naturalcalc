@@ -28,12 +28,12 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.duy.common.purchase.InAppPurchaseActivity;
 import com.duy.common.utils.ShareUtil;
 import com.duy.common.utils.StoreUtil;
 import com.duy.natural.calc.calculator.display.DisplayFragment;
 import com.duy.natural.calc.calculator.evaluator.SystemLoaderTask;
 import com.duy.natural.calc.calculator.keyboard.KeyboardFragment;
+import com.duy.natural.calc.calculator.settings.BaseActivity;
 import com.duy.natural.calc.calculator.settings.SettingActivity;
 import com.kobakei.ratethisapp.RateThisApp;
 import com.mkulesh.micromath.BaseDisplayFragment;
@@ -52,7 +52,7 @@ import java.util.Locale;
  * Created by Duy on 1/13/2018.
  */
 
-public class CalculatorActivity extends InAppPurchaseActivity {
+public class CalculatorActivity extends BaseActivity {
     /**
      * Constants used to save/restore the instance state.
      */
@@ -90,8 +90,6 @@ public class CalculatorActivity extends InAppPurchaseActivity {
         mPresenter.onCreate();
 
         mActiveActionModes = new ArrayList<>();
-
-        postShowFullScreenAdsAfter(1000 * 60 * 4); //4 minus
         showDialogRate();
 
         new SystemLoaderTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -172,9 +170,6 @@ public class CalculatorActivity extends InAppPurchaseActivity {
                 }
                 return true;
             }
-            case R.id.action_remove_ads:
-                showDialogUpgrade();
-                return true;
             case R.id.action_setting:
                 openSetting();
                 return true;

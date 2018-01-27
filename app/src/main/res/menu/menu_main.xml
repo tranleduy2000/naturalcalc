@@ -63,14 +63,9 @@
 
     <item
         android:id="@+id/action_export_image"
-
         android:title="@string/action_export_image"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/action_remove_ads"
-        android:title="@string/action_remove_ads"
-        app:showAsAction="never" />
     <item
         android:id="@+id/action_change_size"
         android:title="@string/action_change_size"

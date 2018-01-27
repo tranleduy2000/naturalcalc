@@ -1,1 +1,1 @@
-include ':app', ':symja-release', ':common'
+include ':app', ':symja-release'

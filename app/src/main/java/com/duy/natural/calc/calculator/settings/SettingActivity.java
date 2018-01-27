@@ -4,14 +4,13 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.duy.common.ads.AdsSupportActivity;
 import com.nstudio.calc.casio.R;
 
 /**
  * Created by Duy on 1/15/2018.
  */
 
-public class SettingActivity extends AdsSupportActivity {
+public class SettingActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
